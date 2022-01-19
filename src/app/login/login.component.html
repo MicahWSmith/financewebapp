@@ -3,7 +3,7 @@
     <div class="example-container">
         <mat-form-field appearance="fill">
           <mat-label>Enter your email</mat-label>
-          <input matInput placeholder="name@example.com" [formControl]="email" required/>
+          <input matInput placeholder="name@example.com" [(ngModel)]="userEmail" [formControl]="email" required/>
           <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">

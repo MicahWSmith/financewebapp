@@ -12,6 +12,7 @@ import { observable } from 'rxjs';
 export class LoginComponent implements OnInit {
 
   email = new FormControl('', [Validators.required, Validators.email]);
+  userEmail: string = "";
   password: string = "";
   token: string = "";
 
@@ -27,15 +28,17 @@ export class LoginComponent implements OnInit {
       this.failedLogin = false;
       // make request to api to get token with credentials
       let body: {} = {
-        email: this.email,
+        email: this.userEmail,
         password: this.password
       }
-      this.authService.getToken(body).subscribe(token => {
-        this.token = token;
+      this.authService.getToken(body).subscribe(res => {
+        if(res){
+          this.token = res.token;
+        }
+        else{
+          this.failedLogin = true;
+        }
       });
-    }
-    else if(!this.password){
-      this.failedLogin = true;// TODO: Move this to where response comes back not found from api
     }
   }
 
