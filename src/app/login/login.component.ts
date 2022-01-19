@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   email = new FormControl('', [Validators.required, Validators.email]);
   password: string = "";
+  token: string = "";
 
   failedLogin: boolean = false;
 
@@ -23,7 +25,14 @@ export class LoginComponent implements OnInit {
   userLogin(){
     if(!this.email.hasError('email') && this.password){
       this.failedLogin = false;
-      // TODO: 
+      // make request to api to get token with credentials
+      let body: {} = {
+        email: this.email,
+        password: this.password
+      }
+      this.authService.getToken(body).subscribe(token => {
+        this.token = token;
+      });
     }
     else if(!this.password){
       this.failedLogin = true;// TODO: Move this to where response comes back not found from api
