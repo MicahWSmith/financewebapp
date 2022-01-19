@@ -1,0 +1,34 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+.finance_app{
+    background-color: rgb(228, 234, 255);
+    height: 100%;
+}
+
+.navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(98, 81, 255);
+    padding: 18px;
+    .logo{
+        color: white;
+        font-size: 40px;
+    }
+    .nav_links{
+        a{
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+        }
+    }
+    .about_link{
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+    }
+}

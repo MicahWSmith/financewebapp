@@ -1,0 +1,46 @@
+h2{
+    color: rgb(0, 0, 0);
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    padding: 40px;
+    border-radius: 10px;
+    width: 300px;
+    input,mat-label{
+        font-size: medium;
+    }
+    button{
+        padding: 5px;
+        font-size: medium;
+    }
+    a{
+        margin-top: 20px;
+        font-size: 13px;
+        text-decoration: none;
+        color: black;
+    }
+}
+
+.login_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+.example-right-align {
+    text-align: right;
+}
+  
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+}
+  
+input.example-right-align {
+    -moz-appearance: textfield;
+}
