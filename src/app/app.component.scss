@@ -17,9 +17,11 @@ body{
     padding: 18px;
     .logo{
         color: white;
-        font-size: 40px;
+        font-size: 30px;
+        text-decoration: none;
     }
     .nav_links{
+        width: 200px;
         a{
             text-decoration: none;
             color: white;
@@ -27,8 +29,18 @@ body{
         }
     }
     .about_link{
+        text-align: right;
+        width: 200px;
         text-decoration: none;
         color: white;
         font-size: 20px;
     }
+    mat-icon{
+        margin-left: 5px;
+        margin-right: 20px;
+    }
+}
+
+.material-icons{
+    vertical-align: bottom;
 }

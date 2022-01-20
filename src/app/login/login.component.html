@@ -11,7 +11,7 @@
             <input matInput type="password" [(ngModel)]="password" required>
         </mat-form-field>
         <button (click)="userLogin()" mat-stroked-button color="primary">Sign in</button>
-        <a routerLink="/" class="recovery_link">Forgot your password?</a>
+        <a routerLink="/recovery" class="recovery_link">Forgot your password?</a>
     </div>
     <mat-error *ngIf="failedLogin">Incorrect username and/or password</mat-error>
 </div>

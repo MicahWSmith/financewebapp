@@ -13,13 +13,17 @@ import { LoginComponent } from './login/login.component';
 import { AccountdetailsComponent } from './accountdetails/accountdetails.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecoveryComponent } from './recovery/recovery.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AccountdetailsComponent,
-    RecoveryComponent
+    RecoveryComponent,
+    AboutusComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
