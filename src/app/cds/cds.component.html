@@ -1,16 +1,17 @@
-<h1>CD Options</h1>
+<h1>Equity Linked CDs</h1>
 <table class="container">
-    <tr>
-        <th>Minimum Deposit</th>
-        <th>Term</th>
-        <th>Interest Rate</th>
-
-    </tr>
-    <tr *ngFor="let cd of cds">
-<td>{{ cd.minimumOpeningDeposit }}</td>
-<td>{{ cd.term }}</td>
-<td>{{ cd.interestRate }}</td>
-
-
-    </tr>
+  <tr>
+    <th>Minimum Deposit</th>
+    <th>Term</th>
+    <th>Interest Rate</th>
+    <th>Equity Link</th>
+  </tr>
+  <tr *ngFor="let cd of cds">
+    <td>{{ cd.minimumOpeningDeposit }}</td>
+    <td>{{ cd.term }}</td>
+    <td>{{ cd.interestRate }}</td>
+  </tr>
+  <tr *ngFor="let elcd of elcds">
+    <td>{{ elcd.name }}</td>
+  </tr>
 </table>
