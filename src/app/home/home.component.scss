@@ -3,12 +3,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 100%;
-    .cards_bg{
-        width: 100%;
-        height: auto;
-    }
-    .cards{
+    .welcome_cards{
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
@@ -18,12 +13,17 @@
         background-position: center;
         background-size: cover;
         width: 100%;
-        height: 60%;
+        height: 500px;
         .welcome_card{
             h2{
                 font-size: xx-large;
             }
-            background-color: rgba(255, 255, 255, 0.356);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 10px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.418);
             backdrop-filter: blur(5px);
             margin-left: 10%;
             margin-right: 10%;
@@ -32,14 +32,36 @@
             max-width: 400px;
         }
     }
-}
-
-
-.home_paragraph {
-    display: flex;
-    font-size: 15px;
-    max-width: 1000px;
-    padding-top: 50px;
-    
+    .home_paragraph {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+        p{
+            font-size: 15px;
+            max-width: 1000px;
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+    }
+    .services{
+        padding: 30px;
+        h2{
+            text-align: center;
+            font-size: x-large;
+        }
+        .service_cards{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            .service_card{
+                width: 200px;
+                margin: 10px;
+            }
+        }
+    }
 }
 
