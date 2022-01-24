@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
+import { CdsComponent } from './cds/cds.component';
+import { CdComponent } from './cd/cd.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { HomeComponent } from './home/home.component';
     AccountdetailsComponent,
     RecoveryComponent,
     AboutusComponent,
-    HomeComponent
+    HomeComponent,
+    CdsComponent,
+    CdComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+<h1>CD Options</h1>
+<table class="container">
+    <tr>
+        <th>Minimum Deposit</th>
+        <th>Term</th>
+        <th>Interest Rate</th>
+
+    </tr>
+    <tr *ngFor="let cd of cds">
+<td>{{ cd.minimumOpeningDeposit }}</td>
+<td>{{ cd.term }}</td>
+<td>{{ cd.interestRate }}</td>
+
+
+    </tr>
+</table>
