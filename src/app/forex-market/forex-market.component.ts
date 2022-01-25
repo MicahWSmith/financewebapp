@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ForexAPIService } from '../forex-api.service';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-forex-market',
@@ -20,12 +19,12 @@ export class ForexMarketComponent implements OnInit {
 
   ngOnInit(): void {
     this.forexService.getAllCurrencies()
-      .subscribe(payload => {
-        this.currencies = payload
-        this.currencies.map(() => {
-          this.quantities.push("0");
-        })
-      });
+    .subscribe(payload => {
+      this.currencies = payload
+      this.currencies.map(() => {
+        this.quantities.push("0");
+      })
+    });
   }
 
   buy(index: number) {
