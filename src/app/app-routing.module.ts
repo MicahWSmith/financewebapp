@@ -6,7 +6,8 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { IraComponent } from './ira/ira.component';
-import { ForexMarketComponent } from "./forex-market/forex-market.component";
+import { ForexMarketComponent } from "./forex-market/forex-market.component"
+import { CashAccountComponent } from './cash-account/cash-account.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: "recovery", component: RecoveryComponent},
   { path: "ira", component: IraComponent},
   { path: "forex", component: ForexMarketComponent},
+  { path: "cash", component: CashAccountComponent},
   { path: "", component: HomeComponent}
 ];
 

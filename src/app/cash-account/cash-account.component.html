@@ -1,0 +1,41 @@
+<div>
+    <mat-card class="card">
+        <mat-card-title class="title">
+            Checking Account
+        </mat-card-title>
+        <mat-card-title>
+            ${{account.balance}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            Current Balance
+        </mat-card-subtitle>
+        <mat-card-content>
+
+        </mat-card-content>
+        <mat-card-title>
+            Transactions
+        </mat-card-title>
+        <mat-card-content class="tab">
+            <table mat-table [dataSource]="transactions" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                    <td mat-cell *matCellDef="let transaction"> {{transaction.date}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Transaction Type </th>
+                    <td mat-cell *matCellDef="let transaction"> {{transaction.type}} </td>
+                </ng-container>
+                        
+                <ng-container matColumnDef="amount">
+                  <th mat-header-cell *matHeaderCellDef> Amount </th>
+                  <td mat-cell *matCellDef="let transaction"> {{transaction.amount}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnst"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnst;"></tr>
+              </table>
+        </mat-card-content>
+    </mat-card>
+</div>

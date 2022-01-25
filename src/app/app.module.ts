@@ -19,6 +19,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
+import { CashAccountComponent } from './cash-account/cash-account.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ForexMarketComponent } from './forex-market/forex-market.component';
     AboutusComponent,
     HomeComponent,
     IraComponent,
-    ForexMarketComponent
+    ForexMarketComponent,
+    CashAccountComponent
   ],
   imports: [
     BrowserModule,
