@@ -8,6 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule} from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,8 +44,9 @@ import { PortfolioComponent } from './portfolio/portfolio.component'
     MatButtonModule,
     MatTableModule,
     HttpClientModule,
-    MatCardModule
-  ],
+    MatCardModule,
+    MatProgressSpinnerModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
