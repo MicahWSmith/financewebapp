@@ -5,13 +5,15 @@ import { AccountdetailsComponent } from './accountdetails/accountdetails.compone
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { RecoveryComponent } from './recovery/recovery.component';
-import { ForexMarketComponent } from "./forex-market/forex-market.component"
+import { IraComponent } from './ira/ira.component';
+import { ForexMarketComponent } from "./forex-market/forex-market.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
   { path: "myinfo", component: AccountdetailsComponent},
   { path: "about", component: AboutusComponent},
   { path: "recovery", component: RecoveryComponent},
+  { path: "ira", component: IraComponent},
   { path: "forex", component: ForexMarketComponent},
   { path: "", component: HomeComponent}
 ];

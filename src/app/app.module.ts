@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
+import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ForexMarketComponent } from './forex-market/forex-market.component';
     RecoveryComponent,
     AboutusComponent,
     HomeComponent,
+    IraComponent,
     ForexMarketComponent
   ],
   imports: [
