@@ -1,0 +1,24 @@
+.portfolio {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-content:center;
+
+    margin: 10px;
+    padding: 10px;
+    p {
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content:center;
+    }
+}
+
+mat-progress-spinner {
+    background-color: blueviolet;
+}
+
+h1 {
+    text-align: center;
+}

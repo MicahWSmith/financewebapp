@@ -8,6 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule} from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
+import { PortfolioComponent } from './portfolio/portfolio.component'
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ForexMarketComponent } from './forex-market/forex-market.component';
     RecoveryComponent,
     AboutusComponent,
     HomeComponent,
+    ForexMarketComponent,
+    PortfolioComponent,
     IraComponent,
     ForexMarketComponent
   ],
@@ -43,8 +47,9 @@ import { ForexMarketComponent } from './forex-market/forex-market.component';
     MatButtonModule,
     MatTableModule,
     HttpClientModule,
-    MatCardModule
-  ],
+    MatCardModule,
+    MatProgressSpinnerModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
