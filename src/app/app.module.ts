@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button'
 import { HttpClientModule } from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,8 +39,13 @@ import { ForexMarketComponent } from './forex-market/forex-market.component';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+<<<<<<< HEAD
     MatTableModule,
     HttpClientModule
+=======
+    HttpClientModule,
+    MatCardModule
+>>>>>>> main
   ],
   providers: [],
   bootstrap: [AppComponent]
