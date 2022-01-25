@@ -6,11 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button'
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
 import { MatListModule } from '@angular/material/list';
-=======
 import {MatCardModule} from '@angular/material/card';
->>>>>>> main
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,11 +42,8 @@ import { StockGraphComponent } from './stock-graph/stock-graph.component';
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
-<<<<<<< HEAD
-    MatListModule
-=======
+    MatListModule,
     MatCardModule
->>>>>>> main
   ],
   providers: [],
   bootstrap: [AppComponent]
