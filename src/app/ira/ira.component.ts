@@ -14,6 +14,12 @@ export class IraComponent implements OnInit {
   transactions : any = [];
   performances : any = [];
 
+  displayedColumnsi: string[] = ["name", "quantity", "datePurchased", "originalValue", "currentValue"];
+
+  displayedColumnst: string[] = ["date", "type", "amount"];
+
+  displayedColumnsp: string[] = ["date", "change"];
+
   constructor(private iraService : IraService) { }
 
   ngOnInit(): void {
