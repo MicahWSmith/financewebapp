@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
+import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
+import { MatTableModule} from '@angular/material/table'
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { HomeComponent } from './home/home.component';
     AccountdetailsComponent,
     RecoveryComponent,
     AboutusComponent,
-    HomeComponent
+    HomeComponent,
+    MutualfundsComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { HomeComponent } from './home/home.component';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

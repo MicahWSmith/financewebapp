@@ -1,0 +1,14 @@
+<h1>Mutual Funds</h1>
+
+<div *ngFor="let mf of mfs">
+    <p>MF Name: {{mf.fund_name}}</p>
+    <div *ngFor="let investment of mf.Investments">
+        <p>Investment's: </p>
+        <p>Amount Invested: {{investment.investAmount}}</p>
+        <p>Percentage of Yield:{{investment.percentage}}%</p>
+        <p>Return on Investment:{{investment.return}}</p>
+    </div>
+    <p>Stocks: {{mf.stocks}}</p>
+    <p>CD's: {{mf.cds}}</p>
+</div>
+
