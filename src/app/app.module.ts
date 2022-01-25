@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
+import { CdsComponent } from './cds/cds.component';
+import { CdComponent } from './cd/cd.component';
 import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
 import { PortfolioComponent } from './portfolio/portfolio.component'
@@ -30,6 +32,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component'
     RecoveryComponent,
     AboutusComponent,
     HomeComponent,
+    CdsComponent,
+    CdComponent,
     ForexMarketComponent,
     PortfolioComponent,
     IraComponent,

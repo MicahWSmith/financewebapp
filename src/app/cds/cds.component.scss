@@ -1,0 +1,31 @@
+.example-card {
+  max-width: 400px;
+ margin: 13px;
+}
+
+button {
+  background-color: #6251ff;
+  color: white;
+}
+
+.details {
+  font-family: serif;
+  font-size: 17px;
+}
+
+.card-container {
+  display: flex;
+  padding-left:22%;
+  padding-top: 50px;
+}
+
+.cd-header {
+  font-family: serif;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.cd-sub-header {
+  font-family: serif;
+  text-align: center;
+}
