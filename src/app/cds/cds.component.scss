@@ -1,16 +1,31 @@
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
+.example-card {
+  max-width: 400px;
+ margin: 13px;
 }
 
-th, td {
-    padding: 10px;
+button {
+  background-color: #6251ff;
+  color: white;
 }
 
-th {
+.details {
+  font-family: serif;
+  font-size: 17px;
+}
 
-    background-color: lightblue;
-    min-width: 15vw;
-    
-    }
+.card-container {
+  display: flex;
+  padding-left:22%;
+  padding-top: 50px;
+}
 
+.cd-header {
+  font-family: serif;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.cd-sub-header {
+  font-family: serif;
+  text-align: center;
+}

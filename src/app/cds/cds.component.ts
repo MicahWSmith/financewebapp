@@ -15,17 +15,11 @@ export class CdsComponent implements OnInit {
   constructor(private route:ActivatedRoute, private cdService: CdServiceService, private router: Router ) { }
 
   cds:Cd[] = [];
-  elcds:Elcd[] = [];
+
 
   ngOnInit(): void {
     this.cdService.getCds().subscribe(payload => {
       this.cds = payload;
-
-      this.cdService.getElcds().subscribe(payload => {
-        this.elcds = payload;
-    })
-
-  
     })
   }
 
