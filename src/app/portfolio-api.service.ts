@@ -18,4 +18,8 @@ export class PortfolioApiService {
     return this.http.get<any>(this.portfolioURL + this.portfolioEXT + user)
   }
 
+  buyInvestment(user: number, investment: object) {
+    return this.http.post<any>(this.portfolioURL + this.positionEXT + user, investment)
+  }
+
 }
