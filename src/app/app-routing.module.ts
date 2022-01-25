@@ -6,7 +6,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { IraComponent } from './ira/ira.component';
-import { ForexMarketComponent } from "./forex-market/forex-market.component"
+import { ForexMarketComponent } from "./forex-market/forex-market.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
