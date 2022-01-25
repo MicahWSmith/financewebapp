@@ -4,8 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button'
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +18,7 @@ import { RecoveryComponent } from './recovery/recovery.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { IraComponent } from './ira/ira.component';
+import { ForexMarketComponent } from './forex-market/forex-market.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { IraComponent } from './ira/ira.component';
     RecoveryComponent,
     AboutusComponent,
     HomeComponent,
-    IraComponent
+    IraComponent,
+    ForexMarketComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,9 @@ import { IraComponent } from './ira/ira.component';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    HttpClientModule
+    MatTableModule,
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
