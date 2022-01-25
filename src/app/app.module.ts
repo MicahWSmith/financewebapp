@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
+import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
 import { PortfolioComponent } from './portfolio/portfolio.component'
 
@@ -30,7 +31,9 @@ import { PortfolioComponent } from './portfolio/portfolio.component'
     AboutusComponent,
     HomeComponent,
     ForexMarketComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    IraComponent,
+    ForexMarketComponent
   ],
   imports: [
     BrowserModule,

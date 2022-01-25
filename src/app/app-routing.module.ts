@@ -7,12 +7,14 @@ import { HomeComponent } from './home/home.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { ForexMarketComponent } from "./forex-market/forex-market.component"
 import { PortfolioComponent } from './portfolio/portfolio.component'
+import { IraComponent } from './ira/ira.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
   { path: "myinfo", component: AccountdetailsComponent},
   { path: "about", component: AboutusComponent},
   { path: "recovery", component: RecoveryComponent},
+  { path: "ira", component: IraComponent},
   { path: "forex", component: ForexMarketComponent},
   { path: "portfolio", component: PortfolioComponent},
   { path: "", component: HomeComponent}
