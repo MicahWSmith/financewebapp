@@ -20,10 +20,12 @@ export class CdsComponent implements OnInit {
   ngOnInit(): void {
     this.cdService.getCds().subscribe(payload => {
       this.cds = payload;
+
+      this.cdService.getElcds().subscribe(payload => {
+        this.elcds = payload;
     })
 
-    this.cdService.getElcds().subscribe(payload => {
-      this.elcds = payload;
+  
     })
   }
 
