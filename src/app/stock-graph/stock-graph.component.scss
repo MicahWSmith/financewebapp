@@ -1,6 +1,48 @@
+$color-main: rgb(228, 234, 255);
+$color-secondary: rgb(98, 81, 255);
+$color-three: rgb(121, 107, 255);
+
 .graph-container{
-    display:flex;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
-.graph{
-    width:50%;
+
+
+#lineChart{
+    background-color: white;
+    border: 1px solid $color-three;
+    border-radius: 3px;
+}
+
+@media screen and (max-height:600px) { 
+    #graph{
+        width: 550px;
+    }   
+}
+
+
+@media screen and (min-height:600px) { 
+    #graph{
+        width: 650px;
+    }  
+}
+
+@media screen and (min-height:700px) { 
+    #graph{
+        width: 750px;
+    }
+}
+
+@media screen and (min-height:800px) { 
+    #graph{
+        width: 850px;
+    }
+}
+
+@media screen and (min-height:905px) { 
+    #graph{
+        width: 950px;
+    }
+    
 }

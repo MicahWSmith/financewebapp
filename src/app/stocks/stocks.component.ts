@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { StockGraphComponent } from '../stock-graph/stock-graph.component';
 import { StockService } from '../stock.service';
 import { Stock } from './stocks.model'
+
 
 @Component({
   selector: 'app-stocks',
   templateUrl: './stocks.component.html',
-  styleUrls: ['./stocks.component.scss']
+  styleUrls: ['./stocks.component.scss'],
 })
 export class StocksComponent implements OnInit {
-
+ 
+  @ViewChild('cmp') child:StockGraphComponent = new StockGraphComponent;
   stocks = new Array()
   selectedStock: Stock ={
     stock_symbol: '',
@@ -38,6 +41,7 @@ export class StocksComponent implements OnInit {
       this.stocks = Object.values(data);
       this.selectedStock=this.stocks[0];
       this.selectedStockValue = (Object.values(this.selectedStock.stock_value)[0])
+      this.stockSelection(this.selectedStock);
     });
   }
 
@@ -45,13 +49,15 @@ export class StocksComponent implements OnInit {
 
     this.selectedStock = stock;
     this.selectedStockValue = Object.values(this.selectedStock.stock_value)[0];
-    this.count = 2;
-    this.changeSlide('neither');
+
 
     this.stockService.getStockPriceHistory(this.selectedStock.stock_symbol).subscribe((data)=>{
       this.selectedStockHistory = Object.values(data)[1];
-      this.selectedStockChange = (this.selectedStockValue - this.selectedStockHistory[0].close);
-      this.selectedStockPercentChange = (this.selectedStockChange / this.selectedStockHistory[0].close);
+      this.selectedStockHistory.unshift({label: new Date, close:this.selectedStockValue});
+      this.child.updateHistory(this.selectedStockHistory,this.selectedStock.stock_name);
+      //console.log("history on stock component: ", this.selectedStockHistory);
+      this.selectedStockChange = (this.selectedStockValue - this.selectedStockHistory[1].close);
+      this.selectedStockPercentChange = (this.selectedStockChange / this.selectedStockHistory[1].close);
       if(this.selectedStockChange < 0){
         this.selectedStockChangeNegative = true;
       }

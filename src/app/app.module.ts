@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
-
+import { NgChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -43,7 +43,8 @@ import { StockGraphComponent } from './stock-graph/stock-graph.component';
     MatButtonModule,
     HttpClientModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
