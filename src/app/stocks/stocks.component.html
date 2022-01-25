@@ -1,0 +1,71 @@
+<div id='main-container'>
+
+    <div id='left-container'>
+
+        <div id='top-text'>
+            <h2>
+                Below is a list of all of the stocks that Condor Financial offers to its members. 
+                Search for a specific stock by entering its name or symbol in the search bar, or search for a stock in the provided list.
+            </h2>
+        </div>
+        
+        <div id='stock-selection'>
+            <mat-form-field id='search-input' class='example-full-width' appearance='fill'>
+                <mat-label>Stock Symbol or Name </mat-label>
+                <input matInput placeholder='Ex. AAPL' value='' (keyup)='searchStocks($event)'>
+              </mat-form-field>
+
+            <mat-list id='stock-list'>
+                <mat-list-item class='stock-list-item' *ngFor='let stock of stocks' (click) = 'stockSelection(stock)'>
+                  <h3 matLine> {{stock.stock_symbol}} </h3>
+                  <p matLine>
+                    <span> {{stock.stock_name}} </span>
+                    <span class='demo-2'> -- {{stock.stock_exchange}} </span>
+                  </p>
+                </mat-list-item>
+              </mat-list>   
+        </div>
+            
+    </div>
+
+    <div id='right-container'>
+        <div id='right-top-container'>
+            <div id='company-name-and-symbol'>{{ selectedStock.stock_name }} ({{ selectedStock.stock_symbol }})</div>
+            <div id='additional-company-information'>{{ selectedStock.stock_exchange }}</div>
+        </div>
+        <div id='right-middle-container'>
+            <div id='left-slider' (click)='changeSlide("left")'>
+                <div id='left-arrow'></div>
+            </div>
+            <div id='content'>
+                <div id='slide-a' class='company-information-slide' [ngClass]='{"display-none" : !slide1}'>
+                    <div id='title'>Company Description</div>
+                    <div id='company-description'>{{ selectedStock.stock_description }}</div>
+                </div>
+                <div id='slide-b' class='company-information-slide' [ngClass]='{"display-none" : !slide2}'>
+                    <div id='slide-b-content'>
+                        <div id='today-price'>
+                            <span id='current-price'>{{ selectedStockValue | currency }}</span>
+                            <span id='change' [ngClass]='{green:selectedStockChange, red:selectedStockChangeNegative}'> {{ selectedStockChange | currency }}</span>
+                            <span id='change-percent' [ngClass]='{green:selectedStockChange, red:selectedStockChangeNegative}'> ({{ selectedStockPercentChange | percent:'1.2' }})</span>
+                        </div>  
+                        <div id='day-chart'>
+
+                        </div>
+                    </div>
+                </div>
+                <div id='slide-c' class='company-information-slide' [ngClass]='{"display-none" : !slide3}'>
+                    
+                </div>
+            </div>
+            <div id='right-slider' (click)='changeSlide("right")'>
+                <div id='right-arrow'></div>
+            </div>
+                
+        </div>
+        <div id='right-bottom-container'>
+            
+        </div>
+    </div>
+
+</div>

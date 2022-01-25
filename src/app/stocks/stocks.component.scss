@@ -1,0 +1,304 @@
+$color-main: rgb(228, 234, 255);
+$color-secondary: rgb(98, 81, 255);
+$color-three: rgb(121, 107, 255);
+
+#main-container{
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 60px);
+    width: 100%;
+    min-height: 500px;
+
+
+    #left-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: calc(100vh - 60px);
+        width: 400px;
+        min-width: 400px;
+        min-height: 500px;
+        background-color: $color-main;
+
+        #top-text{
+            width: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h2{
+                font-size: 12px;
+            }
+        }
+
+
+        #stock-selection{
+            width: 380px;
+            #search-input{
+                margin-left: 10px;
+            }
+
+            #stock-list{
+                width: 100%;
+
+                background-color: $color-three;
+                overflow-y: auto;
+            }
+            .stock-list-item{
+                cursor: pointer;
+                color: $color-main;
+                &:hover{
+                    background-color: $color-secondary;
+                }
+            }
+        }
+
+
+    }
+
+    #right-container{
+        height: calc(100vh - 60px);
+        width: 100vw;
+        min-height: 500px;
+        background-color: $color-main;
+
+        #right-top-container{
+            width: 100%;
+            height: 10%;
+            display: flex;
+            align-items: center;
+
+            #company-name-and-symbol{
+                font-size: xx-large;
+                margin-left: 10px;
+            }
+
+            #additional-company-information{
+                font-size: large;
+                margin-left: 20px;
+                margin-top: 20px;
+            }
+        }
+
+        #right-middle-container{
+            width: 100%;
+            height: 80%;
+            min-width: 700px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            #left-slider{
+                height: 100%;
+                min-width: 30px;
+                background-color: $color-three;
+                opacity: 20%;
+                transition: opacity 0.5s;
+                cursor: pointer;
+                &:hover{
+                    opacity: 50%;
+                }
+
+                display: flex;
+                align-items: center;
+
+                #left-arrow{
+                    content: url(./left.png);
+                    height: 50px;
+                    width: 30px;
+                }
+            }
+
+            #content{
+                height:100%;
+                width: calc(100vw - 470px);
+                min-width: 600px;
+                background-color: $color-three;
+                overflow-y: auto;
+                .company-information-slide{
+                    margin-top: 20px;
+                }
+    
+                #slide-a{
+                    margin-top: 10px;
+                    background-color: $color-main;
+                    height: calc(100% - 20px);
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    #title{  
+                        padding-top: 10px;
+                        text-align: center;
+                        font-size: 20px;
+                        font-weight: bold;
+                    }
+                    #company-description{
+                        margin-top: 20px;
+                        margin-left: 20px;
+                        margin-right: 20px;
+                    }
+                }
+    
+                #slide-b{
+                    margin-top: 10px;
+                    background-color: $color-main;
+                    height: calc(100% - 20px);
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    #slide-b-content{
+                        display: flex;
+                        flex-direction: column;
+                        background-color: yellow;
+                        align-items: center;
+                        #today-price{
+                            display: flex;
+                        }
+                        #current-price{
+                            display: flex;
+                            align-items: flex-end;
+                            font-size: 30px;
+                            height: 50px;
+                        }
+                        #change{
+                            display: flex;
+                            align-items: flex-end;
+                            height: 50px;
+                            font-size: 20px;
+                            margin-left: 20px;
+    
+                        }
+                        #change-percent{
+                            display: flex;
+                            align-items: flex-end;
+                            height: 50px;
+                            font-size: 20px;
+                            margin-left: 5px;
+    
+                        }
+                        .green{
+                            color: green;
+                        }
+    
+                        .red{
+                            color: red;
+                        }
+                        
+                        #day-chart{
+                            margin-top: 20px;
+                            width: 98%;
+                            background-color: red;
+                        }
+                    }
+                   
+                }
+    
+                #slide-c{
+                    margin-top: 10px;
+                    background-color: $color-main;
+                    height: calc(100% - 20px);
+                    margin-left: 10px;
+                    margin-right: 10px;
+                }
+            }
+
+            #right-slider{
+                height: 100%;
+                min-width: 30px;
+                background-color: $color-three;
+                opacity: 20%;
+                transition: opacity 0.5s;
+                cursor: pointer;
+                &:hover{
+                    opacity: 50%;
+                }
+
+                display: flex;
+                align-items: center;
+
+                #right-arrow{
+                    content: url(./right.png);
+                    height: 50px;
+                    width: 30px;
+                }
+            }
+           
+        }
+
+        #right-bottom-container{
+            width: 100%;
+            height: 10%;
+        }
+    }
+
+}
+
+.display-none{
+    display: none;
+}
+
+@media screen and (max-height:600px) { 
+    #stock-list{
+        height: 250px;
+    }
+
+    #company-information-slide{
+        height: 400px;
+    }
+
+    #day-chart{
+        height: 300px;
+    }
+    
+}
+
+@media screen and (min-height:600px) { 
+    #stock-list{
+        height: 345px;
+    }
+
+    #company-information-slide{
+        height: 500px;
+    }
+
+    #day-chart{
+        height: 350px;
+    }
+    
+}
+
+@media screen and (min-height:700px) { 
+    #stock-list{
+        height: 440px;
+    }
+    #company-information-slide{
+        height: 600px;
+    }
+
+    #day-chart{
+        height: 430px;
+    }
+    
+}
+
+@media screen and (min-height:800px) { 
+    #stock-list{
+        height: 545px;
+    }
+    #company-information-slide{
+        height: 700px;
+    }
+
+    #day-chart{
+        height: 500px;
+    }
+}
+
+@media screen and (min-height:905px) { 
+    #stock-list{
+        height: 650px;
+    }
+
+    #day-chart{
+        height: 590px;
+    }
+    
+}
