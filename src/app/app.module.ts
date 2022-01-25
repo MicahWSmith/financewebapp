@@ -18,6 +18,7 @@ import { RecoveryComponent } from './recovery/recovery.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
+import { PortfolioComponent } from './portfolio/portfolio.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ForexMarketComponent } from './forex-market/forex-market.component';
     RecoveryComponent,
     AboutusComponent,
     HomeComponent,
-    ForexMarketComponent
+    ForexMarketComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,

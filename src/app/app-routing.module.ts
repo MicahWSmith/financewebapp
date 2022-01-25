@@ -6,6 +6,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { ForexMarketComponent } from "./forex-market/forex-market.component"
+import { PortfolioComponent } from './portfolio/portfolio.component'
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: "about", component: AboutusComponent},
   { path: "recovery", component: RecoveryComponent},
   { path: "forex", component: ForexMarketComponent},
+  { path: "portfolio", component: PortfolioComponent},
   { path: "", component: HomeComponent}
 ];
 
