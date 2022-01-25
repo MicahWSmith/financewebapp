@@ -1,0 +1,67 @@
+.home_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    .welcome_cards{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        background: url("https://www.philipstrust.co.uk/wp-content/uploads/2019/05/about-us-header-philips-trust.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 500px;
+        .welcome_card{
+            h2{
+                font-size: xx-large;
+            }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 10px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.418);
+            backdrop-filter: blur(5px);
+            margin-left: 10%;
+            margin-right: 10%;
+            color: rgb(0, 0, 0);
+            font-size: medium;
+            max-width: 400px;
+        }
+    }
+    .home_paragraph {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+        p{
+            font-size: 15px;
+            max-width: 1000px;
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+    }
+    .services{
+        padding: 30px;
+        h2{
+            text-align: center;
+            font-size: x-large;
+        }
+        .service_cards{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            .service_card{
+                width: 200px;
+                margin: 10px;
+            }
+        }
+    }
+}
+
