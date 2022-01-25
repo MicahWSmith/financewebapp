@@ -10,10 +10,12 @@
     <td>{{ cd.minimumOpeningDeposit }}</td>
     <td>{{ cd.term }}</td>
     <td>{{ cd.interestRate }}</td>
-    
-
+   
+    <td *ngFor="let elcd of elcds">
+      <div>{{ elcd.name }}</div>
+    </td>
   </tr>
-  <!-- <tr *ngFor="let elcd of elcds">
-    <td>{{ elcd.name }}</td>
-  </tr> -->
+
+
+ 
 </table>
