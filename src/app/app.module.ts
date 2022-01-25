@@ -4,9 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button'
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { CdsComponent } from './cds/cds.component';
 import { CdComponent } from './cd/cd.component';
+import { ForexMarketComponent } from './forex-market/forex-market.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { CdComponent } from './cd/cd.component';
     AboutusComponent,
     HomeComponent,
     CdsComponent,
-    CdComponent
+    CdComponent,
+    ForexMarketComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { CdComponent } from './cd/cd.component';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+    MatTableModule,
     HttpClientModule,
     MatCardModule
   ],

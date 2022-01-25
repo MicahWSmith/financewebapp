@@ -6,6 +6,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { CdsComponent } from './cds/cds.component';
+import { ForexMarketComponent } from "./forex-market/forex-market.component"
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
@@ -13,7 +14,9 @@ const routes: Routes = [
   { path: "about", component: AboutusComponent},
   { path: "recovery", component: RecoveryComponent},
   { path: "", component: HomeComponent},
-  { path: "cds", component: CdsComponent}
+  { path: "cds", component: CdsComponent},
+  { path: "forex", component: ForexMarketComponent},
+  { path: "", component: HomeComponent}
 ];
 
 @NgModule({
