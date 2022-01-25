@@ -32,7 +32,9 @@ export class IraComponent implements OnInit {
       this.iraFull = response;
       this.investments = this.iraFull.investments;
       this.transactions = this.iraFull.transactions;
+      this.transactions.sort((a: { date: string}, b: { date: string}) => a.date > b.date ? -1 : a.date < b.date ? 1 : 0)
       this.performances = this.iraFull.performances;
+      this.performances.sort((a: { date: string}, b: { date: string}) => a.date > b.date ? -1 : a.date < b.date ? 1 : 0)
     })
   }
 
