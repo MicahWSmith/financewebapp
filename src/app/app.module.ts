@@ -26,7 +26,10 @@ import { CdsComponent } from './cds/cds.component';
 import { CdComponent } from './cd/cd.component';
 import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
-import { PortfolioComponent } from './portfolio/portfolio.component'
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
+import { DashboardMainComponent } from './dashboard-main/dashboard-main.component'
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { PortfolioComponent } from './portfolio/portfolio.component'
     ForexMarketComponent,
     PortfolioComponent,
     IraComponent,
-    ForexMarketComponent
+    ForexMarketComponent,
+    DashboardComponent,
+    DashboardSidebarComponent,
+    DashboardMainComponent
   ],
   imports: [
     BrowserModule,

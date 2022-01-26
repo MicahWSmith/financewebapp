@@ -82,6 +82,28 @@ $color-three: rgb(121, 107, 255);
                 margin-top: 20px;
                 cursor: default;
             }
+
+            #option-buttons{
+                display: flex;
+                margin-left: 50px ;
+            }
+
+            .button{
+                height: 40px;
+                width: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 30px;
+                background-color: $color-three;
+                border-radius: 5px;
+                transition: background-color 0.5s;
+                cursor: pointer;
+                color: $color-main;
+                &:hover{
+                    background-color: $color-secondary;
+                }
+            }
         }
 
         #right-middle-container{
@@ -198,8 +220,9 @@ $color-three: rgb(121, 107, 255);
                             margin-top: 20px;
                             width: 400px;
                             height: 30px;
-                            background-color: red;
                             display: flex;
+                            border-radius: 2px;
+                            background-color: $color-three;
                         }
                         .button{
                             display: flex;
@@ -209,7 +232,9 @@ $color-three: rgb(121, 107, 255);
                             width: 100px;
                             background-color: $color-three;
                             cursor: pointer;
+                            color: $color-main;
                             transition: background-color 0.5s;
+                            border-radius: 2px;
                             &:hover{
                                 background-color: $color-secondary;
                             }
