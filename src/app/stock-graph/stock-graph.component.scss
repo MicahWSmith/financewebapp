@@ -8,6 +8,9 @@ $color-three: rgb(121, 107, 255);
     justify-content: center;
 }
 
+#graph{
+    transition: width 0.5s;
+}
 
 #lineChart{
     background-color: white;
@@ -15,34 +18,39 @@ $color-three: rgb(121, 107, 255);
     border-radius: 3px;
 }
 
-@media screen and (max-height:600px) { 
+@media screen and (max-width:1070px) { 
     #graph{
-        width: 550px;
+        width: 500px;
     }   
 }
 
-
-@media screen and (min-height:600px) { 
+@media screen and (max-height:600px) { 
     #graph{
-        width: 650px;
+        width: 500px;
+    }   
+}
+
+@media screen and (min-height:600px) and (min-width:1070px) { 
+    #graph{
+        width: 580px;
     }  
 }
 
-@media screen and (min-height:700px) { 
+@media screen and (min-height:700px) and (min-width:1250px) { 
     #graph{
-        width: 750px;
+        width: 740px;
     }
 }
 
-@media screen and (min-height:800px) { 
+@media screen and (min-height:800px) and (min-width:1400px) { 
     #graph{
-        width: 850px;
+        width: 900px;
     }
 }
 
-@media screen and (min-height:905px) { 
+@media screen and (min-height:900px) and (min-width:1550px) { 
     #graph{
-        width: 950px;
+        width: 1050px;
     }
     
 }

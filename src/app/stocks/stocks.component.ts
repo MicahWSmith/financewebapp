@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { StockGraphComponent } from '../stock-graph/stock-graph.component';
 import { StockService } from '../stock.service';
 import { Stock } from './stocks.model'
@@ -12,7 +13,10 @@ import { Stock } from './stocks.model'
 export class StocksComponent implements OnInit {
  
   @ViewChild('cmp') child:StockGraphComponent = new StockGraphComponent;
+  //@ViewChild('cmp2') child2:StockGraphComponent = new StockGraphComponent;
   stocks = new Array()
+  stocksShown = new Array()
+
   selectedStock: Stock ={
     stock_symbol: '',
     stock_name: '',
@@ -24,7 +28,8 @@ export class StocksComponent implements OnInit {
     stock_archives: []
   }
 
-  selectedStockHistory = new Array();
+  selectedStockHistoryByDay = new Array();
+  selectedStockHistoryByHour = new Array();
   selectedStockValue: number = 0;
   selectedStockChange: number = 0;
   selectedStockPercentChange: number = 0;
@@ -34,38 +39,87 @@ export class StocksComponent implements OnInit {
   slide2:boolean = true;
   slide3:boolean = false;
 
+  view:string = 'week';
+  lastValue:string = '';
+
+  rateControl = new FormControl("", [Validators.min(1)]);
+  amount:number = 0;
+  cost:number = 0;
+  cashAvailable:number = 0;
+
   constructor(private stockService: StockService) { }
 
   ngOnInit(): void {
     this.stockService.getStockInformation().subscribe((data)=>{
       this.stocks = Object.values(data);
+      this.stocksShown = this.stocks;
       this.selectedStock=this.stocks[0];
       this.selectedStockValue = (Object.values(this.selectedStock.stock_value)[0])
       this.stockSelection(this.selectedStock);
     });
   }
 
+
+
   stockSelection(stock:Stock){
 
     this.selectedStock = stock;
     this.selectedStockValue = Object.values(this.selectedStock.stock_value)[0];
+    
 
+    if(this.view == 'day'){
+      this.stockService.getStockPriceHistoryHourly(this.selectedStock.stock_symbol).subscribe((data)=>{
+          this.selectedStockHistoryByHour = Object.values(data);
+          this.child.updateHistory(this.selectedStockHistoryByHour,this.selectedStock.stock_name, 'day');
+      });
+    }
 
-    this.stockService.getStockPriceHistory(this.selectedStock.stock_symbol).subscribe((data)=>{
-      this.selectedStockHistory = Object.values(data)[1];
-      this.selectedStockHistory.unshift({label: new Date, close:this.selectedStockValue});
-      this.child.updateHistory(this.selectedStockHistory,this.selectedStock.stock_name);
-      //console.log("history on stock component: ", this.selectedStockHistory);
-      this.selectedStockChange = (this.selectedStockValue - this.selectedStockHistory[1].close);
-      this.selectedStockPercentChange = (this.selectedStockChange / this.selectedStockHistory[1].close);
-      if(this.selectedStockChange < 0){
-        this.selectedStockChangeNegative = true;
-      }
-      else{
-        this.selectedStockChangeNegative = false;
-      }
-    });
+    if(this.view == 'week'){
+         this.stockService.getStockPriceHistoryWeek(this.selectedStock.stock_symbol).subscribe((data)=>{
+
+             this.selectedStockHistoryByDay = Object.values(data)[1];
+             //this.selectedStockHistoryByDay.unshift({label: new Date, close:this.selectedStockValue});
+             this.child.updateHistory(this.selectedStockHistoryByDay,this.selectedStock.stock_name, 'week');
+  
+             this.getPriceChange();
+         });
+    }
+
+    if(this.view == 'month'){
+      this.stockService.getStockPriceHistoryMonth(this.selectedStock.stock_symbol).subscribe((data)=>{
+
+          this.selectedStockHistoryByDay = Object.values(data)[1];
+          //this.selectedStockHistoryByDay.unshift({label: new Date, close:this.selectedStockValue});
+          this.child.updateHistory(this.selectedStockHistoryByDay,this.selectedStock.stock_name, 'month');
+
+          //this.getPriceChange();
+      });
+ }
+
+ if(this.view == 'year'){
+  this.stockService.getStockPriceHistoryYear(this.selectedStock.stock_symbol).subscribe((data)=>{
+
+      this.selectedStockHistoryByDay = Object.values(data)[1];
+      //this.selectedStockHistoryByDay.unshift({label: new Date, close:this.selectedStockValue});
+      this.child.updateHistory(this.selectedStockHistoryByDay,this.selectedStock.stock_name, 'year');
+
+      //this.getPriceChange();
+  });
+}
   }
+
+
+  getPriceChange(){
+    this.selectedStockChange = (this.selectedStockValue - this.selectedStockHistoryByDay[1].close);
+    this.selectedStockPercentChange = (this.selectedStockChange / this.selectedStockHistoryByDay[1].close);
+    if(this.selectedStockChange < 0){
+      this.selectedStockChangeNegative = true;
+    }
+    else{
+      this.selectedStockChangeNegative = false;
+    }
+  }
+
 
   changeSlide(direction:string){
     if(direction == 'left' && this.count != 1){
@@ -94,8 +148,44 @@ export class StocksComponent implements OnInit {
     }
   }
 
+  
   searchStocks(event:any){
-    console.log(event.target.value);
+    let value = event.target.value;
+
+    let stocksBeingShown = this.stocksShown;
+    let newStocks = new Array();
+
+    if(value.length < this.lastValue.length){
+      stocksBeingShown = this.stocks;
+    }
+
+      for(let stock of stocksBeingShown){
+        if(stock.stock_symbol.toUpperCase().includes(value.toUpperCase()) || stock.stock_name.toUpperCase().includes(value.toUpperCase())){
+          newStocks.push(stock);
+        }
+      }
+  
+    this.lastValue = value;
+    this.stocksShown = newStocks;
+  }
+
+  async changeView(view:string){
+    await (this.view = view);
+    this.stockSelection(this.selectedStock);
+  }
+
+  getCost(){
+    this.cost = this.amount* this.selectedStockValue;
+  }
+
+  buyStock(){
+    if(this.cost <= this.cashAvailable && this.amount >= 1)
+    {
+      alert("STOCK CAN BE BOUGHT");
+    }
+    else{
+      alert("STOCK CANNOT BE BOUGHT");
+    }
   }
 
 }

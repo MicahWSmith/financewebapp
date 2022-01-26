@@ -16,7 +16,7 @@
               </mat-form-field>
 
             <mat-list id='stock-list'>
-                <mat-list-item class='stock-list-item' *ngFor='let stock of stocks' (click) = 'stockSelection(stock)'>
+                <mat-list-item class='stock-list-item' *ngFor='let stock of stocksShown' (click) = 'stockSelection(stock)'>
                   <h3 matLine> {{stock.stock_symbol}} </h3>
                   <p matLine>
                     <span> {{stock.stock_name}} </span>
@@ -39,7 +39,7 @@
             </div>
             <div id='content'>
                 <div id='slide-a' class='company-information-slide' [ngClass]='{"display-none" : !slide1}'>
-                    <div id='title'>Company Description</div>
+                    <div class='title'>Company Description</div>
                     <div id='company-description'>{{ selectedStock.stock_description }}</div>
                 </div>
                 <div id='slide-b' class='company-information-slide' [ngClass]='{"display-none" : !slide2}'>
@@ -48,14 +48,53 @@
                             <span id='current-price'>{{ selectedStockValue | currency }}</span>
                             <span id='change' [ngClass]='{green:selectedStockChange, red:selectedStockChangeNegative}'> {{ selectedStockChange | currency }}</span>
                             <span id='change-percent' [ngClass]='{green:selectedStockChange, red:selectedStockChangeNegative}'> ({{ selectedStockPercentChange | percent:'1.2' }})</span>
-                        </div>  
+                        </div>
+                        <div id='view-buttons'>
+                            <div class='button' (click)='changeView("day")' [ngClass]='{"button-selected":(view == "day")}'>Today</div>
+                            <div class='button' (click)='changeView("week")' [ngClass]='{"button-selected":(view == "week")}'>This Week</div>
+                            <div class='button' (click)='changeView("month")' [ngClass]='{"button-selected":(view == "month")}'>This Month</div>
+                            <div class='button' (click)='changeView("year")' [ngClass]='{"button-selected":(view == "year")}'>This Year</div>
+                        </div>
+                            
                         <div id='day-chart'>
                             <stock-graph #cmp></stock-graph>
                         </div>
                     </div>
                 </div>
                 <div id='slide-c' class='company-information-slide' [ngClass]='{"display-none" : !slide3}'>
-                    
+                    <div class='title'>Purchase Stock</div>
+                    <div id='slide-c-content'>
+                        <div id='today-price'>
+                            <span id='current-price'>{{ selectedStockValue | currency }}</span>
+                            <span id='change' [ngClass]='{green:selectedStockChange, red:selectedStockChangeNegative}'> {{ selectedStockChange | currency }}</span>
+                            <span id='change-percent' [ngClass]='{green:selectedStockChange, red:selectedStockChangeNegative}'> ({{ selectedStockPercentChange | percent:'1.2' }})</span>
+                        </div>
+                        <div id='options-div'>
+                            <div id='options-format-div'>
+                                <div id='amount-div'>
+                                    <span class='slide-c-label'>How many?</span>
+                                    <mat-form-field id='search-input' class='example-full-width' appearance='fill'>
+                                        <mat-label>Amount</mat-label>
+                                        <input matInput type='number' min=1 placeholder='' value='' [formControl]='rateControl' id ='amount-input' [(ngModel)] = 'amount' (change)='getCost()' (keyup)='getCost()'>
+                                    </mat-form-field>
+                                </div>
+                                <div id='cost-div'>
+                                    <span class='slide-c-label' id='cost-label'>Cost: </span>
+                                    <span>{{ cost | currency }}</span>
+                                </div>
+                                <div id='cash-available-div'>
+                                    <span class='slide-c-label' id='cash-available-label'>Cash Available: </span>
+                                    <span>{{ cashAvailable | currency }}</span>
+                                </div>
+                            </div>
+                           
+                        </div>
+
+                        <div id='buy-button-div'>
+                            <div id='buy-button' (click)='buyStock()'>Purchase</div>
+                        </div>
+                       
+                    </div>
                 </div>
             </div>
             <div id='right-slider' (click)='changeSlide("right")'>
@@ -64,7 +103,7 @@
                 
         </div>
         <div id='right-bottom-container'>
-            HELLO WORLD
+            
         </div>
     </div>
 
