@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { StockGraphComponent } from '../stock-graph/stock-graph.component';
 import { StockService } from '../stock.service';
+import { PortfolioApiService } from '../portfolio-api.service';
 import { Stock } from './stocks.model'
 
 
@@ -45,9 +46,10 @@ export class StocksComponent implements OnInit {
   rateControl = new FormControl("", [Validators.min(1)]);
   amount:number = 0;
   cost:number = 0;
-  cashAvailable:number = 0;
+  cashAvailable:number = 1000000;
+  purchaseMessage: string = "";
 
-  constructor(private stockService: StockService) { }
+  constructor(private stockService: StockService, private portfolioService: PortfolioApiService) { }
 
   ngOnInit(): void {
     this.stockService.getStockInformation().subscribe((data)=>{
@@ -179,9 +181,21 @@ export class StocksComponent implements OnInit {
   }
 
   buyStock(){
+    console.log("Buying: ", this.selectedStock.stock_symbol);
+    console.log("Quantity: ", this.amount);
+    
     if(this.cost <= this.cashAvailable && this.amount >= 1)
     {
-      alert("STOCK CAN BE BOUGHT");
+      this.purchaseMessage = `Buying ${this.amount} shares of ${this.selectedStock.stock_symbol}...`
+      this.portfolioService.buyInvestment(12, {
+        type: "stock",
+        symbol: this.selectedStock.stock_symbol,
+        quantity: this.amount
+      })
+      .subscribe((payload) => {
+        console.log("Response: ", payload);
+        this.purchaseMessage = `Purchased ${payload.quantity} shares of ${payload.symbol} for \$${payload.purchasePrice * payload.quantity}!`
+      })
     }
     else{
       alert("STOCK CANNOT BE BOUGHT");
