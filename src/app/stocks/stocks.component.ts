@@ -202,4 +202,9 @@ export class StocksComponent implements OnInit {
     }
   }
 
+  setCount(num:number){
+    this.count = num;
+    this.changeSlide('');
+  }
+
 }

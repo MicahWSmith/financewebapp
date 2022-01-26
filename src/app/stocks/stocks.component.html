@@ -32,6 +32,11 @@
         <div id='right-top-container'>
             <div id='company-name-and-symbol'>{{ selectedStock.stock_name }} ({{ selectedStock.stock_symbol }})</div>
             <div id='additional-company-information'>{{ selectedStock.stock_exchange }}</div>
+            <div id="option-buttons">
+                <div class='button' (click)='setCount(1)'>Description</div>
+                <div class='button' (click)='setCount(2)'>History</div>
+                <div class='button' (click)='setCount(3)'>Purchase</div>
+            </div>
         </div>
         <div id='right-middle-container'>
             <div id='left-slider' (click)='changeSlide("left")'>
