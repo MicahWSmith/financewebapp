@@ -23,7 +23,6 @@ export class PortfolioApiService {
   }
 
   sellInvestment(user: number, investmentId: number, type: string) {
-    console.log("Investment ID: ", investmentId)
     let params = new HttpParams();
     params = params.append('id', investmentId);
     params = params.append('type', type);
