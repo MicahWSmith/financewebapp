@@ -5,11 +5,12 @@ import { AccountdetailsComponent } from './accountdetails/accountdetails.compone
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { RecoveryComponent } from './recovery/recovery.component';
+import { IraComponent } from './ira/ira.component';
+import { ForexMarketComponent } from "./forex-market/forex-market.component"
+import { CashAccountComponent } from './cash-account/cash-account.component';
 import { StocksComponent } from './stocks/stocks.component';
 import { CdsComponent } from './cds/cds.component';
-import { ForexMarketComponent } from "./forex-market/forex-market.component";
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { IraComponent } from './ira/ira.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
@@ -24,6 +25,8 @@ const routes: Routes = [
   { path: "cds", component: CdsComponent},
   { path: "ira", component: IraComponent},
   { path: "forex", component: ForexMarketComponent},
+  { path: "cash", component: CashAccountComponent},
+  { path: "", component: HomeComponent},
   { path: "portfolio", component: PortfolioComponent},
   { path: "dashboard", component: DashboardComponent,
       children:[

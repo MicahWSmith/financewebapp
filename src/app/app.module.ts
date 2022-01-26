@@ -7,8 +7,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule} from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
-import {MatCardModule} from '@angular/material/card';
 import { NgChartsModule } from 'ng2-charts';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
@@ -26,6 +27,7 @@ import { CdsComponent } from './cds/cds.component';
 import { CdComponent } from './cd/cd.component';
 import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
+import { CashAccountComponent } from './cash-account/cash-account.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
@@ -47,6 +49,7 @@ import { DashboardMainComponent } from './dashboard-main/dashboard-main.componen
     PortfolioComponent,
     IraComponent,
     ForexMarketComponent,
+    CashAccountComponent,
     DashboardComponent,
     DashboardSidebarComponent,
     DashboardMainComponent
@@ -63,6 +66,8 @@ import { DashboardMainComponent } from './dashboard-main/dashboard-main.componen
     MatButtonModule,
     MatTableModule,
     HttpClientModule,
+    MatCardModule,
+    MatSelectModule,
     MatListModule,
     NgChartsModule,
     MatCardModule,
