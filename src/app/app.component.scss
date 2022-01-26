@@ -1,10 +1,13 @@
+$color-main: rgb(228, 234, 255);
+$color-secondary: rgb(98, 81, 255);
+
 body{
     margin: 0px;
     padding: 0px;
 }
 
 .finance_app{
-    background-color: rgb(228, 234, 255);
+    background-color: $color-main;
     height: 100%;
 }
 
@@ -13,7 +16,7 @@ body{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(98, 81, 255);
+    background-color: $color-secondary;
     padding: 18px;
     .logo{
         color: white;

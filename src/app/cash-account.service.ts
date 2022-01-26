@@ -26,7 +26,6 @@ export class CashAccountService {
     return this.http.put("https://bankaccountmicroservice.herokuapp.com/accounts/" + id, body, {responseType: 'text'});
   }
 
-
   addTransaction(id : number, type : string, amount : number, date : string){
     let body = {
       type: type,
