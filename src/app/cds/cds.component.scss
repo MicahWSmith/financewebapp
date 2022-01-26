@@ -1,6 +1,10 @@
 .example-card {
-  max-width: 300px;
+  width: 275px;
  margin: 13px;
+}
+
+.example-card:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
 
 button {
