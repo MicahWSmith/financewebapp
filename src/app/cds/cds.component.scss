@@ -1,5 +1,5 @@
 .example-card {
-  max-width: 400px;
+  max-width: 300px;
  margin: 13px;
 }
 
@@ -14,9 +14,12 @@ button {
 }
 
 .card-container {
-  display: flex;
-  padding-left:22%;
+  display: grid;
+  padding-left:20%;
+  padding-right: 20%;
   padding-top: 50px;
+  grid-template-columns: auto auto auto;
+ 
 }
 
 .cd-header {
@@ -28,4 +31,13 @@ button {
 .cd-sub-header {
   font-family: serif;
   text-align: center;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .card-container  {
+      display: flex;
+      flex-direction: column;
+  }
 }
