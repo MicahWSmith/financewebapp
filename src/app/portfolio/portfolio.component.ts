@@ -17,6 +17,7 @@ export class PortfolioComponent implements OnInit {
   currentUser: number = 17;
 
   loading: boolean = true;
+  currencyMessage: string = "";
 
   stockColumns: string[] = ["symbol", "name", "quantity", "purchasePrice", "currentPrice", "sell"]
   currencyColumns: string[] = ["code", "name", "symbol", "quantity", "purchasePrice", "currentPrice", "sell"]
@@ -27,8 +28,18 @@ export class PortfolioComponent implements OnInit {
     this.updatePortfolio();
   }
 
-  sell(index: number) {
-    console.log("Selling currency row: ", index)
+  sellCurrency(index: number) {
+    console.log("Selling currency: ", this.currencies[index])
+    this.currencyMessage = `Selling ${this.currencies[index].quantity} ${this.currencies[index].code} at ${this.currencies[index].currentPrice}`
+    this.portfolioService.sellInvestment(this.currentUser,this.currencies[index].investmentID, "currency")
+    .subscribe(() => {
+      this.currencyMessage = `Sold successfully!`
+      this.updatePortfolio();
+    })
+  }
+
+  sellStock(index: number) {
+    console.log("Selling stock row: ", index)
   }
 
   updatePortfolio() {
