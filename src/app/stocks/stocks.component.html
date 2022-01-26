@@ -94,18 +94,21 @@
                             </div>
                            
                         </div>
-
+                        
                         <div id='buy-button-div'>
                             <div id='buy-button' (click)='buyStock()'>Purchase</div>
                         </div>
-                       
+                        <div id='purchase-message-div'>
+                            <p>{{purchaseMessage}}</p>
+                        </div>
                     </div>
                 </div>
+                
             </div>
             <div id='right-slider' (click)='changeSlide("right")'>
                 <div id='right-arrow'></div>
             </div>
-                
+            
         </div>
         <div id='right-bottom-container'>
             
