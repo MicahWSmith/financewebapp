@@ -1,7 +1,12 @@
 <div class="forex">
     <p>Welcome to the Forex Marketplace!</p>
     <p>Prices are displayed in USD</p>
+    <p>Current user is: {{currentUser}}</p>
+    <p>Retrieve user: <input type="number" [(ngModel)]="newUser"><button (click)="updateUser()">Update</button></p>
+    
+    <br/>
 
+    <p>{{alertMessage}}</p>
     <table mat-table [dataSource]="currencies" class="mat-elevation-z8">
         
         <!-- Code Column -->
