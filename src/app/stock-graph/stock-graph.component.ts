@@ -32,15 +32,18 @@ export class StockGraphComponent implements OnInit {
   }
 
 
-    updateHistory(history:Array<StockHistory>, name:string, view:string){
+    updateHistory(history:Array<StockHistory>, name:string, view:string, open?:number){
       
       this.chart?.destroy();
       this.stockLabels = [];
       this.stockData = [];
 
       if(view == 'day'){
+        this.stockLabels.push('10AM');
+        this.stockData.push(open);
+
         let today = (new Date);
-        for(let i = 10; i >= 0; i--){
+        for(let i = 10; i > 0; i--){
           let date = new Date(history[i].date)
           if(date.getDate() == today.getDate()){
             let hour = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
@@ -50,6 +53,8 @@ export class StockGraphComponent implements OnInit {
             this.stockData.push(history[i].close);
           }
         }
+
+
 
         
 

@@ -19,6 +19,10 @@ export class StockService {
     return this.httpClient.get(stockInformationUrl + `/${symbol}`);
   }
 
+  getStockPriceHistoryDay(symbol:string){
+    return this.httpClient.get(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=3241e77649a6b0b8c26d6357a72b8f7e`);
+  }
+
   getStockPriceHistoryHourly(symbol:string){
     return this.httpClient.get(`https://financialmodelingprep.com/api/v3/historical-chart/1hour/${symbol}?apikey=3241e77649a6b0b8c26d6357a72b8f7e`);
   }

@@ -67,34 +67,30 @@ export class StocksComponent implements OnInit {
 
     this.selectedStock = stock;
     this.selectedStockValue = Object.values(this.selectedStock.stock_value)[0];
-    
+    this.getPriceChange();
 
     if(this.view == 'day'){
       this.stockService.getStockPriceHistoryHourly(this.selectedStock.stock_symbol).subscribe((data)=>{
           this.selectedStockHistoryByHour = Object.values(data);
-          this.child.updateHistory(this.selectedStockHistoryByHour,this.selectedStock.stock_name, 'day');
+             this.stockService.getStockPriceHistoryDay(this.selectedStock.stock_symbol).subscribe((data2)=>{
+                let open = Object.values(data2)[0].open;
+                this.child.updateHistory(this.selectedStockHistoryByHour,this.selectedStock.stock_name, 'day', open);
+             })
+          
       });
     }
 
     if(this.view == 'week'){
          this.stockService.getStockPriceHistoryWeek(this.selectedStock.stock_symbol).subscribe((data)=>{
-
              this.selectedStockHistoryByDay = Object.values(data)[1];
-             //this.selectedStockHistoryByDay.unshift({label: new Date, close:this.selectedStockValue});
              this.child.updateHistory(this.selectedStockHistoryByDay,this.selectedStock.stock_name, 'week');
-  
-             this.getPriceChange();
          });
     }
 
     if(this.view == 'month'){
       this.stockService.getStockPriceHistoryMonth(this.selectedStock.stock_symbol).subscribe((data)=>{
-
           this.selectedStockHistoryByDay = Object.values(data)[1];
-          //this.selectedStockHistoryByDay.unshift({label: new Date, close:this.selectedStockValue});
           this.child.updateHistory(this.selectedStockHistoryByDay,this.selectedStock.stock_name, 'month');
-
-          //this.getPriceChange();
       });
  }
 
@@ -102,24 +98,32 @@ export class StocksComponent implements OnInit {
   this.stockService.getStockPriceHistoryYear(this.selectedStock.stock_symbol).subscribe((data)=>{
 
       this.selectedStockHistoryByDay = Object.values(data)[1];
-      //this.selectedStockHistoryByDay.unshift({label: new Date, close:this.selectedStockValue});
       this.child.updateHistory(this.selectedStockHistoryByDay,this.selectedStock.stock_name, 'year');
 
-      //this.getPriceChange();
   });
 }
   }
 
 
   getPriceChange(){
-    this.selectedStockChange = (this.selectedStockValue - this.selectedStockHistoryByDay[1].close);
-    this.selectedStockPercentChange = (this.selectedStockChange / this.selectedStockHistoryByDay[1].close);
-    if(this.selectedStockChange < 0){
-      this.selectedStockChangeNegative = true;
-    }
-    else{
-      this.selectedStockChangeNegative = false;
-    }
+
+    this.stockService.getStockPriceHistoryDay(this.selectedStock.stock_symbol).subscribe((data)=>{
+      let open = Object.values(data)[0].open;
+
+      console.log(open);
+      console.log(this.selectedStockValue);
+
+      this.selectedStockChange = (this.selectedStockValue - open);
+      this.selectedStockPercentChange = (this.selectedStockChange / open);
+
+      if(this.selectedStockChange < 0){
+        this.selectedStockChangeNegative = true;
+      }
+      else{
+        this.selectedStockChangeNegative = false;
+      }
+    })
+    
   }
 
 
