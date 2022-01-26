@@ -104,6 +104,9 @@ $color-three: rgb(121, 107, 255);
                     background-color: $color-secondary;
                 }
             }
+            .button-selected{
+                background-color: $color-secondary;
+            }
         }
 
         #right-middle-container{
