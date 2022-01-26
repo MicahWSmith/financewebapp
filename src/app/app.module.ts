@@ -7,7 +7,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
-import { MatCardModule} from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
+import { NgChartsModule } from 'ng2-charts';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
+import { StocksComponent } from './stocks/stocks.component';
+import { StockGraphComponent } from './stock-graph/stock-graph.component';
 import { CdsComponent } from './cds/cds.component';
 import { CdComponent } from './cd/cd.component';
 import { IraComponent } from './ira/ira.component';
@@ -32,6 +36,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component'
     RecoveryComponent,
     AboutusComponent,
     HomeComponent,
+    StocksComponent,
+    StockGraphComponent,
     CdsComponent,
     CdComponent,
     ForexMarketComponent,
@@ -51,6 +57,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component'
     MatButtonModule,
     MatTableModule,
     HttpClientModule,
+    MatListModule,
+    NgChartsModule,
     MatCardModule,
     MatProgressSpinnerModule
     ],
