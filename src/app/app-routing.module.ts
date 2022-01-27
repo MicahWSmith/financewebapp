@@ -10,9 +10,9 @@ import { CdsComponent } from './cds/cds.component';
 import { ForexMarketComponent } from "./forex-market/forex-market.component";
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { IraComponent } from './ira/ira.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
+import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: "ira", component: IraComponent},
   { path: "forex", component: ForexMarketComponent},
   { path: "portfolio", component: PortfolioComponent},
-  { path: "dashboard", component: DashboardComponent,
+  { path: "dashboard", component: LayoutComponent,
       children:[
         { path: '',
           component: DashboardMainComponent

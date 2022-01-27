@@ -1,0 +1,21 @@
+<div id='container'>
+    <div id='left-side-bar' [ngClass] = '{"side-bar-condensed":!sideBarExpanded, "side-bar-expanded":sideBarExpanded}'>
+        <div id='router-content' [ngClass] = '{"side-bar-viewable":sideBarExpanded, "side-bar-non-viewable":!sideBarExpanded}'>
+            <div id='router-display' [ngClass] = '{"no-display":!display}'>
+                <router-outlet name='left-side-bar-router'></router-outlet>
+            </div>
+        </div>
+            
+    </div>
+
+    <div id='left-side-bar-toggle' (click)='toggleSideBar()'></div>
+
+        
+    <div id='main-content' [ngClass] = '{"main-content-condensed":sideBarExpanded, "main-content-expanded":!sideBarExpanded}'>
+        <div id='main-content-container'>
+            <router-outlet></router-outlet> 
+        </div>
+         
+    </div>
+</div>
+

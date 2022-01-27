@@ -27,9 +27,9 @@ import { CdComponent } from './cd/cd.component';
 import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
-import { DashboardMainComponent } from './dashboard-main/dashboard-main.component'
+import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
+import { LayoutComponent } from './layout/layout.component'
 
 @NgModule({
   declarations: [
@@ -47,9 +47,9 @@ import { DashboardMainComponent } from './dashboard-main/dashboard-main.componen
     PortfolioComponent,
     IraComponent,
     ForexMarketComponent,
-    DashboardComponent,
     DashboardSidebarComponent,
-    DashboardMainComponent
+    DashboardMainComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
