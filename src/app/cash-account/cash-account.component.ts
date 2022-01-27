@@ -14,6 +14,7 @@ export class CashAccountComponent implements OnInit {
   displayForm : boolean = false;
   selected : string = "";
   amount : number = 0;
+  balance : number = 0;
 
   displayedColumnst: string[] = ["date", "type", "amount"];
 
@@ -45,38 +46,27 @@ export class CashAccountComponent implements OnInit {
 
   updateAll(){
     this.cashService.getAccountFull(1).subscribe(response => {
-      console.log(response);
       this.account = response;
+      this.account.transactions.sort(function(a : any, b : any){
+        return Date.parse(b.date) - Date.parse(a.date);
+      })
       this.transactions = this.account.transactions;
-    })
-  }
-
-  getAccount(){
-    this.cashService.getAccount(this.account.id).subscribe(response => {
-      this.account = response;
-    })
-  }
-
-  getTranscations() {
-    this.cashService.getTransactions(this.account.id).subscribe(response => {
-      this.transactions = response;
     })
   }
   
   transfer() {
     let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'});
     this.cashService.addTransaction(this.account.id, this.selected, this.amount, date).subscribe(response => {
-      this.getTranscations;
       if (this.selected == "Withdrawal"){
         let balance = this.account.balance - this.amount;
         this.cashService.updateAccount(this.account.id, balance).subscribe(reponse => {
-          this.getAccount;
+          this.ngOnInit();
         });
       }
       else if (this.selected == "Deposit"){
-        let balance = this.account.balance + this.amount;
+        let balance : number = Number(this.account.balance) + Number(this.amount);
         this.cashService.updateAccount(this.account.id, balance).subscribe(response => {
-          this.getAccount;
+          this.ngOnInit();
         });
       }
     });

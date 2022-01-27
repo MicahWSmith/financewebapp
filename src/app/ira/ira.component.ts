@@ -31,10 +31,14 @@ export class IraComponent implements OnInit {
       console.log(response);
       this.iraFull = response;
       this.investments = this.iraFull.investments;
+      this.iraFull.transactions.sort(function(a : any, b : any){
+        return Date.parse(b.date) - Date.parse(a.date);
+      });
       this.transactions = this.iraFull.transactions;
-      this.transactions.sort((a: { date: string}, b: { date: string}) => a.date > b.date ? -1 : a.date < b.date ? 1 : 0)
+      this.iraFull.performances.sort(function(a : any, b : any){
+        return Date.parse(b.date) - Date.parse(a.date);
+      });
       this.performances = this.iraFull.performances;
-      this.performances.sort((a: { date: string}, b: { date: string}) => a.date > b.date ? -1 : a.date < b.date ? 1 : 0)
     })
   }
 
