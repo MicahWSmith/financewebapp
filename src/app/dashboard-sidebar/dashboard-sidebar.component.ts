@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DashboardMainComponent } from '../dashboard-main/dashboard-main.component';
+import { DashboardService } from '../dashboard.service';
 @Component({
   selector: 'app-dashboard-sidebar',
   templateUrl: './dashboard-sidebar.component.html',
@@ -7,19 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardSidebarComponent implements OnInit {
 
-  loggedIn = false;
+  //dashboardService: DashboardService = new DashboardService();
+  User = {
+    fName: 'Dakota',
+    lName: 'Korn'
+  };
+  
+  currentPage = 'home';
 
-  constructor() { }
+  constructor() {
+    
+   }
 
   ngOnInit(): void {
+    //this.dashboardService.setSidebar(this);
   }
 
-
-  login(){
-    console.log('Login!');
+  goTo(view:string){
+    if(view != this.currentPage){
+      //this.dashboardMain.setView(view);
+    }
   }
 
-  createAccount(){
-    console.log('Create Account!');
+  logout(){
+    console.log('LOGOUT')
   }
+
 }

@@ -31,7 +31,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
 import { LayoutComponent } from './layout/layout.component'
-
+import { MatExpansionModule } from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +51,7 @@ import { LayoutComponent } from './layout/layout.component'
     CashAccountComponent,
     DashboardSidebarComponent,
     DashboardMainComponent,
-    LayoutComponent
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +70,8 @@ import { LayoutComponent } from './layout/layout.component'
     MatListModule,
     NgChartsModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatExpansionModule
     ],
   providers: [],
   bootstrap: [AppComponent]

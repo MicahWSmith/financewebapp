@@ -1,1 +1,49 @@
-Hello World!
+<div id='container'>
+    <div class='small-container' id='welcome-content' >
+        <div id='welcome-message'>
+            <span class='side-bar-label'>Welcome, {{ User.fName }}</span>
+            <span class='icon' id='home-icon' (click)='goTo("home")'></span>
+            <span class='icon' id='account-icon' (click)='goTo("account")'></span>
+            <span class='icon' id='message-icon' (click)='goTo("messages")'></span>
+            <span class='icon' id='settings-icon' (click)='goTo("settings")'></span>
+            <div class='side-bar-label' id='message-under'>What can we do for you today?</div>
+        </div>
+        
+    </div>
+    <div class='small-container' id='main-side-bar-content'>
+        <mat-expansion-panel class='side-bar-expansion-panel'>
+            <mat-expansion-panel-header>
+              <mat-panel-title class='panel-title'>
+                My Accounts
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class='panel-link'>Individual</div>
+            <div class='panel-link'>IRAs</div>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel class='side-bar-expansion-panel'>
+            <mat-expansion-panel-header>
+              <mat-panel-title class='panel-title'>
+                My Portfolio
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class='panel-link'>Portfolio</div>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel class='side-bar-expansion-panel'>
+            <mat-expansion-panel-header>
+              <mat-panel-title class='panel-title'>
+                Marketplaces
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class='panel-link'>CDs</div>
+            <div class='panel-link'>Forex</div>
+            <div class='panel-link'>Mutual Funds</div>
+            <div class='panel-link' routerLink="/stocks">Stocks</div>
+          </mat-expansion-panel>
+    </div>
+
+    <div class='small-container' id='log-out-container'>
+        <div id='logout-button' (click)='logout()'>Logout</div>
+    </div>
+</div>
