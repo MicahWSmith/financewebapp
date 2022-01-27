@@ -7,11 +7,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule} from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
-import {MatCardModule} from '@angular/material/card';
 import { NgChartsModule } from 'ng2-charts';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -26,6 +26,7 @@ import { CdsComponent } from './cds/cds.component';
 import { CdComponent } from './cd/cd.component';
 import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
+import { CashAccountComponent } from './cash-account/cash-account.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
@@ -47,6 +48,7 @@ import { LayoutComponent } from './layout/layout.component'
     PortfolioComponent,
     IraComponent,
     ForexMarketComponent,
+    CashAccountComponent,
     DashboardSidebarComponent,
     DashboardMainComponent,
     LayoutComponent
@@ -63,6 +65,8 @@ import { LayoutComponent } from './layout/layout.component'
     MatButtonModule,
     MatTableModule,
     HttpClientModule,
+    MatCardModule,
+    MatSelectModule,
     MatListModule,
     NgChartsModule,
     MatCardModule,
