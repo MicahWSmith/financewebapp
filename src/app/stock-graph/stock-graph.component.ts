@@ -43,7 +43,7 @@ export class StockGraphComponent implements OnInit {
         this.stockData.push(open);
 
         let today = (new Date);
-        for(let i = 10; i > 0; i--){
+        for(let i = 5; i >= 0; i--){
           let date = new Date(history[i].date)
           if(date.getDate() == today.getDate()){
             let hour = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
@@ -53,10 +53,6 @@ export class StockGraphComponent implements OnInit {
             this.stockData.push(history[i].close);
           }
         }
-
-
-
-        
 
         if(this.stockData.length == 0){
           for(let i = 10; i >= 0; i--){

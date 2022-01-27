@@ -11,8 +11,7 @@ import { MatCardModule} from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { NgChartsModule } from 'ng2-charts';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -29,9 +28,9 @@ import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
 import { CashAccountComponent } from './cash-account/cash-account.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
-import { DashboardMainComponent } from './dashboard-main/dashboard-main.component'
+import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
+import { LayoutComponent } from './layout/layout.component'
 
 @NgModule({
   declarations: [
@@ -50,9 +49,9 @@ import { DashboardMainComponent } from './dashboard-main/dashboard-main.componen
     IraComponent,
     ForexMarketComponent,
     CashAccountComponent,
-    DashboardComponent,
     DashboardSidebarComponent,
-    DashboardMainComponent
+    DashboardMainComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
