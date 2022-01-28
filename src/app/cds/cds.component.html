@@ -3,21 +3,54 @@
   Each CD is linked to the performance of a specific market index
 </h2>
 
+<div class="calculator-box">
+  <div class="calc">
+    <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      tickInterval="1000"
+      step="1000"
+      [min]="minDeposit"
+      max="100000"
+      aria-label="units"
+      #currentValue
+      (change)="sliderCalc(currentValue, termLength, interestRate)"
+   
+    >
+    </mat-slider>
+
+    <p>{{ termLength }} months</p>
+    <p>{{ interestRate }}%</p>
+
+    <h4
+      (change)="calculateReturn(minDeposit, termLength, interestRate, currentValue)"
+      class="calculateTotal"
+    >
+      {{calculatedReturn | currency}}
+    </h4>
+  </div>
+</div>
+
 <div class="card-container">
-  <mat-card class="example-card" *ngFor="let cd of cds" >
+  <mat-card class="example-card" *ngFor="let cd of cds">
     <mat-card-title class="elcd-name">{{ cd.elcd?.name }}</mat-card-title>
     <mat-card-subtitle>Stock Index</mat-card-subtitle>
     <mat-card-content>
       <p class="details">
-        Minimum Deposit: {{ cd.minimumOpeningDeposit | currency}}
+        Minimum Deposit: {{ cd.minimumOpeningDeposit | currency }}
       </p>
       <p class="details">Term: {{ cd.term }} months</p>
-      <p class="details">Interest Rate: .{{ cd.interestRate | percent: '02.00' }}</p>
+      <p class="details">Interest Rate: {{ cd.interestRate }}%</p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>OPEN CD</button>
+      <button
+        (click)="xferData(cd.minimumOpeningDeposit, cd.term, cd.interestRate)"
+        class="cd-details"
+        mat-button
+      >
+        CALCULATE
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>
-
-

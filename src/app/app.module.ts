@@ -23,6 +23,7 @@ import { CdComponent } from './cd/cd.component';
 import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
 import { PortfolioComponent } from './portfolio/portfolio.component'
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component'
     MatTableModule,
     HttpClientModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSliderModule
     ],
   providers: [],
   bootstrap: [AppComponent]

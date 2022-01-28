@@ -1,6 +1,7 @@
 .example-card {
   width: 275px;
  margin: 13px;
+ 
 }
 
 .example-card:hover {
@@ -19,10 +20,11 @@ button {
 
 .card-container {
   display: grid;
-  padding-left:20%;
   padding-right: 20%;
   padding-top: 50px;
   grid-template-columns: auto auto auto;
+  background-color: red;
+  margin-left: 500px;
  
 }
 
@@ -35,6 +37,34 @@ button {
 .cd-sub-header {
   font-family: serif;
   text-align: center;
+}
+
+.calculator-box {
+  display: flex;
+  background-color: blue;
+  height: 90%;
+  width: 500px;
+  position: absolute;
+  flex-direction: column;
+}
+
+.calc {
+ height: 600px;
+ width: 400px;
+ background-color: red;
+ p{
+  color: white;
+  font-size: 20px;
+}
+}
+
+mat-slider {
+  width: 300px;
+}
+
+.calculateTotal{
+  color: white;
+  font-size: 20px;
 }
 
 
