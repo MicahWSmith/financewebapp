@@ -1,0 +1,475 @@
+$color-main: rgb(228, 234, 255);
+$color-secondary: rgb(98, 81, 255);
+$color-three: rgb(121, 107, 255);
+
+#main-container{
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 60px);
+    width: 100%;
+    min-height: 500px;
+
+
+    #left-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: calc(100vh - 60px);
+        width: 400px;
+        min-width: 400px;
+        min-height: 500px;
+        background-color: $color-main;
+
+        #top-text{
+            width: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h2{
+                font-size: 12px;
+            }
+        }
+
+
+        #stock-selection{
+            width: 380px;
+            #search-input{
+                margin-left: 80px;
+                cursor:text;
+            }
+
+            #stock-list{
+                width: 100%;
+                transition: height 0.5s;
+                background-color: $color-three;
+                overflow-y: auto;
+            }
+            .stock-list-item{
+                cursor: pointer;
+                color: $color-main;
+                transition: background-color 0.5s;
+                &:hover{
+                    background-color: $color-secondary;
+                }
+            }
+        }
+
+
+    }
+
+    #right-container{
+        height: calc(100vh - 60px);
+        width: 100vw;
+        min-height: 500px;
+        background-color: $color-main;
+
+        #right-top-container{
+            width: 100%;
+            height: 10%;
+            display: flex;
+            align-items: center;
+
+            #company-name-and-symbol{
+                font-size: xx-large;
+                margin-left: 10px;
+                cursor: default;
+            }
+
+            #additional-company-information{
+                font-size: large;
+                margin-left: 20px;
+                margin-top: 20px;
+                cursor: default;
+            }
+
+            #option-buttons{
+                display: flex;
+                margin-left: 50px ;
+            }
+
+            .button{
+                height: 40px;
+                width: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 30px;
+                background-color: $color-three;
+                border-radius: 5px;
+                transition: background-color 0.5s;
+                cursor: pointer;
+                color: $color-main;
+                &:hover{
+                    background-color: $color-secondary;
+                }
+            }
+            .button-selected{
+                background-color: $color-secondary;
+            }
+        }
+
+        #right-middle-container{
+            width: 100%;
+            height: 80%;
+            min-width: 700px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            #left-slider{
+                height: 100%;
+                min-width: 30px;
+                background-color: $color-three;
+                opacity: 20%;
+                transition: opacity 0.5s;
+                cursor: pointer;
+                &:hover{
+                    opacity: 50%;
+                }
+
+                display: flex;
+                align-items: center;
+
+                #left-arrow{
+                    content: url(./left.png);
+                    height: 50px;
+                    width: 30px;
+                }
+            }
+
+            #content{
+                height:100%;
+                width: calc(100vw - 470px);
+                min-width: 600px;
+                background-color: $color-three;
+                
+                .company-information-slide{
+                    margin-top: 20px;
+                }
+    
+                #slide-a{
+                    margin-top: 10px;
+                    background-color: $color-main;
+                    height: calc(100% - 20px);
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    overflow-y: auto;
+                    .title{  
+                        padding-top: 10px;
+                        text-align: center;
+                        font-size: 25px;
+                        font-weight: bold;
+                        text-decoration: underline;
+                    }
+                    #company-description{
+                        margin-top: 20px;
+                        margin-left: 180px;
+                        margin-right: 180px;
+                        font-size: 16px;
+                    }
+                }
+    
+                #slide-b{
+                    margin-top: 10px;
+                    background-color: $color-main;
+                    height: calc(100% - 20px);
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    #slide-b-content{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        #today-price{
+                            display: flex;
+                        }
+                        #current-price{
+                            display: flex;
+                            align-items: flex-end;
+                            font-size: 30px;
+                            height: 50px;
+                            cursor: default;
+                        }
+                        #change{
+                            display: flex;
+                            align-items: flex-end;
+                            height: 50px;
+                            font-size: 20px;
+                            margin-left: 20px;
+                            cursor: default;
+                        }
+                        #change-percent{
+                            display: flex;
+                            align-items: flex-end;
+                            height: 50px;
+                            font-size: 20px;
+                            margin-left: 5px;
+    
+                        }
+                        .green{
+                            color: green;
+                        }
+    
+                        .red{
+                            color: red;
+                        }
+                        
+                        #day-chart{
+                            
+                            width: 98%;
+                        }
+
+                        #view-buttons{
+                            margin-top: 20px;
+                            width: 400px;
+                            height: 30px;
+                            display: flex;
+                            border-radius: 2px;
+                            background-color: $color-three;
+                        }
+                        .button{
+                            display: flex;
+                            align-items:center;
+                            justify-content: center;
+                            height: 30px;
+                            width: 100px;
+                            background-color: $color-three;
+                            cursor: pointer;
+                            color: $color-main;
+                            transition: background-color 0.5s;
+                            border-radius: 2px;
+                            &:hover{
+                                background-color: $color-secondary;
+                            }
+                        }
+
+                        .button-selected{
+                            background-color: $color-secondary;
+                        }
+                    }
+                   
+                }
+    
+                #slide-c{
+                    margin-top: 10px;
+                    background-color: $color-main;
+                    height: calc(100% - 20px);
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    overflow-y: auto;
+                    .title{  
+                        padding-top: 10px;
+                        text-align: center;
+                        font-size: 25px;
+                        font-weight: bold;
+                        text-decoration: underline;
+                    }
+                    #slide-c-content{
+                        margin-top: 20px;
+                        font-size: 16px;
+                        //background-color: red;
+                        height: 80%;
+                        width: 80%;
+                        margin-left: 10%;
+
+
+                        #today-price{
+                            display: flex;
+                            justify-content: center;
+                        }
+                        #current-price{
+                            display: flex;
+                            align-items: flex-end;
+                            font-size: 30px;
+                            height: 50px;
+                            cursor: default;
+                        }
+                        #change{
+                            display: flex;
+                            align-items: flex-end;
+                            height: 50px;
+                            font-size: 20px;
+                            margin-left: 20px;
+                            cursor: default;
+                        }
+                        #change-percent{
+                            display: flex;
+                            align-items: flex-end;
+                            height: 50px;
+                            font-size: 20px;
+                            margin-left: 5px;
+    
+                        }
+                        .green{
+                            color: green;
+                        }
+    
+                        .red{
+                            color: red;
+                        }
+                        #options-div{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                        }
+                        #options-format-div{
+                            margin-left: -280px;
+                        }
+                        #amount-div{
+                            margin-top: 50px;
+                            margin-left: 38px;
+                        }
+                        .slide-c-label{
+                            font-size: 24px;
+                            font-weight: bold;
+                            margin-right: 20px;
+                        }
+                        #search-input{
+                            width: 100px;
+                        }
+                        #cost-div{
+                            margin-bottom: 30px;
+                        }
+                        #cost-label{
+                            margin-left: 107px;
+                        }
+
+                        #buy-button-div{
+                            display: flex;
+                            justify-content: center;
+                            margin-top: 50px;
+                        }
+
+                        @media screen and (max-height:600px) { 
+                            #buy-button-div{
+                                margin-top: 20px;
+                            }
+                            
+                        }
+
+                        #buy-button{
+                            background-color: $color-three;
+                            height: 50px;
+                            width: 140px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 10px;
+                            transition: background-color 0.5s;
+                            cursor: pointer;
+                            color: $color-main;
+                            &:hover{
+                                background-color: $color-secondary;
+                            }
+                        }
+                        #purchase-message-div {
+                            text-align: center;
+                        }
+                        
+                    }
+                    
+                }
+            }
+
+            #right-slider{
+                height: 100%;
+                min-width: 30px;
+                background-color: $color-three;
+                opacity: 20%;
+                transition: opacity 0.5s;
+                cursor: pointer;
+                &:hover{
+                    opacity: 50%;
+                }
+
+                display: flex;
+                align-items: center;
+
+                #right-arrow{
+                    content: url(./right.png);
+                    height: 50px;
+                    width: 30px;
+                }
+            }
+           
+        }
+
+        #right-bottom-container{
+            width: 100%;
+            height: 10%;
+        }
+    }
+
+}
+
+.display-none{
+    display: none;
+}
+
+@media screen and (max-height:600px) { 
+    #stock-list{
+        height: 250px;
+    }
+
+    #company-information-slide{
+        height: 400px;
+    }
+
+    #day-chart{
+        height: 300px;
+    }
+    
+}
+
+@media screen and (min-height:600px) { 
+    #stock-list{
+        height: 345px;
+    }
+
+    #company-information-slide{
+        height: 500px;
+    }
+
+    #day-chart{
+        height: 350px;
+    }
+    
+}
+
+@media screen and (min-height:700px) { 
+    #stock-list{
+        height: 440px;
+    }
+    #company-information-slide{
+        height: 600px;
+    }
+
+    #day-chart{
+        height: 430px;
+    }
+    
+}
+
+@media screen and (min-height:800px) { 
+    #stock-list{
+        height: 545px;
+    }
+    #company-information-slide{
+        height: 700px;
+    }
+
+    #day-chart{
+        height: 500px;
+    }
+}
+
+@media screen and (min-height:905px) { 
+    #stock-list{
+        height: 650px;
+    }
+
+    #day-chart{
+        height: 590px;
+    }
+    
+}

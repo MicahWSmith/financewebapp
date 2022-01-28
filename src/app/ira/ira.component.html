@@ -1,0 +1,93 @@
+<div class="container">
+    <mat-card>
+        <mat-card class="topcard">
+            <mat-card-title class="title">
+                IRA
+            </mat-card-title>
+            <mat-card-content>
+                Current Value: {{ira.currentAmount | currency}}
+            </mat-card-content>
+        </mat-card>
+        <mat-card-title class="title">
+            Investments
+        </mat-card-title>
+        <mat-card-content class="ira">
+            <table mat-table [dataSource]="investments" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Stock </th>
+                    <td mat-cell *matCellDef="let investment"> {{investment.name}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="quantity">
+                    <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                    <td mat-cell *matCellDef="let investment"> {{investment.quantity}} </td>
+                </ng-container>
+                        
+                <ng-container matColumnDef="datePurchased">
+                  <th mat-header-cell *matHeaderCellDef> Purchased </th>
+                  <td mat-cell *matCellDef="let investment"> {{investment.datePurchased}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="originalValue">
+                  <th mat-header-cell *matHeaderCellDef> Original Value </th>
+                  <td mat-cell *matCellDef="let investment"> {{investment.originalValue | currency}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="currentValue">
+                    <th mat-header-cell *matHeaderCellDef> Current Value </th>
+                    <td mat-cell *matCellDef="let investment"> {{investment.currentValue | currency}} </td>
+                  </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsi"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsi;"></tr>
+              </table>
+
+        </mat-card-content>
+        <mat-card-title class="title">
+            Transactions
+        </mat-card-title>
+        <mat-card-content class="ira">
+            <table mat-table [dataSource]="transactions" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                    <td mat-cell *matCellDef="let transaction"> {{transaction.date}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Transaction Type </th>
+                    <td mat-cell *matCellDef="let transaction"> {{transaction.type}} </td>
+                </ng-container>
+                        
+                <ng-container matColumnDef="amount">
+                  <th mat-header-cell *matHeaderCellDef> Amount </th>
+                  <td mat-cell *matCellDef="let transaction"> {{transaction.amount | currency}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnst"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnst;"></tr>
+              </table>
+        </mat-card-content>
+        <mat-card-title class="title">
+            Monthly Performances
+        </mat-card-title>
+        <mat-card-content class="ira">
+            <table mat-table [dataSource]="performances" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                    <td mat-cell *matCellDef="let performance"> {{performance.date}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="change">
+                    <th mat-header-cell *matHeaderCellDef> Change </th>
+                    <td mat-cell *matCellDef="let transaction" [ngClass]="transaction.change < 0 ? 'red' : 'green'"> {{transaction.change}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsp"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsp;"></tr>
+              </table>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,14 +1,36 @@
 <h1>Mutual Funds</h1>
-
-<div *ngFor="let mf of mfs">
-    <p>MF Name: {{mf.fund_name}}</p>
-    <div *ngFor="let investment of mf.Investments">
-        <p>Investment's: </p>
-        <p>Amount Invested: {{investment.investAmount}}</p>
-        <p>Percentage of Yield:{{investment.percentage}}%</p>
-        <p>Return on Investment:{{investment.return}}</p>
-    </div>
-    <p>Stocks: {{mf.stocks}}</p>
-    <p>CD's: {{mf.cds}}</p>
-</div>
-
+<table mat-table [dataSource]="mfs" class="mat-elevation-z8">
+    <ng-container matColumnDef="fund_name">
+        <th mat-header-cell *matHeaderCellDef> Mutual Funds </th>
+        <td mat-cell *matCellDef="let mf"> {{mf.fund_name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="cds">
+        <th mat-header-cell *matHeaderCellDef> CDs </th>
+        <td mat-cell *matCellDef="let mf"><p *ngIf="mf.cds.length > 0">[<span *ngFor="let cd of mf.cds">{{cd}}</span>]</p>
+          <p *ngIf="mf.cds.length == 0">none</p>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="stocks">
+        <th mat-header-cell *matHeaderCellDef> Stocks </th>
+        <td mat-cell *matCellDef="let mf"><p *ngIf="mf.stocks.length > 0">[<span *ngFor="let stock of mf.stocks">{{stock}}</span>]</p>
+          <p *ngIf="mf.stocks.length == 0">none</p>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="investAmount">
+      <th mat-header-cell *matHeaderCellDef> Investment Amount </th>
+      <td mat-cell *matCellDef="let mf"><h4 class="center" *ngIf="mf.investAmount.length == 0">- - -</h4>
+        <h4 *ngFor="let invest of mf.investAmount">{{invest | currency}}</h4></td>
+    </ng-container>
+    <ng-container matColumnDef="percentage">
+      <th mat-header-cell *matHeaderCellDef> APR </th>
+      <td mat-cell *matCellDef="let mf"><h4 class="center" *ngIf="mf.percentage.length == 0">- - -</h4>
+        <h4 *ngFor="let apr of mf.percentage">{{apr | percent}}</h4></td>
+    </ng-container>
+    <ng-container matColumnDef="return">
+      <th mat-header-cell *matHeaderCellDef> Return of Investment </th>
+      <td mat-cell *matCellDef="let mf"><h4 class="center" *ngIf="mf.return.length == 0">- - -</h4>
+        <h4 *ngFor="let ret of mf.return">{{ret | currency}}</h4></td>
+    </ng-container>
+ <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

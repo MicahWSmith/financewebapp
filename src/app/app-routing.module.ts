@@ -6,6 +6,15 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
+import { IraComponent } from './ira/ira.component';
+import { ForexMarketComponent } from "./forex-market/forex-market.component"
+import { CashAccountComponent } from './cash-account/cash-account.component';
+import { StocksComponent } from './stocks/stocks.component';
+import { CdsComponent } from './cds/cds.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { LayoutComponent } from './layout/layout.component';
+import { MainComponent } from './dashboard/main/main.component';
+import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
@@ -13,7 +22,26 @@ const routes: Routes = [
   { path: "about", component: AboutusComponent},
   { path: "recovery", component: RecoveryComponent},
   { path: 'mutualfunds', component: MutualfundsComponent},
-  { path: "", component: HomeComponent}
+  { path: "", component: HomeComponent},
+  { path: "stocks", component: StocksComponent},
+  { path: "cds", component: CdsComponent},
+  { path: "ira", component: IraComponent},
+  { path: "forex", component: ForexMarketComponent},
+  { path: "cash", component: CashAccountComponent},
+  { path: "", component: HomeComponent},
+  { path: "portfolio", component: PortfolioComponent},
+  { path: "dashboard", component: LayoutComponent,
+      children:[
+        { path: '',
+          component: MainComponent
+        },
+        {
+          path: '',
+          component: SidebarComponent,
+          outlet: 'left-side-bar-router'
+        } 
+      ]
+  }
 ];
 
 @NgModule({

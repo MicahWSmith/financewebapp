@@ -1,0 +1,36 @@
+.red {
+    color: rgb(235, 41, 41);
+}
+
+.green {
+    color: rgb(5, 165, 5);
+}
+
+.ira {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-content:center;
+
+    margin: 20px;
+    padding: 10px;
+}
+
+.title {
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+}
+
+.topcard {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-content:center;
+
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+}
