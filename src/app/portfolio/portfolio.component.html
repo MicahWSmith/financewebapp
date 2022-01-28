@@ -66,7 +66,7 @@
 
         <br/>  
 
-        <p>{{currencyMessage}}</p>
+        <p>{{stockMessage}}</p>
         <h1 *ngIf="stocks.length > 0">Stocks</h1>
         <table mat-table [dataSource]="stocks" class="mat-elevation-z8" *ngIf="stocks.length > 0">
             
@@ -108,6 +108,53 @@
 
             <tr mat-header-row *matHeaderRowDef="stockColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: stockColumns;"></tr>
+
+        </table>
+
+        <br/>  
+
+        <p>{{cdMessage}}</p>
+        <h1 *ngIf="cds.length > 0">CDs</h1>
+        <table mat-table [dataSource]="cds" class="mat-elevation-z8" *ngIf="cds.length > 0">
+            
+            <!-- Deposit Column -->
+            <ng-container matColumnDef="deposit">
+                <th mat-header-cell *matHeaderCellDef> Deposit </th>
+                <td mat-cell *matCellDef="let cd"> {{cd.deposit | currency}} </td>
+            </ng-container>
+            
+            <!-- Interest Rate Column -->
+            <ng-container matColumnDef="interestRate">
+                <th mat-header-cell *matHeaderCellDef> Interest Rate </th>
+                <td mat-cell *matCellDef="let cd"> {{cd.interestRate | percent}} </td>
+            </ng-container>
+
+            <!-- Open Date Column -->
+            <ng-container matColumnDef="openDate">
+                <th mat-header-cell *matHeaderCellDef> Date Openned </th>
+                <td mat-cell *matCellDef="let cd"> {{cd.openDate | date}} </td>
+            </ng-container>
+
+            <!-- Term Column -->
+            <ng-container matColumnDef="term">
+                <th mat-header-cell *matHeaderCellDef> Term </th>
+                <td mat-cell *matCellDef="let cd"> {{cd.term / 2592000000 | number:'1.0-0'}} months </td>
+            </ng-container>
+
+            <!-- Current Value Column -->
+            <ng-container matColumnDef="currentValue">
+                <th mat-header-cell *matHeaderCellDef> Current Value </th>
+                <td mat-cell *matCellDef="let cd"> {{cd.currentValue | currency}} </td>
+            </ng-container>
+
+            <!-- Maturity Date Column -->
+            <ng-container matColumnDef="maturityDate">
+                <th mat-header-cell *matHeaderCellDef> Maturity Date </th>
+                <td mat-cell *matCellDef="let cd"> {{parseInt(cd.openDate) + parseInt(cd.term) | date}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="cdColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: cdColumns;"></tr>
 
         </table>
     </ng-template>

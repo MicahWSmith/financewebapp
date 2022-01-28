@@ -12,21 +12,28 @@ export class PortfolioComponent implements OnInit {
 
   stocks: any[] = [];
   currencies: any[] = [];
+  cds: any[] = [];
 
-  newUser: number = 17;
-  currentUser: number = 17;
+  newUser: number = 1;
+  currentUser: number = 1;
 
   loading: boolean = true;
   currencyMessage: string = "";
   stockMessage: string = "";
+  cdMessage: string = "";
 
   stockColumns: string[] = ["symbol", "name", "quantity", "purchasePrice", "currentPrice", "sell"]
   currencyColumns: string[] = ["code", "name", "symbol", "quantity", "purchasePrice", "currentPrice", "sell"]
+  cdColumns: string[] = ["deposit", "interestRate", "openDate", "term", "currentValue", "maturityDate"]
 
-  constructor(private router: Router, private portfolioService: PortfolioApiService) { }
+  constructor(private portfolioService: PortfolioApiService) { }
 
   ngOnInit(): void {
     this.updatePortfolio();
+  }
+
+  parseInt(str: string) {
+    return parseInt(str);
   }
 
   sellCurrency(index: number) {
@@ -55,8 +62,10 @@ export class PortfolioComponent implements OnInit {
     .subscribe(payload => {
       this.currencies = payload.currencies
       this.stocks = payload.stocks
+      this.cds = payload.cds
       console.log("Currencies from API: ", this.currencies)
       console.log("Stocks from API: ", this.stocks)
+      console.log("CDs from API: ", this.cds)
       this.loading = false;
     });
   }
