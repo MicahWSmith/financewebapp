@@ -3,6 +3,7 @@ import { CdServiceService } from '../cd-service.service';
 import { Cd } from '../cd/cd.model';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import {coerceNumberProperty} from '@angular/cdk/coercion';
 
 @Component({
   selector: 'app-cds',
@@ -23,7 +24,7 @@ export class CdsComponent implements OnInit {
   calculatedInterest: any = 0;
   currentValue: number = 0;
   calculatedReturn: number=0;
-
+  value = 0;  
   ngOnInit(): void {
     this.cdService.getCds().subscribe((payload) => {
       this.cds = payload;
@@ -39,11 +40,11 @@ export class CdsComponent implements OnInit {
   }
 
   calculateReturn(minDeposit: any, termLength: any, interestRate: any, event:any) {
+    
     this.calculatedInterest =
-      minDeposit * Math.pow(1 + interestRate / 365, termLength);
-    console.log(this.calculatedInterest);
+     minDeposit * Math.pow(1 + interestRate / 365, termLength);
     this.calculatedReturn = this.calculatedInterest.toFixed(2);
-    event.value =0
+     this.value = coerceNumberProperty(event)
     
   }
 

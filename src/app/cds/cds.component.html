@@ -15,6 +15,7 @@
       aria-label="units"
       #currentValue
       (change)="sliderCalc(currentValue, termLength, interestRate)"
+      [(ngModel)] = "value"
    
     >
     </mat-slider>
