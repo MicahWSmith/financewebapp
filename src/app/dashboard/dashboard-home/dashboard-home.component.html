@@ -1,0 +1,44 @@
+<div id='container'>
+
+<div class='scroll-container' id='page-1'>
+    <div id='header' class='small-container'>
+        <div id='header-content'>
+            <div id='name'>{{ fName }},</div>
+            <div id='message'>
+                <div class='sentence'><span class='tab'></span>{{ sentenceA }}</div>
+                <div class='sentence'><span class='tab'></span>{{ sentenceB }}</div>
+                <div class='sentence'><span class='tab'></span>{{ sentenceC }}</div>
+            </div>
+        </div>
+        <div id='header-image'>
+            <img>
+        </div>
+    </div>
+
+    <div class='navigate navigate-down' (click)='scrollDown(2)'>
+            <img>
+    </div>
+</div>
+  
+<div class='scroll-container' id='page-2'>
+    <div id='body' class='small-container'>
+
+    </div>
+
+
+    <div class='navigate navigate-down' (click)='scrollDown(3)'>
+        <img>
+    </div>
+</div>
+    
+<div class='scroll-container' id='page-3'>
+    <div id='footer' class='small-container'>
+
+    </div>
+
+    <div class='navigate navigate-top'  (click)='scrollDown(1)'>
+        <div class='no-select'>TOP</div>
+    </div>
+</div>
+    
+</div>
