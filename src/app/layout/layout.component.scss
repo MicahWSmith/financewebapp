@@ -7,7 +7,7 @@ $color-three: rgb(121, 107, 255);
 }
 
 #left-side-bar{
-    background-color: $color-secondary;
+    background-color: $color-main;
     height: calc(100vh - 60px);
     z-index: 10;
     flex-shrink: 0;
@@ -48,6 +48,7 @@ $color-three: rgb(121, 107, 255);
     margin-left: -10px;
     flex-shrink: 0;
     z-index: 9;
+    transition: background-color 0.5s;
         &:hover{
             cursor: pointer;
             background-color: $color-secondary;

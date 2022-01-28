@@ -1,0 +1,158 @@
+#container{
+    width: 100%;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    min-width: 860px;
+    scroll-snap-type: y mandatory;
+    
+
+ 
+    .scroll-container{
+
+        scroll-snap-align: center;
+        .small-container{
+            height: calc(100vh - 100px);
+            width: 100%;
+            display: flex;
+
+    
+        }
+
+        .navigate{
+            height:40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;  
+            justify-content: flex-end;
+            opacity: 60%;
+            transition: opacity 1s;
+            background-color: darkcyan;
+            cursor: pointer;
+            &:hover{
+                opacity: 100%;
+            }
+    
+                
+    
+        }
+
+        .navigate-top{
+            div{
+                display: flex;
+                align-items: center;
+                height: 100%;
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+
+        .navigate-down{
+            img{
+                content: url(./down-icon.png);
+                height: 30px;
+                width: 50px;
+                margin-bottom: 5px;
+            }
+        }
+    
+    }
+   
+
+    #header{
+        background-color: rgb(220, 253, 253);
+
+
+        #header-image{
+            height: 100%;
+            width: 50%;
+            
+            img{
+                height: 100%;
+                width: 100%;
+                content: url(./header-image.jpg);
+                object-fit: cover;
+            }
+        }
+
+        #header-content{
+            height: 100%;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            margin-left: 30px;
+            margin-right: 20px;
+            justify-content: center;
+
+
+            #name{
+                font-size: xx-large;
+            }
+
+            #message{
+                font-size: large;
+                line-height: 40px;
+            }
+            
+            .tab{
+                display: inline-block;
+                margin-left: 20px;
+            }
+
+
+            @media screen and (max-height:650px) { 
+
+                #name{
+                    font-size: x-large;
+                }
+
+                #message{
+                    font-size: medium;
+                    margin-top: 10px;
+                }
+
+                .sentence{
+                    margin-top: 5px;
+                }
+            }
+
+            @media screen and (max-height:500px) { 
+
+                #name{
+                    font-size: large;
+                }
+
+                #message{
+                    font-size: small;
+                    margin-top: 10px;
+                }
+
+                .sentence{
+                    margin-top: 5px;
+                }
+            }
+
+            @media screen and (min-height:650px) { 
+
+                #message{
+                    margin-top: 20px;
+                }
+
+                .sentence{
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+
+   
+    #body{
+
+        background-color: orange;
+    }
+
+    #footer{
+        background-color: darkkhaki;
+    }
+
+
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-layout',
@@ -12,6 +12,7 @@ export class LayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(window.innerWidth);
   }
 
   toggleSideBar(){
@@ -28,5 +29,15 @@ export class LayoutComponent implements OnInit {
       },300)
     }
   }
+
+  @HostListener('window:resize', ['$event'])
+      onResize(event:any) {
+        if(event.target.innerWidth > 1800){
+          this.sideBarExpanded = true;
+          this.display = true;
+          
+        }
+       
+}
 
 }
