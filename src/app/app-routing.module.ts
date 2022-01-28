@@ -11,9 +11,9 @@ import { CashAccountComponent } from './cash-account/cash-account.component';
 import { StocksComponent } from './stocks/stocks.component';
 import { CdsComponent } from './cds/cds.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
+import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: "cash", component: CashAccountComponent},
   { path: "", component: HomeComponent},
   { path: "portfolio", component: PortfolioComponent},
-  { path: "dashboard", component: DashboardComponent,
+  { path: "dashboard", component: LayoutComponent,
       children:[
         { path: '',
           component: DashboardMainComponent

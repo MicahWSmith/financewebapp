@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardSidebarComponent implements OnInit {
 
+  loggedIn = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+
+  login(){
+    console.log('Login!');
+  }
+
+  createAccount(){
+    console.log('Create Account!');
+  }
 }
