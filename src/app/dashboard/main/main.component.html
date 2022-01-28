@@ -1,0 +1,6 @@
+<div id="main-container" class='no-select'>
+    <dashboard-home *ngIf='(view == "home")'></dashboard-home>
+    <dashboard-account *ngIf='(view == "account")'></dashboard-account>
+    <dashboard-messages *ngIf='(view == "messages")'></dashboard-messages>
+    <dashboard-settings *ngIf='(view == "settings")'></dashboard-settings>
+</div>

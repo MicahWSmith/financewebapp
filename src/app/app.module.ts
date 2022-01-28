@@ -8,8 +8,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule} from '@angular/material/card';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+import { NgChartsModule } from 'ng2-charts';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -18,12 +20,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
+import { StocksComponent } from './stocks/stocks.component';
+import { StockGraphComponent } from './stock-graph/stock-graph.component';
 import { CdsComponent } from './cds/cds.component';
 import { CdComponent } from './cd/cd.component';
 import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
 import { PortfolioComponent } from './portfolio/portfolio.component'
 import {MatSliderModule} from '@angular/material/slider';
+import { CashAccountComponent } from './cash-account/cash-account.component';
+import { LayoutComponent } from './layout/layout.component'
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MainComponent } from './dashboard/main/main.component';
+import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
+import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
+import { DashboardAccountComponent } from './dashboard/dashboard-account/dashboard-account.component';
+import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashboard-messages.component';
+import { DashboardSettingsComponent } from './dashboard/dashboard-settings/dashboard-settings.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +46,22 @@ import {MatSliderModule} from '@angular/material/slider';
     RecoveryComponent,
     AboutusComponent,
     HomeComponent,
+    StocksComponent,
+    StockGraphComponent,
     CdsComponent,
     CdComponent,
     ForexMarketComponent,
     PortfolioComponent,
     IraComponent,
-    ForexMarketComponent
+    ForexMarketComponent,
+    CashAccountComponent,
+    LayoutComponent,
+    MainComponent,
+    SidebarComponent,
+    DashboardHomeComponent,
+    DashboardAccountComponent,
+    DashboardMessagesComponent,
+    DashboardSettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +77,13 @@ import {MatSliderModule} from '@angular/material/slider';
     HttpClientModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatSliderModule
+    MatSliderModule,
+    MatSelectModule,
+    MatListModule,
+    NgChartsModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,118 @@
+<div id='main-container'>
+
+    <div id='left-container'>
+
+        <div id='top-text'>
+            <h2>
+                Below is a list of all of the stocks that Condor Financial offers to its members. 
+                Search for a specific stock by entering its name or symbol in the search bar, or search for a stock in the provided list.
+            </h2>
+        </div>
+        
+        <div id='stock-selection'>
+            <mat-form-field id='search-input' class='example-full-width' appearance='fill'>
+                <mat-label>Stock Symbol or Name </mat-label>
+                <input matInput placeholder='Ex. AAPL' value='' (keyup)='searchStocks($event)'>
+              </mat-form-field>
+
+            <mat-list id='stock-list'>
+                <mat-list-item class='stock-list-item' *ngFor='let stock of stocksShown' (click) = 'stockSelection(stock)'>
+                  <h3 matLine> {{stock.stock_symbol}} </h3>
+                  <p matLine>
+                    <span> {{stock.stock_name}} </span>
+                    <span class='demo-2'> -- {{stock.stock_exchange}} </span>
+                  </p>
+                </mat-list-item>
+              </mat-list>   
+        </div>
+            
+    </div>
+
+    <div id='right-container'>
+        <div id='right-top-container'>
+            <div id='company-name-and-symbol'>{{ selectedStock.stock_name }} ({{ selectedStock.stock_symbol }})</div>
+            <div id='additional-company-information'>{{ selectedStock.stock_exchange }}</div>
+            <div id="option-buttons">
+                <div class='button' (click)='setCount(1)' [ngClass]='{"button-selected":(count == 1)}'>Description</div>
+                <div class='button' (click)='setCount(2)' [ngClass]='{"button-selected":(count == 2)}'>History</div>
+                <div class='button' (click)='setCount(3)' [ngClass]='{"button-selected":(count == 3)}'>Purchase</div>
+            </div>
+        </div>
+        <div id='right-middle-container'>
+            <div id='left-slider' (click)='changeSlide("left")'>
+                <div id='left-arrow'></div>
+            </div>
+            <div id='content'>
+                <div id='slide-a' class='company-information-slide' [ngClass]='{"display-none" : !slide1}'>
+                    <div class='title'>Company Description</div>
+                    <div id='company-description'>{{ selectedStock.stock_description }}</div>
+                </div>
+                <div id='slide-b' class='company-information-slide' [ngClass]='{"display-none" : !slide2}'>
+                    <div id='slide-b-content'>
+                        <div id='today-price'>
+                            <span id='current-price'>{{ selectedStockValue | currency }}</span>
+                            <span id='change' [ngClass]='{green:selectedStockChange, red:selectedStockChangeNegative}'> {{ selectedStockChange | currency }}</span>
+                            <span id='change-percent' [ngClass]='{green:selectedStockChange, red:selectedStockChangeNegative}'> ({{ selectedStockPercentChange | percent:'1.2' }})</span>
+                        </div>
+                        <div id='view-buttons'>
+                            <div class='button' (click)='changeView("day")' [ngClass]='{"button-selected":(view == "day")}'>Today</div>
+                            <div class='button' (click)='changeView("week")' [ngClass]='{"button-selected":(view == "week")}'>This Week</div>
+                            <div class='button' (click)='changeView("month")' [ngClass]='{"button-selected":(view == "month")}'>This Month</div>
+                            <div class='button' (click)='changeView("year")' [ngClass]='{"button-selected":(view == "year")}'>This Year</div>
+                        </div>
+                            
+                        <div id='day-chart'>
+                            <stock-graph #cmp></stock-graph>
+                        </div>
+                    </div>
+                </div>
+                <div id='slide-c' class='company-information-slide' [ngClass]='{"display-none" : !slide3}'>
+                    <div class='title'>Purchase Stock</div>
+                    <div id='slide-c-content'>
+                        <div id='today-price'>
+                            <span id='current-price'>{{ selectedStockValue | currency }}</span>
+                            <span id='change' [ngClass]='{green:selectedStockChange, red:selectedStockChangeNegative}'> {{ selectedStockChange | currency }}</span>
+                            <span id='change-percent' [ngClass]='{green:selectedStockChange, red:selectedStockChangeNegative}'> ({{ selectedStockPercentChange | percent:'1.2' }})</span>
+                        </div>
+                        <div id='options-div'>
+                            <div id='options-format-div'>
+                                <div id='amount-div'>
+                                    <span class='slide-c-label'>How many?</span>
+                                    <mat-form-field id='search-input' class='example-full-width' appearance='fill'>
+                                        <mat-label>Amount</mat-label>
+                                        <input matInput type='number' min=1 placeholder='' value='' [formControl]='rateControl' id ='amount-input' [(ngModel)] = 'amount' (change)='getCost()' (keyup)='getCost()'>
+                                    </mat-form-field>
+                                </div>
+                                <div id='cost-div'>
+                                    <span class='slide-c-label' id='cost-label'>Cost: </span>
+                                    <span>{{ cost | currency }}</span>
+                                </div>
+                                <div id='cash-available-div'>
+                                    <span class='slide-c-label' id='cash-available-label'>Cash Available: </span>
+                                    <span>{{ cashAvailable | currency }}</span>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        
+                        <div id='buy-button-div'>
+                            <div id='buy-button' (click)='buyStock()'>Purchase</div>
+                        </div>
+                        <div id='purchase-message-div'>
+                            <p>{{purchaseMessage}}</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div id='right-slider' (click)='changeSlide("right")'>
+                <div id='right-arrow'></div>
+            </div>
+            
+        </div>
+        <div id='right-bottom-container'>
+            
+        </div>
+    </div>
+
+</div>
