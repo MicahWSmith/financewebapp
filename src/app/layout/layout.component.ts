@@ -37,8 +37,6 @@ export class LayoutComponent implements OnInit {
           this.display = true;
           
         }
-        console.log(event.target.innerWidth);
-
        
 }
 
