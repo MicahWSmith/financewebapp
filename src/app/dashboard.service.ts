@@ -7,8 +7,8 @@ import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar
 })
 export class DashboardService {
 
-  dashboardSideBar: DashboardSidebarComponent = new DashboardSidebarComponent();
-  dashboardMain: DashboardMainComponent = new DashboardMainComponent();
+  dashboardSideBar: DashboardSidebarComponent = new DashboardSidebarComponent(this);
+  dashboardMain: DashboardMainComponent = new DashboardMainComponent(this);
 
   constructor() { }
 
@@ -18,5 +18,9 @@ export class DashboardService {
 
   setMain(component:DashboardMainComponent){
     this.dashboardMain = component;
+  }
+
+  setView(view:string){
+    this.dashboardMain.setView(view);
   }
 }

@@ -11,9 +11,9 @@ import { CashAccountComponent } from './cash-account/cash-account.component';
 import { StocksComponent } from './stocks/stocks.component';
 import { CdsComponent } from './cds/cds.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
-import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
 import { LayoutComponent } from './layout/layout.component';
+import { MainComponent } from './dashboard/main/main.component';
+import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
@@ -31,11 +31,11 @@ const routes: Routes = [
   { path: "dashboard", component: LayoutComponent,
       children:[
         { path: '',
-          component: DashboardMainComponent
+          component: MainComponent
         },
         {
           path: '',
-          component: DashboardSidebarComponent,
+          component: SidebarComponent,
           outlet: 'left-side-bar-router'
         } 
       ]

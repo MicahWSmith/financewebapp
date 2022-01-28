@@ -28,10 +28,15 @@ import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
 import { CashAccountComponent } from './cash-account/cash-account.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
-import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
 import { LayoutComponent } from './layout/layout.component'
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MainComponent } from './dashboard/main/main.component';
+import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
+import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
+import { DashboardAccountComponent } from './dashboard/dashboard-account/dashboard-account.component';
+import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashboard-messages.component';
+import { DashboardSettingsComponent } from './dashboard/dashboard-settings/dashboard-settings.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,9 +54,13 @@ import { MatExpansionModule } from '@angular/material/expansion';
     IraComponent,
     ForexMarketComponent,
     CashAccountComponent,
-    DashboardSidebarComponent,
-    DashboardMainComponent,
     LayoutComponent,
+    MainComponent,
+    SidebarComponent,
+    DashboardHomeComponent,
+    DashboardAccountComponent,
+    DashboardMessagesComponent,
+    DashboardSettingsComponent,
   ],
   imports: [
     BrowserModule,
