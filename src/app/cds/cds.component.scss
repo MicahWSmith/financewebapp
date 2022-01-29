@@ -49,13 +49,20 @@ button {
 }
 
 .calc {
- height: 600px;
- width: 400px;
+ height: 300px;
+ width: 325px;
  background-color: red;
+ margin-left: 85px;
  p{
   color: white;
   font-size: 20px;
+  text-align: center;
+  
 }
+
+
+border-radius: 10px;
+
 }
 
 mat-slider {
@@ -67,9 +74,14 @@ mat-slider {
   font-size: 20px;
 }
 
+.calc-heading {
+  text-align: center;
+  margin-top: 100px;
+}
 
 
-@media only screen and (max-width: 600px) {
+
+@media only screen and (max-width: 100px) {
   .card-container  {
       display: flex;
       flex-direction: column;
