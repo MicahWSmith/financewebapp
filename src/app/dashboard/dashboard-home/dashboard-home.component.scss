@@ -58,11 +58,11 @@
     }
    
 
-    #header{
-        background-color: rgb(220, 253, 253);
+    #page-1-container{
+        //background-color: rgb(220, 253, 253);
 
 
-        #header-image{
+        #page-1-image{
             height: 100%;
             width: 50%;
             
@@ -74,7 +74,7 @@
             }
         }
 
-        #header-content{
+        #page-1-content{
             height: 100%;
             width: 50%;
             display: flex;
@@ -91,12 +91,9 @@
             #message{
                 font-size: large;
                 line-height: 40px;
-            }
-            
-            .tab{
-                display: inline-block;
                 margin-left: 20px;
             }
+            
 
 
             @media screen and (max-height:650px) { 
@@ -145,14 +142,212 @@
     }
 
    
-    #body{
+    #page-2-container{
 
-        background-color: orange;
+        #page-2-image{
+            height: 100%;
+            width: 40%;
+            
+            img{
+                height: 100%;
+                width: 100%;
+                content: url(./family-pic.jpg);
+                object-fit: cover;
+            }
+        }
+
+        #page-2-content{
+            height: 100%;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            margin-left: 30px;
+            margin-right: 20px;
+            justify-content: center;
+
+
+            #title{
+                font-size: xx-large;
+                line-height: 30px;
+            }
+
+            #message{
+                font-size: large;
+                line-height: 40px;
+            }
+            
+            .sentence{
+                margin-left: 20px;
+            }
+
+
+            @media screen and (max-height:650px) { 
+
+                #title{
+                    font-size: x-large;
+                }
+
+                #message{
+                    font-size: medium;
+                    margin-top: 10px;
+                }
+
+                .sentence{
+                    margin-top: 5px;
+                }
+            }
+
+            @media screen and (max-height:500px) { 
+
+                #title{
+                    font-size: large;
+                }
+
+                #message{
+                    font-size: small;
+                    margin-top: 10px;
+                }
+
+                .sentence{
+                    margin-top: 5px;
+                }
+            }
+
+            @media screen and (min-height:650px) { 
+
+                #message{
+                    margin-top: 20px;
+                }
+
+                .sentence{
+                    margin-top: 30px;
+                }
+            }
+        }
+        
     }
 
-    #footer{
-        background-color: darkkhaki;
+    #page-3-container{
+        flex-direction: column;
+        #page-3-image{
+            height: 50%;
+            width: 100%;
+            
+            img{
+                height: 100%;
+                width: 100%;
+                content: url(./data.jpg);
+                object-fit: cover;
+            }
+        }
+
+        #page-3-content{
+            height: 50%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+
+
+            #title{
+                font-size: xx-large;
+                line-height: 30px;
+                margin-top: 20px;
+                margin-left: 20px;
+            }
+
+            #list{
+                font-size: large;
+                line-height: 40px;
+                margin-top: 20px;
+
+                .list-item{
+                    margin-left: 140px;
+                    display: flex;
+                    margin-top: 20px;
+                    
+                    .arrow{
+                        content: url(./blue-arrow.png);
+                        height: 40px;
+                    }
+
+                    .sentence{
+                        height: 50px;
+                        display: flex;
+                        justify-content: center;
+                        margin-left: 20px;
+                    }
+                }
+            }
+            
+
+
+
+
+
+            
+        }
     }
+
+    #page-4-container{
+        
+
+        #page-4-content{
+            height: 100%;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+
+
+            #title{
+                font-size: xx-large;
+                line-height: 30px;
+                //margin-top: 40px;
+                margin-left: 20px;
+            }
+
+            #list{
+                font-size: large;
+                line-height: 40px;
+                margin-top: 20px;
+
+                .list-item{
+                    margin-left: 140px;
+                    display: flex;
+                    margin-top: 40px;
+                    
+                    .arrow{
+                        content: url(./blue-arrow.png);
+                        height: 40px;
+                    }
+
+                    .sentence{
+                        height: 50px;
+                        display: flex;
+                        justify-content: center;
+                        margin-left: 20px;
+                    }
+                }
+            }
+            
+        }
+
+
+        #page-4-image{
+            height: 100%;
+            width: 40%;
+            
+            img{
+                height: 100%;
+                width: 100%;
+                content: url(./computer.jpg);
+                object-fit: cover;
+            }
+        }
+    }
+
 
 
 }

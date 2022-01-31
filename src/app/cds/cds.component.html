@@ -31,6 +31,8 @@
 <div class="card-container">
   <mat-card class="example-card" *ngFor="let cd of cds">
     <mat-card-title class="elcd-name">{{ cd.elcd?.name }}</mat-card-title>
+  <mat-card class="example-card" *ngFor="let cd of cds; let i=index">
+    <mat-card-title>{{ cd.elcd?.name }}</mat-card-title>
     <mat-card-subtitle>Stock Index</mat-card-subtitle>
     <mat-card-content>
       <p class="details">
@@ -48,9 +50,11 @@
       >
         CALCULATE
       </button>
+      <button mat-button (click)=buyCD(i)>OPEN CD</button>
     </mat-card-actions>
   </mat-card>
 </div>
+<h2 class="cd-sub-header">{{alertMessage}}</h2>
 
 <div
   class="modal"
@@ -65,7 +69,7 @@
         <input type="number" class="opening-deposit" />
       </div>
       <div class="modal-footer">
-        <button (click)="buyCd()" (click)="closePopup()" type="button" class="btn btn-success">BUY CD</button>
+        <button (click)=buyCD(i) (click)="closePopup()" type="button" class="btn btn-success">BUY CD</button>
         <button type="button" class="btn btn-danger" (click)="closePopup()">
           Close
         </button>

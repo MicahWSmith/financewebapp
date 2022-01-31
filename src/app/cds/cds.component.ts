@@ -4,6 +4,7 @@ import { Cd } from '../cd/cd.model';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
+import { PortfolioApiService } from '../portfolio-api.service';
 
 @Component({
   selector: 'app-cds',
@@ -14,7 +15,8 @@ export class CdsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private cdService: CdServiceService,
-    private router: Router
+    private router: Router,
+    private portfolioService: PortfolioApiService
   ) {}
 
   cds: Cd[] = [];
@@ -27,6 +29,8 @@ export class CdsComponent implements OnInit {
   value = 0;
   openingDeposit: number = 0;
 
+  alertMessage: string = '';
+
   ngOnInit(): void {
     this.cdService.getCds().subscribe((payload) => {
       this.cds = payload;
@@ -34,19 +38,18 @@ export class CdsComponent implements OnInit {
   }
 
   displayStyle = 'none';
-  
+
   openPopup() {
-    this.displayStyle = "block";
+    this.displayStyle = 'block';
   }
 
   closePopup() {
-    this.displayStyle = "none";
+    this.displayStyle = 'none';
   }
 
-  buyCd(){
-    console.log("congrats")
+  buyCd() {
+    console.log('congrats');
   }
-
 
   formatLabel(value: number) {
     if (value >= 1000) {
@@ -54,6 +57,20 @@ export class CdsComponent implements OnInit {
     }
 
     return value;
+  }
+
+  buyCD(index: number) {
+    this.alertMessage = "Buying CD..."
+    this.portfolioService.buyInvestment(3, {
+      type: "cd",
+      deposit: this.cds[index].minimumOpeningDeposit,
+      interestRate: (this.cds[index].interestRate || 0) / 100,
+      term: (this.cds[index].term || 0)* 2592000000
+    })
+    .subscribe((payload) => {
+      console.log("Response: ", payload);
+      this.alertMessage = `Invested ${payload.deposit} in a CD.`
+    })
   }
 
   calculateReturn(
@@ -84,5 +101,4 @@ export class CdsComponent implements OnInit {
       event
     );
   }
-
 }

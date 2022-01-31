@@ -191,7 +191,7 @@ export class StocksComponent implements OnInit {
     if(this.cost <= this.cashAvailable && this.amount >= 1)
     {
       this.purchaseMessage = `Buying ${this.amount} shares of ${this.selectedStock.stock_symbol}...`
-      this.portfolioService.buyInvestment(12, {
+      this.portfolioService.buyInvestment(2, {
         type: "stock",
         symbol: this.selectedStock.stock_symbol,
         quantity: this.amount
