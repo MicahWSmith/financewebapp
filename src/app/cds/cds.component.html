@@ -3,7 +3,7 @@
   Each CD is linked to the performance of a specific market index
 </h2>
 
-<div class="calculator-box">
+<!-- <div class="calculator-box">
   <div class="calc">
     <mat-slider
       thumbLabel
@@ -26,7 +26,7 @@
       End Balance: {{ calculatedReturn | currency }}
     </h2>
   </div>
-</div>
+</div> -->
 
 <div class="card-container">
   <mat-card class="example-card" *ngFor="let cd of cds; let i = index">
@@ -47,7 +47,7 @@
       >
         CALCULATE
       </button>
-      <button mat-button (click)="openPopup()" (click)="buyCD(i)">
+      <button mat-button (click)="openPopup()" (click)="onOpenCd()">
         OPEN CD
       </button>
     </mat-card-actions>
@@ -55,7 +55,7 @@
 
   <h2 class="cd-sub-header">{{ alertMessage }}</h2>
 
-  <div
+  <div *ngFor="let cd of cds; let i = index"
     class="modal"
     tabindex="-1"
     role="dialog"
@@ -64,11 +64,14 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <p>Opening Deposit</p>
-          <input type="number" class="opening-deposit" />
+          <p>How Much Would You Like to Deposit?</p>
+          <input type="number" class="opening-deposit" (input)="updateDeposit($event)" />
+          <p>Opening Deposit: {{ modalDeposit | currency }}</p>
+          <p class="details">Term: {{ cd.term }} months</p>
+          <p class="details">Interest Rate: {{ cd.interestRate }}%</p>
         </div>
         <div class="modal-footer">
-          <button (click)="closePopup()" type="button" class="btn btn-success">
+          <button (click)="buyCD(i)" (click)="closePopup()" type="button" class="btn btn-success">
             BUY CD
           </button>
           <button type="button" class="btn btn-danger" (click)="closePopup()">

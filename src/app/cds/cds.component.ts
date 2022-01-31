@@ -28,7 +28,7 @@ export class CdsComponent implements OnInit {
   calculatedReturn: number = 0;
   value = 0;
   openingDeposit: number = 0;
-
+  modalDeposit: any = 0;
   alertMessage: string = '';
 
   ngOnInit(): void {
@@ -39,11 +39,20 @@ export class CdsComponent implements OnInit {
 
   displayStyle = 'none';
 
+  onOpenCd() {
+    console.log('opening cd modal');
+  }
+
+  updateDeposit(event: any) {
+    this.modalDeposit = (<HTMLInputElement>event.target).value;
+  }
+
   openPopup() {
     this.displayStyle = 'block';
   }
 
   closePopup() {
+    
     this.displayStyle = 'none';
   }
 
@@ -60,17 +69,18 @@ export class CdsComponent implements OnInit {
   }
 
   buyCD(index: number) {
-    this.alertMessage = "Buying CD..."
-    this.portfolioService.buyInvestment(3, {
-      type: "cd",
-      deposit: this.cds[index].minimumOpeningDeposit,
-      interestRate: (this.cds[index].interestRate || 0) / 100,
-      term: (this.cds[index].term || 0)* 2592000000
-    })
-    .subscribe((payload) => {
-      console.log("Response: ", payload);
-      this.alertMessage = `Invested ${payload.deposit} in a CD.`
-    })
+    this.alertMessage = 'Buying CD...';
+    this.portfolioService
+      .buyInvestment(3, {
+        type: 'cd',
+        deposit: this.cds[index].minimumOpeningDeposit,
+        interestRate: (this.cds[index].interestRate || 0) / 100,
+        term: (this.cds[index].term || 0) * 2592000000,
+      })
+      .subscribe((payload) => {
+        console.log('Response: ', payload);
+        this.alertMessage = `Invested ${payload.deposit} in a CD.`;
+      });
   }
 
   calculateReturn(
