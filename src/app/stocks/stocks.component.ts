@@ -83,14 +83,14 @@ export class StocksComponent implements OnInit {
     if(this.view == 'week'){
          this.stockService.getStockPriceHistoryWeek(this.selectedStock.stock_symbol).subscribe((data)=>{
              this.selectedStockHistoryByDay = Object.values(data)[1];
-             this.child.updateHistory(this.selectedStockHistoryByDay,this.selectedStock.stock_name, 'week');
+             this.child.updateHistory(this.selectedStockHistoryByDay,this.selectedStock.stock_name, 'week', this.selectedStockValue);
          });
     }
 
     if(this.view == 'month'){
       this.stockService.getStockPriceHistoryMonth(this.selectedStock.stock_symbol).subscribe((data)=>{
           this.selectedStockHistoryByDay = Object.values(data)[1];
-          this.child.updateHistory(this.selectedStockHistoryByDay,this.selectedStock.stock_name, 'month');
+          this.child.updateHistory(this.selectedStockHistoryByDay,this.selectedStock.stock_name, 'month', this.selectedStockValue);
       });
  }
 
@@ -98,7 +98,7 @@ export class StocksComponent implements OnInit {
   this.stockService.getStockPriceHistoryYear(this.selectedStock.stock_symbol).subscribe((data)=>{
 
       this.selectedStockHistoryByDay = Object.values(data)[1];
-      this.child.updateHistory(this.selectedStockHistoryByDay,this.selectedStock.stock_name, 'year');
+      this.child.updateHistory(this.selectedStockHistoryByDay,this.selectedStock.stock_name, 'year', this.selectedStockValue);
 
   });
 }
@@ -109,9 +109,6 @@ export class StocksComponent implements OnInit {
 
     this.stockService.getStockPriceHistoryDay(this.selectedStock.stock_symbol).subscribe((data)=>{
       let open = Object.values(data)[0].open;
-
-      console.log(open);
-      console.log(this.selectedStockValue);
 
       this.selectedStockChange = (this.selectedStockValue - open);
       this.selectedStockPercentChange = (this.selectedStockChange / open);
