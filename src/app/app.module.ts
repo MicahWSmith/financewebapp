@@ -36,6 +36,7 @@ import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-hom
 import { DashboardAccountComponent } from './dashboard/dashboard-account/dashboard-account.component';
 import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashboard-messages.component';
 import { DashboardSettingsComponent } from './dashboard/dashboard-settings/dashboard-settings.component';
+import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { DashboardSettingsComponent } from './dashboard/dashboard-settings/dashb
     DashboardAccountComponent,
     DashboardMessagesComponent,
     DashboardSettingsComponent,
+    MutualfundsComponent,
   ],
   imports: [
     BrowserModule,
