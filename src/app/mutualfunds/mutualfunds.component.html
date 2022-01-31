@@ -1,4 +1,14 @@
 <h1>Mutual Funds</h1>
+
+<div *ngIf="loading; then loadingBlock else mfBlock"></div>
+
+    <ng-template #loadingBlock>
+        <p class=loader>
+            <mat-spinner></mat-spinner>
+        </p>
+    </ng-template>
+
+<ng-template #mfBlock >  
 <table mat-table [dataSource]="mfs" class="mat-elevation-z8">
     <ng-container matColumnDef="fund_name">
         <th mat-header-cell *matHeaderCellDef> Mutual Funds </th>
@@ -34,3 +44,4 @@
  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+</ng-template>

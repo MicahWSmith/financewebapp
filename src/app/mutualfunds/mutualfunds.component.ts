@@ -12,7 +12,10 @@ export class MutualfundsComponent implements OnInit {
   constructor(private mfService: MfService) { }
 mfs: any;
 investments: any;
+loading: boolean = true;
+
   ngOnInit(): void {
+    this.loading = true;
     this.mfService.getMFs().subscribe(payload => {
       console.log('this is the payload:',payload)
       for(let i = 0; i< payload.length; i++){
@@ -37,7 +40,7 @@ investments: any;
       
       console.log('this is the new payload:',payload)
       this.mfs = payload;
-      
+      this.loading = false;
     })
 
 
