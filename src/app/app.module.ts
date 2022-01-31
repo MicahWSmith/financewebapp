@@ -37,6 +37,7 @@ import { DashboardAccountComponent } from './dashboard/dashboard-account/dashboa
 import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashboard-messages.component';
 import { DashboardSettingsComponent } from './dashboard/dashboard-settings/dashboard-settings.component';
 import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
@@ -84,7 +85,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatCardModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatMenuModule
     ],
   providers: [],
   bootstrap: [AppComponent]

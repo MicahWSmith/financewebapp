@@ -1,5 +1,7 @@
-$color-main: rgb(228, 234, 255);
-$color-secondary: rgb(98, 81, 255);
+$color-main: white;
+$color-secondary: #19B3F4;
+$color-footer: #ECECEC;
+$primary-font: 'Red Hat Display', sans-serif;
 
 body{
     margin: 0px;
@@ -8,7 +10,6 @@ body{
 
 .finance_app{
     background-color: $color-main;
-    height: 100%;
 }
 
 .navigation{
@@ -17,33 +18,141 @@ body{
     justify-content: space-between;
     align-items: center;
     background-color: $color-secondary;
-    padding: 18px;
+    padding: 15px;
     .logo{
-        color: white;
+        color: $color-main;
         font-size: 30px;
         text-decoration: none;
+        font-family: $primary-font;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 48px;
+
+        display: flex;  
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        img {
+            width: 65px;
+            height: 65px;
+        }
+        .logo-title {
+            padding: 5px;
+            align-self: center;
+        }
     }
     .nav_links{
-        width: 200px;
-        a{
+        //width: 200px;
+        display: flex;  
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        .corner_nav{
+            font-family: $primary-font;
             text-decoration: none;
             color: white;
             font-size: 20px;
+            
+            margin-left: 5px;
+            margin-right: 5px;
         }
     }
-    .about_link{
-        text-align: right;
-        width: 200px;
-        text-decoration: none;
+}
+
+.nav-row {
+    display: flex;  
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    button {
+        flex: 1;
+        background-color: $color-secondary;
         color: white;
-        font-size: 20px;
+        font-family: $primary-font;
+
+        padding: 5px;
+        border-radius: 0px;
+
+        display: flex;  
+        flex-direction: row;
+        justify-content: space-around;
+        align-content: center;
+
+        border: 1px solid #808080;
+        border-bottom: 0px;
+        div {
+            align-self: center;
+        }
+        mat-icon {
+            margin: 0px;
+            padding: 0px;
+        }
     }
-    mat-icon{
-        margin-left: 5px;
-        margin-right: 20px;
+}
+
+.swoop {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    height: 150px;
+    border: none;
+    img {
+        flex-grow: 1;
     }
 }
 
 .material-icons{
     vertical-align: bottom;
+}
+
+.footer {
+    background-color: $color-footer;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+
+    margin: 0px;
+    //padding: 10px;
+
+    .logo {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-content: center;
+
+        margin: 10px;
+        padding: 10px;
+
+        font-family: $primary-font;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 36px;
+        color: $color-secondary;
+
+        img {
+            width: 45px;
+            height: 45px;
+        }
+        .logo-title {
+            padding: 5px;
+            align-self: center;
+        }
+    }
+    .footer-notes {
+        margin: 10px;
+        padding: 10px;
+        
+        color: #4A4A4A;
+        font-family: $primary-font;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 11px;
+        line-height: 15px;
+    }
 }
