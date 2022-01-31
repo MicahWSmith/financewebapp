@@ -35,7 +35,6 @@ import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
 import { DashboardAccountComponent } from './dashboard/dashboard-account/dashboard-account.component';
 import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashboard-messages.component';
-import { DashboardSettingsComponent } from './dashboard/dashboard-settings/dashboard-settings.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
@@ -60,7 +59,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     DashboardHomeComponent,
     DashboardAccountComponent,
     DashboardMessagesComponent,
-    DashboardSettingsComponent,
   ],
   imports: [
     BrowserModule,
