@@ -8,13 +8,14 @@
 }
 
 button {
-  background-color: #6251ff;
+  background-color: #19B3f4;
   color: white;
 }
 
 .details {
   font-family: serif;
   font-size: 17px;
+  padding-top: 20px;
 }
 
 .card-container {
@@ -45,6 +46,16 @@ button {
   position: absolute;
   flex-direction: column;
 }
+
+.img-box {
+  display: flex;
+  margin-top: 100px;
+  height: 90%;
+  width: 500px;
+  position: absolute;
+  flex-direction: column;
+}
+
 
 .calc {
   height: 300px;

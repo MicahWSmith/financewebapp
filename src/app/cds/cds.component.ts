@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 import { PortfolioApiService } from '../portfolio-api.service';
+import { min } from 'rxjs';
 
 @Component({
   selector: 'app-cds',
@@ -20,7 +21,7 @@ export class CdsComponent implements OnInit {
   ) {}
 
   cds: Cd[] = [];
-  minDeposit: number = 200;
+  minDeposit: any = 200;
   termLength: number = 12;
   interestRate: number = 2;
   calculatedInterest: any = 0;
@@ -44,11 +45,15 @@ export class CdsComponent implements OnInit {
   }
 
   updateDeposit(event: any) {
-    this.modalDeposit = (<HTMLInputElement>event.target).value;
+    this.minDeposit = (<HTMLInputElement>event.target).value;
   }
 
-  openPopup() {
+  openPopup(termLength: any, interestRate: any, minDeposit: any) {
     this.displayStyle = 'block';
+    this.termLength = termLength;
+    this.interestRate = interestRate;
+    this.minDeposit = minDeposit;
+
   }
 
   closePopup() {
@@ -56,9 +61,7 @@ export class CdsComponent implements OnInit {
     this.displayStyle = 'none';
   }
 
-  buyCd() {
-    console.log('congrats');
-  }
+
 
   formatLabel(value: number) {
     if (value >= 1000) {

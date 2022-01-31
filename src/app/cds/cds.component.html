@@ -28,6 +28,10 @@
   </div>
 </div> -->
 
+<!-- <div class="img-box">
+  <img src="https://th.bing.com/th/id/R.065af4915a54436fda20fb3b7cdc2b74?rik=YA9ywBPENAtdmA&riu=http%3a%2f%2fassets.nerdwallet.com%2fblog%2fwp-content%2fuploads%2f2014%2f01%2fCD-certificate-deposit-story.jpg&ehk=UDbD1QAKEvcFit5wthvWqu6CS8GGic%2f3LbanXHpW7sc%3d&risl=&pid=ImgRaw&r=0" alt="Italian Trulli">
+</div> -->
+
 <div class="card-container">
   <mat-card class="example-card" *ngFor="let cd of cds; let i = index">
     <mat-card-title>{{ cd.elcd?.name }}</mat-card-title>
@@ -40,14 +44,14 @@
       <p class="details">Interest Rate: {{ cd.interestRate }}%</p>
     </mat-card-content>
     <mat-card-actions>
-      <button
+      <!-- <button
         (click)="xferData(cd.minimumOpeningDeposit, cd.term, cd.interestRate)"
         class="cd-details"
         mat-button
       >
         CALCULATE
-      </button>
-      <button mat-button (click)="openPopup()" (click)="onOpenCd()">
+      </button> -->
+      <button mat-button (click)="openPopup(cd.term, cd.interestRate, cd.minimumOpeningDeposit)">
         OPEN CD
       </button>
     </mat-card-actions>
@@ -55,7 +59,8 @@
 
   <h2 class="cd-sub-header">{{ alertMessage }}</h2>
 
-  <div *ngFor="let cd of cds; let i = index"
+  <div
+    *ngFor="let cd of cds; let i = index"
     class="modal"
     tabindex="-1"
     role="dialog"
@@ -64,17 +69,26 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <p>How Much Would You Like to Deposit?</p>
-          <input type="number" class="opening-deposit" (input)="updateDeposit($event)" />
-          <p>Opening Deposit: {{ modalDeposit | currency }}</p>
-          <p class="details">Term: {{ cd.term }} months</p>
-          <p class="details">Interest Rate: {{ cd.interestRate }}%</p>
+          <p class="details">How Much Would You Like to Deposit?</p>
+          <input
+            type="number"
+            class="opening-deposit"
+            (input)="updateDeposit($event)"
+          />
+          <p class="details">Opening Deposit: {{ minDeposit | currency }}</p>
+          <p class="details">Term: {{ termLength }} months</p>
+          <p class="details">Interest Rate: {{ interestRate }}%</p>
         </div>
         <div class="modal-footer">
-          <button (click)="buyCD(i)" (click)="closePopup()" type="button" class="btn btn-success">
+          <button
+            (click)="buyCD(i)"
+            (click)="closePopup()"
+            type="button"
+            class="btn"
+          >
             BUY CD
           </button>
-          <button type="button" class="btn btn-danger" (click)="closePopup()">
+          <button type="button" class="btn" (click)="closePopup()">
             Close
           </button>
         </div>
