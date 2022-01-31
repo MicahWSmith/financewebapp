@@ -290,7 +290,64 @@
     }
 
     #page-4-container{
-        background-color: darkkhaki;
+        
+
+        #page-4-content{
+            height: 100%;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+
+
+            #title{
+                font-size: xx-large;
+                line-height: 30px;
+                //margin-top: 40px;
+                margin-left: 20px;
+            }
+
+            #list{
+                font-size: large;
+                line-height: 40px;
+                margin-top: 20px;
+
+                .list-item{
+                    margin-left: 140px;
+                    display: flex;
+                    margin-top: 40px;
+                    
+                    .arrow{
+                        content: url(./blue-arrow.png);
+                        height: 40px;
+                    }
+
+                    .sentence{
+                        height: 50px;
+                        display: flex;
+                        justify-content: center;
+                        margin-left: 20px;
+                    }
+                }
+            }
+            
+        }
+
+
+        #page-4-image{
+            height: 100%;
+            width: 40%;
+            
+            img{
+                height: 100%;
+                width: 100%;
+                content: url(./computer.jpg);
+                object-fit: cover;
+            }
+        }
     }
+
+
 
 }

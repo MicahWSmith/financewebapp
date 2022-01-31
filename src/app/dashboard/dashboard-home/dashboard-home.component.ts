@@ -22,6 +22,11 @@ export class DashboardHomeComponent implements OnInit {
   page3_sentenceB: string = 'All of your investments can be found neatly displayed in your Portfolio';
   page3_sentenceC: string = 'Do some research in our various marketplaces';
 
+  page4_title: string = 'We offer the most beneficial investment types for your portfolio.'
+  page4_sentenceA: string = 'We have you covered from Personal Checking Accounts to IRAs';
+  page4_sentenceB: string = 'All of your investments can be found neatly displayed in your Portfolio';
+  page4_sentenceC: string = 'Do some research in our various marketplaces';
+
   constructor(private dashboardCommunicationService: DashboardCommunicationService) { 
     this.fName = dashboardCommunicationService.getFirstName();
   }
