@@ -8,14 +8,13 @@
 
  
     .scroll-container{
-
+        
         scroll-snap-align: center;
         .small-container{
             height: calc(100vh - 100px);
             width: 100%;
             display: flex;
 
-    
         }
 
         .navigate{
@@ -48,7 +47,7 @@
 
         .navigate-down{
             img{
-                content: url(./down-icon.png);
+                content: url(./images/down-icon.png);
                 height: 30px;
                 width: 50px;
                 margin-bottom: 5px;
@@ -69,7 +68,7 @@
             img{
                 height: 100%;
                 width: 100%;
-                content: url(./header-image.jpg);
+                content: url(./images/header-image.jpg);
                 object-fit: cover;
             }
         }
@@ -151,7 +150,7 @@
             img{
                 height: 100%;
                 width: 100%;
-                content: url(./family-pic.jpg);
+                content: url(./images/family-pic.jpg);
                 object-fit: cover;
             }
         }
@@ -178,6 +177,32 @@
             
             .sentence{
                 margin-left: 20px;
+            }
+
+            #list{
+                font-size: large;
+                line-height: 40px;
+                margin-top: 20px;
+                
+
+                .list-item{
+                    margin-left: 140px;
+                    display: flex;
+                    margin-top: 20px;
+                    display: flex;
+                    
+                    .arrow{
+                        content: url(./images/blue-arrow.png);
+                        height: 40px;
+                    }
+
+                    .option{
+                        height: 50px;
+                        display: flex;
+                        justify-content: center;
+                        margin-left: 20px;
+                    }
+                }
             }
 
 
@@ -236,7 +261,7 @@
             img{
                 height: 100%;
                 width: 100%;
-                content: url(./data.jpg);
+                content: url(./images/data.jpg);
                 object-fit: cover;
             }
         }
@@ -267,7 +292,7 @@
                     margin-top: 20px;
                     
                     .arrow{
-                        content: url(./blue-arrow.png);
+                        content: url(./images/blue-arrow.png);
                         height: 40px;
                     }
 
@@ -306,6 +331,7 @@
                 line-height: 30px;
                 //margin-top: 40px;
                 margin-left: 20px;
+                margin-right: 20px;
             }
 
             #list{
@@ -319,7 +345,7 @@
                     margin-top: 40px;
                     
                     .arrow{
-                        content: url(./blue-arrow.png);
+                        content: url(./images/blue-arrow.png);
                         height: 40px;
                     }
 
@@ -342,7 +368,7 @@
             img{
                 height: 100%;
                 width: 100%;
-                content: url(./computer.jpg);
+                content: url(./images/computer.jpg);
                 object-fit: cover;
             }
         }
