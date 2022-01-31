@@ -10,10 +10,18 @@
                 <button mat-button (click)="editName()">Edit</button>
             </div>
 
+            <div class="column" *nfIf = "showNameEdit">
+                <p>future name form</p>
+            </div>
+
             <div class="row address" *ngIf="!showAddressEdit">
                 <div class="label">Address: </div>
                 <div class="info">{{profile.street_address}}, {{profile.city}} {{profile.state}}</div>
                 <button mat-button (click)="editAddress()">Edit</button>
+            </div>
+
+            <div class="column" *nfIf = "showAddressEdit">
+                <p>future adresss form</p>
             </div>
 
             <div class="row contact" *ngIf="!showContactEdit">

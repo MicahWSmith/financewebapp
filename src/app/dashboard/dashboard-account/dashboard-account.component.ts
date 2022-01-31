@@ -37,16 +37,22 @@ export class DashboardAccountComponent implements OnInit {
   }
 
   editName(){
-
+    this.showNameEdit = true;
   }
   editAddress(){
-
+    this.showAddressEdit = true;
   }
   editContact(){
-    this.showContactEdit = !this.showContactEdit
+    this.showContactEdit = true;
+  }
+  submitName() {
+    this.showNameEdit = false;
+  }
+  submitAddress() {
+    this.showAddressEdit = false;
   }
   submitContact(){
-    this.showContactEdit = !this.showContactEdit
+    this.showContactEdit = false;
   }
 
   getErrorMessage() {
