@@ -38,6 +38,7 @@ import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashb
 import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     AppComponent,
