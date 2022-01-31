@@ -14,6 +14,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { LayoutComponent } from './layout/layout.component';
 import { MainComponent } from './dashboard/main/main.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
+import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: "cash", component: CashAccountComponent},
   { path: "", component: HomeComponent},
   { path: "portfolio", component: PortfolioComponent},
+  { path: "mutualfunds", component: MutualfundsComponent},
   { path: "dashboard", component: LayoutComponent,
       children:[
         { path: '',

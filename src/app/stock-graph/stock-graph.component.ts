@@ -43,14 +43,19 @@ export class StockGraphComponent implements OnInit {
         this.stockData.push(open);
 
         let today = (new Date);
+
         for(let i = 5; i >= 0; i--){
           let date = new Date(history[i].date)
           if(date.getDate() == today.getDate()){
             let hour = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
             let am_pm = date.getHours() >= 12 ? "PM" : "AM";
             let time = hour + " " + am_pm;
-            this.stockLabels.push(time);
-            this.stockData.push(history[i].close);
+            
+            if(hour != 10){
+              this.stockLabels.push(time);
+              this.stockData.push(history[i].close);
+            }
+
           }
         }
 
@@ -72,6 +77,7 @@ export class StockGraphComponent implements OnInit {
       }
 
       if(view == 'week'){
+        
         let firstDate:Date = new Date();
         for(let i = history.length - 1; i >= 0; i--){
           let date = new Date(history[i].label)
@@ -84,6 +90,10 @@ export class StockGraphComponent implements OnInit {
           this.stockLabels.push(dateString);
           this.stockData.push(history[i].close);
         }
+
+        let dateString = "" + (new Date()).toLocaleDateString("en-US", { month: 'short', day: 'numeric' })
+        this.stockLabels.push(dateString);
+        this.stockData.push(open);
 
          this.label = `Stock prices since ${firstDate.toLocaleDateString("en-US", { month: 'long', day: 'numeric', year: 'numeric'})}`;
       }
@@ -102,6 +112,10 @@ export class StockGraphComponent implements OnInit {
           this.stockLabels.push(dateString);
           this.stockData.push(history[i].close);
         }
+
+        let dateString = "" + (new Date()).toLocaleDateString("en-US", { month: 'short', day: 'numeric' })
+        this.stockLabels.push(dateString);
+        this.stockData.push(open);
 
         this.label = `Stock prices since ${firstDate.toLocaleDateString("en-US", { month: 'long', day: 'numeric', year: 'numeric'})}`;
       }
@@ -122,6 +136,10 @@ export class StockGraphComponent implements OnInit {
           this.stockLabels.push(dateString);
           this.stockData.push(history[i].close);
         }
+
+        let dateString = "" + (new Date()).toLocaleDateString("en-US", { month: 'short', day: 'numeric' })
+        this.stockLabels.push(dateString);
+        this.stockData.push(open);
 
         this.label = `Stock prices since ${firstDate.toLocaleDateString("en-US", { month: 'long', day: 'numeric', year: 'numeric'})}`;
       }
