@@ -1,16 +1,16 @@
 <div id='container'>
 
 <div class='scroll-container' id='page-1'>
-    <div id='header' class='small-container'>
-        <div id='header-content'>
+    <div id='page-1-container' class='small-container'>
+        <div id='page-1-content'>
             <div id='name'>{{ fName }},</div>
             <div id='message'>
-                <div class='sentence'><span class='tab'></span>{{ sentenceA }}</div>
-                <div class='sentence'><span class='tab'></span>{{ sentenceB }}</div>
-                <div class='sentence'><span class='tab'></span>{{ sentenceC }}</div>
+                <div class='sentence'>{{ page1_sentenceA }}</div>
+                <div class='sentence'>{{ page1_sentenceB }}</div>
+                <div class='sentence'>{{ page1_sentenceC }}</div>
             </div>
         </div>
-        <div id='header-image'>
+        <div id='page-1-image'>
             <img>
         </div>
     </div>
@@ -21,7 +21,24 @@
 </div>
   
 <div class='scroll-container' id='page-2'>
-    <div id='body' class='small-container'>
+    <div id='page-2-container' class='small-container'>
+        <div id='page-2-image'>
+            <img>
+        </div>
+        <div id='page-2-content'>
+            <div id='title'>{{ page2_title }}</div>
+            <div id='message'>
+                <div class='sentence'>{{ page2_sentenceA }}</div>
+                <div class='sentence'>{{ page2_sentenceB }}</div>
+                <div class='sentence'>
+                    <ul>
+                        <li>Two-factor Authentication</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
     </div>
 
@@ -31,8 +48,41 @@
     </div>
 </div>
     
+
 <div class='scroll-container' id='page-3'>
-    <div id='footer' class='small-container'>
+    <div id='page-3-container' class='small-container'>
+        <div id='page-3-image'>
+            <img>
+        </div>
+        <div id='page-3-content'>
+            <div id='title'>{{ page3_title }}</div>
+            <div id='list'>
+                <div class='list-item'>
+                    <span class='arrow'></span>
+                    <span class='sentence'>{{ page3_sentenceA }}</span>
+                </div>
+                <div class='list-item'>
+                    <span class='arrow'></span>
+                    <span class='sentence'>{{ page3_sentenceB }}</span>
+                </div>
+                <div class='list-item'>
+                    <span class='arrow'></span>
+                    <span class='sentence'>{{ page3_sentenceC }}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class='navigate navigate-down' (click)='scrollDown(4)'>
+        <img>
+    </div>
+</div>
+
+
+<div class='scroll-container' id='page-4'>
+    <div id='page-4-container' class='small-container'>
 
     </div>
 
