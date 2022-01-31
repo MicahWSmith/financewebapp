@@ -37,6 +37,7 @@ import { DashboardAccountComponent } from './dashboard/dashboard-account/dashboa
 import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashboard-messages.component';
 import { DashboardSettingsComponent } from './dashboard/dashboard-settings/dashboard-settings.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     AppComponent,
