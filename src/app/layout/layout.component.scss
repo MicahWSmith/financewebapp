@@ -58,7 +58,6 @@ $color-three: rgb(121, 107, 255);
 #main-content{
     display: flex;
     justify-content: center;
-    background-color: $color-main;
     height: calc(100vh - 60px);
     z-index: 8;
     width: 100vw;
