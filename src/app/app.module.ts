@@ -38,6 +38,7 @@ import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashb
 import { DashboardSettingsComponent } from './dashboard/dashboard-settings/dashboard-settings.component';
 import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
 
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +83,8 @@ import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
     NgChartsModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatPaginatorModule
     ],
   providers: [],
   bootstrap: [AppComponent]

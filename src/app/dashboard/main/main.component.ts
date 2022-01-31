@@ -15,10 +15,18 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let savedView = localStorage.getItem('view');
+    
+    if(savedView != null){
+      this.view = savedView;
+    }
+
+    console.log(savedView);
   }
 
   setView(view:string){
     this.view = view;
+    localStorage.setItem('view', view);
   }
 
 

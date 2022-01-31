@@ -23,10 +23,8 @@ export class SidebarComponent implements OnInit {
   }
 
   goTo(view:string){
-    if(view != this.currentPage){
       this.dashboardService.setView(view);
       this.currentPage = view;
-    }
   }
 
   logout(){
