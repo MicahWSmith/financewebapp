@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    //background-color: green;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    //background-color: red;
+    
+}
+.column{
+    display: flex;
+    flex-direction: column;
+    //background-color: yellow;
+}
+.label{
+    padding-right: 5px;
+}

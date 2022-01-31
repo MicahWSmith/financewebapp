@@ -1,1 +1,57 @@
-<p>dashboard-account works!</p>
+<div>
+    <mat-card>
+        <mat-card-title>
+            Your Account Details
+        </mat-card-title>
+        <mat-card-content class="container">
+            <div class="row name" *ngIf="!showNameEdit">
+                <div class="label">Name: </div>
+                <div class="info">{{profile.first}} {{profile.last}}</div>
+                <button mat-button (click)="editName()">Edit</button>
+            </div>
+
+            <div class="row address" *ngIf="!showAddressEdit">
+                <div class="label">Address: </div>
+                <div class="info">{{profile.street_address}}, {{profile.city}} {{profile.state}}</div>
+                <button mat-button (click)="editAddress()">Edit</button>
+            </div>
+
+            <div class="row contact" *ngIf="!showContactEdit">
+                <div class="label">
+                    Contact: 
+                </div>
+                <div class="column">
+                    <div class="row">
+                        <div class="label">Email:</div>
+                        <div class="info">{{user.email}}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Phone:</div>
+                        <div class="info">{{user.phone}}</div>
+                    </div>
+                </div>
+                <button mat-button (click)="editContact()">Edit</button>
+            </div>
+
+            <div *ngIf="showContactEdit" class="column">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your email</mat-label>
+                        <input matInput placeholder={{user.email}} [formControl]="email" required>
+                        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                      </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your phone number</mat-label>
+                        <input matInput placeholder={{user.phone}} [formControl]="phone" required>
+                        <mat-error *ngIf="phone.invalid">{{getErrorMessage()}}</mat-error>
+                      </mat-form-field>
+                </div>
+                <button mat-button (click)="submitContact()">Submit</button>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+</div>

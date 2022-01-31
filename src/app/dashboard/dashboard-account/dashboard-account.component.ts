@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'dashboard-account',
@@ -6,10 +7,55 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-account.component.scss']
 })
 export class DashboardAccountComponent implements OnInit {
+  email = new FormControl('', [Validators.required, Validators.email]);
+  phone = new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{10}")])
+  showNameEdit : boolean = false;
+  showAddressEdit : boolean = false;
+  showContactEdit : boolean = false;
+
+  user = {
+    id: 1,
+    email: "test@test.com",
+    phone: "000-000-0000",
+  }
+
+  profile = {
+    first: "John",
+    last: "Smith",
+    ssn: "000-00-0000",
+    account_number: "000784359561",
+    routingNumber: "711095759",
+    street_address: "123 Test St",
+    city: "Philadelphia",
+    state: "PA",
+    userId: 1
+  }
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  editName(){
+
+  }
+  editAddress(){
+
+  }
+  editContact(){
+    this.showContactEdit = !this.showContactEdit
+  }
+  submitContact(){
+    this.showContactEdit = !this.showContactEdit
+  }
+
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
 
 }
