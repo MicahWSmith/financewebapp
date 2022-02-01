@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { observable } from 'rxjs';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   failedLogin: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -29,11 +30,16 @@ export class LoginComponent implements OnInit {
       // make request to api to get token with credentials
       let body: {} = {
         email: this.userEmail,
-        password: this.password
+        password: this.password,
+        token: this.token
       }
       this.authService.getToken(body).subscribe(res => {
-        if(res){
+        if(!res.error){
           this.token = res.token;
+          sessionStorage.setItem('user', res.token);
+          sessionStorage.setItem('loggedIn', true.toString());
+          //console.log(sessionStorage.getItem('user'));
+          this.router.navigate(['/dashboard']);
         }
         else{
           this.failedLogin = true;

@@ -1,0 +1,37 @@
+<div class="signup_content">
+    <h2>Create Your Account</h2>
+    <div class="example-container">
+        <a routerLink="/login" class="login_link">Already have an account? <span class="login">Login here</span></a>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="name@example.com" [(ngModel)]="userEmail" [formControl]="email" (keydown)="checkVals()" required/>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input matInput type="password" [(ngModel)]="password" (keydown)="checkVals()" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" [(ngModel)]="first" (keydown)="checkVals()" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" [(ngModel)]="last" (keydown)="checkVals()" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Phone Number (only numeric characters)</mat-label>
+            <input matInput type="text" placeholder="Ex: 8003334444" [(ngModel)]="phone" (keydown)="checkVals()" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Security Question</mat-label>
+            <input matInput type="text" placeholder="Ex: Name of My First Pet" [(ngModel)]="security_question" (keydown)="checkVals()" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Security Question Answer</mat-label>
+            <input matInput type="text" placeholder="" [(ngModel)]="security_answer" (keydown)="checkVals()" required>
+        </mat-form-field>
+        <mat-error *ngIf="failedLogin">All Fields are Required</mat-error>
+        <button (click)="userSignUp()" mat-stroked-button color="primary" [disabled]="isDisabled">Sign up</button>
+    </div>
+</div>
