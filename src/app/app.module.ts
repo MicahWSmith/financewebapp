@@ -39,6 +39,7 @@ import { DashboardSettingsComponent } from './dashboard/dashboard-settings/dashb
 import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { SignupComponent } from './signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +65,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     DashboardMessagesComponent,
     DashboardSettingsComponent,
     MutualfundsComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

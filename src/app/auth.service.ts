@@ -10,10 +10,20 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   getToken(body: {}): Observable<any>{
-    return this.http.post("https://vg-db-users.herokuapp.com/auth/login", body);
+    return this.http.post("https://vg-db-users.herokuapp.com/auth/getToken", body);
   }
 
-  getInfoFromToken(body: {}): Observable<any>{
-    return this.http.post("https://vg-db-users.herokuapp.com/auth/validate", body);
+  getTokenData(body: {}): Observable<any>{
+    return this.http.post("https://vg-db-users.herokuapp.com/auth/getTokenData", body);
   }
+
+  getUserData(body: {}): Observable<any>{
+    return this.http.post("https://vg-db-users.herokuapp.com/auth/getUserData", body);
+  }
+
+  logout(body: {}): void{
+    //return this.http.post("https://vg-db-users.herokuapp.com/auth/getUserData", body);
+    sessionStorage.clear();
+  }
+
 }
