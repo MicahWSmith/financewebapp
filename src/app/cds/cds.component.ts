@@ -53,15 +53,16 @@ export class CdsComponent implements OnInit {
     this.termLength = termLength;
     this.interestRate = interestRate;
     this.minDeposit = minDeposit;
+  }
 
+  reset(event: any) {
+    
+    event.value = "";
   }
 
   closePopup() {
-    
     this.displayStyle = 'none';
   }
-
-
 
   formatLabel(value: number) {
     if (value >= 1000) {
@@ -76,9 +77,9 @@ export class CdsComponent implements OnInit {
     this.portfolioService
       .buyInvestment(3, {
         type: 'cd',
-        deposit: this.cds[index].minimumOpeningDeposit,
-        interestRate: (this.cds[index].interestRate || 0) / 100,
-        term: (this.cds[index].term || 0) * 2592000000,
+        deposit: this.minDeposit,
+        interestRate: (this.interestRate || 0) / 100,
+        term: (this.termLength || 0) * 2592000000,
       })
       .subscribe((payload) => {
         console.log('Response: ', payload);

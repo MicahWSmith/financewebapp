@@ -24,7 +24,7 @@ button {
   padding-top: 50px;
   grid-template-columns: auto auto auto;
 
-  margin-left: 500px;
+  margin-left: 300px;
 }
 
 .cd-header {
@@ -89,9 +89,13 @@ mat-slider {
   text-align: center;
 }
 
+.modal {
+  margin-top: 175px;
+}
+
 @media only screen and (max-width: 100px) {
   .card-container {
-    display: flex;
+    display: grid;
     flex-direction: column;
   }
 }

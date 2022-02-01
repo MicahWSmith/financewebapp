@@ -51,7 +51,10 @@
       >
         CALCULATE
       </button> -->
-      <button mat-button (click)="openPopup(cd.term, cd.interestRate, cd.minimumOpeningDeposit)">
+      <button
+        mat-button
+        (click)="openPopup(cd.term, cd.interestRate, cd.minimumOpeningDeposit)"
+      >
         OPEN CD
       </button>
     </mat-card-actions>
@@ -71,6 +74,8 @@
         <div class="modal-body">
           <p class="details">How Much Would You Like to Deposit?</p>
           <input
+            #modalValue
+            id="takeInput"
             type="number"
             class="opening-deposit"
             (input)="updateDeposit($event)"
@@ -83,12 +88,18 @@
           <button
             (click)="buyCD(i)"
             (click)="closePopup()"
+            (click)="reset(modalValue)"
             type="button"
             class="btn"
           >
             BUY CD
           </button>
-          <button type="button" class="btn" (click)="closePopup()">
+          <button
+            type="button"
+            class="btn"
+            (click)="reset(modalValue)"
+            (click)="closePopup()"
+          >
             Close
           </button>
         </div>
