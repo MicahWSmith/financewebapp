@@ -15,9 +15,11 @@ import { LayoutComponent } from './layout/layout.component';
 import { MainComponent } from './dashboard/main/main.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
+  { path: "signup", component: SignupComponent},
   { path: "myinfo", component: AccountdetailsComponent},
   { path: "about", component: AboutusComponent},
   { path: "recovery", component: RecoveryComponent},

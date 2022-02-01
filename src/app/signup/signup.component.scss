@@ -1,4 +1,5 @@
 h2{
+    margin-top: 20px;
     color: rgb(0, 0, 0);
 }
 
@@ -7,6 +8,8 @@ h2{
     flex-direction: column;
     background-color: rgb(255, 255, 255);
     padding: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     border-radius: 10px;
     width: 300px;
     input,mat-label{
@@ -17,27 +20,24 @@ h2{
         font-size: medium;
     }
     a{
-        margin-top: 20px;
+        margin-bottom: 20px;
         font-size: 13px;
         text-decoration: none;
         color: black;
     }
-    .recovery_link{
-        margin-top: 30px;
-    }
-    .signup{
+    .login{
         color: blue;
         font-weight: bold;
     }
 }
 
-.login_content{
-    margin-top: 50px;
-    margin-bottom: 50px;
+.signup_content{
+    padding-bottom: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    overflow-y: scroll;
 }
 
 .example-right-align {
