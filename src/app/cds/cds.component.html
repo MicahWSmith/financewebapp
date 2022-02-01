@@ -80,14 +80,15 @@
             class="opening-deposit"
             (input)="updateDeposit($event)"
           />
-          <p class="details">Opening Deposit: {{ minDeposit | currency }}</p>
+          <p class="details">Opening Deposit: {{ userDepositInput | currency }}</p>
           <p class="details">Term: {{ termLength }} months</p>
           <p class="details">Interest Rate: {{ interestRate }}%</p>
         </div>
         <div class="modal-footer">
+          <p *ngIf="valid == false">Deposit must be {{ minDeposit | currency}}</p>
           <button
             (click)="buyCD(i)"
-            (click)="closePopup()"
+            
             (click)="reset(modalValue)"
             type="button"
             class="btn"

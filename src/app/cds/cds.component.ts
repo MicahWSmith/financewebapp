@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 import { PortfolioApiService } from '../portfolio-api.service';
-import { min } from 'rxjs';
 
 @Component({
   selector: 'app-cds',
@@ -28,9 +27,9 @@ export class CdsComponent implements OnInit {
   currentValue: number = 0;
   calculatedReturn: number = 0;
   value = 0;
-  openingDeposit: number = 0;
-  modalDeposit: any = 0;
+  userDepositInput: any = 0;
   alertMessage: string = '';
+  valid: boolean = true;
 
   ngOnInit(): void {
     this.cdService.getCds().subscribe((payload) => {
@@ -45,19 +44,19 @@ export class CdsComponent implements OnInit {
   }
 
   updateDeposit(event: any) {
-    this.minDeposit = (<HTMLInputElement>event.target).value;
+    this.userDepositInput = (<HTMLInputElement>event.target).value;
   }
 
   openPopup(termLength: any, interestRate: any, minDeposit: any) {
     this.displayStyle = 'block';
     this.termLength = termLength;
     this.interestRate = interestRate;
+    this.userDepositInput = minDeposit;
     this.minDeposit = minDeposit;
   }
 
   reset(event: any) {
-    
-    event.value = "";
+    event.value = '';
   }
 
   closePopup() {
@@ -73,18 +72,34 @@ export class CdsComponent implements OnInit {
   }
 
   buyCD(index: number) {
-    this.alertMessage = 'Buying CD...';
-    this.portfolioService
-      .buyInvestment(3, {
-        type: 'cd',
-        deposit: this.minDeposit,
-        interestRate: (this.interestRate || 0) / 100,
-        term: (this.termLength || 0) * 2592000000,
-      })
-      .subscribe((payload) => {
-        console.log('Response: ', payload);
-        this.alertMessage = `Invested ${payload.deposit} in a CD.`;
-      });
+    let finalValue = 0;
+
+    if (Number(this.userDepositInput) >= this.minDeposit) {
+      finalValue = Number(this.userDepositInput);
+
+      this.alertMessage = 'Buying CD...';
+      this.portfolioService
+        .buyInvestment(3, {
+          type: 'cd',
+          deposit: finalValue,
+          interestRate: (this.interestRate || 0) / 100,
+          term: (this.termLength || 0) * 2592000000,
+        })
+        .subscribe((payload) => {
+          console.log('Response: ', payload);
+          this.alertMessage = `Invested ${payload.deposit} in a CD.`;
+        });
+
+      console.log(
+        'user deposit input',
+        Number(this.userDepositInput),
+        'minDeposit',
+        this.minDeposit
+      );
+    } else {
+      this.valid == false;
+      return;
+    }
   }
 
   calculateReturn(
