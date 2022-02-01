@@ -1,17 +1,17 @@
-<div>
+<div class="container">
     <mat-card>
         <mat-card-title>
             Your Account Details
         </mat-card-title>
-        <mat-card-content class="container">
+        <mat-card-content class="box">
 
             <div class="label">Name: </div>
-            <div class="row name" *ngIf="!showNameEdit">
+            <div class="rowTest name" *ngIf="!showNameEdit">
                 <div class="info">{{profile.first}} {{profile.last}}</div>
                 <button mat-button (click)="editName()">Edit</button>
             </div>
 
-            <div class="column" *ngIf="showNameEdit">
+            <div class="columnTest" *ngIf="showNameEdit">
                 <div>
                     <mat-form-field appearance="fill">
                         <mat-label>Enter your First name</mat-label>
@@ -26,19 +26,19 @@
                         <mat-error *ngIf="nameLast.invalid">Last name is required</mat-error>
                       </mat-form-field>
                 </div>
-                <div class="row">
+                <div class="rowTest">
                     <button mat-button (click)="closeName()">Close</button>
                     <button mat-button (click)="submitName()" [disabled]="!nameForm.valid">Submit</button>
                 </div>
             </div>
 
             <div class="label">Address: </div>
-            <div class="row address" *ngIf="!showAddressEdit">
+            <div class="rowTest address" *ngIf="!showAddressEdit">
                 <div class="info">{{profile.street_address}}, {{profile.city}} {{profile.state}}</div>
                 <button mat-button (click)="editAddress()">Edit</button>
             </div>
 
-            <div class="column" *ngIf="showAddressEdit">
+            <div class="columnTest" *ngIf="showAddressEdit">
                 <div>
                     <mat-form-field appearance="fill">
                         <mat-label>Street Address</mat-label>
@@ -61,21 +61,21 @@
                         </mat-select>
                       </mat-form-field>
                 </div>
-                <div class="row">
+                <div class="rowTest">
                     <button mat-button (click)="closeAddress()">Close</button>
                     <button mat-button (click)="submitAddress()" [disabled]="!addressForm.valid">Submit</button>
                 </div>
             </div>
 
             <div class="label">Contact: </div>
-            <div class="row contact" *ngIf="!showContactEdit">
-                <div class="column">
-                    <div class="row">
+            <div class="rowTest contact" *ngIf="!showContactEdit">
+                <div class="columnTest">
+                    <div class="rowTest">
                         <div class="label">Email:</div>
                         <div class="info">{{user.email}}</div>
                     </div>
 
-                    <div class="row">
+                    <div class="rowTest">
                         <div class="label">Phone:</div>
                         <div class="info">{{user.phone}}</div>
                     </div>
@@ -83,7 +83,7 @@
                 <button mat-button (click)="editContact()">Edit</button>
             </div>
 
-            <div *ngIf="showContactEdit" class="column">
+            <div *ngIf="showContactEdit" class="columnTest">
                 <div>
                     <mat-form-field appearance="fill">
                         <mat-label>Enter your email</mat-label>
@@ -98,7 +98,7 @@
                         <mat-error *ngIf="phone.invalid">{{getErrorMessagePhone()}}</mat-error>
                       </mat-form-field>
                 </div>
-                <div class="row">
+                <div class="rowTest">
                     <button mat-button (click)="closeContact ()">Close</button>
                     <button mat-button (click)="submitContact()" [disabled]="!contactForm.valid">Submit</button>
                 </div>
