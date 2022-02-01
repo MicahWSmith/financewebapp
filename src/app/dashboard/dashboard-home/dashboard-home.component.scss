@@ -1,6 +1,14 @@
+$color-main: white;
+$color-secondary: #19B3F4;
+$color-secondary2: #5dbfe9;
+$color-footer: #ECECEC;
+$color-green: #c7ed9f;
+$color-green-dark: #a8d481;
+$primary-font: 'Red Hat Display', sans-serif;
+
 #container{
     width: 100%;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 180px);
     overflow-y: auto;
     min-width: 860px;
     scroll-snap-type: y mandatory;
@@ -11,24 +19,24 @@
         
         scroll-snap-align: center;
         .small-container{
-            height: calc(100vh - 100px);
+            height: calc(100vh - 210px);
             width: 100%;
             display: flex;
 
         }
 
         .navigate{
-            height:40px;
+            height:30px;
             display: flex;
             flex-direction: column;
             align-items: center;  
             justify-content: flex-end;
-            opacity: 60%;
+            opacity: 100%;
             transition: opacity 1s;
-            background-color: darkcyan;
+            background-color: $color-secondary;
             cursor: pointer;
             &:hover{
-                opacity: 100%;
+                opacity: 60%;
             }
     
                 
@@ -40,17 +48,20 @@
                 display: flex;
                 align-items: center;
                 height: 100%;
-                font-size: 20px;
+                font-size: 18px;
                 font-weight: bold;
+                filter: invert(100%);
             }
         }
 
         .navigate-down{
             img{
                 content: url(./images/down-icon.png);
-                height: 30px;
-                width: 50px;
+                height: 20px;
+                width: 30px;
                 margin-bottom: 5px;
+                filter: invert(100%);
+
             }
         }
     
@@ -284,12 +295,12 @@
             #list{
                 font-size: large;
                 line-height: 40px;
-                margin-top: 20px;
+                margin-top: 10px;
 
                 .list-item{
                     margin-left: 140px;
                     display: flex;
-                    margin-top: 20px;
+                    margin-top: 15px;
                     
                     .arrow{
                         content: url(./images/blue-arrow.png);
