@@ -1,6 +1,10 @@
-$color-main: rgb(228, 234, 255);
-$color-secondary: rgb(98, 81, 255);
-$color-three: rgb(121, 107, 255);
+$color-main: white;
+$color-secondary: #19B3F4;
+$color-secondary2: #5dbfe9;
+$color-footer: #ECECEC;
+$color-green: #c7ed9f;
+$color-green-dark: #a8d481;
+$primary-font: 'Red Hat Display', sans-serif;
 
 .graph-container{
     margin-top: 20px;
@@ -14,7 +18,7 @@ $color-three: rgb(121, 107, 255);
 
 #lineChart{
     background-color: white;
-    border: 1px solid $color-three;
+    border: 1px solid $color-secondary;
     border-radius: 3px;
 }
 

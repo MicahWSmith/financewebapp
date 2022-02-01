@@ -1,10 +1,17 @@
+$color-main: white;
+$color-secondary: #19B3F4;
+$color-secondary2: #5dbfe9;
+$color-footer: #ECECEC;
+$color-green: #c7ed9f;
+$color-green-dark: #a8d481;
+$primary-font: 'Red Hat Display', sans-serif;
+
 .home_content {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 100vw;
-    max-width: 100vw;
+    width: 100%;
     overflow-y: auto;
     .welcome_cards{
         display: flex;
@@ -13,7 +20,7 @@
         align-items: center;
         background: url("https://www.philipstrust.co.uk/wp-content/uploads/2019/05/about-us-header-philips-trust.jpg");
         background-repeat: no-repeat;
-        background-position: center;
+        background-position-y: -40px;
         background-size: cover;
         width: 100%;
         height: 500px;
@@ -34,11 +41,18 @@
             color: rgb(0, 0, 0);
             font-size: medium;
             max-width: 400px;
+
+            #login-button{
+                background-color: $color-green;
+                &:hover{
+                    background-color:$color-green-dark;
+                }
+            }
         }
     }
 
     .services{
-        background-color: rgb(228, 234, 255);
+        //background-color: rgb(228, 234, 255);
         //padding: 30px;
         width: 100%;
         height: 400px;
@@ -81,6 +95,7 @@
     }
 
     .home_paragraph {
+        background-color: $color-green;
         width: 100%;
         display: flex;
         flex-direction: column;

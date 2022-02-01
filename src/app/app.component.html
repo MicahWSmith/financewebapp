@@ -16,41 +16,7 @@
       <a class="corner_nav" routerLink="/login">Login<mat-icon>account_circle</mat-icon></a>
     </div>
   </div>
-  <div class="nav-row">
 
-    <button mat-button class="row-button" [matMenuTriggerFor]="accounts">
-      My Accounts<mat-icon>keyboard_arrow_down</mat-icon>
-    </button>
-    <mat-menu #accounts="matMenu">
-      <button mat-menu-item routerLink="/cash">Cash Accounts</button>
-      <button mat-menu-item routerLink="/ira">IRA</button>
-    </mat-menu>
-
-    <button mat-button class="row-button" routerLink="/portfolio">
-      <div>My Portfolio</div>
-    </button>
-
-    <button mat-button class="row-button" [matMenuTriggerFor]="markets">
-      Marketplaces<mat-icon>keyboard_arrow_down</mat-icon>
-    </button>
-    <mat-menu #markets="matMenu">
-      <button mat-menu-item routerLink="/stocks">Stocks</button>
-      <button mat-menu-item routerLink="/forex">Forex</button>
-      <button mat-menu-item routerLink="/cds">CDs</button>
-      <button mat-menu-item routerLink="/mutualfunds">Mutual Funds</button>
-    </mat-menu>
-
-    <button mat-button class="row-button" [matMenuTriggerFor]="tools">
-      Investment Tools<mat-icon>keyboard_arrow_down</mat-icon>
-    </button>
-    <mat-menu #tools="matMenu">
-      <button mat-menu-item routerLink="/about">CD Calculator</button>
-    </mat-menu>
-
-  </div>
-  <div class="swoop">
-    <img src="../assets/swoop4.png" alt="Swoop">
-  </div>
   <router-outlet></router-outlet>
 </div>
 
