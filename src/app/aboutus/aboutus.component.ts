@@ -12,4 +12,7 @@ export class AboutusComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goTo(link: string) {
+    window.open(link)
+  }
 }
