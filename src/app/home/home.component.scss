@@ -28,6 +28,7 @@ $primary-font: 'Red Hat Display', sans-serif;
         .welcome_card{
             h2{
                 font-size: xx-large;
+                font-family: $primary-font;
             }
             display: flex;
             flex-direction: column;
@@ -78,6 +79,7 @@ $primary-font: 'Red Hat Display', sans-serif;
             h2{
                 text-align: center;
                 font-size: x-large;
+                font-family: $primary-font;
             }
             .service_cards{
                 display: flex;
@@ -87,7 +89,11 @@ $primary-font: 'Red Hat Display', sans-serif;
                 flex-wrap: wrap;
                 .service_card{
                     width: 200px;
+                    height: 100px;
                     margin: 10px;
+                    .service_card_title {
+                        font-family: $primary-font;
+                    }
                 }
             }
         }
