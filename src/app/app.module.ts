@@ -26,8 +26,9 @@ import { CdsComponent } from './cds/cds.component';
 import { CdComponent } from './cd/cd.component';
 import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
+import { PortfolioComponent } from './portfolio/portfolio.component'
+import {MatSliderModule} from '@angular/material/slider';
 import { CashAccountComponent } from './cash-account/cash-account.component';
-import { PortfolioComponent } from './portfolio/portfolio.component';
 import { LayoutComponent } from './layout/layout.component'
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MainComponent } from './dashboard/main/main.component';
@@ -77,6 +78,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTableModule,
     HttpClientModule,
     MatCardModule,
+    MatProgressSpinnerModule,
+    MatSliderModule,
     MatSelectModule,
     MatListModule,
     NgChartsModule,
