@@ -9,7 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class DashboardAccountComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
-  phone = new FormControl('', [Validators.required, Validators.pattern("[0-9]{3}-[0-9]{3}-[0-9]{4}")])
+  phone = new FormControl('', [Validators.required, Validators.pattern("[0-9]{10}")])
   contactForm = new FormGroup({email: this.email, phone: this.phone});
   nameFirst = new FormControl('', [Validators.required]);
   nameLast = new FormControl('', [Validators.required]);
@@ -30,7 +30,7 @@ export class DashboardAccountComponent implements OnInit {
   user = {
     id: 1,
     email: "test@test.com",
-    phone: "000-000-0000",
+    phone: "0000000000",
   }
 
   profile = {
@@ -52,11 +52,17 @@ export class DashboardAccountComponent implements OnInit {
 
   editName(){
     this.showNameEdit = true;
+    this.showAddressEdit = false;
+    this.showContactEdit = false;
   }
   editAddress(){
+    this.showNameEdit = false;
     this.showAddressEdit = true;
+    this.showContactEdit = false;
   }
   editContact(){
+    this.showNameEdit = false;
+    this.showAddressEdit = false;
     this.showContactEdit = true;
   }
   submitName() {
@@ -91,7 +97,7 @@ export class DashboardAccountComponent implements OnInit {
       return 'You must enter a value'
     }
     else {
-      return 'Phone format is wrong - Remember to include dashes'
+      return 'Please enter 10 digits with no spaces or dashes'
     }
   }
 }
