@@ -85,7 +85,7 @@
           <p class="details">Interest Rate: {{ interestRate }}%</p>
         </div>
         <div class="modal-footer">
-          <p *ngIf="valid == false">Deposit must be {{ minDeposit | currency}}</p>
+          <p class="error-message" *ngIf="valid">Deposit must be at least {{ minDeposit | currency}}</p>
           <button
             (click)="buyCD(i)"
             

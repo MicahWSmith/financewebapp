@@ -93,6 +93,12 @@ mat-slider {
   margin-top: 175px;
 }
 
+.error-message {
+  margin-right: 50px;
+  font-style: italic;
+  color: red;
+}
+
 @media only screen and (max-width: 100px) {
   .card-container {
     display: grid;

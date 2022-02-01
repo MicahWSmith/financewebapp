@@ -29,7 +29,7 @@ export class CdsComponent implements OnInit {
   value = 0;
   userDepositInput: any = 0;
   alertMessage: string = '';
-  valid: boolean = true;
+  valid: boolean = false;
 
   ngOnInit(): void {
     this.cdService.getCds().subscribe((payload) => {
@@ -61,6 +61,7 @@ export class CdsComponent implements OnInit {
 
   closePopup() {
     this.displayStyle = 'none';
+    this.valid = false;
   }
 
   formatLabel(value: number) {
@@ -76,7 +77,7 @@ export class CdsComponent implements OnInit {
 
     if (Number(this.userDepositInput) >= this.minDeposit) {
       finalValue = Number(this.userDepositInput);
-
+      this.valid = false;
       this.alertMessage = 'Buying CD...';
       this.portfolioService
         .buyInvestment(3, {
@@ -89,6 +90,7 @@ export class CdsComponent implements OnInit {
           console.log('Response: ', payload);
           this.alertMessage = `Invested ${payload.deposit} in a CD.`;
         });
+      this.closePopup();
 
       console.log(
         'user deposit input',
@@ -97,7 +99,8 @@ export class CdsComponent implements OnInit {
         this.minDeposit
       );
     } else {
-      this.valid == false;
+      console.log("helele")
+      this.valid = true;
       return;
     }
   }
