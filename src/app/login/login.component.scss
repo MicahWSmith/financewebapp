@@ -32,12 +32,13 @@ h2{
 }
 
 .login_content{
-    margin-top: 50px;
-    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: calc(100vh - 180px);
+    min-height: 410px;
+    background-color: whitesmoke
 }
 
 .example-right-align {
