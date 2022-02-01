@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
   };
   
   currentPage = 'home';
+  step = 0;
 
   constructor(private dashboardService:DashboardCommunicationService) {
     dashboardService.setSidebar(this);
@@ -29,6 +30,10 @@ export class SidebarComponent implements OnInit {
 
   logout(){
     console.log('LOGOUT')
+  }
+
+  setStep(num:number){
+    this.step = num;
   }
 
 }

@@ -10,7 +10,7 @@
         
     </div>
     <div class='small-container' id='main-side-bar-content'>
-        <mat-expansion-panel class='side-bar-expansion-panel'>
+        <mat-expansion-panel class='side-bar-expansion-panel' [expanded]='step == 1' (opened)='setStep(1)'>
             <mat-expansion-panel-header>
               <mat-panel-title class='panel-title'>
                 My Accounts
@@ -20,7 +20,7 @@
             <div class='panel-link'>IRAs</div>
           </mat-expansion-panel>
 
-          <mat-expansion-panel class='side-bar-expansion-panel'>
+          <mat-expansion-panel class='side-bar-expansion-panel' [expanded]='step == 2' (opened)='setStep(2)'>
             <mat-expansion-panel-header>
               <mat-panel-title class='panel-title'>
                 My Portfolio
@@ -29,7 +29,7 @@
             <div class='panel-link'>Portfolio</div>
           </mat-expansion-panel>
 
-          <mat-expansion-panel class='side-bar-expansion-panel'>
+          <mat-expansion-panel class='side-bar-expansion-panel' [expanded]='step == 3' (opened)='setStep(3)'>
             <mat-expansion-panel-header>
               <mat-panel-title class='panel-title'>
                 Marketplaces
