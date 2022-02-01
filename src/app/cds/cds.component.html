@@ -79,6 +79,7 @@
             type="number"
             class="opening-deposit"
             (input)="updateDeposit($event)"
+            placeholder="{{ userDepositInput | currency }}"
           />
           <p class="details">Opening Deposit: {{ userDepositInput | currency }}</p>
           <p class="details">Term: {{ termLength }} months</p>
