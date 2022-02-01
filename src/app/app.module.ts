@@ -35,11 +35,11 @@ import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
 import { DashboardAccountComponent } from './dashboard/dashboard-account/dashboard-account.component';
 import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashboard-messages.component';
-import { DashboardSettingsComponent } from './dashboard/dashboard-settings/dashboard-settings.component';
 import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
-
+import { MatMenuModule} from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { SignupComponent } from './signup/signup.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +63,6 @@ import { SignupComponent } from './signup/signup.component';
     DashboardHomeComponent,
     DashboardAccountComponent,
     DashboardMessagesComponent,
-    DashboardSettingsComponent,
     MutualfundsComponent,
     SignupComponent,
   ],
@@ -86,7 +85,8 @@ import { SignupComponent } from './signup/signup.component';
     MatCardModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatMenuModule
     ],
   providers: [],
   bootstrap: [AppComponent]

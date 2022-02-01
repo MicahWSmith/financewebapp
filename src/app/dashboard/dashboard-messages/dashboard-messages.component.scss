@@ -39,13 +39,19 @@
       
       .example-element-row td {
         border-bottom-width: 0;
+        cursor: pointer;
       }
       
       .example-element-detail {
         overflow: hidden;
         display: flex;
+        background-color: #fafafa;
+
       }
-      
+      .example-element-detail:hover {
+        background: whitesmoke;
+      }    
+
       .example-element-diagram {
         min-width: 80px;
         border: 2px solid black;
@@ -61,14 +67,15 @@
         line-height: normal;
       }
       
-      .example-element-description {
-        padding: 16px;
-      }
-      
       .example-element-description-attribution {
         opacity: 0.5;
       }
 
-
+      .message{
+        font-size: 15px;
+        margin-left: 0px;
+        padding-left: -250px;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+      }
     
 }

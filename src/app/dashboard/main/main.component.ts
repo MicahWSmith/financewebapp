@@ -21,7 +21,6 @@ export class MainComponent implements OnInit {
       this.view = savedView;
     }
 
-    console.log(savedView);
   }
 
   setView(view:string){
