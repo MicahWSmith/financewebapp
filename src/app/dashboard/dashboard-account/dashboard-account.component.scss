@@ -1,20 +1,17 @@
-.container{
+.box{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    //background-color: green;
 }
-.row{
+.rowTest{
     display: flex;
     flex-direction: row;
-    //background-color: red;
-    
+    flex-wrap: nowrap;
 }
-.column{
+.columnTest{
     display: flex;
     flex-direction: column;
     flex: none;
-    //background-color: yellow;
 }
 .label{
     padding-right: 5px;
