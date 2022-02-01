@@ -4,6 +4,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 $color-main: rgb(185, 200, 255);
+$color-secondary2: #5dbfe9;
 
 ::-webkit-scrollbar-track{
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -15,6 +16,6 @@ $color-main: rgb(185, 200, 255);
     background-color: #F5F5F5;
   }
   ::-webkit-scrollbar-thumb{
-    background-color: $color-main;
+    background-color: $color-secondary2;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
   }

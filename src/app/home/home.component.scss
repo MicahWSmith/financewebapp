@@ -1,3 +1,9 @@
+$color-main: white;
+$color-secondary: #19B3F4;
+$color-secondary2: #5dbfe9;
+$color-footer: #ECECEC;
+$primary-font: 'Red Hat Display', sans-serif;
+
 .home_content {
     display: flex;
     flex-direction: column;
@@ -6,6 +12,7 @@
     width: 100vw;
     max-width: 100vw;
     overflow-y: auto;
+    margin-top: -140px;
     .welcome_cards{
         display: flex;
         flex-direction: row;
@@ -38,7 +45,7 @@
     }
 
     .services{
-        background-color: rgb(228, 234, 255);
+        //background-color: rgb(228, 234, 255);
         //padding: 30px;
         width: 100%;
         height: 400px;
@@ -81,6 +88,7 @@
     }
 
     .home_paragraph {
+        background-color: $color-secondary2;
         width: 100%;
         display: flex;
         flex-direction: column;

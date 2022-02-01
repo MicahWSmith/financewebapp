@@ -1,7 +1,14 @@
+$color-main: white;
+$color-secondary: #19B3F4;
+$color-secondary2: #5dbfe9;
+$color-footer: #ECECEC;
+$color-green: #c7ed9f;
+$color-green-dark: #a8d481;
+$primary-font: 'Red Hat Display', sans-serif;
+
 #container{
-    height:calc(100vh - 60px);
-    background-color: darkmagenta;
-    width: 100%;
+    height:calc(100vh - 250px);
+    width: calc(100vw - 430px);
 
     #title{
       height: 65px;
@@ -10,21 +17,26 @@
       justify-content: center;
       align-items: center;
       font-size: x-large;
-      background-color: rgb(220, 253, 253);
       
     }
 
     #table-container{
       overflow-y: auto;
-      height: calc(100vh - 185px);
+      height: calc(100vh - 305px);
       background-color: white;
-
+      //width: 100vw;
     }
     
       table {
         width: 100%;
       }
 
+      td{
+        flex-shrink: 0;
+        flex-grow: 0;
+        width:50px;
+      }
+      
       tr.example-detail-row {
         height: 0;
       }
