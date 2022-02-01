@@ -1,0 +1,58 @@
+$primary-font: 'Red Hat Display', sans-serif;
+
+.about-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 50px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    .about-title {
+        margin: 25px;
+
+        h1 {
+            text-align: center;
+            font-size: 48px;
+            margin: 15px;
+        }
+    }
+
+    .member-card {
+        max-width: 1200px;
+        margin-bottom: 16px;
+
+        .member-card-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                margin: 15px;
+            }
+
+            .member-card-text {
+                padding: 10px;
+            }
+          }
+      }
+}
+
+h1 {
+    font-family: $primary-font;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.right-name {
+    text-align: right;
+}
+
+
+
+  
