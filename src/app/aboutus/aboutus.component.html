@@ -89,18 +89,18 @@
     <mat-card class="member-card">
         
         <mat-card-content class="member-card-content">
-            <img mat-card-xl-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+            <img mat-card-xl-image src="https://media-exp1.licdn.com/dms/image/C4E03AQGunRjtIeI_6g/profile-displayphoto-shrink_800_800/0/1638938974084?e=1649289600&v=beta&t=e8PtxZcd4Ppwbc-WXXfSUxVQYwp5jrDwxSzje0KVeFI" >
             <div class="member-card-text">
                 <h1><b>Marcus Ramirez</b></h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <p>After climbing the ladder in the hospitality industry, Marcus decided to switch gears and join the world of programming. He could not be more thrilled with his decision.  Learning code, building websites, and contributing to a software development team has been both fun and rewarding.  Marcus's motto is "Be a Better Developer Than I Was Yesterday, and Even Better Tomorrow!"   </p>
                 <h2>On this project:</h2>
-                <p>I wanna say... CDs? Probably CDs.</p>
+                <p>Marcus designed the certificate of deposit (CDs) API and the page where CDs can be purchased.</p>
             </div>
         </mat-card-content>
 
         <mat-card-actions>
-            <button mat-button>GITHUB</button>
-            <button mat-button>LINKEDIN</button>
+            <button mat-button (click)="goTo('https://github.com/marcuspramirez')">GITHUB</button>
+            <button mat-button (click)="goTo('https://www.linkedin.com/in/marcus-ramirez-43b523134/')">LINKEDIN</button>
           </mat-card-actions>
         
     </mat-card>
