@@ -19,12 +19,14 @@ button {
 }
 
 .card-container {
-  display: grid;
-  padding-right: 20%;
+  display: flex;
+ 
   padding-top: 50px;
-  grid-template-columns: auto auto auto;
+  flex-wrap: wrap;
+  min-width: 500px;
+ justify-content: center;
 
-  margin-left: 300px;
+  
 }
 
 .cd-header {
@@ -101,7 +103,7 @@ mat-slider {
 
 @media only screen and (max-width: 100px) {
   .card-container {
-    display: grid;
+    display: flex;
     flex-direction: column;
   }
 }
