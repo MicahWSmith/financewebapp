@@ -119,13 +119,13 @@ $primary-font: 'Red Hat Display', sans-serif;
             align-items: center;
             height: 40px;
             width: 120px;
-            background-color: $color-green;
+            background-color: $color-secondary;
             color: $color-main;
             transition: background-color 0.5s;
             border-radius: 10px;
             cursor: pointer;
             &:hover{
-                background-color: $color-green-dark;
+                background-color: $color-secondary2;
             }
         }
     }
