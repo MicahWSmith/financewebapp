@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioApiService } from '../portfolio-api.service';
-import { Router } from '@angular/router';
-import { timeout } from 'rxjs';
+import { CashAccountService } from '../cash-account.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -18,6 +17,7 @@ export class PortfolioComponent implements OnInit {
   currentUser: number = 1;
 
   loading: boolean = true;
+  canSell: boolean = true;
   currencyMessage: string = "";
   stockMessage: string = "";
   cdMessage: string = "";
@@ -26,7 +26,7 @@ export class PortfolioComponent implements OnInit {
   currencyColumns: string[] = ["code", "name", "symbol", "quantity", "purchasePrice", "currentPrice", "sell"]
   cdColumns: string[] = ["deposit", "interestRate", "openDate", "term", "currentValue", "maturityDate", "sell"]
 
-  constructor(private portfolioService: PortfolioApiService) { }
+  constructor(private portfolioService: PortfolioApiService, private cashService: CashAccountService) { }
 
   ngOnInit(): void {
     this.updatePortfolio();
@@ -39,20 +39,51 @@ export class PortfolioComponent implements OnInit {
   sellCurrency(index: number) {
     console.log("Selling currency: ", this.currencies[index])
     this.currencyMessage = `Selling ${this.currencies[index].quantity} ${this.currencies[index].code} at ${this.currencies[index].currentPrice}`
-    this.portfolioService.sellInvestment(this.currentUser,this.currencies[index].investmentID, "currency")
-    .subscribe(() => {
-      this.currencyMessage = `Sold successfully!`
-      this.updatePortfolio();
+    this.canSell = false;
+    
+    this.cashService.getAccount(this.currentUser)
+    .subscribe((accountPayload) => {
+      let price = this.currencies[index].quantity * this.currencies[index].currentPrice
+      let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
+
+      this.cashService.updateAccount(this.currentUser, accountPayload.balance + price)
+      .subscribe((soldPayload) => {
+        this.cashService.addTransaction(this.currentUser, "Sold Currency", price, date)
+        .subscribe((transactionPayload) => {
+          this.portfolioService.sellInvestment(this.currentUser,this.currencies[index].investmentID, "currency")
+          .subscribe(() => {
+            this.currencyMessage = `Sold successfully!`
+            this.canSell = true;
+            this.updatePortfolio();
+          })
+          
+        })
+      })
     })
   }
 
   sellStock(index: number) {
     console.log("Selling stock row: ", index)
     this.stockMessage = `Selling ${this.stocks[index].quantity} ${this.stocks[index].symbol} at ${this.stocks[index].currentPrice}`
-    this.portfolioService.sellInvestment(this.currentUser,this.stocks[index].investmentID, "stock")
-    .subscribe(() => {
-      this.stockMessage = `Sold successfully!`
-      this.updatePortfolio();
+    this.canSell = false;
+    
+    this.cashService.getAccount(this.currentUser)
+    .subscribe((accountPayload) => {
+      let price = this.currencies[index].quantity * this.currencies[index].currentPrice
+      let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
+
+      this.cashService.updateAccount(this.currentUser, accountPayload.balance + price)
+      .subscribe((soldPayload) => {
+        this.cashService.addTransaction(this.currentUser, "Sold Stock", price, date)
+        .subscribe((transactionPayload) => {
+          this.portfolioService.sellInvestment(this.currentUser,this.stocks[index].investmentID, "stock")
+          .subscribe(() => {
+            this.stockMessage = `Sold successfully!`
+            this.canSell = true;
+            this.updatePortfolio();
+          })
+        })
+      })
     })
   }
 
@@ -64,10 +95,24 @@ export class PortfolioComponent implements OnInit {
     console.log("CD to sell: ", this.cds[index])
     console.log("Selling cd row: ", index)
     this.cdMessage = `Selling for ${this.cds[index].currentValue}`
-    this.portfolioService.sellInvestment(this.currentUser,this.cds[index].investmentId, "cd")
-    .subscribe(() => {
-      this.cdMessage = `Sold successfully!`
-      this.updatePortfolio();
+    this.canSell = false;
+
+    this.cashService.getAccount(this.currentUser)
+    .subscribe((accountPayload) => {
+      let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
+
+      this.cashService.updateAccount(this.currentUser, accountPayload.balance + this.cds[index].currentValue)
+      .subscribe((soldPayload) => {
+        this.cashService.addTransaction(this.currentUser, "Sold CD", this.cds[index].currentValue, date)
+        .subscribe((transactionPayload) => {
+          this.portfolioService.sellInvestment(this.currentUser,this.cds[index].investmentId, "cd")
+          .subscribe(() => {
+            this.cdMessage = `Sold successfully!`
+            this.canSell = true;
+            this.updatePortfolio();
+          })
+        })
+      })
     })
   }
 

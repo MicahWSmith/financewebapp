@@ -259,9 +259,9 @@ $primary-font: 'Red Hat Display', sans-serif;
                             background-color: $color-secondary;
                         }
 
-                        #day-chart{     
+                        // #day-chart{     
                            
-                        }
+                        // }
                     }
                    
                 }
@@ -355,7 +355,7 @@ $primary-font: 'Red Hat Display', sans-serif;
                             justify-content: center;
                             margin-top: 50px;
                         }
-
+                        
                         @media screen and (max-height:600px) { 
                             #buy-button-div{
                                 margin-top: 20px;
@@ -377,6 +377,16 @@ $primary-font: 'Red Hat Display', sans-serif;
                             &:hover{
                                 background-color: $color-secondary;
                             }
+                        }
+                        #locked-button {
+                            background-color: gray;
+                            height: 50px;
+                            width: 140px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 10px;
+                            color: black;
                         }
                         #purchase-message-div {
                             text-align: center;
