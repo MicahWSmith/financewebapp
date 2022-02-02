@@ -12,25 +12,28 @@ import { Router } from '@angular/router';
 export class ForexMarketComponent implements OnInit {
 
   currencies: any[] = [];
-
   quantities: string[] = [];
 
   currentUser: number = 5;
   newUser: number = 5;
 
   alertMessage: string = "";
+  canBuy: boolean = true;
+  loading: boolean = true;
 
   displayedColumns: string[] = ["code", "name", "symbol", "price", "quantity", "buy"]
 
   constructor(private router: Router, private forexService: ForexAPIService, private portfolioService: PortfolioApiService, private cashService: CashAccountService) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.forexService.getAllCurrencies()
     .subscribe(payload => {
       this.currencies = payload
       this.currencies.map(() => {
         this.quantities.push("0");
       })
+      this.loading = false;
     });
   }
 
@@ -40,6 +43,7 @@ export class ForexMarketComponent implements OnInit {
     if(this.quantities[index]!=="0") {
       this.alertMessage = `Purchasing ${this.currencies[index].symbol}${this.quantities[index]}...`
 
+      this.canBuy = false;
       this.cashService.getAccount(this.currentUser)
       .subscribe((accountPayload) =>{
         console.log("Account: ", accountPayload)
@@ -47,6 +51,7 @@ export class ForexMarketComponent implements OnInit {
 
         if(accountPayload.balance < price) {
           this.alertMessage = "Insufficient Balance"
+          this.canBuy = true;
         } else {
           let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
 
@@ -62,6 +67,7 @@ export class ForexMarketComponent implements OnInit {
               .subscribe((payload) => {
                 console.log("Response: ", payload);
                 this.alertMessage = `Purchased ${payload.quantity} ${payload.code} for \$${payload.purchasePrice * payload.quantity}!`
+                this.canBuy = true;
               })
               this.clear(index);
             })
