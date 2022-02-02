@@ -95,10 +95,24 @@ export class PortfolioComponent implements OnInit {
     console.log("CD to sell: ", this.cds[index])
     console.log("Selling cd row: ", index)
     this.cdMessage = `Selling for ${this.cds[index].currentValue}`
-    this.portfolioService.sellInvestment(this.currentUser,this.cds[index].investmentId, "cd")
-    .subscribe(() => {
-      this.cdMessage = `Sold successfully!`
-      this.updatePortfolio();
+    this.canSell = false;
+
+    this.cashService.getAccount(this.currentUser)
+    .subscribe((accountPayload) => {
+      let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
+
+      this.cashService.updateAccount(this.currentUser, accountPayload.balance + this.cds[index].currentValue)
+      .subscribe((soldPayload) => {
+        this.cashService.addTransaction(this.currentUser, "Sold CD", this.cds[index].currentValue, date)
+        .subscribe((transactionPayload) => {
+          this.portfolioService.sellInvestment(this.currentUser,this.cds[index].investmentId, "cd")
+          .subscribe(() => {
+            this.cdMessage = `Sold successfully!`
+            this.canSell = true;
+            this.updatePortfolio();
+          })
+        })
+      })
     })
   }
 
