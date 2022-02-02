@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardCommunicationService } from '../dashboard-communication.service';
 import { User } from '../../models/user.model'
+import { Router } from '@angular/router';
 @Component({
   selector: 'dashboard-home',
   templateUrl: './dashboard-home.component.html',
@@ -30,12 +31,12 @@ export class DashboardHomeComponent implements OnInit {
 
   userFound: boolean = false;
 
-  constructor(private dashboardCommunicationService: DashboardCommunicationService) { 
+  constructor(private dashboardCommunicationService: DashboardCommunicationService, private router: Router) { 
     this.dashboardCommunicationService.setHome(this);
   }
 
   ngOnInit(): void {
-    
+    this.dashboardCommunicationService.getUserFromSession();
   }
 
 
@@ -47,7 +48,13 @@ export class DashboardHomeComponent implements OnInit {
 
   setUser(user: User){
     this.User = user;
-    this.firstName = user.first;
+    if(this.User != undefined){
+      this.firstName = user.first;
+    }
+    else{
+      this.dashboardCommunicationService.logout();
+    }
+    
   }
 
 }

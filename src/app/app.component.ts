@@ -28,4 +28,9 @@ export class AppComponent{
     this.dashboardCommunicationService.Main.setView('account');
     this.router.navigate(['/dashboard']);
   }
+
+  goToDashboard(){
+    this.dashboardCommunicationService.Main.setView('home');
+    this.router.navigate(['/dashboard']);
+  }
 }
