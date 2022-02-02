@@ -39,7 +39,9 @@ export class DashboardCommunicationService {
       if(this.Home){
         this.Home.setUser(this.User); 
       }
-      
+      if(this.Account){
+        this.Account.setUser(this.User);
+      }
     })
   }
 

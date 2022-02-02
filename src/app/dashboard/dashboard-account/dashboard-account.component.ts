@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { User } from '../../models/user.model'
 
 @Component({
   selector: 'dashboard-account',
@@ -100,4 +100,8 @@ export class DashboardAccountComponent implements OnInit {
       return 'Please enter 10 digits with no spaces or dashes'
     }
   }
+
+setUser(user:User){
+  this.user = user;
+}
 }
