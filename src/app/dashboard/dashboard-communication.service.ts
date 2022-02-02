@@ -36,7 +36,12 @@ export class DashboardCommunicationService {
       this.User = res.data;
       this.SideBar.setUser(this.User);  
       this.AppComponent.setLoggedIn();
-      this.Home.setUser(this.User); 
+      if(this.Home){
+        this.Home.setUser(this.User); 
+      }
+      if(this.Account){
+        this.Account.setUser(this.User);
+      }
     })
   }
 
@@ -87,7 +92,9 @@ export class DashboardCommunicationService {
     this.authService.logout(body);
     localStorage.removeItem('view');
     this.AppComponent.setLoggedOut();
-    this.landingPage.setLoggedOff();
+    if(this.landingPage){
+      this.landingPage.setLoggedOff();
+    }
     this.router.navigate(['/']);
   }
 
