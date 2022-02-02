@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from '../../models/user.model'
+import { DashboardCommunicationService } from '../dashboard-communication.service';
 
 @Component({
   selector: 'dashboard-account',
@@ -45,7 +46,9 @@ export class DashboardAccountComponent implements OnInit {
     userId: 1
   }
 
-  constructor() { }
+  constructor(private dashboardCommunicationService: DashboardCommunicationService) {
+    this.dashboardCommunicationService.setAccount(this);
+   }
 
   ngOnInit(): void {
   }
