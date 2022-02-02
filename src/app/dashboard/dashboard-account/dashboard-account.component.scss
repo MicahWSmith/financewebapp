@@ -1,12 +1,17 @@
 .container{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    width: 800px;
+    height: calc(100vh - 280px);
+    overflow-y: auto;
+    //flex-wrap: wrap;
     //background-color: green;
 }
 .row{
     display: flex;
-    flex-direction: row;
+    width: 100%;
+    background-color: chocolate;
+    
     //background-color: red;
     
 }
@@ -18,4 +23,9 @@
 }
 .label{
     padding-right: 5px;
+}
+
+.info{
+    background-color: red;
+    width: 50px;
 }

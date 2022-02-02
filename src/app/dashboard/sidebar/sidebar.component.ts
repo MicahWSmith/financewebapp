@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth.service';
 import { DashboardCommunicationService } from '../dashboard-communication.service';
 
 @Component({
@@ -29,7 +30,7 @@ export class SidebarComponent implements OnInit {
   }
 
   logout(){
-    console.log('LOGOUT')
+    this.dashboardService.getAuthService().logout;
   }
 
   setStep(num:number){

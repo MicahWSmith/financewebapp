@@ -5,11 +5,12 @@
         </mat-card-title>
         <mat-card-content class="container">
 
-            <div class="label">Name: </div>
-            <div class="row name" *ngIf="!showNameEdit">
-                <div class="info">{{profile.first}} {{profile.last}}</div>
-                <button mat-button (click)="editName()">Edit</button>
+            <div class='row'>
+                <span class="label">Name: </span>
+                <span class="info" *ngIf="!showNameEdit">{{profile.first}} {{profile.last}}</span>
+                <button mat-button (click)="editName()"  *ngIf="!showNameEdit">Edit</button>
             </div>
+            
 
             <div class="column" *ngIf="showNameEdit">
                 <div>
