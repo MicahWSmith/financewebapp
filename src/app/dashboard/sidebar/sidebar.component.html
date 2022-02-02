@@ -16,8 +16,8 @@
                 My Accounts
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <div class='panel-link'>Individual</div>
-            <div class='panel-link'>IRAs</div>
+            <div class='panel-link' routerLink="/cash">Individual</div>
+            <div class='panel-link' routerLink="/ira" >IRA</div>
           </mat-expansion-panel>
 
           <mat-expansion-panel class='side-bar-expansion-panel' [expanded]='step == 2' (opened)='setStep(2)'>
@@ -26,7 +26,7 @@
                 My Portfolio
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <div class='panel-link'>Portfolio</div>
+            <div class='panel-link' routerLink="/portfolio" >Portfolio</div>
           </mat-expansion-panel>
 
           <mat-expansion-panel class='side-bar-expansion-panel' [expanded]='step == 3' (opened)='setStep(3)'>
@@ -35,10 +35,9 @@
                 Marketplaces
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <div class='panel-link'>Bonds</div>
-            <div class='panel-link'>CDs</div>
-            <div class='panel-link'>Forex</div>
-            <div class='panel-link'>Mutual Funds</div>
+            <div class='panel-link' routerLink="/cds">CDs</div>
+            <div class='panel-link' routerLink="/forex">Forex</div>
+            <div class='panel-link' routerLink="/mutualfunds">Mutual Funds</div>
             <div class='panel-link' routerLink="/stocks">Stocks</div>
           </mat-expansion-panel>
     </div>
