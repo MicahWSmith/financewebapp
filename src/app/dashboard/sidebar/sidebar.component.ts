@@ -12,11 +12,13 @@ export class SidebarComponent implements OnInit {
 
   User!:User;
   firstName:string = "";
-  currentPage = 'home';
-  step = 0;
+  currentPage:string = 'home';
+  step:number = 0;
+  
+  gotUser: boolean = false;
 
-  constructor(private dashboardService:DashboardCommunicationService) {
-    dashboardService.setSidebar(this);
+  constructor(private dashboardCommunicationService:DashboardCommunicationService) {
+    dashboardCommunicationService.setSidebar(this);
    }
 
   ngOnInit(): void {
@@ -24,21 +26,22 @@ export class SidebarComponent implements OnInit {
   }
 
   goTo(view:string){
-      this.dashboardService.setView(view);
+      this.dashboardCommunicationService.setView(view);
       this.currentPage = view;
   }
 
   logout(){
-    this.dashboardService.getAuthService().logout;
+    this.dashboardCommunicationService.logout();
   }
 
   setStep(num:number){
     this.step = num;
   }
 
-  setUser(){
-    this.User = this.dashboardService.getUser();
+  setUser(user: User){
+    this.User = user;
     this.firstName = this.User.first;
+    this.gotUser = true;
   }
 
 }
