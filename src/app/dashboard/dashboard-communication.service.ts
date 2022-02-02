@@ -6,13 +6,14 @@ import { User } from '../models/user.model';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { DashboardAccountComponent } from './dashboard-account/dashboard-account.component';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardCommunicationService {
 
   User!:User;
-
+  AppComponent!: AppComponent;
   SideBar: SidebarComponent = new SidebarComponent(this);
   Main: MainComponent = new MainComponent(this);
   
@@ -31,10 +32,8 @@ export class DashboardCommunicationService {
 
     this.authService.getUserData(body).subscribe(res => {
       this.User = res.data;
-      this.SideBar.setUser(this.User);
-      this.Home.setUser(this.User);
-      
-      
+      this.SideBar.setUser(this.User);  
+      this.AppComponent.setLoggedIn(); 
     })
   }
 
@@ -52,10 +51,15 @@ export class DashboardCommunicationService {
 
   setHome(component: DashboardHomeComponent){
     this.Home = component;
+    this.Home.setUser(this.User);
   }
 
   setAccount(component: DashboardAccountComponent){
     this.Account = component;
+  }
+
+  setAppComponent(component: AppComponent){
+    this.AppComponent = component;
   }
 
   getUser(): User{
@@ -74,6 +78,8 @@ export class DashboardCommunicationService {
     }
 
     this.authService.logout(body);
+    localStorage.removeItem('view');
+    this.AppComponent.setLoggedOut();
     this.router.navigate(['/']);
   }
 }

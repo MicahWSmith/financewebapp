@@ -13,7 +13,8 @@
       <div class="corner_nav">|</div>
       <a class="corner_nav" routerLink="/about">About us<mat-icon>explore</mat-icon></a>
       <div class="corner_nav">|</div>
-      <a class="corner_nav" routerLink="/login">Login<mat-icon>account_circle</mat-icon></a>
+      <a class="corner_nav" routerLink="/login" *ngIf='!loggedIn'>Login<mat-icon>account_circle</mat-icon></a>
+      <a class="corner_nav" (click)='goToMyAccount()' *ngIf='loggedIn'>My Account<mat-icon>account_circle</mat-icon></a>
     </div>
   </div>
 
