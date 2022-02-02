@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardCommunicationService } from '../dashboard-communication.service';
-
+import { User } from '../../models/user.model'
 @Component({
   selector: 'dashboard-home',
   templateUrl: './dashboard-home.component.html',
   styleUrls: ['./dashboard-home.component.scss']
 })
 export class DashboardHomeComponent implements OnInit {
+  User!:User;
   fName!:string;
   
   page1_sentenceA: string = `As a valued member of our community, we appreciate your trust in us, and look forward to working with you to secure your future!`;
@@ -27,11 +28,24 @@ export class DashboardHomeComponent implements OnInit {
   page4_sentenceB: string = 'Browse multiple currencies in our Forex market';
   page4_sentenceC: string = 'Research stock performances with our Mutual Fund and Stock trackers';
 
+  userFound: boolean = false;
+
   constructor(private dashboardCommunicationService: DashboardCommunicationService) { 
-    this.fName = dashboardCommunicationService.getFirstName();
+    
   }
 
   ngOnInit(): void {
+    let body = {
+      token: sessionStorage.getItem('user') ? sessionStorage.getItem('user') : ""
+    }
+
+    this.dashboardCommunicationService.getAuthService().getUserData(body).subscribe(res => {
+      this.User = res.data;
+      this.userFound = true;
+      this.fName = this.User.first;
+      this.dashboardCommunicationService.setUser(this.User);
+      console.log(this.User);
+    })
   }
 
 

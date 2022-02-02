@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
+import { User } from 'src/app/models/user.model';
 import { DashboardCommunicationService } from '../dashboard-communication.service';
 
 @Component({
@@ -9,11 +10,8 @@ import { DashboardCommunicationService } from '../dashboard-communication.servic
 })
 export class SidebarComponent implements OnInit {
 
-  User = {
-    fName: 'Dakota',
-    lName: 'Korn'
-  };
-  
+  User!:User;
+  firstName:string = "";
   currentPage = 'home';
   step = 0;
 
@@ -22,6 +20,7 @@ export class SidebarComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
   }
 
   goTo(view:string){
@@ -35,6 +34,11 @@ export class SidebarComponent implements OnInit {
 
   setStep(num:number){
     this.step = num;
+  }
+
+  setUser(){
+    this.User = this.dashboardService.getUser();
+    this.firstName = this.User.first;
   }
 
 }
