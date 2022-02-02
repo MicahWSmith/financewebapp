@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 import { PortfolioApiService } from '../portfolio-api.service';
+import { CashAccountService } from '../cash-account.service';
 
 @Component({
   selector: 'app-cds',
@@ -16,7 +17,8 @@ export class CdsComponent implements OnInit {
     private route: ActivatedRoute,
     private cdService: CdServiceService,
     private router: Router,
-    private portfolioService: PortfolioApiService
+    private portfolioService: PortfolioApiService,
+    private cashService: CashAccountService
   ) {}
 
   cds: Cd[] = [];
@@ -29,6 +31,8 @@ export class CdsComponent implements OnInit {
   value = 0;
   userDepositInput: any = 0;
   alertMessage: string = '';
+  canBuy: boolean = false;
+  currentUser: number = 1;
   valid: boolean = false;
 
   ngOnInit(): void {
@@ -78,18 +82,38 @@ export class CdsComponent implements OnInit {
     if (Number(this.userDepositInput) >= this.minDeposit) {
       finalValue = Number(this.userDepositInput);
       this.valid = false;
+      this.canBuy = false;
       this.alertMessage = 'Buying CD...';
-      this.portfolioService
-        .buyInvestment(3, {
-          type: 'cd',
-          deposit: finalValue,
-          interestRate: (this.interestRate || 0) / 100,
-          term: (this.termLength || 0) * 2592000000,
-        })
-        .subscribe((payload) => {
-          console.log('Response: ', payload);
-          this.alertMessage = `Invested ${payload.deposit} in a CD.`;
-        });
+
+      this.cashService.getAccount(this.currentUser)
+      .subscribe((accountPayload) => {
+        console.log("Account: ", accountPayload)
+
+        if(accountPayload.balance < this.userDepositInput) {
+          this.alertMessage = "Insufficient Balance"
+          this.canBuy = true;
+        } else {
+          let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
+
+          this.cashService.updateAccount(this.currentUser, accountPayload.balance - this.userDepositInput)
+          .subscribe((paidPayload) => {
+            this.cashService.addTransaction(this.currentUser, "Bought CD", this.userDepositInput, date)
+            .subscribe((transactionPayload) => {
+              this.portfolioService.buyInvestment(this.currentUser, {
+                type: 'cd',
+                deposit: finalValue,
+                interestRate: (this.interestRate || 0) / 100,
+                term: (this.termLength || 0) * 2592000000,
+              })
+              .subscribe((payload) => {
+                console.log('Response: ', payload);
+                this.alertMessage = `Invested ${payload.deposit} in a CD.`;
+                this.canBuy = true;
+              })
+            })
+          })
+        }
+      })
       this.closePopup();
 
       console.log(

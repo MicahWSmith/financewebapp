@@ -7,6 +7,7 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
 import { DashboardAccountComponent } from './dashboard-account/dashboard-account.component';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
+import { HomeComponent } from '../home/home.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,11 +17,12 @@ export class DashboardCommunicationService {
   AppComponent!: AppComponent;
   SideBar: SidebarComponent = new SidebarComponent(this);
   Main: MainComponent = new MainComponent(this);
-  
+  landingPage!: HomeComponent;
   Home!: DashboardHomeComponent;
   Account!: DashboardAccountComponent;
   authService!: AuthService;
 
+  timeoutLength: number = 30 * 60 * 1000;
   constructor(auth:AuthService, private router: Router) {
     this.authService = auth; 
   }
@@ -33,7 +35,8 @@ export class DashboardCommunicationService {
     this.authService.getUserData(body).subscribe(res => {
       this.User = res.data;
       this.SideBar.setUser(this.User);  
-      this.AppComponent.setLoggedIn(); 
+      this.AppComponent.setLoggedIn();
+      this.Home.setUser(this.User); 
     })
   }
 
@@ -51,11 +54,15 @@ export class DashboardCommunicationService {
 
   setHome(component: DashboardHomeComponent){
     this.Home = component;
-    this.Home.setUser(this.User);
+    
   }
 
   setAccount(component: DashboardAccountComponent){
     this.Account = component;
+  }
+
+  setLandingPage(component: HomeComponent){
+    this.landingPage = component;
   }
 
   setAppComponent(component: AppComponent){
@@ -80,6 +87,13 @@ export class DashboardCommunicationService {
     this.authService.logout(body);
     localStorage.removeItem('view');
     this.AppComponent.setLoggedOut();
+    this.landingPage.setLoggedOff();
     this.router.navigate(['/']);
+  }
+
+  logoutTimer(){
+    setTimeout(()=>{
+      this.logout();
+    }, this.timeoutLength);
   }
 }

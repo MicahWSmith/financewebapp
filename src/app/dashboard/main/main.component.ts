@@ -15,13 +15,21 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.dashboardCommunicationService.getUserFromSession();
-    let savedView = localStorage.getItem('view');
-    
-    if(savedView != null){
-      this.view = savedView;
+    if(!sessionStorage.getItem('user')){
+      this.dashboardCommunicationService.logout();
     }
+
+    else{
+      this.dashboardCommunicationService.getUserFromSession();
+
+      let savedView = localStorage.getItem('view');
+      
+      if(savedView != null){
+        this.view = savedView;
+      }
+    }
+
+    
 
   }
 

@@ -3,6 +3,7 @@ import {FormControl, Validators} from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { observable } from 'rxjs';
 import { Route, Router } from '@angular/router';
+import { DashboardCommunicationService } from '../dashboard/dashboard-communication.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   failedLogin: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private dashboardCommunicationService:DashboardCommunicationService) { }
 
   ngOnInit(): void {
   }
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('user', res.token);
           sessionStorage.setItem('loggedIn', true.toString());
           //console.log(sessionStorage.getItem('user'));
+          this.dashboardCommunicationService.logoutTimer();
           this.router.navigate(['/dashboard']);
         }
         else{

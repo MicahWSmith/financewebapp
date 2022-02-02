@@ -96,7 +96,15 @@
                         </div>
                         
                         <div id='buy-button-div'>
-                            <div id='buy-button' (click)='buyStock()'>Purchase</div>
+                            <div *ngIf="canBuy; then buyBlock else lockedBlock"></div>
+
+                            <ng-template #buyBlock>
+                                <div id='buy-button' (click)='buyStock()'>Buy</div> 
+                            </ng-template>
+
+                            <ng-template #lockedBlock>
+                                <div id='locked-button'>Buy</div> 
+                            </ng-template>
                         </div>
                         <div id='purchase-message-div'>
                             <p>{{purchaseMessage}}</p>

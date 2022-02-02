@@ -9,8 +9,8 @@
       <div class="logo-title">Condor</div>
     </a>
     <div class="nav_links">
-      <a class="corner_nav" routerLink="/myinfo">Info<mat-icon>info</mat-icon></a>
-      <div class="corner_nav">|</div>
+      <a class="corner_nav" (click)='goToDashboard()' *ngIf='loggedIn'>My Dashboard<mat-icon>info</mat-icon></a>
+      <div class="corner_nav" *ngIf='loggedIn'>|</div>
       <a class="corner_nav" routerLink="/about">About us<mat-icon>explore</mat-icon></a>
       <div class="corner_nav">|</div>
       <a class="corner_nav" routerLink="/login" *ngIf='!loggedIn'>Login<mat-icon>account_circle</mat-icon></a>

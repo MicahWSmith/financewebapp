@@ -56,7 +56,17 @@
             <!-- Sell Column -->
             <ng-container matColumnDef="sell">
                 <th mat-header-cell *matHeaderCellDef> Sell </th>
-                <td mat-cell *matCellDef="let currency; let i=index"> <button mat-raised-button (click)="sellCurrency(i)">Sell</button> </td>
+                <td mat-cell *matCellDef="let currency; let i=index"> 
+                    <div *ngIf="canSell; then buyBlock else lockedBlock"></div>
+
+                    <ng-template #buyBlock>
+                        <button mat-raised-button (click)="sellCurrency(i)">Sell</button> 
+                    </ng-template>
+
+                    <ng-template #lockedBlock>
+                        <button mat-raised-button disabled>Sell</button> 
+                    </ng-template>
+                </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="currencyColumns"></tr>
@@ -103,7 +113,17 @@
             <!-- Sell Column -->
             <ng-container matColumnDef="sell">
                 <th mat-header-cell *matHeaderCellDef> Sell </th>
-                <td mat-cell *matCellDef="let stock; let i=index"> <button mat-raised-button (click)="sellStock(i)">Sell</button> </td>
+                <td mat-cell *matCellDef="let stock; let i=index"> 
+                    <div *ngIf="canSell; then buyBlock else lockedBlock"></div>
+
+                    <ng-template #buyBlock>
+                        <button mat-raised-button (click)="sellStock(i)">Sell</button> 
+                    </ng-template>
+
+                    <ng-template #lockedBlock>
+                        <button mat-raised-button disabled>Sell</button> 
+                    </ng-template>
+                </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="stockColumns"></tr>
@@ -156,7 +176,17 @@
             <!-- Sell Column -->
             <ng-container matColumnDef="sell">
                 <th mat-header-cell *matHeaderCellDef> Sell </th>
-                <td mat-cell *matCellDef="let cd; let i=index"> <button mat-raised-button (click)="sellCD(i)">Sell</button> </td>
+                <td mat-cell *matCellDef="let cd; let i=index"> 
+                    <div *ngIf="canSell; then buyBlock else lockedBlock"></div>
+
+                    <ng-template #buyBlock>
+                        <button mat-raised-button (click)="sellCD(i)">Sell</button> 
+                    </ng-template>
+
+                    <ng-template #lockedBlock>
+                        <button mat-raised-button disabled>Sell</button> 
+                    </ng-template>
+                </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="cdColumns"></tr>
