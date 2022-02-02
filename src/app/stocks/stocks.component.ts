@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { StockGraphComponent } from '../stock-graph/stock-graph.component';
 import { StockService } from '../stock.service';
 import { PortfolioApiService } from '../portfolio-api.service';
+import { CashAccountService } from '../cash-account.service';
 import { Stock } from './stocks.model'
 
 
@@ -43,13 +44,16 @@ export class StocksComponent implements OnInit {
   view:string = 'week';
   lastValue:string = '';
 
+  currentUser: number = 1;
+
   rateControl = new FormControl("", [Validators.min(1)]);
   amount:number = 0;
   cost:number = 0;
   cashAvailable:number = 1000000;
   purchaseMessage: string = "";
+  canBuy: boolean = true;
 
-  constructor(private stockService: StockService, private portfolioService: PortfolioApiService) { }
+  constructor(private stockService: StockService, private portfolioService: PortfolioApiService, private cashService: CashAccountService) { }
 
   ngOnInit(): void {
     this.stockService.getStockInformation().subscribe((data)=>{
@@ -59,6 +63,7 @@ export class StocksComponent implements OnInit {
       this.selectedStockValue = (Object.values(this.selectedStock.stock_value)[0])
       this.stockSelection(this.selectedStock);
     });
+    this.getBalance();
   }
 
 
@@ -181,25 +186,51 @@ export class StocksComponent implements OnInit {
     this.cost = this.amount* this.selectedStockValue;
   }
 
+  getBalance() {
+    this.cashService.getAccount(this.currentUser)
+    .subscribe((payload) => {
+      this.cashAvailable = payload.balance;
+    })
+  }
+
   buyStock(){
     console.log("Buying: ", this.selectedStock.stock_symbol);
     console.log("Quantity: ", this.amount);
-    
-    if(this.cost <= this.cashAvailable && this.amount >= 1)
+
+    if(this.amount >= 1)
     {
       this.purchaseMessage = `Buying ${this.amount} shares of ${this.selectedStock.stock_symbol}...`
-      this.portfolioService.buyInvestment(2, {
-        type: "stock",
-        symbol: this.selectedStock.stock_symbol,
-        quantity: this.amount
+      this.canBuy = false;
+
+      this.cashService.getAccount(this.currentUser)
+      .subscribe((accountPayload) => {
+        console.log("Account: ", accountPayload);
+        let price = this.amount * this.selectedStockValue;
+
+        if(accountPayload.balance < price) {
+          this.purchaseMessage = "Insufficient Balance"
+          this.canBuy = true;
+        } else {
+          let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
+          
+          this.cashService.updateAccount(this.currentUser, accountPayload.balance - price)
+          .subscribe((paidPayload) => {
+            this.cashService.addTransaction(this.currentUser, "Bought Stock", price, date)
+            .subscribe((transactionPayload) => {
+              this.portfolioService.buyInvestment(this.currentUser, {
+                type: "stock",
+                symbol: this.selectedStock.stock_symbol,
+                quantity: this.amount
+              })
+              .subscribe((payload) => {
+                console.log("Response: ", payload);
+                this.canBuy = true;
+                this.purchaseMessage = `Purchased ${payload.quantity} shares of ${payload.symbol} for \$${payload.purchasePrice * payload.quantity}!`
+              })
+            })
+          })
+        }
       })
-      .subscribe((payload) => {
-        console.log("Response: ", payload);
-        this.purchaseMessage = `Purchased ${payload.quantity} shares of ${payload.symbol} for \$${payload.purchasePrice * payload.quantity}!`
-      })
-    }
-    else{
-      alert("STOCK CANNOT BE BOUGHT");
     }
   }
 
