@@ -8,7 +8,7 @@ import { User } from '../../models/user.model'
 })
 export class DashboardHomeComponent implements OnInit {
   User!:User;
-  fName!:string;
+  firstName:string = "";
   
   page1_sentenceA: string = `As a valued member of our community, we appreciate your trust in us, and look forward to working with you to secure your future!`;
   page1_sentenceB: string = 'As always, if you have any questions or concerns, feel free to contact one of our customer service team members, and we will work to find a solution as quickly as possible!';
@@ -31,21 +31,11 @@ export class DashboardHomeComponent implements OnInit {
   userFound: boolean = false;
 
   constructor(private dashboardCommunicationService: DashboardCommunicationService) { 
-    
+    this.dashboardCommunicationService.setHome(this);
   }
 
   ngOnInit(): void {
-    let body = {
-      token: sessionStorage.getItem('user') ? sessionStorage.getItem('user') : ""
-    }
-
-    this.dashboardCommunicationService.getAuthService().getUserData(body).subscribe(res => {
-      this.User = res.data;
-      this.userFound = true;
-      this.fName = this.User.first;
-      this.dashboardCommunicationService.setUser(this.User);
-      console.log(this.User);
-    })
+    this.dashboardCommunicationService.getUserFromSession();
   }
 
 
@@ -53,6 +43,11 @@ export class DashboardHomeComponent implements OnInit {
     var elmnt = document.getElementById(`page-${page}`);
     elmnt?.scrollIntoView();
     
+  }
+
+  setUser(user: User){
+    this.User = user;
+    this.firstName = user.first;
   }
 
 }

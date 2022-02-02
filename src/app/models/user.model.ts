@@ -4,6 +4,7 @@ export interface User{
     id: number,
     last: string,
     phone: string,
+    profile: Object,
     security_answer: string,
     security_question: string 
 }
