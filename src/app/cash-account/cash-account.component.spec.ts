@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CashAccountComponent } from './cash-account.component';
 
 describe('CashAccountComponent', () => {

@@ -1,31 +1,18 @@
-.container{
+.box{
     display: flex;
     flex-direction: column;
-    width: 800px;
-    height: calc(100vh - 280px);
-    overflow-y: auto;
-    //flex-wrap: wrap;
-    //background-color: green;
+    flex-wrap: wrap;
 }
-.row{
+.rowTest{
     display: flex;
-    width: 100%;
-    background-color: chocolate;
-    
-    //background-color: red;
-    
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
-.column{
+.columnTest{
     display: flex;
     flex-direction: column;
     flex: none;
-    //background-color: yellow;
 }
 .label{
     padding-right: 5px;
-}
-
-.info{
-    background-color: red;
-    width: 50px;
 }
