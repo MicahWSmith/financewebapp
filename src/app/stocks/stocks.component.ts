@@ -63,6 +63,7 @@ export class StocksComponent implements OnInit {
       this.selectedStockValue = (Object.values(this.selectedStock.stock_value)[0])
       this.stockSelection(this.selectedStock);
     });
+    this.getBalance();
   }
 
 
@@ -185,12 +186,17 @@ export class StocksComponent implements OnInit {
     this.cost = this.amount* this.selectedStockValue;
   }
 
+  getBalance() {
+    this.cashService.getAccount(this.currentUser)
+    .subscribe((payload) => {
+      this.cashAvailable = payload.balance;
+    })
+  }
+
   buyStock(){
     console.log("Buying: ", this.selectedStock.stock_symbol);
     console.log("Quantity: ", this.amount);
 
-
-    
     if(this.amount >= 1)
     {
       this.purchaseMessage = `Buying ${this.amount} shares of ${this.selectedStock.stock_symbol}...`
