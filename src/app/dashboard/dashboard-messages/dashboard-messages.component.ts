@@ -38,7 +38,6 @@ export class DashboardMessagesComponent implements AfterViewInit {
   pageSize = 10;
 
   constructor(private dashboardCommunicationService: DashboardCommunicationService) { 
-    this.fName = dashboardCommunicationService.getFirstName();
   }
 
   ngAfterViewInit() {
