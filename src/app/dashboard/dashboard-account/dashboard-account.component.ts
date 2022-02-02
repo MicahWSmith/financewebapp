@@ -27,8 +27,9 @@ export class DashboardAccountComponent implements OnInit {
   showAddressEdit : boolean = false;
   showContactEdit : boolean = false;
   selected : string = "";
+  user!:User
 
-  user = {
+  /* user = {
     id: 1,
     email: "test@test.com",
     phone: "0000000000",
@@ -44,13 +45,21 @@ export class DashboardAccountComponent implements OnInit {
     city: "Philadelphia",
     state: "PA",
     userId: 1
+<<<<<<< HEAD
   }
 
   constructor(private dashboardCommunicationService: DashboardCommunicationService) {
     this.dashboardCommunicationService.setAccount(this);
    }
+=======
+  } */
+>>>>>>> main
 
+  constructor(private dbComm: DashboardCommunicationService) {
+    this.dbComm.setAccount(this);
+   }
   ngOnInit(): void {
+    this.dbComm.getUserFromSession();
   }
 
   editName(){
@@ -104,7 +113,7 @@ export class DashboardAccountComponent implements OnInit {
     }
   }
 
-setUser(user:User){
-  this.user = user;
-}
+  setUser(user:User){
+    this.user = user;
+  }
 }
