@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  loggedIn: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+    let session = sessionStorage.getItem('user') ? sessionStorage.getItem('user') : "";
+
+    if(session != ""){
+      this.loggedIn = true;
+    }
   }
 
 }

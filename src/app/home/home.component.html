@@ -3,7 +3,8 @@
     <div class="welcome_card">
       <h2>Welcome to Condor Financial</h2>
       <p>Register or Log In to begin playing with your virtual portfolio! Pick up a variety of investments and watch the returns in real-time!</p>
-      <button routerLink="/login" mat-raised-button id="login-button">Login/Sign Up</button>
+      <button routerLink="/login" mat-raised-button id="login-button" *ngIf='!loggedIn'>Login/Sign Up</button>
+      <button routerLink="/dashboard" mat-raised-button id="login-button" *ngIf='loggedIn'>My Dashboard</button>
     </div>
   
   </div>

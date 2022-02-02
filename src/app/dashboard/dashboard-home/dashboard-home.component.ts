@@ -35,7 +35,7 @@ export class DashboardHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dashboardCommunicationService.getUserFromSession();
+    
   }
 
 
