@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ForexAPIService } from '../forex-api.service';
 import { PortfolioApiService } from '../portfolio-api.service';
+import { CashAccountService } from '../cash-account.service';
 import { Router } from '@angular/router';
-import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-forex-market',
@@ -22,7 +22,7 @@ export class ForexMarketComponent implements OnInit {
 
   displayedColumns: string[] = ["code", "name", "symbol", "price", "quantity", "buy"]
 
-  constructor(private router: Router, private forexService: ForexAPIService, private portfolioService: PortfolioApiService) { }
+  constructor(private router: Router, private forexService: ForexAPIService, private portfolioService: PortfolioApiService, private cashService: CashAccountService) { }
 
   ngOnInit(): void {
     this.forexService.getAllCurrencies()
@@ -39,16 +39,35 @@ export class ForexMarketComponent implements OnInit {
     console.log("Quantity: ", this.quantities[index]);
     if(this.quantities[index]!=="0") {
       this.alertMessage = `Purchasing ${this.currencies[index].symbol}${this.quantities[index]}...`
-      this.portfolioService.buyInvestment(this.currentUser, {
-        type: "currency",
-        code: this.currencies[index].code,
-        quantity: this.quantities[index]
+
+      this.cashService.getAccount(this.currentUser)
+      .subscribe((accountPayload) =>{
+        console.log("Account: ", accountPayload)
+        let price = Number(this.quantities[index]) * this.currencies[index].lastPrice;
+
+        if(accountPayload.balance < price) {
+          this.alertMessage = "Insufficient Balance"
+        } else {
+          let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
+
+          this.cashService.updateAccount(this.currentUser, accountPayload.balance - price)
+          .subscribe((paidPayload) => {
+            this.cashService.addTransaction(this.currentUser, "Bought Currency", price, date)
+            .subscribe((transactionPayload) => {
+              this.portfolioService.buyInvestment(this.currentUser, {
+                type: "currency",
+                code: this.currencies[index].code,
+                quantity: this.quantities[index]
+              })
+              .subscribe((payload) => {
+                console.log("Response: ", payload);
+                this.alertMessage = `Purchased ${payload.quantity} ${payload.code} for \$${payload.purchasePrice * payload.quantity}!`
+              })
+              this.clear(index);
+            })
+          })
+        }
       })
-      .subscribe((payload) => {
-        console.log("Response: ", payload);
-        this.alertMessage = `Purchased ${payload.quantity} ${payload.code} for \$${payload.purchasePrice * payload.quantity}!`
-      })
-      this.clear(index);
   }
 }
 
