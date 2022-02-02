@@ -91,10 +91,11 @@ export class AuthService {
     body = {
       token: string
     }
-  */
-  logout(body: {}): void{
-    this.http.post("https://vg-db-users.herokuapp.com/auth/logout", body);
-    sessionStorage.clear();
-  }
+    */
+ logout(body: {}): Observable<any>{
+   sessionStorage.removeItem('user');
+   sessionStorage.setItem('loggedIn', false.toString());
+   return this.http.post("https://vg-db-users.herokuapp.com/auth/logout", body);
+ }
 
 }
