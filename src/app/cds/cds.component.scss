@@ -1,7 +1,10 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+
 .example-card {
   width: 275px;
   margin: 13px;
+  font-family: serif;
 }
 
 .example-card:hover {
@@ -11,6 +14,11 @@
 button {
   background-color: #19B3f4;
   color: white;
+  font-family: serif;
+}
+
+.btn-primary {
+  background-color: #19B3f4;
 }
 
 .details {
@@ -21,7 +29,7 @@ button {
 
 .card-container {
   display: flex;
- 
+  font-family: serif;
   padding-top: 50px;
   flex-wrap: wrap;
   min-width: 500px;
@@ -35,6 +43,7 @@ button {
   font-family: serif;
   text-align: center;
   padding-top: 50px;
+  font-family: serif;
 }
 
 .cd-sub-header {
@@ -48,6 +57,7 @@ button {
   height: 90%;
   width: 500px;
   position: absolute;
+  font-family: serif;
   flex-direction: column;
 }
 
@@ -58,6 +68,7 @@ button {
   width: 500px;
   position: absolute;
   flex-direction: column;
+  font-family: serif;
 }
 
 
@@ -95,12 +106,14 @@ mat-slider {
 
 .modal {
   margin-top: 175px;
+  font-family: serif;
 }
 
 .error-message {
-  margin-right: 50px;
+  padding-right: 20px;
   font-style: italic;
   color: red;
+  font-family: serif;
 }
 
 @media only screen and (max-width: 100px) {

@@ -52,6 +52,7 @@
         CALCULATE
       </button> -->
       <button
+        class="btn btn-primary"
         mat-button
         (click)="openPopup(cd.term, cd.interestRate, cd.minimumOpeningDeposit)"
       >
@@ -81,28 +82,31 @@
             (input)="updateDeposit($event)"
             placeholder="{{ userDepositInput | currency }}"
           />
-          <p class="details">Opening Deposit: {{ userDepositInput | currency }}</p>
+          <p class="details">
+            Opening Deposit: {{ userDepositInput | currency }}
+          </p>
           <p class="details">Term: {{ termLength }} months</p>
           <p class="details">Interest Rate: {{ interestRate }}%</p>
         </div>
         <div class="modal-footer">
-          <p class="error-message" *ngIf="valid">Deposit must be at least {{ minDeposit | currency}}</p>
+          <p class="error-message" *ngIf="valid">
+            Deposit for this CD must be at least {{ minDeposit | currency }}
+          </p>
           <button
             (click)="buyCD(i)"
-            
             (click)="reset(modalValue)"
             type="button"
-            class="btn"
+            class="btn btn-primary mod-btn"
           >
             BUY CD
           </button>
           <button
             type="button"
-            class="btn"
+            class="btn btn-primary"
             (click)="reset(modalValue)"
             (click)="closePopup()"
           >
-            Close
+            CLOSE
           </button>
         </div>
       </div>
