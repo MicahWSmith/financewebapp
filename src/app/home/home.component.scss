@@ -1,8 +1,18 @@
+$color-main: white;
+$color-secondary: #19B3F4;
+$color-secondary2: #5dbfe9;
+$color-footer: #ECECEC;
+$color-green: #c7ed9f;
+$color-green-dark: #a8d481;
+$primary-font: 'Red Hat Display', sans-serif;
+
 .home_content {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    width: 100%;
+    overflow-y: auto;
     .welcome_cards{
         display: flex;
         flex-direction: row;
@@ -10,13 +20,15 @@
         align-items: center;
         background: url("https://www.philipstrust.co.uk/wp-content/uploads/2019/05/about-us-header-philips-trust.jpg");
         background-repeat: no-repeat;
-        background-position: center;
+        background-position-y: -40px;
         background-size: cover;
         width: 100%;
         height: 500px;
+        flex-shrink: 0;
         .welcome_card{
             h2{
                 font-size: xx-large;
+                font-family: $primary-font;
             }
             display: flex;
             flex-direction: column;
@@ -30,37 +42,77 @@
             color: rgb(0, 0, 0);
             font-size: medium;
             max-width: 400px;
+
+            #login-button{
+                background-color: $color-green;
+                &:hover{
+                    background-color:$color-green-dark;
+                }
+            }
         }
     }
+
+    .services{
+        //background-color: rgb(228, 234, 255);
+        //padding: 30px;
+        width: 100%;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+
+        @media screen and (max-width:860px) { 
+            height: 500px; 
+        }
+
+        @media screen and (max-width:575px) { 
+                height: 800px; 
+        }
+
+        @media screen and (min-width:1416px) { 
+            height: 300px; 
+        }
+        #services-container{
+
+            width: 90%;
+            h2{
+                text-align: center;
+                font-size: x-large;
+                font-family: $primary-font;
+            }
+            .service_cards{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                .service_card{
+                    width: 200px;
+                    height: 135px;
+                    margin: 10px;
+                    .service_card_title {
+                        font-family: $primary-font;
+                    }
+                }
+            }
+        }
+        
+    }
+
     .home_paragraph {
+        background-color: $color-green;
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 30px;
+        padding-top: 30px;
+        padding-bottom: 30px;
         p{
             font-size: 15px;
             max-width: 1000px;
             padding-right: 20px;
             padding-left: 20px;
-        }
-    }
-    .services{
-        padding: 30px;
-        h2{
-            text-align: center;
-            font-size: x-large;
-        }
-        .service_cards{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            .service_card{
-                width: 200px;
-                margin: 10px;
-            }
         }
     }
 }

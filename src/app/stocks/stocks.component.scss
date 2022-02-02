@@ -1,11 +1,15 @@
-$color-main: rgb(228, 234, 255);
-$color-secondary: rgb(98, 81, 255);
-$color-three: rgb(121, 107, 255);
+$color-main: white;
+$color-secondary: #19B3F4;
+$color-secondary2: #5dbfe9;
+$color-footer: #ECECEC;
+$color-green: #c7ed9f;
+$color-green-dark: #a8d481;
+$primary-font: 'Red Hat Display', sans-serif;
 
 #main-container{
     display: flex;
     flex-direction: row;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 180px);
     width: 100%;
     min-height: 500px;
 
@@ -14,11 +18,11 @@ $color-three: rgb(121, 107, 255);
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: calc(100vh - 60px);
+        height: calc(100vh - 180px);
         width: 400px;
         min-width: 400px;
         min-height: 500px;
-        background-color: $color-main;
+        background-color: whitesmoke;
 
         #top-text{
             width: 380px;
@@ -42,15 +46,27 @@ $color-three: rgb(121, 107, 255);
             #stock-list{
                 width: 100%;
                 transition: height 0.5s;
-                background-color: $color-three;
+                background-color: $color-secondary;
                 overflow-y: auto;
+                @media screen and (max-height:1000px) { 
+                    height: 500px;
+                }
+                @media screen and (max-height:900px) { 
+                    height: 400px;
+                }
+                @media screen and (max-height:800px) { 
+                    height: 300px;
+                }
+                @media screen and (min-height:1000px) { 
+                    height: 600px;
+                }
             }
             .stock-list-item{
                 cursor: pointer;
                 color: $color-main;
                 transition: background-color 0.5s;
                 &:hover{
-                    background-color: $color-secondary;
+                    background-color: $color-secondary2;
                 }
             }
         }
@@ -59,7 +75,7 @@ $color-three: rgb(121, 107, 255);
     }
 
     #right-container{
-        height: calc(100vh - 60px);
+        height: calc(100vh - 180px);
         width: 100vw;
         min-height: 500px;
         background-color: $color-main;
@@ -95,7 +111,7 @@ $color-three: rgb(121, 107, 255);
                 justify-content: center;
                 align-items: center;
                 margin-left: 30px;
-                background-color: $color-three;
+                background-color: $color-secondary2;
                 border-radius: 5px;
                 transition: background-color 0.5s;
                 cursor: pointer;
@@ -111,7 +127,7 @@ $color-three: rgb(121, 107, 255);
 
         #right-middle-container{
             width: 100%;
-            height: 80%;
+            height: 90%;
             min-width: 700px;
             display: flex;
             flex-direction: row;
@@ -120,12 +136,12 @@ $color-three: rgb(121, 107, 255);
             #left-slider{
                 height: 100%;
                 min-width: 30px;
-                background-color: $color-three;
-                opacity: 20%;
+                background-color: $color-green-dark;
+                opacity: 40%;
                 transition: opacity 0.5s;
                 cursor: pointer;
                 &:hover{
-                    opacity: 50%;
+                    opacity: 70%;
                 }
 
                 display: flex;
@@ -142,7 +158,7 @@ $color-three: rgb(121, 107, 255);
                 height:100%;
                 width: calc(100vw - 470px);
                 min-width: 600px;
-                background-color: $color-three;
+                background-color: whitesmoke;
                 
                 .company-information-slide{
                     margin-top: 20px;
@@ -172,7 +188,6 @@ $color-three: rgb(121, 107, 255);
     
                 #slide-b{
                     margin-top: 10px;
-                    background-color: $color-main;
                     height: calc(100% - 20px);
                     margin-left: 10px;
                     margin-right: 10px;
@@ -214,18 +229,16 @@ $color-three: rgb(121, 107, 255);
                             color: red;
                         }
                         
-                        #day-chart{
-                            
-                            width: 98%;
-                        }
+
 
                         #view-buttons{
-                            margin-top: 20px;
+                            margin-top: 10px;
+                            margin-bottom: -10px;
                             width: 400px;
                             height: 30px;
                             display: flex;
                             border-radius: 2px;
-                            background-color: $color-three;
+                            background-color: $color-secondary2;
                         }
                         .button{
                             display: flex;
@@ -233,7 +246,6 @@ $color-three: rgb(121, 107, 255);
                             justify-content: center;
                             height: 30px;
                             width: 100px;
-                            background-color: $color-three;
                             cursor: pointer;
                             color: $color-main;
                             transition: background-color 0.5s;
@@ -245,6 +257,10 @@ $color-three: rgb(121, 107, 255);
 
                         .button-selected{
                             background-color: $color-secondary;
+                        }
+
+                        #day-chart{     
+                           
                         }
                     }
                    
@@ -348,7 +364,7 @@ $color-three: rgb(121, 107, 255);
                         }
 
                         #buy-button{
-                            background-color: $color-three;
+                            background-color: $color-secondary2;
                             height: 50px;
                             width: 140px;
                             display: flex;
@@ -374,12 +390,12 @@ $color-three: rgb(121, 107, 255);
             #right-slider{
                 height: 100%;
                 min-width: 30px;
-                background-color: $color-three;
-                opacity: 20%;
+                background-color: $color-green-dark;
+                opacity: 40%;
                 transition: opacity 0.5s;
                 cursor: pointer;
                 &:hover{
-                    opacity: 50%;
+                    opacity: 70%;
                 }
 
                 display: flex;
@@ -394,10 +410,6 @@ $color-three: rgb(121, 107, 255);
            
         }
 
-        #right-bottom-container{
-            width: 100%;
-            height: 10%;
-        }
     }
 
 }
@@ -406,70 +418,12 @@ $color-three: rgb(121, 107, 255);
     display: none;
 }
 
-@media screen and (max-height:600px) { 
-    #stock-list{
-        height: 250px;
-    }
-
-    #company-information-slide{
-        height: 400px;
-    }
-
-    #day-chart{
-        height: 300px;
-    }
-    
-}
-
-@media screen and (min-height:600px) { 
-    #stock-list{
-        height: 345px;
-    }
-
-    #company-information-slide{
-        height: 500px;
-    }
-
-    #day-chart{
-        height: 350px;
-    }
-    
-}
-
-@media screen and (min-height:700px) { 
-    #stock-list{
-        height: 440px;
-    }
-    #company-information-slide{
-        height: 600px;
-    }
-
-    #day-chart{
-        height: 430px;
-    }
-    
-}
-
-@media screen and (min-height:800px) { 
-    #stock-list{
-        height: 545px;
-    }
-    #company-information-slide{
-        height: 700px;
-    }
-
-    #day-chart{
-        height: 500px;
-    }
-}
-
-@media screen and (min-height:905px) { 
-    #stock-list{
-        height: 650px;
-    }
-
-    #day-chart{
-        height: 590px;
-    }
-    
-}
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }

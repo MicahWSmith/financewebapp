@@ -20,18 +20,15 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 export class DashboardMessagesComponent implements AfterViewInit {
 
   fName: string = '';
-  message: object = {
-    sender: 'Condor Financial',
-    subject: 'Welcome!',
-    body: `Welcome to Condor Financial ${this.fName}! We are excited to begin working with you to meet your financial goals! If you have any questions, feel free to contact our customer service team.`
-  }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+
   ELEMENT_DATA = [
-    {Date: "February 12th, 2022", Sender: 'Nmuta Jones', Subject: 'Congratulations!', Category: 'Regular', Message: 'Great job on the Capstone Project!!!'},
-    {Date: "February 10th, 2022", Sender: 'Condor Financial', Subject: 'Let me help you.', Category: 'Important', Message: 'Have you set up your two-factor authentication yet? If not, go to the following link to set it up! https://setuplink'},
-    {Date: "February 10th, 2022", Sender: 'William Myers (CEO of Condor Financial)', Subject: 'Welcome!', Category: 'Regular', Message: 'Hello, and welcome to the Condor Financial community. We look forward to assisting you in reaching your financial goals!'}
+    {Date: "February 10th, 2022", Sender: 'Condor Financial', Subject: 'Let us help you.', Category: 'Important',
+       Message: `\n Hello \n\n Have you set up your two-factor authentication yet? If not, go to the following link to set it up:    https://fakesetuplink.com\n\n Sincerely,\n The Condor Financial Team`},
+    {Date: "February 10th, 2022", Sender: 'William Myers (CEO of Condor Financial)', Subject: 'Welcome!', Category: 'Regular',
+       Message: '\n Hello,\n\n Welcome to the Condor Financial community. We look forward to assisting you in reaching your financial goals!\n\n\n\n Wish you the best,\n\n Willam Myers'}
   ];
 
   
@@ -39,9 +36,10 @@ export class DashboardMessagesComponent implements AfterViewInit {
   columnsToDisplay = ['Sender', 'Subject', 'Category','Date'];
   expandedElement!: Object | null;
   pageSize = 10;
-constructor(private dashboardCommunicationService: DashboardCommunicationService) { 
-  this.fName = dashboardCommunicationService.getFirstName();
-}
+
+  constructor(private dashboardCommunicationService: DashboardCommunicationService) { 
+    this.fName = dashboardCommunicationService.getFirstName();
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

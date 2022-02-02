@@ -1,0 +1,18 @@
+.box{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.rowTest{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.columnTest{
+    display: flex;
+    flex-direction: column;
+    flex: none;
+}
+.label{
+    padding-right: 5px;
+}

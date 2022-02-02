@@ -1,1 +1,110 @@
-<p>dashboard-account works!</p>
+<div class="container">
+    <mat-card>
+        <mat-card-title>
+            Your Account Details
+        </mat-card-title>
+        <mat-card-content class="box">
+
+            <div class="label">Name: </div>
+            <div class="rowTest name" *ngIf="!showNameEdit">
+                <div class="info">{{profile.first}} {{profile.last}}</div>
+                <button mat-button (click)="editName()">Edit</button>
+            </div>
+            
+
+            <div class="columnTest" *ngIf="showNameEdit">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your First name</mat-label>
+                        <input matInput placeholder={{profile.first}} [formControl]="nameFirst" required>
+                        <mat-error *ngIf="nameFirst.invalid">First name is required</mat-error>
+                      </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your Last name</mat-label>
+                        <input matInput placeholder={{profile.last}} [formControl]="nameLast" required>
+                        <mat-error *ngIf="nameLast.invalid">Last name is required</mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="rowTest">
+                    <button mat-button (click)="closeName()">Close</button>
+                    <button mat-button (click)="submitName()" [disabled]="!nameForm.valid">Submit</button>
+                </div>
+            </div>
+
+            <div class="label">Address: </div>
+            <div class="rowTest address" *ngIf="!showAddressEdit">
+                <div class="info">{{profile.street_address}}, {{profile.city}} {{profile.state}}</div>
+                <button mat-button (click)="editAddress()">Edit</button>
+            </div>
+
+            <div class="columnTest" *ngIf="showAddressEdit">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Street Address</mat-label>
+                        <input matInput placeholder={{profile.street_address}} [formControl]="street" required>
+                        <mat-error *ngIf="street.invalid">Stress address is required</mat-error>
+                      </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>City</mat-label>
+                        <input matInput placeholder={{profile.city}} [formControl]="city" required>
+                        <mat-error *ngIf="city.invalid">City is required</mat-error>
+                      </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>State</mat-label>
+                        <mat-select [(value)]="selected" [formControl]="state">
+                          <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+                <div class="rowTest">
+                    <button mat-button (click)="closeAddress()">Close</button>
+                    <button mat-button (click)="submitAddress()" [disabled]="!addressForm.valid">Submit</button>
+                </div>
+            </div>
+
+            <div class="label">Contact: </div>
+            <div class="rowTest contact" *ngIf="!showContactEdit">
+                <div class="columnTest">
+                    <div class="rowTest">
+                        <div class="label">Email:</div>
+                        <div class="info">{{user.email}}</div>
+                    </div>
+
+                    <div class="rowTest">
+                        <div class="label">Phone:</div>
+                        <div class="info">{{user.phone}}</div>
+                    </div>
+                </div>
+                <button mat-button (click)="editContact()">Edit</button>
+            </div>
+
+            <div *ngIf="showContactEdit" class="columnTest">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your email</mat-label>
+                        <input matInput placeholder={{user.email}} [formControl]="email" required>
+                        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                      </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your phone number</mat-label>
+                        <input matInput placeholder={{user.phone}} [formControl]="phone" required>
+                        <mat-error *ngIf="phone.invalid">{{getErrorMessagePhone()}}</mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="rowTest">
+                    <button mat-button (click)="closeContact ()">Close</button>
+                    <button mat-button (click)="submitContact()" [disabled]="!contactForm.valid">Submit</button>
+                </div>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+</div>

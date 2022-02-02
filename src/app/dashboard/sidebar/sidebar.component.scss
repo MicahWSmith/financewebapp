@@ -1,6 +1,10 @@
-$color-main: rgb(228, 234, 255);
-$color-secondary: rgb(98, 81, 255);
-$color-three: rgb(121, 107, 255);
+$color-main: white;
+$color-secondary: #19B3F4;
+$color-secondary2: #5dbfe9;
+$color-footer: #ECECEC;
+$color-green: #c7ed9f;
+$color-green-dark: #a8d481;
+$primary-font: 'Red Hat Display', sans-serif;
 
 ::-webkit-scrollbar-track{
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -16,7 +20,7 @@ $color-three: rgb(121, 107, 255);
 }
 
 #container{
-    height: calc(100vh - 60px);
+    height: calc(100vh - 180px);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -61,7 +65,7 @@ $color-three: rgb(121, 107, 255);
             
             #home-icon{
                 content: url(./home.png);
-                margin-left: 80px;
+                margin-left: 110px;
             }
 
             #account-icon{
@@ -70,10 +74,6 @@ $color-three: rgb(121, 107, 255);
 
             #message-icon{
                 content: url(./email.png);
-            }
-
-            #settings-icon{
-                content: url(./setting.png);
             }
 
             #message-under{
@@ -98,7 +98,7 @@ $color-three: rgb(121, 107, 255);
             }
             .panel-link{
                 font-size: 14px;
-                color: blue;
+                color: $color-secondary;
                 cursor: pointer;
                 margin-bottom: 10px;
             }
@@ -119,13 +119,13 @@ $color-three: rgb(121, 107, 255);
             align-items: center;
             height: 40px;
             width: 120px;
-            background-color: $color-three;
+            background-color: $color-secondary;
             color: $color-main;
             transition: background-color 0.5s;
             border-radius: 10px;
             cursor: pointer;
             &:hover{
-                background-color: $color-secondary;
+                background-color: $color-secondary2;
             }
         }
     }

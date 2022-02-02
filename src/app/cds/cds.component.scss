@@ -1,22 +1,31 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
 .example-card {
-  max-width: 400px;
- margin: 13px;
+  width: 275px;
+  margin: 13px;
+}
+
+.example-card:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 
 button {
-  background-color: #6251ff;
+  background-color: #19B3f4;
   color: white;
 }
 
 .details {
   font-family: serif;
   font-size: 17px;
+  padding-top: 20px;
 }
 
 .card-container {
-  display: flex;
-  padding-left:22%;
+  display: grid;
+  padding-right: 20%;
   padding-top: 50px;
+  grid-template-columns: auto auto auto;
+
+  margin-left: 300px;
 }
 
 .cd-header {
@@ -28,4 +37,72 @@ button {
 .cd-sub-header {
   font-family: serif;
   text-align: center;
+}
+
+.calculator-box {
+  display: flex;
+  margin-top: 100px;
+  height: 90%;
+  width: 500px;
+  position: absolute;
+  flex-direction: column;
+}
+
+.img-box {
+  display: flex;
+  margin-top: 100px;
+  height: 90%;
+  width: 500px;
+  position: absolute;
+  flex-direction: column;
+}
+
+
+.calc {
+  height: 300px;
+  width: 325px;
+  border-style: solid;
+  box-shadow: 5px 5px 5px #6251ff;
+  margin-left: 85px;
+  p {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  border-radius: 10px;
+}
+
+mat-slider {
+  width: 300px;
+}
+
+.calculateTotal {
+  font-size: 20px;
+  text-align: center;
+}
+
+.calc-heading {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.term-calc-header {
+  text-align: center;
+}
+
+.modal {
+  margin-top: 175px;
+}
+
+.error-message {
+  margin-right: 50px;
+  font-style: italic;
+  color: red;
+}
+
+@media only screen and (max-width: 100px) {
+  .card-container {
+    display: grid;
+    flex-direction: column;
+  }
 }

@@ -1,14 +1,19 @@
-$color-main: rgb(228, 234, 255);
-$color-secondary: rgb(98, 81, 255);
-$color-three: rgb(121, 107, 255);
+$color-main: white;
+$color-secondary: #19B3F4;
+$color-secondary2: #5dbfe9;
+$color-footer: #ECECEC;
+$color-green: #c7ed9f;
+$color-green-dark: #a8d481;
+$primary-font: 'Red Hat Display', sans-serif;
 
 #container{
     display: flex;
+    width: 100vw;
 }
 
 #left-side-bar{
     background-color: $color-main;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 180px);
     z-index: 10;
     flex-shrink: 0;
     transition: max-width 0.8s;
@@ -40,9 +45,9 @@ $color-three: rgb(121, 107, 255);
 }
 
 #left-side-bar-toggle{
-    background-color: $color-three;
-    height: 200px;
-    width: 30px;
+    background-color: $color-green;
+    height: 150px;
+    width: 25px;
     border-radius: 10px;
     align-self: center;
     margin-left: -10px;
@@ -51,17 +56,17 @@ $color-three: rgb(121, 107, 255);
     transition: background-color 0.5s;
         &:hover{
             cursor: pointer;
-            background-color: $color-secondary;
+            background-color: $color-green-dark;
         }
 }
 
 #main-content{
     display: flex;
+    align-self: flex-end;
     justify-content: center;
-    background-color: $color-main;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 180px);
     z-index: 8;
-    width: 100vw;
+    //width: 100vw;
 
 }
 

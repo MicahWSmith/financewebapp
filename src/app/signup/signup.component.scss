@@ -1,14 +1,18 @@
 h2{
+    margin-top: 20px;
     color: rgb(0, 0, 0);
 }
 
 .example-container {
     display: flex;
     flex-direction: column;
+    //align-items: center;
     background-color: rgb(255, 255, 255);
     padding: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     border-radius: 10px;
-    width: 300px;
+    width: 600px;
     input,mat-label{
         font-size: medium;
     }
@@ -17,28 +21,49 @@ h2{
         font-size: medium;
     }
     a{
-        margin-top: 20px;
+        margin-bottom: 20px;
         font-size: 13px;
         text-decoration: none;
         color: black;
     }
-    .recovery_link{
-        margin-top: 30px;
-    }
-    .signup{
+    .login{
         color: blue;
         font-weight: bold;
     }
 }
 
-.login_content{
+.signup_content{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
     height: calc(100vh - 180px);
-    min-height: 410px;
-    background-color: whitesmoke;
+    overflow-y: hidden;
+    min-height: 570px;
+
+    .format{
+        display: flex;
+
+        mat-form-field{
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-bottom: 10px;
+            width: 250px;
+        }
+    }
+
+    .format2{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        mat-form-field{
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-bottom: 10px;
+            width: 350px;
+        }
+    }
 }
 
 .example-right-align {

@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatCardModule} from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
@@ -26,8 +26,9 @@ import { CdsComponent } from './cds/cds.component';
 import { CdComponent } from './cd/cd.component';
 import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
+import { PortfolioComponent } from './portfolio/portfolio.component'
+import {MatSliderModule} from '@angular/material/slider';
 import { CashAccountComponent } from './cash-account/cash-account.component';
-import { PortfolioComponent } from './portfolio/portfolio.component';
 import { LayoutComponent } from './layout/layout.component'
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MainComponent } from './dashboard/main/main.component';
@@ -35,10 +36,11 @@ import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
 import { DashboardAccountComponent } from './dashboard/dashboard-account/dashboard-account.component';
 import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashboard-messages.component';
-import { DashboardSettingsComponent } from './dashboard/dashboard-settings/dashboard-settings.component';
 import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
-
+import { MatMenuModule} from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { SignupComponent } from './signup/signup.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,8 +64,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     DashboardHomeComponent,
     DashboardAccountComponent,
     DashboardMessagesComponent,
-    DashboardSettingsComponent,
     MutualfundsComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,13 +80,16 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTableModule,
     HttpClientModule,
     MatCardModule,
+    MatProgressSpinnerModule,
+    MatSliderModule,
     MatSelectModule,
     MatListModule,
     NgChartsModule,
     MatCardModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatMenuModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -24,7 +24,7 @@ export class PortfolioComponent implements OnInit {
 
   stockColumns: string[] = ["symbol", "name", "quantity", "purchasePrice", "currentPrice", "sell"]
   currencyColumns: string[] = ["code", "name", "symbol", "quantity", "purchasePrice", "currentPrice", "sell"]
-  cdColumns: string[] = ["deposit", "interestRate", "openDate", "term", "currentValue", "maturityDate"]
+  cdColumns: string[] = ["deposit", "interestRate", "openDate", "term", "currentValue", "maturityDate", "sell"]
 
   constructor(private portfolioService: PortfolioApiService) { }
 
@@ -52,6 +52,21 @@ export class PortfolioComponent implements OnInit {
     this.portfolioService.sellInvestment(this.currentUser,this.stocks[index].investmentID, "stock")
     .subscribe(() => {
       this.stockMessage = `Sold successfully!`
+      this.updatePortfolio();
+    })
+  }
+
+  sellCD(index: number) {
+    let confirmed = confirm("CDs typically cannot be sold before their maturity date without a penalty. This app does not simulate that penalty. Are you sure you want to proceed?");
+    if(!confirmed) {
+      return;
+    }
+    console.log("CD to sell: ", this.cds[index])
+    console.log("Selling cd row: ", index)
+    this.cdMessage = `Selling for ${this.cds[index].currentValue}`
+    this.portfolioService.sellInvestment(this.currentUser,this.cds[index].investmentId, "cd")
+    .subscribe(() => {
+      this.cdMessage = `Sold successfully!`
       this.updatePortfolio();
     })
   }

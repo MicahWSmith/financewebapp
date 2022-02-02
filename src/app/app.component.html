@@ -1,13 +1,33 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+
 <div class="finance_app">
   <div class="navigation">
+    <a routerLink="/" class="logo">
+      <img src="../assets/winged-leg.png">
+      <div class="logo-title">Condor</div>
+    </a>
     <div class="nav_links">
-      <a routerLink="/login">login<mat-icon>account_circle</mat-icon></a>
-      <a routerLink="/myinfo">Info</a>
+      <a class="corner_nav" routerLink="/myinfo">Info<mat-icon>info</mat-icon></a>
+      <div class="corner_nav">|</div>
+      <a class="corner_nav" routerLink="/about">About us<mat-icon>explore</mat-icon></a>
+      <div class="corner_nav">|</div>
+      <a class="corner_nav" routerLink="/login">Login<mat-icon>account_circle</mat-icon></a>
     </div>
-    <a routerLink="/" class="logo">ⒸⓄⓃⒹⓄⓇ</a>
-    <a routerLink="/about" class="about_link">About us<mat-icon>announcement</mat-icon></a>
   </div>
+
   <router-outlet></router-outlet>
 </div>
 
-<!--<app-stock-graph></app-stock-graph> -->
+<div class="footer">
+  <div class="logo">
+    <img src="../assets/winged-leg.png" alt="Condor Logo">
+    <div class="logo-title">Condor Financial</div>
+  </div>
+  <div class="footer-notes">
+    <div>Website for demonstration purposes only</div>
+    <div>Designed by <a routerLink="/about">Talent Path employees</a></div>
+    <div>Logo by <a href="https://lorcblog.blogspot.com/">Lorc</a></div>
+  </div>
+</div>
