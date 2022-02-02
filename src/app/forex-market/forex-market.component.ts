@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ForexAPIService } from '../forex-api.service';
 import { PortfolioApiService } from '../portfolio-api.service';
 import { CashAccountService } from '../cash-account.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forex-market',
@@ -23,7 +22,7 @@ export class ForexMarketComponent implements OnInit {
 
   displayedColumns: string[] = ["code", "name", "symbol", "price", "quantity", "buy"]
 
-  constructor(private router: Router, private forexService: ForexAPIService, private portfolioService: PortfolioApiService, private cashService: CashAccountService) { }
+  constructor(private forexService: ForexAPIService, private portfolioService: PortfolioApiService, private cashService: CashAccountService) { }
 
   ngOnInit(): void {
     this.loading = true;
