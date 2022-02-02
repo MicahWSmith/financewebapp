@@ -39,6 +39,7 @@ export class ForexMarketComponent implements OnInit {
   buy(index: number) {
     console.log("Buying: ", this.currencies[index].code);
     console.log("Quantity: ", this.quantities[index]);
+    
     if(this.quantities[index]!=="0") {
       this.alertMessage = `Purchasing ${this.currencies[index].symbol}${this.quantities[index]}...`
 
