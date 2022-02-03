@@ -45,15 +45,7 @@ export class DashboardAccountComponent implements OnInit {
     city: "Philadelphia",
     state: "PA",
     userId: 1
-<<<<<<< HEAD
-  }
-
-  constructor(private dashboardCommunicationService: DashboardCommunicationService) {
-    this.dashboardCommunicationService.setAccount(this);
-   }
-=======
   } */
->>>>>>> main
 
   constructor(private dbComm: DashboardCommunicationService) {
     this.dbComm.setAccount(this);

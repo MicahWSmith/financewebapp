@@ -91,7 +91,9 @@ export class DashboardCommunicationService {
 
     this.authService.logout(body);
     localStorage.removeItem('view');
-    this.AppComponent.setLoggedOut();
+    if(this.AppComponent){
+      this.AppComponent.setLoggedOut();
+    }
     if(this.landingPage){
       this.landingPage.setLoggedOff();
     }
