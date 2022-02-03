@@ -29,8 +29,6 @@ export class MainComponent implements OnInit {
       }
     }
 
-    
-
   }
 
   setView(view:string){
