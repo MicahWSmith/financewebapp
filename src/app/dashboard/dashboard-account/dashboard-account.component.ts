@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { User } from '../../models/user.model'
 import { DashboardCommunicationService } from '../dashboard-communication.service';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'dashboard-account',
@@ -27,7 +30,7 @@ export class DashboardAccountComponent implements OnInit {
   showAddressEdit : boolean = false;
   showContactEdit : boolean = false;
   selected : string = "";
-  user!:User
+  user!:User;
 
   /* user = {
     id: 1,
@@ -47,11 +50,12 @@ export class DashboardAccountComponent implements OnInit {
     userId: 1
   } */
 
-  constructor(private dbComm: DashboardCommunicationService) {
+  constructor(private dbComm: DashboardCommunicationService, public dialog: MatDialog, private userService: UserService) {
     this.dbComm.setAccount(this);
    }
   ngOnInit(): void {
     this.dbComm.getUserFromSession();
+    
   }
 
   editName(){
@@ -87,6 +91,16 @@ export class DashboardAccountComponent implements OnInit {
   closeContact(){
     this.showContactEdit = false;
   }
+  openConfirm(){
+    const dialogConfig = new MatDialogConfig();
+    let dialogRef = this.dialog.open(DeleteDialogComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(response => {
+      if (response === "Delete Confirmed"){
+        console.log("Confirm Delete button pressed");
+        this.deleteAccount();
+      }
+    })
+  }
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
@@ -107,5 +121,16 @@ export class DashboardAccountComponent implements OnInit {
 
   setUser(user:User){
     this.user = user;
+  }
+
+  deleteAccount(){
+    let body = {
+      token: sessionStorage.getItem('user')
+    }
+    console.log("body of delete request:", body);
+    this.userService.deleteUser(body).subscribe(response => {
+      console.log(response);
+      this.dbComm.logout();
+    })
   }
 }
