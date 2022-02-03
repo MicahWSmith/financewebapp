@@ -8,32 +8,17 @@ import { StockHistory } from './stock-history.model';
   styleUrls: ['./stock-graph.component.scss']
 })
 export class StockGraphComponent implements OnInit {
-  chart: Chart | undefined;
+  chart!: Chart;
   stockLabels: any = [];
   stockData: any = [];
   label: string = '';
-  
+
   ngOnInit(){
-    this.chart = new Chart('lineChart', {
-      type: 'line',
-      data: {
-        labels: [],
-        datasets: [{
-          label: this.label,
-          data: [],
-          borderWidth: 3,
-          fill: false,
-          backgroundColor: 'rgba(93, 175, 89, 0.1)',
-          borderColor: '#4ACD40',
-          tension: .7
-        }]
-      }
-    })
+    
   }
 
 
     updateHistory(history:Array<StockHistory>, name:string, view:string, open?:number){
-      
       this.chart?.destroy();
       this.stockLabels = [];
       this.stockData = [];
