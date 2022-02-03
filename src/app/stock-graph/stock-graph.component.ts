@@ -12,14 +12,13 @@ export class StockGraphComponent implements OnInit {
   stockLabels: any = [];
   stockData: any = [];
   label: string = '';
-  
+
   ngOnInit(){
     
   }
 
 
     updateHistory(history:Array<StockHistory>, name:string, view:string, open?:number){
-      
       this.chart?.destroy();
       this.stockLabels = [];
       this.stockData = [];
