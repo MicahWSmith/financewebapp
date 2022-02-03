@@ -14,15 +14,19 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let session = sessionStorage.getItem('user') ? sessionStorage.getItem('user') : "";
+    this.loggedIn = false;
 
-    console.log(session);
-    if(session != ""){
-      this.loggedIn = true;
+    let body = {
+      token: sessionStorage.getItem('user') ? sessionStorage.getItem('user') : ""
     }
-    else{
-      this.loggedIn = false;
-    }
+
+    this.dashboardCommunicationService.authService.getUserData(body).subscribe(res => {
+        if(res){
+          this.loggedIn = true;
+          console.log("there was a response.")
+        }
+    })
+   
   }
 
   setLoggedOff(){

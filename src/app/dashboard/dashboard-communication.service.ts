@@ -27,6 +27,7 @@ export class DashboardCommunicationService {
     this.authService = auth; 
   }
 
+
   getUserFromSession(){
     let body = {
       token: sessionStorage.getItem('user') ? sessionStorage.getItem('user') : ""
@@ -89,15 +90,17 @@ export class DashboardCommunicationService {
       token: sessionStorage.getItem('user') ? sessionStorage.getItem('user') : ""
     }
 
-    this.authService.logout(body);
-    localStorage.removeItem('view');
-    if(this.AppComponent){
-      this.AppComponent.setLoggedOut();
-    }
-    if(this.landingPage){
-      this.landingPage.setLoggedOff();
-    }
-    this.router.navigate(['/']);
+    this.authService.logout(body).subscribe(response => {
+      localStorage.removeItem('view');
+      if(this.AppComponent){
+        this.AppComponent.setLoggedOut();
+      }
+      if(this.landingPage){
+        this.landingPage.setLoggedOff();
+      }
+      this.router.navigate(['/']);
+    })
+   
   }
 
   logoutTimer(){

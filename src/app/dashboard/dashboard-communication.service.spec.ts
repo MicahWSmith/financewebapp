@@ -5,6 +5,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('DashboardCommunicationService', () => {
   let service: DashboardCommunicationService;
+  let serviceSpy: any;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -12,9 +13,11 @@ describe('DashboardCommunicationService', () => {
       providers:[DashboardCommunicationService]
     });
     service = TestBed.inject(DashboardCommunicationService);
+    serviceSpy = jasmine.createSpyObj('service', ['getUserFromSession']);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
 });

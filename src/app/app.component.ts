@@ -7,7 +7,7 @@ import { DashboardCommunicationService } from './dashboard/dashboard-communicati
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent{
+export class AppComponent implements OnInit {
 
   title = 'financewebapp';
   loggedIn: boolean = false;
@@ -16,6 +16,17 @@ export class AppComponent{
     dashboardCommunicationService.setAppComponent(this);
   }
 
+  ngOnInit(): void {
+    this.loggedIn = false;
+
+    let body = {
+      token: sessionStorage.getItem('user') ? sessionStorage.getItem('user') : ""
+    }
+
+    this.dashboardCommunicationService.authService.getUserData(body).subscribe(res => {
+      this.loggedIn = true;
+    })
+  }
   setLoggedIn(){
     this.loggedIn = true;
   }
