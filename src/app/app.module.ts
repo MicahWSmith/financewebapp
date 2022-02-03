@@ -27,7 +27,7 @@ import { CdComponent } from './cd/cd.component';
 import { IraComponent } from './ira/ira.component';
 import { ForexMarketComponent } from './forex-market/forex-market.component';
 import { PortfolioComponent } from './portfolio/portfolio.component'
-import {MatSliderModule} from '@angular/material/slider';
+import { MatSliderModule } from '@angular/material/slider';
 import { CashAccountComponent } from './cash-account/cash-account.component';
 import { LayoutComponent } from './layout/layout.component'
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -37,9 +37,11 @@ import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-hom
 import { DashboardAccountComponent } from './dashboard/dashboard-account/dashboard-account.component';
 import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashboard-messages.component';
 import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
-import { MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { SignupComponent } from './signup/signup.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DeleteDialogComponent } from './dashboard/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import { SignupComponent } from './signup/signup.component';
     DashboardMessagesComponent,
     MutualfundsComponent,
     SignupComponent,
+    DeleteDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,9 +92,11 @@ import { SignupComponent } from './signup/signup.component';
     MatProgressSpinnerModule,
     MatExpansionModule,
     MatPaginatorModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
     ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DeleteDialogComponent]
 })
 export class AppModule { }
