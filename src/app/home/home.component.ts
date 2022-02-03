@@ -16,8 +16,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     let session = sessionStorage.getItem('user') ? sessionStorage.getItem('user') : "";
 
+    console.log(session);
     if(session != ""){
       this.loggedIn = true;
+    }
+    else{
+      this.loggedIn = false;
     }
   }
 
