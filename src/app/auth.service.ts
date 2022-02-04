@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, observable } from 'rxjs';
+import { Observable, observable, firstValueFrom} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,85 +16,34 @@ export class AuthService {
   // inject dependencies needed for http calls
   constructor(private http: HttpClient) { }
 
-  /*
-    /// Will return a token storing the users' ID if valid credentials ///
-    return = 
-    {
-      token: string
+  async loggedIn(): Promise<boolean>{
+    let isLoggedIn = false;
+    if(sessionStorage.getItem('user')){
+      const body: {} = {
+        token : sessionStorage.getItem('user')
+      }
+      const res: any = await firstValueFrom(this.http.post("https://vg-db-users.herokuapp.com/auth/getTokenData", body));
+      if(!res.error){
+        isLoggedIn = true;
+      }
     }
-    /// required body params ///
-    body = {
-      email: string,
-      password: string
-    }
-  */
+    return isLoggedIn;
+  }
+
   getToken(body: {}): Observable<any>{
     return this.http.post("https://vg-db-users.herokuapp.com/auth/getToken", body);
   }
 
-  /*
-    Will return a token data: 
-    return = 
-    {
-      id: int,
-      iat: number,
-      exp: number
-    }
-    /// required body params ///
-    body = {
-      token: string
-    }
-    
-  */
   getTokenData(body: {}): Observable<any>{
     return this.http.post("https://vg-db-users.herokuapp.com/auth/getTokenData", body);
   }
 
-  /*
-    /// returns all data of a user who was issued that token ///
-    return = 
-    {
-      "data": {
-        "id": int,
-        "first": string,
-        "last": string,
-        "email": string,
-        "security_question": string,
-        "security_answer": string,
-        "profile": {
-            "id": int,
-            "ssn": string,
-            "account_number": string,
-            "routing_number": string,
-            "street_address": string,
-            "city": string,
-            "state": string,
-            "userId": int,
-            "createdAt": date,
-            "updatedAt": date
-        }
-      }
-    }
-    /// required body params ///
-    body = {
-      token: string
-    }
-
-  */
   getUserData(body: {}): Observable<any>{
     return this.http.post("https://vg-db-users.herokuapp.com/auth/getUserData", body);
   }
 
-  /*
-    Will list token as expired on server side
-    /// required body params ///
-    body = {
-      token: string
-    }
-    */
  logout(body: {}): Observable<any>{
    sessionStorage.removeItem('user');
-   sessionStorage.setItem('loggedIn', false.toString());
    return this.http.post("https://vg-db-users.herokuapp.com/auth/logout", body);
  }
 

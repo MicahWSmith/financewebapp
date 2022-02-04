@@ -63,19 +63,28 @@ $primary-font: 'Red Hat Display', sans-serif;
             margin-left: 20px;
             margin-right: 10px;
             
-            #home-icon{
-                content: url(./home.png);
-                margin-left: 110px;
+            #top-bar{
+                display: flex;
+                #welcome{
+                    width: 100%;
+                }
+                #icons{
+                    width:90px;
+                    min-width: 90px;
+                    #home-icon{
+                        content: url(./home.png);
+                    }
+        
+                    #account-icon{
+                        content: url(./user.png);
+                    }
+        
+                    #message-icon{
+                        content: url(./email.png);
+                    }
+                }
+                
             }
-
-            #account-icon{
-                content: url(./user.png);
-            }
-
-            #message-icon{
-                content: url(./email.png);
-            }
-
             #message-under{
                 margin-top: 40px;
                 font-size: 16px;
@@ -88,8 +97,8 @@ $primary-font: 'Red Hat Display', sans-serif;
     #main-side-bar-content{
         display: flex;
         flex-direction: column;
-        height: calc(100vh - 250px);
-        min-height: 300px;
+        height: calc(100vh - 320px);
+        min-height: 280px;
         
         .side-bar-expansion-panel{
             border-radius: 0;

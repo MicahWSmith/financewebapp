@@ -17,15 +17,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loggedIn = false;
+      if(sessionStorage.getItem('loggedIn') == 'true'){
+        this.loggedIn = true;
+      }
+      else{
+        this.loggedIn = false;
+      }
 
-    let body = {
-      token: sessionStorage.getItem('user') ? sessionStorage.getItem('user') : ""
-    }
-
-    this.dashboardCommunicationService.authService.getUserData(body).subscribe(res => {
-      this.loggedIn = true;
-    })
   }
   setLoggedIn(){
     this.loggedIn = true;

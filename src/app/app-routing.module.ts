@@ -16,23 +16,96 @@ import { MainComponent } from './dashboard/main/main.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
 import { SignupComponent } from './signup/signup.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
   { path: "signup", component: SignupComponent},
-  { path: "myinfo", component: AccountdetailsComponent},
+  { path: "myinfo", component: AccountdetailsComponent, canActivate : [AuthGuard]},
   { path: "about", component: AboutusComponent},
   { path: "recovery", component: RecoveryComponent},
   { path: "", component: HomeComponent},
-  { path: "stocks", component: StocksComponent},
-  { path: "cds", component: CdsComponent},
-  { path: "ira", component: IraComponent},
-  { path: "forex", component: ForexMarketComponent},
-  { path: "cash", component: CashAccountComponent},
+  { path: "stocks", component: StocksComponent, canActivate : [AuthGuard]},
+  { path: "cds", component: LayoutComponent, canActivate : [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: CdsComponent,
+      }, 
+      {
+        path: '',
+        component: SidebarComponent,
+        outlet: 'left-side-bar-router'
+      } 
+    ]
+  },
+  { path: "ira", component: LayoutComponent, canActivate : [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: IraComponent,
+      }, 
+      {
+        path: '',
+        component: SidebarComponent,
+        outlet: 'left-side-bar-router'
+      } 
+    ] 
+  },
+  { path: "forex", component: LayoutComponent, canActivate : [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: ForexMarketComponent,
+      }, 
+      {
+        path: '',
+        component: SidebarComponent,
+        outlet: 'left-side-bar-router'
+      } 
+    ]
+  },
+  { path: "cash", component: LayoutComponent, canActivate : [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: CashAccountComponent,
+      }, 
+      {
+        path: '',
+        component: SidebarComponent,
+        outlet: 'left-side-bar-router'
+      } 
+    ] 
+  },
   { path: "", component: HomeComponent},
-  { path: "portfolio", component: PortfolioComponent},
-  { path: "mutualfunds", component: MutualfundsComponent},
-  { path: "dashboard", component: LayoutComponent,
+  { path: "portfolio", component: LayoutComponent, canActivate : [AuthGuard],
+      children: [
+        {
+          path: '',
+          component: PortfolioComponent,
+        }, 
+        {
+          path: '',
+          component: SidebarComponent,
+          outlet: 'left-side-bar-router'
+        } 
+      ]
+  },
+  { path: "mutualfunds", component: LayoutComponent, canActivate : [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: MutualfundsComponent,
+      }, 
+      {
+        path: '',
+        component: SidebarComponent,
+        outlet: 'left-side-bar-router'
+      } 
+    ]
+  },
+  { path: "dashboard", component: LayoutComponent, canActivate : [AuthGuard],
       children:[
         { path: '',
           component: MainComponent
