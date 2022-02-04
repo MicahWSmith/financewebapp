@@ -1,4 +1,6 @@
+import { ThisReceiver, ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { IraService } from '../ira.service';
 import { IRA } from './ira.model';
 
@@ -13,6 +15,8 @@ export class IraComponent implements OnInit {
   investments : any = [];
   transactions : any = [];
   performances : any = [];
+  id!: number;
+  accountExists: boolean = false;
 
   displayedColumnsi: string[] = ["name", "quantity", "datePurchased", "originalValue", "currentValue"];
 
@@ -20,10 +24,11 @@ export class IraComponent implements OnInit {
 
   displayedColumnsp: string[] = ["date", "change"];
 
-  constructor(private iraService : IraService) { }
+  constructor(private iraService : IraService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.iraService.getTestIRA().subscribe(response => {
+    this.getUserId();
+    /* this.iraService.getTestIRA().subscribe(response => {
       console.log(response);
       this.ira = response;
     })
@@ -39,7 +44,40 @@ export class IraComponent implements OnInit {
         return Date.parse(b.date) - Date.parse(a.date);
       });
       this.performances = this.iraFull.performances;
-    })
+    }) */
   }
 
+  getUserId(){
+    let body = {
+      token: sessionStorage.getItem('user')
+    }
+    this.authService.getUserData(body).subscribe(res => {
+      this.id = res.data.id;
+      this.getIRAFull();
+    });
+
+  }
+
+  getIRAFull(){
+    this.iraService.getIRAFull(this.id).subscribe(response => {
+      console.log(response);
+      if (Object.keys(response).length === 0){
+        this.accountExists = false;
+        return;
+      }
+      else {
+        this.accountExists = true;
+        this.iraFull = response;
+        this.investments = this.iraFull.investments
+        this.iraFull.transactions.sort(function(a : any, b : any){
+          return Date.parse(b.date) - Date.parse(a.date);
+        });
+        this.transactions = this.iraFull.transactions;
+        this.iraFull.performances.sort(function(a : any, b : any){
+          return Date.parse(b.date) - Date.parse(a.date);
+        });
+        this.performances = this.iraFull.performances;
+      }
+    })
+  }
 }

@@ -7,14 +7,12 @@ $color-green-dark: #a8d481;
 $primary-font: 'Red Hat Display', sans-serif;
 
 #container{
-    width: 100%;
+    width: 105.53%;
     height: calc(100vh - 150px);
-    //overflow-y: auto;
-    min-width: 860px;
+    overflow-y: auto;
+    min-width: 735px;
     scroll-snap-type: y mandatory;
     
-
- 
     .scroll-container{
         
         scroll-snap-align: center;
@@ -22,7 +20,6 @@ $primary-font: 'Red Hat Display', sans-serif;
             height: calc(100vh - 180px);
             width: 100%;
             display: flex;
-
         }
 
         .navigate{
@@ -38,8 +35,6 @@ $primary-font: 'Red Hat Display', sans-serif;
             &:hover{
                 opacity: 60%;
             }
-    
-                
     
         }
 
@@ -61,7 +56,6 @@ $primary-font: 'Red Hat Display', sans-serif;
                 width: 30px;
                 margin-bottom: 5px;
                 filter: invert(100%);
-
             }
         }
     
@@ -91,61 +85,31 @@ $primary-font: 'Red Hat Display', sans-serif;
             margin-right: 20px;
             justify-content: center;
 
-
             #name{
                 font-size: xx-large;
+
+                @media screen and (max-height:700px) { font-size: x-large; }
+                @media screen and (max-height:600px) { font-size: large; }
             }
 
             #message{
                 font-size: large;
                 line-height: 40px;
                 margin-left: 20px;
+                margin-top: 10px;
+
+                @media screen and (max-height:700px) { font-size: medium; }
+                @media screen and (max-height:600px) { font-size: small; }
+                @media screen and (min-height:700px) { margin-top: 20px; }
             }
             
 
+            .sentence{
+                margin-top: 30px;
 
-            @media screen and (max-height:650px) { 
-
-                #name{
-                    font-size: x-large;
-                }
-
-                #message{
-                    font-size: medium;
-                    margin-top: 10px;
-                }
-
-                .sentence{
-                    margin-top: 5px;
-                }
+                @media screen and (max-height:700px) { margin-top: 5px; }
             }
 
-            @media screen and (max-height:500px) { 
-
-                #name{
-                    font-size: large;
-                }
-
-                #message{
-                    font-size: small;
-                    margin-top: 10px;
-                }
-
-                .sentence{
-                    margin-top: 5px;
-                }
-            }
-
-            @media screen and (min-height:650px) { 
-
-                #message{
-                    margin-top: 20px;
-                }
-
-                .sentence{
-                    margin-top: 30px;
-                }
-            }
         }
     }
 
@@ -173,30 +137,42 @@ $primary-font: 'Red Hat Display', sans-serif;
             margin-right: 20px;
             justify-content: center;
             
-
-
             #title{
                 font-size: xx-large;
                 line-height: 30px;
+
+                @media screen and (max-height:700px) { font-size: x-large; }
+                @media screen and (max-height:600px) { font-size: large; }
             }
 
             #message{
                 font-size: large;
-                line-height: 40px;
+                //line-height: 40px;
+                margin-top: 20px;
+
+                @media screen and (max-height:700px) {
+                    font-size: medium;
+                    margin-top: 10px;
+                }
+                @media screen and (max-height:600px) { 
+                    font-size: small;
+                    margin-top: 10px;
+                }
+
             }
             
             .sentence{
                 margin-left: 20px;
+                margin-top: 30px;
+
+                @media screen and (max-height:700px) { margin-top: 15px; }
+                @media screen and (max-height:600px) { margin-top: 5px; }
             }
 
             #list{
-                font-size: large;
-                line-height: 40px;
                 margin-top: 20px;
-                
-
+                margin-left: 140px;
                 .list-item{
-                    margin-left: 140px;
                     display: flex;
                     margin-top: 20px;
                     display: flex;
@@ -204,60 +180,24 @@ $primary-font: 'Red Hat Display', sans-serif;
                     .arrow{
                         content: url(./images/blue-arrow.png);
                         height: 40px;
+
+                        @media screen and (max-height:700px) { height: 30px; }
+                        @media screen and (max-height:600px) { height: 25px; }
                     }
 
                     .option{
-                        height: 50px;
+                        font-size: large;
+                        line-height: 40px;
                         display: flex;
                         justify-content: center;
                         margin-left: 20px;
+
+                        @media screen and (max-height:700px) { line-height: 30px; }
+                        @media screen and (max-height:600px) { line-height: 25px; }
                     }
                 }
             }
 
-
-            @media screen and (max-height:650px) { 
-
-                #title{
-                    font-size: x-large;
-                }
-
-                #message{
-                    font-size: medium;
-                    margin-top: 10px;
-                }
-
-                .sentence{
-                    margin-top: 5px;
-                }
-            }
-
-            @media screen and (max-height:500px) { 
-
-                #title{
-                    font-size: large;
-                }
-
-                #message{
-                    font-size: small;
-                    margin-top: 10px;
-                }
-
-                .sentence{
-                    margin-top: 5px;
-                }
-            }
-
-            @media screen and (min-height:650px) { 
-
-                #message{
-                    margin-top: 20px;
-                }
-
-                .sentence{
-                    margin-top: 30px;
-                }
-            }
         }
         
     }
@@ -282,28 +222,32 @@ $primary-font: 'Red Hat Display', sans-serif;
             display: flex;
             flex-direction: column;
 
-
-
             #title{
                 font-size: xx-large;
                 line-height: 30px;
                 margin-top: 20px;
                 margin-left: 20px;
+
+                @media screen and (max-height:700px) { font-size: x-large; }
+                @media screen and (max-height:600px) { font-size: large; }
             }
 
             #list{
-                font-size: large;
-                line-height: 40px;
                 margin-top: 10px;
-
+                margin-left: 140px;
                 .list-item{
-                    margin-left: 140px;
                     display: flex;
-                    margin-top: 15px;
+                    margin-top: 10px;
+
+                    @media screen and (max-height:700px) { margin-top: 5px; }
+                    @media screen and (max-height:600px) { margin-top: 0px; }
                     
                     .arrow{
                         content: url(./images/blue-arrow.png);
                         height: 40px;
+
+                        @media screen and (max-height:700px) { height: 30px; }
+                        @media screen and (max-height:600px) { height: 25px; }
                     }
 
                     .sentence{
@@ -311,16 +255,15 @@ $primary-font: 'Red Hat Display', sans-serif;
                         display: flex;
                         justify-content: center;
                         margin-left: 20px;
+                        line-height: 40px;
+                        font-size: large;
+
+                        @media screen and (max-height:700px) { font-size: medium; line-height: 30px;}
+                        @media screen and (max-height:600px) { font-size: small; line-height: 30px;}
                     }
                 }
             }
-            
-
-
-
-
-
-            
+  
         }
     }
 
@@ -339,24 +282,31 @@ $primary-font: 'Red Hat Display', sans-serif;
             #title{
                 font-size: xx-large;
                 line-height: 30px;
-                //margin-top: 40px;
                 margin-left: 20px;
                 margin-right: 20px;
+
+                @media screen and (max-height:700px) { font-size: x-large; }
+                @media screen and (max-height:600px) { font-size: large; }
             }
 
             #list{
-                font-size: large;
-                line-height: 40px;
                 margin-top: 20px;
+                margin-left: 120px;
+                margin-right: 20px;
 
                 .list-item{
-                    margin-left: 140px;
                     display: flex;
                     margin-top: 40px;
                     
+                    @media screen and (max-height:700px) { margin-top: 30px; }
+                    @media screen and (max-height:600px) { margin-top: 20px; }
+
                     .arrow{
                         content: url(./images/blue-arrow.png);
                         height: 40px;
+
+                        @media screen and (max-height:700px) { height: 30px; }
+                        @media screen and (max-height:600px) { height: 25px; }
                     }
 
                     .sentence{
@@ -364,6 +314,10 @@ $primary-font: 'Red Hat Display', sans-serif;
                         display: flex;
                         justify-content: center;
                         margin-left: 20px;
+                        line-height: 40px;
+                        font-size: large;
+                        @media screen and (max-height:700px) { font-size: medium; line-height: 30px; }
+                        @media screen and (max-height:600px) { font-size: small; line-height: 25px;}
                     }
                 }
             }

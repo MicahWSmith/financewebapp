@@ -32,30 +32,11 @@ export class DashboardAccountComponent implements OnInit {
   selected : string = "";
   user!:User;
 
-  /* user = {
-    id: 1,
-    email: "test@test.com",
-    phone: "0000000000",
-  }
-
-  profile = {
-    first: "John",
-    last: "Smith",
-    ssn: "000-00-0000",
-    account_number: "000784359561",
-    routingNumber: "711095759",
-    street_address: "123 Test St",
-    city: "Philadelphia",
-    state: "PA",
-    userId: 1
-  } */
-
   constructor(private dbComm: DashboardCommunicationService, public dialog: MatDialog, private userService: UserService) {
     this.dbComm.setAccount(this);
    }
   ngOnInit(): void {
     this.dbComm.getUserFromSession();
-    
   }
 
   editName(){
@@ -73,15 +54,48 @@ export class DashboardAccountComponent implements OnInit {
     this.showAddressEdit = false;
     this.showContactEdit = true;
   }
+
   submitName() {
-    this.showNameEdit = false;
+    let body = {
+      token: sessionStorage.getItem('user'),
+      first: this.nameFirst.value,
+      last: this.nameLast.value,
+      email: this.user.email,
+      phone: this.user.phone
+
+    }
+    this.userService.updateUser(body).subscribe(response => {
+      this.showNameEdit = false;
+      this.ngOnInit();
+    });
   }
   submitAddress() {
-    this.showAddressEdit = false;
+    let body = {
+      token: sessionStorage.getItem('user'),
+      street_address: this.street.value,
+      city: this.city.value,
+      state: this.state.value
+    }
+    this.userService.updateProfile(body).subscribe(response => {
+      this.showAddressEdit = false;
+      this.ngOnInit();
+    })
   }
   submitContact(){
-    this.showContactEdit = false;
+    let body = {
+      token: sessionStorage.getItem('user'),
+      first: this.user.first,
+      last: this.user.last,
+      email: this.email.value,
+      phone: this.phone.value
+
+    }
+    this.userService.updateUser(body).subscribe(response => {
+      this.showContactEdit = false;
+      this.ngOnInit();
+    });
   }
+
   closeName() {
     this.showNameEdit = false;
   }
@@ -91,6 +105,7 @@ export class DashboardAccountComponent implements OnInit {
   closeContact(){
     this.showContactEdit = false;
   }
+
   openConfirm(){
     const dialogConfig = new MatDialogConfig();
     let dialogRef = this.dialog.open(DeleteDialogComponent, dialogConfig);

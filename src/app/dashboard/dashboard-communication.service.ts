@@ -37,6 +37,10 @@ export class DashboardCommunicationService {
       this.User = res.data;
       this.SideBar.setUser(this.User);  
       this.AppComponent.setLoggedIn();
+      
+      if(this.landingPage){
+        this.landingPage.setLoggedOn();
+      }
       if(this.Home){
         this.Home.setUser(this.User); 
       }
@@ -91,6 +95,7 @@ export class DashboardCommunicationService {
     }
 
     this.authService.logout(body).subscribe(response => {
+
       localStorage.removeItem('view');
       if(this.AppComponent){
         this.AppComponent.setLoggedOut();

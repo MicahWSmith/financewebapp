@@ -1,10 +1,15 @@
 <div id='container' class='no-select'>
     <div class='small-container' id='welcome-content' >
         <div id='welcome-message'>
-            <span class='side-bar-label'>Welcome {{ firstName }}</span>
-            <span class='icon' id='home-icon' (click)='goTo("home")'></span>
-            <span class='icon' id='account-icon' (click)='goTo("account")'></span>
-            <span class='icon' id='message-icon' (click)='goTo("messages")'></span>
+            <div id='top-bar'>
+              <span class='side-bar-label' id='welcome'>Welcome {{ firstName }}</span>
+              <span id='icons'>
+                <span class='icon' id='home-icon' (click)='goTo("home")'></span>
+                <span class='icon' id='account-icon' (click)='goTo("account")'></span>
+                <span class='icon' id='message-icon' (click)='goTo("messages")'></span>
+              </span>   
+            </div>
+            
             <div class='side-bar-label' id='message-under'>What can we do for you today?</div>
         </div>
         
