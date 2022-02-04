@@ -16,6 +16,7 @@ import { MainComponent } from './dashboard/main/main.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 import { MutualfundsComponent } from './mutualfunds/mutualfunds.component';
 import { SignupComponent } from './signup/signup.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
@@ -30,7 +31,7 @@ const routes: Routes = [
   { path: "forex", component: ForexMarketComponent},
   { path: "cash", component: CashAccountComponent},
   { path: "", component: HomeComponent},
-  { path: "portfolio", component: PortfolioComponent},
+  { path: "portfolio", component: PortfolioComponent, canActivate : [AuthGuard]},
   { path: "mutualfunds", component: MutualfundsComponent},
   { path: "dashboard", component: LayoutComponent,
       children:[
