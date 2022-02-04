@@ -34,6 +34,7 @@
             </div>
 
             <div class="label">Address: </div>
+            <div *ngIf=""></div>
             <div class="rowTest address" *ngIf="!showAddressEdit">
                 <div class="info">{{user.profile.street_address}} {{user.profile.city}} {{user.profile.state}}</div>
                 <button mat-raised-button class="edit" (click)="editAddress()">Edit</button>

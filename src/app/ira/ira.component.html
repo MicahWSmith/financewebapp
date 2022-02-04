@@ -5,7 +5,7 @@
                 IRA
             </mat-card-title>
             <mat-card-content>
-                Current Value: {{ira.currentAmount | currency}}
+                Current Value: {{iraFull.currentAmount | currency}}
             </mat-card-content>
         </mat-card>
         <mat-card-title class="title">
@@ -90,12 +90,14 @@
               </table>
         </mat-card-content>
     </mat-card>
-    <mat-card>
+    <mat-card *ngIf="!accountExists">
         <mat-card-title>
             No IRA associated with this account
         </mat-card-title>
         <mat-card-content>
-            <button mat-raised-button>Apply?</button>
+            <p>
+                Visit one of our locations to apply for an IRA today!
+            </p>
         </mat-card-content>
     </mat-card>
 </div>

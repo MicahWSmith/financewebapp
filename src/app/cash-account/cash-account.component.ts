@@ -49,9 +49,7 @@ export class CashAccountComponent implements OnInit {
 
   updateAll(id: number){
     //error handling if account doesn't exist w/ id
-    console.log(id);
     this.cashService.getAccountFull(id).subscribe(response => {
-      console.log(response);
       this.account = response;
       this.account.transactions.sort(function(a : any, b : any){
         return Date.parse(b.date) - Date.parse(a.date);
