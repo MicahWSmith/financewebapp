@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 import { PortfolioApiService } from '../portfolio-api.service';
 import { CashAccountService } from '../cash-account.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-cds',
@@ -18,7 +19,8 @@ export class CdsComponent implements OnInit {
     private cdService: CdServiceService,
     private router: Router,
     private portfolioService: PortfolioApiService,
-    private cashService: CashAccountService
+    private cashService: CashAccountService,
+    private authService: AuthService
   ) {}
 
   cds: Cd[] = [];
@@ -38,6 +40,12 @@ export class CdsComponent implements OnInit {
   ngOnInit(): void {
     this.cdService.getCds().subscribe((payload) => {
       this.cds = payload;
+      let body = {
+        token: sessionStorage.getItem('user')
+      }
+      this.authService.getUserData(body).subscribe(res => {
+        this.currentUser = res.data.id;
+      });
     });
   }
 
@@ -95,9 +103,9 @@ export class CdsComponent implements OnInit {
         } else {
           let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
 
-          this.cashService.updateAccount(this.currentUser, accountPayload.balance - this.userDepositInput)
+          this.cashService.updateAccount(accountPayload.id, accountPayload.balance - this.userDepositInput)
           .subscribe((paidPayload) => {
-            this.cashService.addTransaction(this.currentUser, "Bought CD", this.userDepositInput, date)
+            this.cashService.addTransaction(accountPayload.id, "Bought CD", this.userDepositInput, date)
             .subscribe((transactionPayload) => {
               this.portfolioService.buyInvestment(this.currentUser, {
                 type: 'cd',
