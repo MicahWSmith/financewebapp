@@ -8,7 +8,7 @@ $primary-font: 'Red Hat Display', sans-serif;
 
 #container{
     height:calc(100vh - 250px);
-    width: calc(100vw - 430px);
+    //width: calc(100vw - 500px);
 
     #title{
       height: 65px;
@@ -25,6 +25,7 @@ $primary-font: 'Red Hat Display', sans-serif;
       height: calc(100vh - 305px);
       background-color: white;
       //width: 100vw;
+      overflow-x: hidden;
     }
     
       table {

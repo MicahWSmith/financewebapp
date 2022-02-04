@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { PortfolioApiService } from '../portfolio-api.service';
 import { CashAccountService } from '../cash-account.service';
 
@@ -25,6 +25,9 @@ export class PortfolioComponent implements OnInit {
   stockColumns: string[] = ["symbol", "name", "quantity", "purchasePrice", "currentPrice", "sell"]
   currencyColumns: string[] = ["code", "name", "symbol", "quantity", "purchasePrice", "currentPrice", "sell"]
   cdColumns: string[] = ["deposit", "interestRate", "openDate", "term", "currentValue", "maturityDate", "sell"]
+
+  sideBarExpanded = true;
+  display = true;
 
   constructor(private portfolioService: PortfolioApiService, private cashService: CashAccountService) { }
 
@@ -135,5 +138,30 @@ export class PortfolioComponent implements OnInit {
     console.log("Updating profile info for: ", this.newUser)
     this.updatePortfolio();
   }
+
+  toggleSideBar(){
+    this.sideBarExpanded = !this.sideBarExpanded;
+    
+    if(this.sideBarExpanded){
+      setTimeout(() =>{
+        this.display = true;
+      },300)
+    }
+    else{
+      setTimeout(() =>{
+        this.display = false;
+      },300)
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+      onResize(event:any) {
+        if(event.target.innerWidth > 1800){
+          this.sideBarExpanded = true;
+          this.display = true;
+          
+        }
+       
+}
 
 }
