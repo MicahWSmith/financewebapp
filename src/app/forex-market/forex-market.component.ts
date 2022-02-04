@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ForexAPIService } from '../forex-api.service';
 import { PortfolioApiService } from '../portfolio-api.service';
 import { CashAccountService } from '../cash-account.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-forex-market',
@@ -14,7 +15,6 @@ export class ForexMarketComponent implements OnInit {
   quantities: string[] = [];
 
   currentUser: number = 5;
-  newUser: number = 5;
 
   alertMessage: string = "";
   canBuy: boolean = true;
@@ -22,7 +22,7 @@ export class ForexMarketComponent implements OnInit {
 
   displayedColumns: string[] = ["code", "name", "symbol", "price", "quantity", "buy"]
 
-  constructor(private forexService: ForexAPIService, private portfolioService: PortfolioApiService, private cashService: CashAccountService) { }
+  constructor(private forexService: ForexAPIService, private portfolioService: PortfolioApiService, private cashService: CashAccountService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -32,6 +32,12 @@ export class ForexMarketComponent implements OnInit {
       this.currencies.map(() => {
         this.quantities.push("0");
       })
+      let body = {
+        token: sessionStorage.getItem('user')
+      }
+      this.authService.getUserData(body).subscribe(res => {
+        this.currentUser = res.data.id;
+      });
       this.loading = false;
     });
   }
@@ -79,10 +85,6 @@ export class ForexMarketComponent implements OnInit {
 
   clear(index: number) {
     this.quantities[index] = "0"
-  }
-
-  updateUser() {
-    this.currentUser = this.newUser;
   }
 
 }

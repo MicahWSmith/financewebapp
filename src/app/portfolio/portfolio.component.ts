@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { PortfolioApiService } from '../portfolio-api.service';
 import { CashAccountService } from '../cash-account.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -13,7 +14,6 @@ export class PortfolioComponent implements OnInit {
   currencies: any[] = [];
   cds: any[] = [];
 
-  newUser: number = 1;
   currentUser: number = 1;
 
   loading: boolean = true;
@@ -29,10 +29,17 @@ export class PortfolioComponent implements OnInit {
   sideBarExpanded = true;
   display = true;
 
-  constructor(private portfolioService: PortfolioApiService, private cashService: CashAccountService) { }
+  constructor(private portfolioService: PortfolioApiService, private cashService: CashAccountService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.updatePortfolio();
+    let body = {
+      token: sessionStorage.getItem('user')
+    }
+    this.authService.getUserData(body).subscribe(res => {
+      this.currentUser = res.data.id;
+      this.updatePortfolio();
+    });
+    
   }
 
   parseInt(str: string) {
@@ -131,12 +138,6 @@ export class PortfolioComponent implements OnInit {
       console.log("CDs from API: ", this.cds)
       this.loading = false;
     });
-  }
-
-  updateUser() {
-    this.currentUser = this.newUser;
-    console.log("Updating profile info for: ", this.newUser)
-    this.updatePortfolio();
   }
 
   toggleSideBar(){

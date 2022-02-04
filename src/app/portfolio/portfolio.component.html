@@ -1,8 +1,6 @@
 <div class="portfolio">
-    <p>Welcome to your portfolio!</p>
-    <p>Prices are displayed in USD</p>
-    <p>Current user is: {{currentUser}}</p>
-    <p>Retrieve user: <input type="number" [(ngModel)]="newUser"><button (click)="updateUser()">Update</button></p>
+    <h1>My Portfolio</h1>
+    <p>Welcome to your portfolio! Prices are displayed in USD</p>
 
     <div *ngIf="loading; then loadingBlock else portfolioBlock"></div>
 

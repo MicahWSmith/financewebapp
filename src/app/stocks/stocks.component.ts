@@ -4,6 +4,7 @@ import { StockGraphComponent } from '../stock-graph/stock-graph.component';
 import { StockService } from '../stock.service';
 import { PortfolioApiService } from '../portfolio-api.service';
 import { CashAccountService } from '../cash-account.service';
+import { AuthService } from '../auth.service';
 import { Stock } from './stocks.model'
 
 
@@ -53,7 +54,7 @@ export class StocksComponent implements OnInit {
   purchaseMessage: string = "";
   canBuy: boolean = true;
 
-  constructor(private stockService: StockService, private portfolioService: PortfolioApiService, private cashService: CashAccountService) { }
+  constructor(private stockService: StockService, private portfolioService: PortfolioApiService, private cashService: CashAccountService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.stockService.getStockInformation().subscribe((data)=>{
@@ -62,6 +63,12 @@ export class StocksComponent implements OnInit {
       this.selectedStock=this.stocks[0];
       this.selectedStockValue = (Object.values(this.selectedStock.stock_value)[0])
       this.stockSelection(this.selectedStock);
+    });
+    let body = {
+      token: sessionStorage.getItem('user')
+    }
+    this.authService.getUserData(body).subscribe(res => {
+      this.currentUser = res.data.id;
     });
     this.getBalance();
   }
