@@ -8,7 +8,7 @@
             <div class="label">Name: </div>
             <div class="rowTest name" *ngIf="!showNameEdit">
                 <div class="info">{{user.first}} {{user.last}}</div>
-                <button mat-button (click)="editName()">Edit</button>
+                <button mat-raised-button class="edit" (click)="editName()">Edit</button>
             </div>
             
 
@@ -36,7 +36,7 @@
             <div class="label">Address: </div>
             <div class="rowTest address" *ngIf="!showAddressEdit">
                 <div class="info">{{user.profile.street_address}} {{user.profile.city}} {{user.profile.state}}</div>
-                <button mat-button (click)="editAddress()">Edit</button>
+                <button mat-raised-button class="edit" (click)="editAddress()">Edit</button>
             </div>
 
             <div class="columnTest" *ngIf="showAddressEdit">
@@ -81,7 +81,7 @@
                         <div class="info">{{user.phone}}</div>
                     </div>
                 </div>
-                <button mat-button (click)="editContact()">Edit</button>
+                <button mat-raised-button class="edit" (click)="editContact()">Edit</button>
             </div>
 
             <div *ngIf="showContactEdit" class="columnTest">
@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div>
-                <button mat-button (click)="openConfirm()">Delete Account</button>
+                <button mat-raised-button (click)="openConfirm()">Delete Account</button>
             </div>
 
         </mat-card-content>
