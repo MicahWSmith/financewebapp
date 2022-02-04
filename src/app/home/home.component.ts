@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { DashboardCommunicationService } from '../dashboard/dashboard-communication.service';
 
@@ -9,28 +10,28 @@ import { DashboardCommunicationService } from '../dashboard/dashboard-communicat
 export class HomeComponent implements OnInit {
 
   loggedIn: boolean = false;
+
   constructor(private dashboardCommunicationService: DashboardCommunicationService) { 
     dashboardCommunicationService.setLandingPage(this);
   }
 
   ngOnInit(): void {
-    this.loggedIn = false;
 
-    let body = {
-      token: sessionStorage.getItem('user') ? sessionStorage.getItem('user') : ""
+    if(sessionStorage.getItem('loggedIn') == 'true'){
+      this.loggedIn = true;
     }
-
-    this.dashboardCommunicationService.authService.getUserData(body).subscribe(res => {
-        if(res){
-          this.loggedIn = true;
-          console.log("there was a response.")
-        }
-    })
+    else{
+      this.loggedIn = false;
+    }
    
   }
 
   setLoggedOff(){
     this.loggedIn = false;
+  }
+
+  setLoggedOn(){
+    this.loggedIn = true;
   }
 
 }
