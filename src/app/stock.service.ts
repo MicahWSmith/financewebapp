@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 const stockInformationUrl = 'https://boiling-falls-79972.herokuapp.com/info';
 
@@ -11,7 +12,7 @@ export class StockService {
   constructor(private httpClient: HttpClient) { }
 
 
-  getStockInformation() {
+  getStockInformation(): Observable<any> {
     return this.httpClient.get(stockInformationUrl);
   }
 

@@ -63,18 +63,29 @@ $primary-font: 'Red Hat Display', sans-serif;
             margin-left: 20px;
             margin-right: 10px;
             
-            #home-icon{
-                content: url(./home.png);
-                margin-left: 110px;
+            #top-bar{
+
+                #welcome{
+                    background-color: red;
+                }
+                #icons{
+                    background-color: blue;
+                    #home-icon{
+                        content: url(./home.png);
+                    }
+        
+                    #account-icon{
+                        content: url(./user.png);
+                    }
+        
+                    #message-icon{
+                        content: url(./email.png);
+                    }
+                }
+                
             }
 
-            #account-icon{
-                content: url(./user.png);
-            }
 
-            #message-icon{
-                content: url(./email.png);
-            }
 
             #message-under{
                 margin-top: 40px;
