@@ -30,7 +30,19 @@ const routes: Routes = [
   { path: "forex", component: ForexMarketComponent},
   { path: "cash", component: CashAccountComponent},
   { path: "", component: HomeComponent},
-  { path: "portfolio", component: PortfolioComponent},
+  { path: "portfolio", component: LayoutComponent,
+      children: [
+        {
+          path: '',
+          component: PortfolioComponent,
+        }, 
+        {
+          path: '',
+          component: SidebarComponent,
+          outlet: 'left-side-bar-router'
+        } 
+      ]
+  },
   { path: "mutualfunds", component: MutualfundsComponent},
   { path: "dashboard", component: LayoutComponent,
       children:[

@@ -66,12 +66,12 @@ $primary-font: 'Red Hat Display', sans-serif;
     justify-content: center;
     height: calc(100vh - 180px);
     z-index: 8;
-    //width: 100vw;
-
+    width: 100vw;
+    overflow-y: auto;
 }
 
 #main-content-container{
-    width: 100%;
+    width: 90%;
     max-width: 1600px;
 }
 

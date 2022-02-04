@@ -9,7 +9,7 @@ $primary-font: 'Red Hat Display', sans-serif;
 #container{
     width: 100%;
     height: calc(100vh - 180px);
-    overflow-y: auto;
+    //overflow-y: auto;
     min-width: 860px;
     scroll-snap-type: y mandatory;
     
