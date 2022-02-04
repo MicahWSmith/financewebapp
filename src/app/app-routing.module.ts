@@ -25,10 +25,58 @@ const routes: Routes = [
   { path: "recovery", component: RecoveryComponent},
   { path: "", component: HomeComponent},
   { path: "stocks", component: StocksComponent},
-  { path: "cds", component: CdsComponent},
-  { path: "ira", component: IraComponent},
-  { path: "forex", component: ForexMarketComponent},
-  { path: "cash", component: CashAccountComponent},
+  { path: "cds", component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        component: CdsComponent,
+      }, 
+      {
+        path: '',
+        component: SidebarComponent,
+        outlet: 'left-side-bar-router'
+      } 
+    ]
+  },
+  { path: "ira", component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        component: IraComponent,
+      }, 
+      {
+        path: '',
+        component: SidebarComponent,
+        outlet: 'left-side-bar-router'
+      } 
+    ] 
+  },
+  { path: "forex", component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        component: ForexMarketComponent,
+      }, 
+      {
+        path: '',
+        component: SidebarComponent,
+        outlet: 'left-side-bar-router'
+      } 
+    ]
+  },
+  { path: "cash", component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        component: CashAccountComponent,
+      }, 
+      {
+        path: '',
+        component: SidebarComponent,
+        outlet: 'left-side-bar-router'
+      } 
+    ] 
+  },
   { path: "", component: HomeComponent},
   { path: "portfolio", component: LayoutComponent,
       children: [
@@ -43,7 +91,19 @@ const routes: Routes = [
         } 
       ]
   },
-  { path: "mutualfunds", component: MutualfundsComponent},
+  { path: "mutualfunds", component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        component: MutualfundsComponent,
+      }, 
+      {
+        path: '',
+        component: SidebarComponent,
+        outlet: 'left-side-bar-router'
+      } 
+    ]
+  },
   { path: "dashboard", component: LayoutComponent,
       children:[
         { path: '',
