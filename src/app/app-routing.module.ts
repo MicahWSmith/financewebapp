@@ -21,12 +21,12 @@ import { AuthGuard } from './auth.guard';
 const routes: Routes = [
   { path: "login", component: LoginComponent},
   { path: "signup", component: SignupComponent},
-  { path: "myinfo", component: AccountdetailsComponent},
+  { path: "myinfo", component: AccountdetailsComponent, canActivate : [AuthGuard]},
   { path: "about", component: AboutusComponent},
   { path: "recovery", component: RecoveryComponent},
   { path: "", component: HomeComponent},
-  { path: "stocks", component: StocksComponent},
-  { path: "cds", component: LayoutComponent,
+  { path: "stocks", component: StocksComponent, canActivate : [AuthGuard]},
+  { path: "cds", component: LayoutComponent, canActivate : [AuthGuard],
     children: [
       {
         path: '',
@@ -39,7 +39,7 @@ const routes: Routes = [
       } 
     ]
   },
-  { path: "ira", component: LayoutComponent,
+  { path: "ira", component: LayoutComponent, canActivate : [AuthGuard],
     children: [
       {
         path: '',
@@ -52,7 +52,7 @@ const routes: Routes = [
       } 
     ] 
   },
-  { path: "forex", component: LayoutComponent,
+  { path: "forex", component: LayoutComponent, canActivate : [AuthGuard],
     children: [
       {
         path: '',
@@ -65,7 +65,7 @@ const routes: Routes = [
       } 
     ]
   },
-  { path: "cash", component: LayoutComponent,
+  { path: "cash", component: LayoutComponent, canActivate : [AuthGuard],
     children: [
       {
         path: '',
@@ -79,7 +79,7 @@ const routes: Routes = [
     ] 
   },
   { path: "", component: HomeComponent},
-  { path: "portfolio", component: LayoutComponent,
+  { path: "portfolio", component: LayoutComponent, canActivate : [AuthGuard],
       children: [
         {
           path: '',
@@ -92,7 +92,7 @@ const routes: Routes = [
         } 
       ]
   },
-  { path: "mutualfunds", component: LayoutComponent,
+  { path: "mutualfunds", component: LayoutComponent, canActivate : [AuthGuard],
     children: [
       {
         path: '',
@@ -105,7 +105,7 @@ const routes: Routes = [
       } 
     ]
   },
-  { path: "dashboard", component: LayoutComponent,
+  { path: "dashboard", component: LayoutComponent, canActivate : [AuthGuard],
       children:[
         { path: '',
           component: MainComponent
