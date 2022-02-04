@@ -220,9 +220,9 @@ export class StocksComponent implements OnInit {
         } else {
           let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
           
-          this.cashService.updateAccount(this.currentUser, accountPayload.balance - price)
+          this.cashService.updateAccount(accountPayload.id, accountPayload.balance - price)
           .subscribe((paidPayload) => {
-            this.cashService.addTransaction(this.currentUser, "Bought Stock", price, date)
+            this.cashService.addTransaction(accountPayload.id, "Bought Stock", price, date)
             .subscribe((transactionPayload) => {
               this.portfolioService.buyInvestment(this.currentUser, {
                 type: "stock",

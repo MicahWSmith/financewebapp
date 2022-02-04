@@ -36,6 +36,8 @@ export class PortfolioComponent implements OnInit {
       token: sessionStorage.getItem('user')
     }
     this.authService.getUserData(body).subscribe(res => {
+      console.log("Logged in as: ", res.data.id)
+      console.log("Cast to number: ", Number(res.data.id))
       this.currentUser = res.data.id;
       this.updatePortfolio();
     });

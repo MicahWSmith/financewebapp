@@ -103,9 +103,9 @@ export class CdsComponent implements OnInit {
         } else {
           let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
 
-          this.cashService.updateAccount(this.currentUser, accountPayload.balance - this.userDepositInput)
+          this.cashService.updateAccount(accountPayload.id, accountPayload.balance - this.userDepositInput)
           .subscribe((paidPayload) => {
-            this.cashService.addTransaction(this.currentUser, "Bought CD", this.userDepositInput, date)
+            this.cashService.addTransaction(accountPayload.id, "Bought CD", this.userDepositInput, date)
             .subscribe((transactionPayload) => {
               this.portfolioService.buyInvestment(this.currentUser, {
                 type: 'cd',
