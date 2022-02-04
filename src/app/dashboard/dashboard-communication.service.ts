@@ -15,7 +15,7 @@ export class DashboardCommunicationService {
 
   User!:User;
   AppComponent!: AppComponent;
-  SideBar: SidebarComponent = new SidebarComponent(this);
+  SideBar: SidebarComponent = new SidebarComponent(this, this.router);
   Main: MainComponent = new MainComponent(this);
   landingPage!: HomeComponent;
   Home!: DashboardHomeComponent;
