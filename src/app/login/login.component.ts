@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
         if(!res.error){
           this.token = res.token;
           sessionStorage.setItem('user', res.token);
-          sessionStorage.setItem('loggedIn', true.toString());
           //console.log(sessionStorage.getItem('user'));
           this.dashboardCommunicationService.logoutTimer();
           this.router.navigate(['/dashboard']);

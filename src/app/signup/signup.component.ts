@@ -52,10 +52,10 @@ export class SignupComponent implements OnInit {
           console.log(message);
           // login after user is successfully created
           this.authService.getToken(body).subscribe(res =>{
-            if(!res.error)
-            sessionStorage.setItem('user', res.token);
-            sessionStorage.setItem('loggedIn', true.toString());
-            this.router.navigate(['/dashboard']);
+            if(!res.error){
+              sessionStorage.setItem('user', res.token);
+              this.router.navigate(['/dashboard']);
+            }
           });
         }
         else{
