@@ -1,5 +1,5 @@
 table {
-    width: 90vw;
+    width: 70vw;
     margin: 10vh auto;
     }
     h4{
@@ -21,3 +21,16 @@ table {
       background-color: blueviolet;
       
   }
+.cd-container, .stock-container{
+  display: flex;
+  align-items: center;
+}
+.cd-container span, .stock-container span{
+background-color: #5dbfe9; 
+color:white;
+padding:.2rem;
+border-radius:10px;
+}
+.stock-container span{
+  
+}
