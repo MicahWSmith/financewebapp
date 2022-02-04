@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CashAccountService } from '../cash-account.service';
+import { AuthService } from '../auth.service';
+import { ThisReceiver, ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-cash-account',
@@ -15,13 +17,14 @@ export class CashAccountComponent implements OnInit {
   selected : string = "";
   amount : number = 0;
   balance : number = 0;
+  id: number = 0;
 
   displayedColumnst: string[] = ["date", "type", "amount"];
 
-  constructor(private cashService: CashAccountService) { }
+  constructor(private cashService: CashAccountService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.updateAll();
+    this.getUserId();
   }
 
   showDetails() {
@@ -44,8 +47,11 @@ export class CashAccountComponent implements OnInit {
     this.displayForm = !this.displayForm;
   }
 
-  updateAll(){
-    this.cashService.getAccountFull(1).subscribe(response => {
+  updateAll(id: number){
+    //error handling if account doesn't exist w/ id
+    console.log(id);
+    this.cashService.getAccountFull(id).subscribe(response => {
+      console.log(response);
       this.account = response;
       this.account.transactions.sort(function(a : any, b : any){
         return Date.parse(b.date) - Date.parse(a.date);
@@ -70,6 +76,17 @@ export class CashAccountComponent implements OnInit {
         });
       }
     });
+  }
+
+  getUserId(){
+    let body = {
+      token: sessionStorage.getItem('user')
+    }
+    this.authService.getUserData(body).subscribe(res => {
+      this.id = res.data.id;
+      this.updateAll(this.id);
+    });
+
   }
 
 }

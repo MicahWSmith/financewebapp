@@ -1,5 +1,5 @@
 <div class="container">
-    <mat-card>
+    <mat-card *ngIf="accountExists">
         <mat-card class="topcard">
             <mat-card-title class="title">
                 IRA
@@ -88,6 +88,14 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumnsp"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumnsp;"></tr>
               </table>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-title>
+            No IRA associated with this account
+        </mat-card-title>
+        <mat-card-content>
+            <button mat-raised-button>Apply?</button>
         </mat-card-content>
     </mat-card>
 </div>
