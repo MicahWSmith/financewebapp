@@ -13,7 +13,7 @@ $primary-font: 'Red Hat Display', sans-serif;
 
 #left-side-bar{
     background-color: $color-main;
-    height: calc(100vh - 180px);
+    height: calc(100vh - 150px);
     z-index: 10;
     flex-shrink: 0;
     transition: max-width 0.8s;
@@ -64,7 +64,7 @@ $primary-font: 'Red Hat Display', sans-serif;
     display: flex;
     align-self: flex-end;
     justify-content: center;
-    height: calc(100vh - 180px);
+    height: calc(100vh - 150px);
     z-index: 8;
     width: 100vw;
     overflow-y: auto;

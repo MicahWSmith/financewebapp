@@ -8,7 +8,7 @@ $primary-font: 'Red Hat Display', sans-serif;
 
 #container{
     width: 100%;
-    height: calc(100vh - 180px);
+    height: calc(100vh - 150px);
     //overflow-y: auto;
     min-width: 860px;
     scroll-snap-type: y mandatory;
@@ -19,7 +19,7 @@ $primary-font: 'Red Hat Display', sans-serif;
         
         scroll-snap-align: center;
         .small-container{
-            height: calc(100vh - 210px);
+            height: calc(100vh - 180px);
             width: 100%;
             display: flex;
 
