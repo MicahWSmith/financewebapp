@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ForexAPIService } from '../forex-api.service';
 import { PortfolioApiService } from '../portfolio-api.service';
 import { CashAccountService } from '../cash-account.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-forex-market',
@@ -14,7 +15,6 @@ export class ForexMarketComponent implements OnInit {
   quantities: string[] = [];
 
   currentUser: number = 5;
-  newUser: number = 5;
 
   alertMessage: string = "";
   canBuy: boolean = true;
@@ -22,7 +22,7 @@ export class ForexMarketComponent implements OnInit {
 
   displayedColumns: string[] = ["code", "name", "symbol", "price", "quantity", "buy"]
 
-  constructor(private forexService: ForexAPIService, private portfolioService: PortfolioApiService, private cashService: CashAccountService) { }
+  constructor(private forexService: ForexAPIService, private portfolioService: PortfolioApiService, private cashService: CashAccountService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -32,7 +32,14 @@ export class ForexMarketComponent implements OnInit {
       this.currencies.map(() => {
         this.quantities.push("0");
       })
-      this.loading = false;
+      let body = {
+        token: sessionStorage.getItem('user')
+      }
+      this.authService.getUserData(body).subscribe(res => {
+        this.currentUser = Number(res.data.id);
+        this.loading = false;
+      });
+      
     });
   }
 
@@ -55,9 +62,9 @@ export class ForexMarketComponent implements OnInit {
         } else {
           let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
 
-          this.cashService.updateAccount(this.currentUser, accountPayload.balance - price)
+          this.cashService.updateAccount(accountPayload.id, accountPayload.balance - price)
           .subscribe((paidPayload) => {
-            this.cashService.addTransaction(this.currentUser, "Bought Currency", price, date)
+            this.cashService.addTransaction(accountPayload.id, "Bought Currency", price, date)
             .subscribe((transactionPayload) => {
               this.portfolioService.buyInvestment(this.currentUser, {
                 type: "currency",
@@ -79,10 +86,6 @@ export class ForexMarketComponent implements OnInit {
 
   clear(index: number) {
     this.quantities[index] = "0"
-  }
-
-  updateUser() {
-    this.currentUser = this.newUser;
   }
 
 }

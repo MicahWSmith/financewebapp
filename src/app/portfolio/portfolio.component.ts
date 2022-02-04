@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { PortfolioApiService } from '../portfolio-api.service';
 import { CashAccountService } from '../cash-account.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -13,7 +14,6 @@ export class PortfolioComponent implements OnInit {
   currencies: any[] = [];
   cds: any[] = [];
 
-  newUser: number = 1;
   currentUser: number = 1;
 
   loading: boolean = true;
@@ -29,10 +29,19 @@ export class PortfolioComponent implements OnInit {
   sideBarExpanded = true;
   display = true;
 
-  constructor(private portfolioService: PortfolioApiService, private cashService: CashAccountService) { }
+  constructor(private portfolioService: PortfolioApiService, private cashService: CashAccountService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.updatePortfolio();
+    let body = {
+      token: sessionStorage.getItem('user')
+    }
+    this.authService.getUserData(body).subscribe(res => {
+      console.log("Logged in as: ", res.data.id)
+      console.log("Cast to number: ", Number(res.data.id))
+      this.currentUser = res.data.id;
+      this.updatePortfolio();
+    });
+    
   }
 
   parseInt(str: string) {
@@ -49,9 +58,9 @@ export class PortfolioComponent implements OnInit {
       let price = this.currencies[index].quantity * this.currencies[index].currentPrice
       let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
 
-      this.cashService.updateAccount(this.currentUser, accountPayload.balance + price)
+      this.cashService.updateAccount(accountPayload.id, accountPayload.balance + price)
       .subscribe((soldPayload) => {
-        this.cashService.addTransaction(this.currentUser, "Sold Currency", price, date)
+        this.cashService.addTransaction(accountPayload.id, "Sold Currency", price, date)
         .subscribe((transactionPayload) => {
           this.portfolioService.sellInvestment(this.currentUser,this.currencies[index].investmentID, "currency")
           .subscribe(() => {
@@ -131,12 +140,6 @@ export class PortfolioComponent implements OnInit {
       console.log("CDs from API: ", this.cds)
       this.loading = false;
     });
-  }
-
-  updateUser() {
-    this.currentUser = this.newUser;
-    console.log("Updating profile info for: ", this.newUser)
-    this.updatePortfolio();
   }
 
   toggleSideBar(){
