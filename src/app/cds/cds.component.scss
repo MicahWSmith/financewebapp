@@ -74,7 +74,7 @@ button {
   position: absolute;
   flex-direction: column;
   z-index: 1000;
-  background-color: rgba(25, 179, 244, .75);
+  background-color: rgba(25, 179, 244, 1);
   color: white;
   opacity:0;
   left:-30vw;
@@ -113,7 +113,7 @@ button {
   transition: transform 325ms ease-in;
   transition: opacity;
   opacity: 1;
-  transition-duration: 1s;
+  transition-duration: .5s;
   transition-timing-function: linear;
 
 }
