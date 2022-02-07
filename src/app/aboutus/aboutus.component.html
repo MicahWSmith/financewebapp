@@ -15,18 +15,18 @@
     <mat-card class="member-card">
         
         <mat-card-content class="member-card-content">
-            <img mat-card-xl-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+            <img mat-card-xl-image src="../../assets/Dakota-Profile-Pic.jpg" >
             <div class="member-card-text">
                 <h1><b>Dakota Korn</b></h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <p>With a background in education, Dakota maintains a consistent growth mindset attitude and is actively trying to build upon his skills in many different programming areas. His prior experience working as the head manager of a township facility not only helped him work in a team environment, but also gave him valuable insights on how to help lead a team towards a common goal. Dakota's current goal is to become a Full Stack Java Developer and to keep learning new technologies and frameworks to assist in his personal growth.</p>
                 <h2>On this project:</h2>
-                <p>Dakota did a bunch of stuff with stocks or whatever</p>
+                <p>On the front end, Dakota used his extensive knowledge of CSS and SCSS to help lead the design and functionality of the GUI. He also used his experience with Angular and Angular Routing to create a multiple router application that lead to the implementation of the application's sidebar navigation system. Dakota also helped research and implement the use of Angular graphs with real time data into his Stocks Marketplace Application. On the backend, Dakota created a microservice that keeps consistently updates a database with the current price of individual stocks. It also maintains an archived database of the end of day stock prices of each individual stock. He also created a microservice that allowed his team to access the current and archived stock prices, along with basic information of the specific stocks.</p>
             </div>
         </mat-card-content>
 
         <mat-card-actions>
-            <button mat-button>GITHUB</button>
-            <button mat-button>LINKEDIN</button>
+            <button mat-button (click)='goTo("https://github.com/DakotaJKorn")'>GITHUB</button>
+            <button mat-button (click)='goTo("https://www.linkedin.com/in/dakota-korn/")'>LINKEDIN</button>
           </mat-card-actions>
         
     </mat-card>
