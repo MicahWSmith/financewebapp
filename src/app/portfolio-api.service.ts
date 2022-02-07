@@ -15,19 +15,22 @@ export class PortfolioApiService {
 
   //Returns user's full portfolio
   getPortfolio(user: number): Observable<any> {
-    return this.http.get<any>(this.portfolioURL + this.portfolioEXT + user)
+    let token = sessionStorage.getItem('user');
+    return this.http.get<any>(this.portfolioURL + this.portfolioEXT + token)
   }
 
   buyInvestment(user: number, investment: object) {
-    return this.http.post<any>(this.portfolioURL + this.positionEXT + user, investment)
+    let token = sessionStorage.getItem('user');
+    return this.http.post<any>(this.portfolioURL + this.positionEXT + token, investment)
   }
 
   sellInvestment(user: number, investmentId: number, type: string) {
+    let token = sessionStorage.getItem('user');
     let params = new HttpParams();
     params = params.append('id', investmentId);
     params = params.append('type', type);
 
-    return this.http.delete<any>(this.portfolioURL + this.positionEXT + user, {params: params})
+    return this.http.delete<any>(this.portfolioURL + this.positionEXT + token, {params: params})
   }
 
 }

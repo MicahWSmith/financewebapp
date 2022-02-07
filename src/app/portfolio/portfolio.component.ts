@@ -16,14 +16,19 @@ export class PortfolioComponent implements OnInit {
 
   currentUser: number = 1;
 
+  totalValue: number = 0;
+  totalPurchaseValue: number = 0;
+  totalGain: number = 0;
+  percentGain: number = 0;
+
   loading: boolean = true;
   canSell: boolean = true;
   currencyMessage: string = "";
   stockMessage: string = "";
   cdMessage: string = "";
 
-  stockColumns: string[] = ["symbol", "name", "quantity", "purchasePrice", "currentPrice", "sell"]
-  currencyColumns: string[] = ["code", "name", "symbol", "quantity", "purchasePrice", "currentPrice", "sell"]
+  stockColumns: string[] = ["symbol", "name", "quantity", "purchasePrice", "lastPrice", "purchaseValue", "currentValue", "sell"]
+  currencyColumns: string[] = ["code", "name", "symbol", "quantity", "purchasePrice", "lastPrice", "purchaseValue", "currentValue", "sell"]
   cdColumns: string[] = ["deposit", "interestRate", "openDate", "term", "currentValue", "maturityDate", "sell"]
 
   sideBarExpanded = true;
@@ -138,6 +143,33 @@ export class PortfolioComponent implements OnInit {
       console.log("Currencies from API: ", this.currencies)
       console.log("Stocks from API: ", this.stocks)
       console.log("CDs from API: ", this.cds)
+
+      this.totalValue = 0;
+      this.totalValue += this.currencies.reduce((prev, curr) => {
+        return prev += Number(curr.currentPrice) * Number(curr.quantity);
+      }, 0)
+      this.totalValue += this.stocks.reduce((prev, curr) => {
+        return prev += Number(curr.currentPrice) * Number(curr.quantity);
+      }, 0)
+      this.totalValue += this.cds.reduce((prev, curr) => {
+        return prev += Number(curr.currentValue);
+      }, 0)
+      console.log("Total Value: ", this.totalValue)
+
+      this.totalPurchaseValue = 0;
+      this.totalPurchaseValue += this.currencies.reduce((prev, curr) => {
+        return prev += Number(curr.purchasePrice) * Number(curr.quantity);
+      }, 0)
+      this.totalPurchaseValue += this.stocks.reduce((prev, curr) => {
+        return prev += Number(curr.purchasePrice) * Number(curr.quantity);
+      }, 0)
+      this.totalPurchaseValue += this.cds.reduce((prev, curr) => {
+        return prev += Number(curr.deposit);
+      }, 0)
+
+      this.totalGain = this.totalValue - this.totalPurchaseValue;
+      this.percentGain = this.totalGain / this.totalPurchaseValue
+
       this.loading = false;
     });
   }
