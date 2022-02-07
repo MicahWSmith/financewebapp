@@ -9,6 +9,7 @@ import { CashAccountService } from '../cash-account.service';
 import { DashboardCommunicationService } from '../dashboard/dashboard-communication.service';
 import { AuthService } from '../auth.service';
 
+
 @Component({
   selector: 'app-cds',
   templateUrl: './cds.component.html',
@@ -38,6 +39,7 @@ export class CdsComponent implements OnInit {
   canBuy: boolean = false;
   currentUser: number = 1;
   valid: boolean = false;
+
 
   ngOnInit(): void {
     this.cdService.getCds().subscribe((payload) => {
@@ -157,8 +159,14 @@ export class CdsComponent implements OnInit {
     this.calculatedReturn =
       event.value * Math.pow(1 + interestRate / 365, termLength);
   }
+  buttonCalc(event: any, termLength: any, interestRate: any) {
+    console.log('i fired', event.value, termLength.value, interestRate.value )
+    this.calculatedReturn =
+      event.value * Math.pow(1 + interestRate.value / 365, termLength.value);
+  }
 
   xferData(minDeposit: any, termLength: any, interestRate: any) {
+    this.toggleCalc()
     this.minDeposit = minDeposit;
     this.termLength = termLength;
     this.interestRate = interestRate;
@@ -169,4 +177,15 @@ export class CdsComponent implements OnInit {
       event
     );
   }
+  moveClass: boolean = false;
+  toggleCalc(): void{
+    if (this.moveClass == false){
+      this.moveClass = true;
+     
+    } else {
+      this.moveClass = false;
+     
+    }
+  }
+  
 }
