@@ -11,6 +11,20 @@
     </ng-template>
 
     <ng-template #portfolioBlock>
+        <div class="portfolio-div">
+            <mat-card class="portfolio-card">
+                <div class="card-row">
+                    <div class="label">Total Value of Current Assets:</div>
+                    <div class="value">$2.00</div>
+                </div>
+                <div class="card-row">
+                    <div class="label">Total Gain/Loss:</div>
+                    <div class="value">$4/20%</div>
+                </div>
+            </mat-card>
+        </div>
+        <br/>
+
         <p>{{currencyMessage}}</p>
         <h1 *ngIf="currencies.length > 0">Currencies</h1>
         <table mat-table [dataSource]="currencies" class="mat-elevation-z8" *ngIf="currencies.length > 0">

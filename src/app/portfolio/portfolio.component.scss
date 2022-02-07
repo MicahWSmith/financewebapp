@@ -15,6 +15,37 @@
         justify-content: center;
         align-content:center;
     }
+
+    .portfolio-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content:center;
+    }
+
+    .portfolio-card {
+        width: 40%;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        //align-content:center;
+
+        .card-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            //align-content:center;
+
+            // .label {
+            //     text-align: left;
+            // }
+            // .value {
+            //     text-align: right;
+            // }
+        }
+    }
 }
 
 h1 {
