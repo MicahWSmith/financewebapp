@@ -1,4 +1,3 @@
-import { ThisReceiver, ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { IraService } from '../ira.service';
@@ -15,7 +14,6 @@ export class IraComponent implements OnInit {
   investments : any = [];
   transactions : any = [];
   performances : any = [];
-  id!: number;
   accountExists: boolean = false;
 
   displayedColumnsi: string[] = ["name", "quantity", "datePurchased", "originalValue", "currentValue"];
@@ -31,20 +29,22 @@ export class IraComponent implements OnInit {
   }
 
   getUserId(){
-    let body = {
+    let token = sessionStorage.getItem('user');
+    this.getIRAFull(token);
+    /* let body = {
       token: sessionStorage.getItem('user')
     }
     this.authService.getUserData(body).subscribe(res => {
       this.id = res.data.id;
       console.log(this.id);
       this.getIRAFull();
-    });
+    }); */
 
   }
 
-  getIRAFull(){
+  getIRAFull(token: any){
     console.log("getIRAFull called");
-    this.iraService.getIRAFull(this.id).subscribe(response => {
+    this.iraService.getIRAFull(token).subscribe(response => {
       console.log("response: ", response);
       if (Object.keys(response).length === 0){
         this.accountExists = false;
