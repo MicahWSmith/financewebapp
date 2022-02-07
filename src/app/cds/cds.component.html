@@ -73,7 +73,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <p class="details">How Much Would You Like to Deposit?</p>
+          <p class="details">How Much Would You Like to Invest?</p>
           <input
             #modalValue
             id="takeInput"
@@ -90,7 +90,7 @@
         </div>
         <div class="modal-footer">
           <p class="error-message" *ngIf="valid">
-            Deposit for this CD must be at least {{ minDeposit | currency }}
+            Investment must be at least {{ minDeposit | currency }}
           </p>
           <button
             (click)="buyCD(i)"
