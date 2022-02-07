@@ -6,11 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 import { PortfolioApiService } from '../portfolio-api.service';
 import { CashAccountService } from '../cash-account.service';
-<<<<<<< HEAD
 import { DashboardCommunicationService } from '../dashboard/dashboard-communication.service';
-=======
 import { AuthService } from '../auth.service';
->>>>>>> main
 
 @Component({
   selector: 'app-cds',
@@ -24,11 +21,8 @@ export class CdsComponent implements OnInit {
     private router: Router,
     private portfolioService: PortfolioApiService,
     private cashService: CashAccountService,
-<<<<<<< HEAD
-    private dashboardCommunicationService: DashboardCommunicationService
-=======
+    private dashboardCommunicationService: DashboardCommunicationService,
     private authService: AuthService
->>>>>>> main
   ) {}
 
   cds: Cd[] = [];
