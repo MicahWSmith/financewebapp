@@ -8,6 +8,7 @@ import { PortfolioApiService } from '../portfolio-api.service';
 import { CashAccountService } from '../cash-account.service';
 import { DashboardCommunicationService } from '../dashboard/dashboard-communication.service';
 import { AuthService } from '../auth.service';
+import { faSignOutAlt, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -39,7 +40,8 @@ export class CdsComponent implements OnInit {
   canBuy: boolean = false;
   currentUser: number = 1;
   valid: boolean = false;
-
+  faSignOutAlt = faSignOutAlt;
+  faTimesCircle = faTimesCircle;
 
   ngOnInit(): void {
     this.cdService.getCds().subscribe((payload) => {

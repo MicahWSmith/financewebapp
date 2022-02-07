@@ -4,6 +4,7 @@
 </p>
 
 
+
 <div class="calculator-box" [ngClass]="{'move-modal' :moveClass}">
   <div class="calc">
     Investment Amount:
@@ -27,7 +28,8 @@
     <h3 class="term-calc-header">Investment Return: {{ calculatedReturn | currency }}</h3>
     <button class="btn btn-primary" (click)="buttonCalc(currentValue, cdTermValue, cdIntValue)">Calculate Return</button>
   </div>
-  <button class="closeBtn" (click)="toggleCalc()">X</button>
+  
+  <button class="closeBtn" (click)="toggleCalc()"><fa-icon [icon]="faTimesCircle"></fa-icon></button>
 </div>
 
 
