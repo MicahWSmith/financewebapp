@@ -11,6 +11,20 @@
     </ng-template>
 
     <ng-template #portfolioBlock>
+        <div class="portfolio-div">
+            <mat-card class="portfolio-card">
+                <div class="card-row">
+                    <div class="label">Total Value of Current Assets:</div>
+                    <div class="value">{{totalValue | currency}}</div>
+                </div>
+                <div class="card-row">
+                    <div class="label">Total Gain/Loss:</div>
+                    <div class="value">{{totalGain | currency}} / {{percentGain | percent:'0.2-5'}}</div>
+                </div>
+            </mat-card>
+        </div>
+        <br/>
+
         <p>{{currencyMessage}}</p>
         <h1 *ngIf="currencies.length > 0">Currencies</h1>
         <table mat-table [dataSource]="currencies" class="mat-elevation-z8" *ngIf="currencies.length > 0">
@@ -41,14 +55,26 @@
 
             <!-- Purchase Price Column -->
             <ng-container matColumnDef="purchasePrice">
-                <th mat-header-cell *matHeaderCellDef> Purchase Price </th>
-                <td mat-cell *matCellDef="let currency"> {{currency.purchasePrice}} </td>
+                <th mat-header-cell *matHeaderCellDef> Cost Basis </th>
+                <td mat-cell *matCellDef="let currency"> ${{currency.purchasePrice}} </td>
             </ng-container>
 
-            <!-- Current Price Column -->
-            <ng-container matColumnDef="currentPrice">
-                <th mat-header-cell *matHeaderCellDef> Current Price </th>
-                <td mat-cell *matCellDef="let currency"> {{currency.currentPrice}} </td>
+            <!-- Last Price Column -->
+            <ng-container matColumnDef="lastPrice">
+                <th mat-header-cell *matHeaderCellDef> Last Price </th>
+                <td mat-cell *matCellDef="let currency"> ${{currency.currentPrice}} </td>
+            </ng-container>
+
+            <!-- Purchase Value Column -->
+            <ng-container matColumnDef="purchaseValue">
+                <th mat-header-cell *matHeaderCellDef> Value at Purchase </th>
+                <td mat-cell *matCellDef="let currency"> {{currency.purchasePrice * currency.quantity | currency}} </td>
+            </ng-container>
+
+            <!-- Current Value Column -->
+            <ng-container matColumnDef="currentValue">
+                <th mat-header-cell *matHeaderCellDef> Current Value </th>
+                <td mat-cell *matCellDef="let currency"> {{currency.currentPrice * currency.quantity | currency}} </td>
             </ng-container>
 
             <!-- Sell Column -->
@@ -98,14 +124,26 @@
 
             <!-- Purchase Price Column -->
             <ng-container matColumnDef="purchasePrice">
-                <th mat-header-cell *matHeaderCellDef> Purchase Price </th>
-                <td mat-cell *matCellDef="let stock"> {{stock.purchasePrice}} </td>
+                <th mat-header-cell *matHeaderCellDef> Cost Basis </th>
+                <td mat-cell *matCellDef="let stock"> {{stock.purchasePrice | currency}} </td>
             </ng-container>
 
-            <!-- Current Price Column -->
-            <ng-container matColumnDef="currentPrice">
-                <th mat-header-cell *matHeaderCellDef> Current Price </th>
-                <td mat-cell *matCellDef="let stock"> {{stock.currentPrice}} </td>
+            <!-- Last Price Column -->
+            <ng-container matColumnDef="lastPrice">
+                <th mat-header-cell *matHeaderCellDef> Last Price </th>
+                <td mat-cell *matCellDef="let stock"> {{stock.currentPrice | currency}} </td>
+            </ng-container>
+
+            <!-- Purchase Value Column -->
+            <ng-container matColumnDef="purchaseValue">
+                <th mat-header-cell *matHeaderCellDef> Value at Purcahse </th>
+                <td mat-cell *matCellDef="let stock"> {{stock.purchasePrice * stock.quantity | currency}} </td>
+            </ng-container>
+
+            <!-- Current Value Column -->
+            <ng-container matColumnDef="currentValue">
+                <th mat-header-cell *matHeaderCellDef> Current Value </th>
+                <td mat-cell *matCellDef="let stock"> {{stock.currentPrice * stock.quantity | currency}} </td>
             </ng-container>
 
             <!-- Sell Column -->
