@@ -22,8 +22,8 @@ export class PortfolioComponent implements OnInit {
   stockMessage: string = "";
   cdMessage: string = "";
 
-  stockColumns: string[] = ["symbol", "name", "quantity", "purchasePrice", "currentPrice", "sell"]
-  currencyColumns: string[] = ["code", "name", "symbol", "quantity", "purchasePrice", "currentPrice", "sell"]
+  stockColumns: string[] = ["symbol", "name", "quantity", "purchasePrice", "lastPrice", "purchaseValue", "currentValue", "sell"]
+  currencyColumns: string[] = ["code", "name", "symbol", "quantity", "purchasePrice", "lastPrice", "purchaseValue", "currentValue", "sell"]
   cdColumns: string[] = ["deposit", "interestRate", "openDate", "term", "currentValue", "maturityDate", "sell"]
 
   sideBarExpanded = true;
