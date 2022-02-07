@@ -15,11 +15,11 @@
             <mat-card class="portfolio-card">
                 <div class="card-row">
                     <div class="label">Total Value of Current Assets:</div>
-                    <div class="value">$2.00</div>
+                    <div class="value">{{totalValue | currency}}</div>
                 </div>
                 <div class="card-row">
                     <div class="label">Total Gain/Loss:</div>
-                    <div class="value">$4/20%</div>
+                    <div class="value">{{totalGain | currency}} / {{percentGain | percent:'0.2-5'}}</div>
                 </div>
             </mat-card>
         </div>
