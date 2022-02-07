@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    font-size: 1.2em;
     //background-color: green;
 }
 .rowTest{
@@ -9,6 +10,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     //background-color: red;
+    padding-bottom: 10px;
 }
 .columnTest{
     display: flex;
@@ -19,9 +21,11 @@
 .label{
     padding-right: 5px;
     font-size: 1.1em;
+    font-weight: 500;
 }
 .container{
     width: 40vw;
+    padding-top: 30px;
 
 
     .columnTest{
@@ -98,7 +102,7 @@
     }
     #delete-button-div{
         width: 100%;
-        padding-top: 40px;
+        padding-top: 25px;
         display: flex;
         justify-content: center;
         
