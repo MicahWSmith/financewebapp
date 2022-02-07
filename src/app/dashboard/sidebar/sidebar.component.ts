@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import { User } from 'src/app/models/user.model';
+import { Router } from "@angular/router"
 import { DashboardCommunicationService } from '../dashboard-communication.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class SidebarComponent implements OnInit {
   
   gotUser: boolean = false;
 
-  constructor(private dashboardCommunicationService:DashboardCommunicationService) {
+  constructor(private dashboardCommunicationService:DashboardCommunicationService, private router: Router) {
     dashboardCommunicationService.setSidebar(this);
    }
 
@@ -28,6 +29,7 @@ export class SidebarComponent implements OnInit {
   goTo(view:string){
       this.dashboardCommunicationService.setView(view);
       this.currentPage = view;
+      this.router.navigate(["/dashboard"])
   }
 
   logout(){

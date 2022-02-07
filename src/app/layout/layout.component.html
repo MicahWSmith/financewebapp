@@ -8,7 +8,7 @@
             
     </div>
 
-    <div id='left-side-bar-toggle' (click)='toggleSideBar()'></div>
+    <div id='left-side-bar-toggle' (click)='toggleSideBar()' [ngClass] = '{"no-display":!toggleDisplay}'></div>
 
         
     <div id='main-content' [ngClass] = '{"main-content-condensed":sideBarExpanded, "main-content-expanded":!sideBarExpanded}'>

@@ -16,14 +16,14 @@
       </ng-container>
       <ng-container matColumnDef="cds">
         <th mat-header-cell *matHeaderCellDef> CDs </th>
-        <td mat-cell *matCellDef="let mf"><p *ngIf="mf.cds.length > 0">[<span *ngFor="let cd of mf.cds">{{cd}}</span>]</p>
-          <p *ngIf="mf.cds.length == 0">none</p>
+        <td mat-cell *matCellDef="let mf"><p class="cd-container" *ngIf="mf.cds.length > 0"><span *ngFor="let cd of mf.cds">{{cd}}</span></p>
+          <p *ngIf="mf.cds.length == 0">None</p>
         </td>
       </ng-container>
       <ng-container matColumnDef="stocks">
         <th mat-header-cell *matHeaderCellDef> Stocks </th>
-        <td mat-cell *matCellDef="let mf"><p *ngIf="mf.stocks.length > 0">[<span *ngFor="let stock of mf.stocks">{{stock}}</span>]</p>
-          <p *ngIf="mf.stocks.length == 0">none</p>
+        <td mat-cell *matCellDef="let mf"><p class="stock-container" *ngIf="mf.stocks.length > 0"><span *ngFor="let stock of mf.stocks">{{stock}}</span></p>
+          <p *ngIf="mf.stocks.length == 0">None</p>
         </td>
       </ng-container>
       <ng-container matColumnDef="investAmount">

@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { DashboardCommunicationService } from '../dashboard/dashboard-communication.service';
 
 @Component({
   selector: 'app-layout',
@@ -9,10 +10,23 @@ export class LayoutComponent implements OnInit {
 
   sideBarExpanded = true;
   display = true;
-  constructor() { }
+  toggleDisplay = true;
+
+  constructor(private dashboardCommunicationService: DashboardCommunicationService) {
+    dashboardCommunicationService.setLayout(this);
+   }
 
   ngOnInit(): void {
   
+  }
+
+  showSidebarToggleButton(){
+    this.toggleDisplay = true;
+  }
+
+  hideSidebar(){
+    this.sideBarExpanded = false;
+    this.toggleDisplay = false;
   }
 
   toggleSideBar(){
