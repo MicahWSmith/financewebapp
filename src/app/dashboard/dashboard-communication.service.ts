@@ -8,6 +8,8 @@ import { DashboardAccountComponent } from './dashboard-account/dashboard-account
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { HomeComponent } from '../home/home.component';
+import { CdsComponent } from '../cds/cds.component';
+import { LayoutComponent } from '../layout/layout.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,6 +23,8 @@ export class DashboardCommunicationService {
   Home!: DashboardHomeComponent;
   Account!: DashboardAccountComponent;
   authService!: AuthService;
+  cdsComponent!: CdsComponent;
+  layoutComponent!: LayoutComponent;
 
   timeoutLength: number = 30 * 60 * 1000;
   constructor(auth:AuthService, private router: Router) {
@@ -50,6 +54,11 @@ export class DashboardCommunicationService {
     })
   }
 
+
+  setCds(component: CdsComponent){
+    this.cdsComponent = component;
+  }
+
   setMain(component:MainComponent){
     this.Main = component;
   }
@@ -62,6 +71,10 @@ export class DashboardCommunicationService {
     this.SideBar = component;
   }
 
+  setLayout(component:LayoutComponent){
+    this.layoutComponent = component;
+  }
+  
   setHome(component: DashboardHomeComponent){
     this.Home = component;
     
