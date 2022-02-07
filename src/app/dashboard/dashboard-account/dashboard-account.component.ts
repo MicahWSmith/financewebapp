@@ -29,6 +29,7 @@ export class DashboardAccountComponent implements OnInit {
   showNameEdit : boolean = false;
   showAddressEdit : boolean = false;
   showContactEdit : boolean = false;
+  hasAddress: boolean = true;
   selected : string = "";
   user!:User;
 
@@ -37,7 +38,8 @@ export class DashboardAccountComponent implements OnInit {
    }
   ngOnInit(): void {
     this.dbComm.getUserFromSession();
-    console.log(sessionStorage.getItem('user'));
+    //console.log(sessionStorage.getItem('user'));
+    //console.log(this.user);
   }
 
   editName(){
@@ -137,6 +139,14 @@ export class DashboardAccountComponent implements OnInit {
 
   setUser(user:User){
     this.user = user;
+    console.log(user);
+    if (this.user.profile.street_address === "" || this.user.profile.city === "" || this.user.profile.state === ""){
+      this.hasAddress = false;
+      console.log(this.hasAddress);
+    }
+    else {
+      this.hasAddress = true;
+    }
   }
 
   deleteAccount(){

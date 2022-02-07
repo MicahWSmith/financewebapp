@@ -3,6 +3,9 @@
         <mat-card-title id="title">
             Your Account Details
         </mat-card-title>
+        <div *ngIf="!hasAddress" class="addressWarning">
+            No address on record; please update below
+        </div>
         <mat-card-content class="box">
             <div id="name-div">
                 <div class="label">Name: </div>
@@ -13,8 +16,6 @@
                 </div>
             </div>
             
-            
-
             <div class="columnTest" *ngIf="showNameEdit">
                 <div>
                     <mat-form-field appearance="fill">
@@ -39,7 +40,6 @@
 
             <div id="address-div">
                 <div class="label">Address: </div>
-                <div *ngIf=""></div>
                 <div class="rowTest address" *ngIf="!showAddressEdit">
                     <div class="info">{{user.profile.street_address}} {{user.profile.city}} {{user.profile.state}}</div>
                     <div class="edit-button"><button mat-raised-button class="edit" (click)="editAddress()">Edit</button></div>
@@ -117,10 +117,9 @@
                     <button mat-button (click)="submitContact()" [disabled]="!contactForm.valid">Submit</button>
                 </div>
             </div>
-            <div id="delete-button-div">
-                <button mat-raised-button (click)="openConfirm()" >Delete Account</button>
-            </div>
-
         </mat-card-content>
+        <div id="delete-button-div">
+            <button mat-raised-button (click)="openConfirm()" >Close Account</button>
+        </div>
     </mat-card>
 </div>
