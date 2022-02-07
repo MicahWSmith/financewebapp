@@ -42,6 +42,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { SignupComponent } from './signup/signup.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteDialogComponent } from './dashboard/delete-dialog/delete-dialog.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { DeleteDialogComponent } from './dashboard/delete-dialog/delete-dialog.c
     MatExpansionModule,
     MatPaginatorModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    FontAwesomeModule
     ],
   providers: [],
   bootstrap: [AppComponent],
