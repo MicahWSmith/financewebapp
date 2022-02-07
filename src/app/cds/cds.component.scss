@@ -12,6 +12,20 @@ $primary-font: 'Red Hat Display', sans-serif;
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 
+h3 {
+  text-align: center;
+  padding-top: 25px;
+  font-weight:normal;
+}
+
+p {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content:center;
+}
+
 button {
   background-color: #19B3f4;
   color: white;
@@ -109,9 +123,10 @@ mat-slider {
 }
 
 .error-message {
-  padding-right: 20px;
+  padding-right: 8px;
   font-style: italic;
   color: red;
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 100px) {
