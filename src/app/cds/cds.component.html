@@ -1,7 +1,7 @@
-<h1 class="cd-header">Choose an Equity Linked CD</h1>
-<h5 class="cd-sub-header">
-  Each CD is linked to the performance of a specific market index
-</h5>
+<h3>CD Marketplace</h3>
+<p>
+  Welcome to the CDs Marketplace! Each return is tied to a given stock index.
+</p>
 
 <!-- <div class="calculator-box">
   <div class="calc">
@@ -73,7 +73,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <p class="details">How Much Would You Like to Deposit?</p>
+          <p class="details">How Much Would You Like to Invest?</p>
           <input
             #modalValue
             id="takeInput"
@@ -90,7 +90,7 @@
         </div>
         <div class="modal-footer">
           <p class="error-message" *ngIf="valid">
-            Deposit for this CD must be at least {{ minDeposit | currency }}
+            Investment must be at least {{ minDeposit | currency }}
           </p>
           <button
             (click)="buyCD(i)"
