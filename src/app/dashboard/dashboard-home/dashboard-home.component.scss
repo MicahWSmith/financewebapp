@@ -192,8 +192,8 @@ $primary-font: 'Red Hat Display', sans-serif;
                         justify-content: center;
                         margin-left: 20px;
 
-                        @media screen and (max-height:700px) { line-height: 30px; }
-                        @media screen and (max-height:600px) { line-height: 25px; }
+                        @media screen and (max-height:700px) { line-height: 30px; font-size: medium;}
+                        @media screen and (max-height:600px) { line-height: 25px; font-size: small;}
                     }
                 }
             }
@@ -246,8 +246,8 @@ $primary-font: 'Red Hat Display', sans-serif;
                         content: url(./images/blue-arrow.png);
                         height: 40px;
 
-                        @media screen and (max-height:700px) { height: 30px; }
-                        @media screen and (max-height:600px) { height: 25px; }
+                        @media screen and (max-height:700px) { height: 25px; }
+                        @media screen and (max-height:600px) { height: 20px; }
                     }
 
                     .sentence{
@@ -258,8 +258,8 @@ $primary-font: 'Red Hat Display', sans-serif;
                         line-height: 40px;
                         font-size: large;
 
-                        @media screen and (max-height:700px) { font-size: medium; line-height: 30px;}
-                        @media screen and (max-height:600px) { font-size: small; line-height: 30px;}
+                        @media screen and (max-height:700px) { font-size: medium; line-height: 25px;}
+                        @media screen and (max-height:600px) { font-size: small; line-height: 20px;}
                     }
                 }
             }

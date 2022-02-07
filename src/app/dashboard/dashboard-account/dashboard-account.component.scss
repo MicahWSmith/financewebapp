@@ -3,6 +3,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     font-size: 1.2em;
+    margin-left: 60px;
     //background-color: green;
 }
 .rowTest{
@@ -23,8 +24,15 @@
     font-size: 1.1em;
     font-weight: 500;
 }
+.addressWarning{
+    text-align: center;
+    font-size: 1.2em;
+    padding: 10px;
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
 .container{
-    width: 40vw;
+    width: 45vw;
     padding-top: 30px;
 
 
@@ -40,12 +48,14 @@
     #title{
         width: 100%;
         text-align: center;
-        padding-bottom: 40px;
+        padding-bottom: 20px;
+        padding-top: 20px
     }
 
     #name-div{
         display: flex;
         flex-direction: column;
+        padding-top: 20px;
 
         .name{
             display: flex;
@@ -102,7 +112,7 @@
     }
     #delete-button-div{
         width: 100%;
-        padding-top: 25px;
+        padding: 10px;
         display: flex;
         justify-content: center;
         
