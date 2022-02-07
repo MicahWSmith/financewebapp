@@ -28,23 +28,6 @@ export class IraComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserId();
-    /* this.iraService.getTestIRA().subscribe(response => {
-      console.log(response);
-      this.ira = response;
-    })
-    this.iraService.getTestIRAFull().subscribe(response => {
-      console.log(response);
-      this.iraFull = response;
-      this.investments = this.iraFull.investments;
-      this.iraFull.transactions.sort(function(a : any, b : any){
-        return Date.parse(b.date) - Date.parse(a.date);
-      });
-      this.transactions = this.iraFull.transactions;
-      this.iraFull.performances.sort(function(a : any, b : any){
-        return Date.parse(b.date) - Date.parse(a.date);
-      });
-      this.performances = this.iraFull.performances;
-    }) */
   }
 
   getUserId(){
@@ -53,14 +36,16 @@ export class IraComponent implements OnInit {
     }
     this.authService.getUserData(body).subscribe(res => {
       this.id = res.data.id;
+      console.log(this.id);
       this.getIRAFull();
     });
 
   }
 
   getIRAFull(){
+    console.log("getIRAFull called");
     this.iraService.getIRAFull(this.id).subscribe(response => {
-      console.log(response);
+      console.log("response: ", response);
       if (Object.keys(response).length === 0){
         this.accountExists = false;
         return;

@@ -2,18 +2,113 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    font-size: 1.2em;
+    //background-color: green;
 }
 .rowTest{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    //background-color: red;
+    padding-bottom: 10px;
 }
 .columnTest{
     display: flex;
     flex-direction: column;
     flex: none;
+    //background-color: yellow;
 }
 .label{
     padding-right: 5px;
     font-size: 1.1em;
+    font-weight: 500;
 }
+.container{
+    width: 40vw;
+    padding-top: 30px;
+
+
+    .columnTest{
+        padding-left:50px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        .rowTest{
+            margin-left: 27px;
+        }
+    }
+    #title{
+        width: 100%;
+        text-align: center;
+        padding-bottom: 40px;
+    }
+
+    #name-div{
+        display: flex;
+        flex-direction: column;
+
+        .name{
+            display: flex;
+            align-items: center;
+            .info{
+                width: 70%;
+                padding-left: 50px;
+            }
+
+            .edit-button{
+                width: 30%;
+            }
+
+        }
+    }
+
+    #address-div{
+        display: flex;
+        flex-direction: column;
+
+        .address{
+            display: flex;
+            align-items: center;
+            .info{
+                width: 70%;
+                padding-left: 50px;
+            }
+
+            .edit-button{
+                width: 30%;
+            }
+
+        }
+    }
+
+    #contact-div{
+        display: flex;
+        flex-direction: column;
+
+        .contact{
+            display: flex;
+            align-items: center;
+            .columnTest{
+                width: 68%;
+                padding-left: 25px;
+            }
+
+            .edit-button{
+                width: 32%;
+                min-width: 30%;
+            }
+
+        }
+    }
+    #delete-button-div{
+        width: 100%;
+        padding-top: 25px;
+        display: flex;
+        justify-content: center;
+        
+        button{
+            background-color: rgb(255, 89, 89);
+        }
+    }
+}
+

@@ -37,6 +37,7 @@ export class DashboardAccountComponent implements OnInit {
    }
   ngOnInit(): void {
     this.dbComm.getUserFromSession();
+    console.log(sessionStorage.getItem('user'));
   }
 
   editName(){
