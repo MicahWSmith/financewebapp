@@ -1,11 +1,13 @@
-<h2 mat-dialog-title>Account Deletion</h2>
-
-<mat-dialog-content>
-
-<p> This cannot be undone, are you sure? </p>
-</mat-dialog-content>
-
-<mat-dialog-actions>
-    <button class="mat-raised-button" (click)="close()">Go Back</button>
-    <button class="mat-raised-button" (click)="confirm()">Confirm Delete</button>
-</mat-dialog-actions>
+<div class="container">
+    <h2 mat-dialog-title>Account Closure</h2>
+    
+    <mat-dialog-content>
+    
+    <p> This cannot be undone, are you sure? </p>
+    </mat-dialog-content>
+    
+    <mat-dialog-actions class="buttons">
+        <button class="mat-raised-button" (click)="close()">Go Back</button>
+        <button class="mat-raised-button" (click)="confirm()">Confirm</button>
+    </mat-dialog-actions>
+</div>

@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 import { PortfolioApiService } from '../portfolio-api.service';
 import { CashAccountService } from '../cash-account.service';
+import { DashboardCommunicationService } from '../dashboard/dashboard-communication.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class CdsComponent implements OnInit {
     private router: Router,
     private portfolioService: PortfolioApiService,
     private cashService: CashAccountService,
+    private dashboardCommunicationService: DashboardCommunicationService,
     private authService: AuthService
   ) {}
 
@@ -65,6 +67,7 @@ export class CdsComponent implements OnInit {
     this.interestRate = interestRate;
     this.userDepositInput = minDeposit;
     this.minDeposit = minDeposit;
+    this.dashboardCommunicationService.layoutComponent.hideSidebar();
   }
 
   reset(event: any) {
@@ -74,6 +77,7 @@ export class CdsComponent implements OnInit {
   closePopup() {
     this.displayStyle = 'none';
     this.valid = false;
+    this.dashboardCommunicationService.layoutComponent.showSidebarToggleButton();
   }
 
   formatLabel(value: number) {

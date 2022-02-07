@@ -1,17 +1,21 @@
 <div class="container" *ngIf="user">
     <mat-card>
-        <mat-card-title>
+        <mat-card-title id="title">
             Your Account Details
         </mat-card-title>
+        <div *ngIf="!hasAddress" class="addressWarning">
+            No address on record; please update below
+        </div>
         <mat-card-content class="box">
-
-            <div class="label">Name: </div>
-            <div class="rowTest name" *ngIf="!showNameEdit">
-                <div class="info">{{user.first}} {{user.last}}</div>
-                <button mat-raised-button class="edit" (click)="editName()">Edit</button>
+            <div id="name-div">
+                <div class="label">Name: </div>
+                <div class="rowTest name" *ngIf="!showNameEdit">
+                    <div class="info">{{user.first}} {{user.last}}</div>
+                    <div class="edit-button"><button mat-raised-button class="edit" (click)="editName()">Edit</button></div>
+                    
+                </div>
             </div>
             
-
             <div class="columnTest" *ngIf="showNameEdit">
                 <div>
                     <mat-form-field appearance="fill">
@@ -32,12 +36,17 @@
                     <button mat-button (click)="submitName()" [disabled]="!nameForm.valid">Submit</button>
                 </div>
             </div>
+            
 
-            <div class="label">Address: </div>
-            <div class="rowTest address" *ngIf="!showAddressEdit">
-                <div class="info">{{user.profile.street_address}} {{user.profile.city}} {{user.profile.state}}</div>
-                <button mat-raised-button class="edit" (click)="editAddress()">Edit</button>
+            <div id="address-div">
+                <div class="label">Address: </div>
+                <div class="rowTest address" *ngIf="!showAddressEdit">
+                    <div class="info">{{user.profile.street_address}} {{user.profile.city}} {{user.profile.state}}</div>
+                    <div class="edit-button"><button mat-raised-button class="edit" (click)="editAddress()">Edit</button></div>
+                </div>
             </div>
+
+            
 
             <div class="columnTest" *ngIf="showAddressEdit">
                 <div>
@@ -68,21 +77,25 @@
                 </div>
             </div>
 
-            <div class="label">Contact: </div>
-            <div class="rowTest contact" *ngIf="!showContactEdit">
-                <div class="columnTest">
-                    <div class="rowTest">
-                        <div class="label">Email:</div>
-                        <div class="info">{{user.email}}</div>
+            <div id="contact-div">
+                <div class="label">Contact: </div>
+                <div class="rowTest contact" *ngIf="!showContactEdit">
+                    <div class="columnTest">
+                        <div class="rowTest">
+                            <div class="label">Email:</div>
+                            <div class="info">{{user.email}}</div>
+                        </div>
+    
+                        <div class="rowTest">
+                            <div class="label">Phone:</div>
+                            <div class="info">{{user.phone}}</div>
+                        </div>
                     </div>
-
-                    <div class="rowTest">
-                        <div class="label">Phone:</div>
-                        <div class="info">{{user.phone}}</div>
-                    </div>
+                    <div class="edit-button"><button mat-raised-button class="edit" (click)="editContact()">Edit</button></div>
+                    
                 </div>
-                <button mat-raised-button class="edit" (click)="editContact()">Edit</button>
             </div>
+            
 
             <div *ngIf="showContactEdit" class="columnTest">
                 <div>
@@ -104,10 +117,9 @@
                     <button mat-button (click)="submitContact()" [disabled]="!contactForm.valid">Submit</button>
                 </div>
             </div>
-            <div>
-                <button mat-raised-button (click)="openConfirm()">Delete Account</button>
-            </div>
-
         </mat-card-content>
+        <div id="delete-button-div">
+            <button mat-raised-button (click)="openConfirm()" >Close Account</button>
+        </div>
     </mat-card>
 </div>

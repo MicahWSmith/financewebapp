@@ -2,18 +2,123 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    font-size: 1.2em;
+    margin-left: 60px;
+    //background-color: green;
 }
 .rowTest{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    //background-color: red;
+    padding-bottom: 10px;
 }
 .columnTest{
     display: flex;
     flex-direction: column;
     flex: none;
+    //background-color: yellow;
 }
 .label{
     padding-right: 5px;
     font-size: 1.1em;
+    font-weight: 500;
 }
+.addressWarning{
+    text-align: center;
+    font-size: 1.2em;
+    padding: 10px;
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
+.container{
+    width: 45vw;
+    padding-top: 30px;
+
+
+    .columnTest{
+        padding-left:50px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        .rowTest{
+            margin-left: 27px;
+        }
+    }
+    #title{
+        width: 100%;
+        text-align: center;
+        padding-bottom: 20px;
+        padding-top: 20px
+    }
+
+    #name-div{
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+
+        .name{
+            display: flex;
+            align-items: center;
+            .info{
+                width: 70%;
+                padding-left: 50px;
+            }
+
+            .edit-button{
+                width: 30%;
+            }
+
+        }
+    }
+
+    #address-div{
+        display: flex;
+        flex-direction: column;
+
+        .address{
+            display: flex;
+            align-items: center;
+            .info{
+                width: 70%;
+                padding-left: 50px;
+            }
+
+            .edit-button{
+                width: 30%;
+            }
+
+        }
+    }
+
+    #contact-div{
+        display: flex;
+        flex-direction: column;
+
+        .contact{
+            display: flex;
+            align-items: center;
+            .columnTest{
+                width: 68%;
+                padding-left: 25px;
+            }
+
+            .edit-button{
+                width: 32%;
+                min-width: 30%;
+            }
+
+        }
+    }
+    #delete-button-div{
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        
+        button{
+            background-color: rgb(255, 89, 89);
+        }
+    }
+}
+
