@@ -97,7 +97,8 @@ button {
     right:0.5rem;
     position:absolute;
     top:1vh;
-    border-width:.5px;
+    border-width:0;
+    font-size: 3rem;
   }
   .closeBtn:hover{
     background-color:rgba(25, 179, 244, .65);
