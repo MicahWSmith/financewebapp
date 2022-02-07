@@ -3,8 +3,10 @@
   Welcome to the CDs Marketplace! Each return is tied to a given stock index.
 </p>
 
-<!-- <div class="calculator-box">
+
+<div class="calculator-box" [ngClass]="{'move-modal' :moveClass}">
   <div class="calc">
+    Investment Amount:
     <mat-slider
       thumbLabel
       [displayWith]="formatLabel"
@@ -18,19 +20,17 @@
       [(ngModel)]="value"
     >
     </mat-slider>
-    <h2 class="term-calc-header">CD Term: {{ termLength }} months</h2>
+    <pre>CD Term: <input #cdTermValue type="text" size="5" value="{{termLength}}" class="term-calc-header"> months</pre>
+    
+    <pre>Interest Rate: <input #cdIntValue type="text" size="5" value="{{ interestRate }}" class="term-calc-header"> %</pre>
 
-    <h2 class="term-calc-header">Interest Rate: {{ interestRate }}%</h2>
-
-    <h2 class="term-calc-header">
-      End Balance: {{ calculatedReturn | currency }}
-    </h2>
+    <h3 class="term-calc-header">Investment Return: {{ calculatedReturn | currency }}</h3>
+    <button class="btn btn-primary" (click)="buttonCalc(currentValue, cdTermValue, cdIntValue)">Calculate Return</button>
   </div>
-</div> -->
+  <button class="closeBtn" (click)="toggleCalc()">X</button>
+</div>
 
-<!-- <div class="img-box">
-  <img src="https://th.bing.com/th/id/R.065af4915a54436fda20fb3b7cdc2b74?rik=YA9ywBPENAtdmA&riu=http%3a%2f%2fassets.nerdwallet.com%2fblog%2fwp-content%2fuploads%2f2014%2f01%2fCD-certificate-deposit-story.jpg&ehk=UDbD1QAKEvcFit5wthvWqu6CS8GGic%2f3LbanXHpW7sc%3d&risl=&pid=ImgRaw&r=0" alt="Italian Trulli">
-</div> -->
+
 
 <div class="card-container">
   <mat-card class="example-card" *ngFor="let cd of cds; let i = index">
@@ -43,14 +43,14 @@
       <p class="details">Term: {{ cd.term }} months</p>
       <p class="details">Interest Rate: {{ cd.interestRate }}%</p>
     </mat-card-content>
-    <mat-card-actions>
-      <!-- <button
+    <mat-card-actions class="btnBox">
+      <button
         (click)="xferData(cd.minimumOpeningDeposit, cd.term, cd.interestRate)"
-        class="cd-details"
+        class="cd-details btn btn-primary"
         mat-button
       >
         CALCULATE
-      </button> -->
+      </button>
       <button
         class="btn btn-primary"
         mat-button
