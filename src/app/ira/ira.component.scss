@@ -1,3 +1,8 @@
+.container {
+    width: 65vw;
+    margin: 20px;
+    padding: 10px;
+}
 .red {
     color: rgb(235, 41, 41);
 }
@@ -33,4 +38,24 @@
     margin: 20px;
     padding: 10px;
     text-align: center;
+}
+.noAccount {
+    width: 40vw;
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+}
+.noAccountTitle{
+    padding: 10px
+}
+.noAccountContent {
+    padding: 5px;
+    font-size: 1.2em;
+}
+mat-card-title {
+    padding: 10px;
+    margin: 10px;
+}
+mat-card-content {
+    font-size: 1.2em;
 }

@@ -90,11 +90,11 @@
               </table>
         </mat-card-content>
     </mat-card>
-    <mat-card *ngIf="!accountExists">
-        <mat-card-title>
+    <mat-card *ngIf="!accountExists" class="noAccount">
+        <mat-card-title class="noAccountTitle">
             No IRA associated with this account
         </mat-card-title>
-        <mat-card-content>
+        <mat-card-content class="noAccountContent">
             <p>
                 Visit one of our locations to apply for an IRA today!
             </p>

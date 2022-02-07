@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <mat-card class="card">
         <mat-card-title class="title">
             Checking Account
@@ -9,7 +9,7 @@
         <mat-card-subtitle>
             Current Balance
         </mat-card-subtitle>
-        <mat-card-content>
+        <mat-card-content class="topAction">
             <button mat-raised-button (click)="showDetails()">{{detailButton}}</button>
             <button mat-raised-button (click)="showForm()">Transfer</button>
             <div *ngIf="displayDetails">
