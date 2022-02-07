@@ -1,5 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { DashboardCommunicationService } from '../dashboard/dashboard-communication.service';
 
 @Component({
@@ -11,19 +12,16 @@ export class HomeComponent implements OnInit {
 
   loggedIn: boolean = false;
 
-  constructor(private dashboardCommunicationService: DashboardCommunicationService) { 
+  constructor(private dashboardCommunicationService: DashboardCommunicationService, private authService: AuthService) { 
     dashboardCommunicationService.setLandingPage(this);
   }
 
   ngOnInit(): void {
+    this.checkedLoggedIn();
+  }
 
-    if(sessionStorage.getItem('loggedIn') == 'true'){
-      this.loggedIn = true;
-    }
-    else{
-      this.loggedIn = false;
-    }
-   
+  async checkedLoggedIn(){
+    this.loggedIn = await this.authService.loggedIn();
   }
 
   setLoggedOff(){
