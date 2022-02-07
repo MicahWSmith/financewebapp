@@ -9,21 +9,21 @@ export class CashAccountService {
 
   constructor(private http:HttpClient) { }
 
-  getAccountFull(id : number) : Observable<any> {
-    return this.http.get("https://bankaccountmicroservice.herokuapp.com/accounts/full/" + id)
+  getAccountFull(token : any) : Observable<any> {
+    return this.http.get("https://bankaccountmicroservice.herokuapp.com/accounts/full/" +token)
   }
 
-  getAccount(id : number) : Observable<any> {
-    return this.http.get("https://bankaccountmicroservice.herokuapp.com/accounts/" + id)
+  getAccount(token : any) : Observable<any> {
+    return this.http.get("https://bankaccountmicroservice.herokuapp.com/accounts/" + token)
   }
 
-  getTransactions(id : number) : Observable<any> {
-    return this.http.get("https://bankaccountmicroservice.herokuapp.com/transactions/account/" + id);
+  getTransactions(token : any) : Observable<any> {
+    return this.http.get("https://bankaccountmicroservice.herokuapp.com/transactions/account/" + token);
   }
 
-  updateAccount(id : number, balance : number) {
+  updateAccount(token : any, balance : number) {
     let body = {balance: balance};
-    return this.http.put("https://bankaccountmicroservice.herokuapp.com/accounts/" + id, body, {responseType: 'text'});
+    return this.http.put("https://bankaccountmicroservice.herokuapp.com/accounts/" + token, body, {responseType: 'text'});
   }
 
   addTransaction(id : number, type : string, amount : number, date : string){
