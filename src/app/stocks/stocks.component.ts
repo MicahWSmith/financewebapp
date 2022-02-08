@@ -194,7 +194,8 @@ export class StocksComponent implements OnInit {
   }
 
   getBalance() {
-    this.cashService.getAccount(this.currentUser)
+    let token = sessionStorage.getItem('user');
+    this.cashService.getAccount(token)
     .subscribe((payload) => {
       this.cashAvailable = payload.balance;
     })
@@ -208,8 +209,9 @@ export class StocksComponent implements OnInit {
     {
       this.purchaseMessage = `Buying ${this.amount} shares of ${this.selectedStock.stock_symbol}...`
       this.canBuy = false;
+      let token = sessionStorage.getItem('user');
 
-      this.cashService.getAccount(this.currentUser)
+      this.cashService.getAccount(token)
       .subscribe((accountPayload) => {
         console.log("Account: ", accountPayload);
         let price = this.amount * this.selectedStockValue;
@@ -220,7 +222,7 @@ export class StocksComponent implements OnInit {
         } else {
           let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
           
-          this.cashService.updateAccount(accountPayload.id, accountPayload.balance - price)
+          this.cashService.updateAccount(token, accountPayload.balance - price)
           .subscribe((paidPayload) => {
             this.cashService.addTransaction(accountPayload.id, "Bought Stock", price, date)
             .subscribe((transactionPayload) => {
