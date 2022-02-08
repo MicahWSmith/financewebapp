@@ -125,14 +125,14 @@
             <div>
                 <mat-form-field appearance="fill">
                     <mat-label>New Password</mat-label>
-                    <input matInput placeholder="Enter new password" [formControl]="password" required>
+                    <input matInput type="password" placeholder="Enter new password" [formControl]="password" required>
                     <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
                   </mat-form-field>
             </div>
             <div>
                 <mat-form-field appearance="fill">
                     <mat-label>Confirm Password</mat-label>
-                    <input matInput placeholder="Confirm password" [formControl]="passwordConfirm" required>
+                    <input matInput type="password" placeholder="Confirm password" [formControl]="passwordConfirm" required>
                     <mat-error *ngIf="passwordConfirm.invalid">{{getErrorMessage()}}</mat-error>
                   </mat-form-field>
             </div>
