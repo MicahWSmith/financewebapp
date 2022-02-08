@@ -118,6 +118,32 @@
                 </div>
             </div>
         </mat-card-content>
+        <div id="password-button">
+            <button mat-raised-button (click)="showPassword()">Update Password</button>
+        </div>
+        <div *ngIf="showPasswordChange" class="columnTest passwordChange">
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>New Password</mat-label>
+                    <input matInput type="password" placeholder="Enter new password" [formControl]="password" required>
+                    <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput type="password" placeholder="Confirm password" [formControl]="passwordConfirm" required>
+                    <mat-error *ngIf="passwordConfirm.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-error *ngIf="password.value !== passwordConfirm.value">Passwords do not match</mat-error>
+            </div>
+            <div class="rowTest">
+                <button mat-button (click)="closePassword()">Close</button>
+                <button mat-button (click)="submitPassword()" [disabled]="!passwordForm.valid || password.value !== passwordConfirm.value">Submit</button>
+            </div>
+        </div>
         <div id="delete-button-div">
             <button mat-raised-button (click)="openConfirm()" >Close Account</button>
         </div>

@@ -15,13 +15,20 @@ export class DashboardAccountComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   phone = new FormControl('', [Validators.required, Validators.pattern("[0-9]{10}")])
   contactForm = new FormGroup({email: this.email, phone: this.phone});
+
   nameFirst = new FormControl('', [Validators.required]);
   nameLast = new FormControl('', [Validators.required]);
   nameForm = new FormGroup({first: this.nameFirst, last: this.nameLast});
+
   street = new FormControl('', [Validators.required]);
   city = new FormControl('', [Validators.required]);
   state = new FormControl('',[Validators.required]);
   addressForm = new FormGroup({street: this.street, city: this.city, state: this.state});
+
+  password = new FormControl('', [Validators.required]);
+  passwordConfirm = new FormControl ('', [Validators.required]);
+  passwordForm = new FormGroup({password: this.password, passwordConfirm: this.passwordConfirm});
+
   states = ["AL","AK","AS","AZ","AR","CA","CO","CT","DE","DC","FM","FL","GA","GU","HI","ID","IL","IN","IA",
   "KS","KY","LA","ME","MH", "MD","MA","MI","MN", "MS","MO","MT","NE", "NV","NH","NJ","NM","NY","NC","ND",
   "MP","OH","OK","OR","PW","PA","PR","RI","SC","SD","TN","TX","UT","VT","VI","VA","WA","WV","WI","WY"]
@@ -29,6 +36,7 @@ export class DashboardAccountComponent implements OnInit {
   showNameEdit : boolean = false;
   showAddressEdit : boolean = false;
   showContactEdit : boolean = false;
+  showPasswordChange : boolean = false;
   hasAddress: boolean = true;
   selected : string = "";
   user!:User;
@@ -38,8 +46,6 @@ export class DashboardAccountComponent implements OnInit {
    }
   ngOnInit(): void {
     this.dbComm.getUserFromSession();
-    //console.log(sessionStorage.getItem('user'));
-    //console.log(this.user);
   }
 
   editName(){
@@ -68,6 +74,7 @@ export class DashboardAccountComponent implements OnInit {
 
     }
     this.userService.updateUser(body).subscribe(response => {
+      this.nameForm.reset();
       this.showNameEdit = false;
       this.ngOnInit();
     });
@@ -80,6 +87,7 @@ export class DashboardAccountComponent implements OnInit {
       state: this.state.value
     }
     this.userService.updateProfile(body).subscribe(response => {
+      this.addressForm.reset();
       this.showAddressEdit = false;
       this.ngOnInit();
     })
@@ -94,8 +102,20 @@ export class DashboardAccountComponent implements OnInit {
 
     }
     this.userService.updateUser(body).subscribe(response => {
+      this.contactForm.reset();
       this.showContactEdit = false;
       this.ngOnInit();
+    });
+  }
+  submitPassword(){
+    let body = {
+      token: sessionStorage.getItem('user'),
+      password: this.password.value
+    }
+    console.log("body: ", body);
+    this.userService.updatePassword(body).subscribe(response => {
+      this.passwordForm.reset();
+      console.log(response);
     });
   }
 
@@ -108,13 +128,15 @@ export class DashboardAccountComponent implements OnInit {
   closeContact(){
     this.showContactEdit = false;
   }
+  closePassword(){
+    this.showPasswordChange = false;
+  }
 
   openConfirm(){
     const dialogConfig = new MatDialogConfig();
     let dialogRef = this.dialog.open(DeleteDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(response => {
       if (response === "Delete Confirmed"){
-        console.log("Confirm Delete button pressed");
         this.deleteAccount();
       }
     })
@@ -139,10 +161,8 @@ export class DashboardAccountComponent implements OnInit {
 
   setUser(user:User){
     this.user = user;
-    console.log(user);
     if (this.user.profile.street_address === "" || this.user.profile.city === "" || this.user.profile.state === ""){
       this.hasAddress = false;
-      console.log(this.hasAddress);
     }
     else {
       this.hasAddress = true;
@@ -153,10 +173,13 @@ export class DashboardAccountComponent implements OnInit {
     let body = {
       token: sessionStorage.getItem('user')
     }
-    console.log("body of delete request:", body);
     this.userService.deleteUser(body).subscribe(response => {
-      console.log(response);
       this.dbComm.logout();
     })
   }
+
+  showPassword(){
+    this.showPasswordChange = true;
+  }
+   
 }
