@@ -7,10 +7,11 @@
           <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <mat-form-field *ngIf="validAccountFound" appearance="fill">
-            <mat-label>{{security_question}}</mat-label>
-            <input matInput type="text" [(ngModel)]="security_answer" required>
+            <mat-label>Security Code</mat-label>
+            <input matInput maxlength="6" type="text" [(ngModel)]="code" required>
         </mat-form-field>
-        <button (click)="userRecover()" mat-stroked-button color="primary">Start recovery</button>
+        <button *ngIf="!validAccountFound" (click)="userRecoveryData()" mat-stroked-button color="primary">Start recovery</button>
+        <button *ngIf="validAccountFound" (click)="userRecoveryLogin()" mat-stroked-button color="primary">Submit Code</button>
         <a routerLink="/login" class="recovery_link">Go back to login page <span class="signup">here</span></a>
     </div>
     <mat-error *ngIf="failedLogin">Incorrect email or security answer</mat-error>

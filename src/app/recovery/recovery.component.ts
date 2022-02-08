@@ -23,20 +23,38 @@ export class RecoveryComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   userEmail: string = "";
   token: string = "";
-  security_question: string = "";
-  security_answer: string = "";
+  code: string = "";
 
   validAccountFound: boolean = false;
   failedLogin: boolean = false;
 
-  userRecover(){
+  userRecoveryData(){
     if(!this.email.hasError('email')){
       this.failedLogin = false;
-      // make request to api to get token with credentials
-      let body: {} = {
+      const body: {} = {
         email: this.userEmail,
       }
       this.authService.getRecoveryData(body).subscribe(res => {
+        if(!res.error){
+          this.validAccountFound = true;
+        }
+        else{
+          this.failedLogin = true;
+          this.validAccountFound = false;
+        }
+      });
+    }
+  }
+
+  userRecoveryLogin(){
+    if(this.email){
+      this.failedLogin = false;
+      // make request to api to get token with credentials
+      const body: {} = {
+        email: this.userEmail,
+        code: this.code
+      }
+      this.authService.recoveryLogin(body).subscribe(res => {
         if(!res.error){
           this.token = res.token;
           sessionStorage.setItem('user', res.token);
@@ -45,6 +63,7 @@ export class RecoveryComponent implements OnInit {
         }
         else{
           this.failedLogin = true;
+          this.validAccountFound = false;
         }
       });
     }

@@ -38,6 +38,10 @@ export class AuthService {
     return this.http.post("https://vg-db-users.herokuapp.com/auth/getRecoveryData", body);
   }
 
+  recoveryLogin(body: {}): Observable<any>{
+    return this.http.post("https://vg-db-users.herokuapp.com/auth/recoveryLogin", body);
+  }
+
   getTokenData(body: {}): Observable<any>{
     return this.http.post("https://vg-db-users.herokuapp.com/auth/getTokenData", body);
   }
