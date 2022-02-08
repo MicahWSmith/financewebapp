@@ -41,8 +41,10 @@ export class CdsComponent implements OnInit {
   currentUser: number = 1;
   valid: boolean = false;
   faTimesCircle = faTimesCircle;
+  loading: boolean = false;
 
   ngOnInit(): void {
+    this.loading = true;
     this.cdService.getCds().subscribe((payload) => {
       this.cds = payload;
       let body = {
@@ -50,6 +52,7 @@ export class CdsComponent implements OnInit {
       }
       this.authService.getUserData(body).subscribe(res => {
         this.currentUser = res.data.id;
+        this.loading = false;
       });
     });
   }
