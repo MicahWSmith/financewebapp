@@ -51,7 +51,9 @@ export class ForexMarketComponent implements OnInit {
       this.alertMessage = `Purchasing ${this.currencies[index].symbol}${this.quantities[index]}...`
 
       this.canBuy = false;
-      this.cashService.getAccount(this.currentUser)
+      let token = sessionStorage.getItem('user');
+
+      this.cashService.getAccount(token)
       .subscribe((accountPayload) =>{
         console.log("Account: ", accountPayload)
         let price = Number(this.quantities[index]) * this.currencies[index].lastPrice;
@@ -60,7 +62,13 @@ export class ForexMarketComponent implements OnInit {
           this.alertMessage = "Insufficient Balance"
           this.canBuy = true;
         } else {
+<<<<<<< HEAD
           this.cashService.updateAccount(accountPayload.id, accountPayload.balance - price)
+=======
+          let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
+
+          this.cashService.updateAccount(token, accountPayload.balance - price)
+>>>>>>> main
           .subscribe((paidPayload) => {
             this.cashService.addTransaction(accountPayload.id, "Bought Currency", price)
             .subscribe((transactionPayload) => {

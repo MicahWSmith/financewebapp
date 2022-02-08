@@ -8,6 +8,7 @@ import { PortfolioApiService } from '../portfolio-api.service';
 import { CashAccountService } from '../cash-account.service';
 import { DashboardCommunicationService } from '../dashboard/dashboard-communication.service';
 import { AuthService } from '../auth.service';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -39,7 +40,7 @@ export class CdsComponent implements OnInit {
   canBuy: boolean = false;
   currentUser: number = 1;
   valid: boolean = false;
-
+  faTimesCircle = faTimesCircle;
 
   ngOnInit(): void {
     this.cdService.getCds().subscribe((payload) => {
@@ -98,8 +99,9 @@ export class CdsComponent implements OnInit {
       this.valid = false;
       this.canBuy = false;
       this.alertMessage = 'Buying CD...';
+      let token = sessionStorage.getItem('user');
 
-      this.cashService.getAccount(this.currentUser)
+      this.cashService.getAccount(token)
       .subscribe((accountPayload) => {
         console.log("Account: ", accountPayload)
 
@@ -107,7 +109,13 @@ export class CdsComponent implements OnInit {
           this.alertMessage = "Insufficient Balance"
           this.canBuy = true;
         } else {
+<<<<<<< HEAD
           this.cashService.updateAccount(accountPayload.id, accountPayload.balance - this.userDepositInput)
+=======
+          let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
+
+          this.cashService.updateAccount(token, accountPayload.balance - this.userDepositInput)
+>>>>>>> main
           .subscribe((paidPayload) => {
             this.cashService.addTransaction(accountPayload.id, "Bought CD", this.userDepositInput)
             .subscribe((transactionPayload) => {
