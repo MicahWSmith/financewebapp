@@ -9,7 +9,7 @@ export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router ){}
 
   async canActivate(): Promise<boolean> {
-    const authorized = await this.authService.loggedIn();
+    //const authorized = await this.authService.loggedIn();
 
     // if(authorized){
     //   return authorized;
