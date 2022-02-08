@@ -34,6 +34,10 @@ export class AuthService {
     return this.http.post("https://vg-db-users.herokuapp.com/auth/getToken", body);
   }
 
+  getRecoveryData(body: {}): Observable<any>{
+    return this.http.post("https://vg-db-users.herokuapp.com/auth/getRecoveryData", body);
+  }
+
   getTokenData(body: {}): Observable<any>{
     return this.http.post("https://vg-db-users.herokuapp.com/auth/getTokenData", body);
   }

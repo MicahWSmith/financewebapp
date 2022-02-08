@@ -1,1 +1,17 @@
-<p>recovery works!</p>
+<div class="recover_content">
+    <h2>Account recovery</h2>
+    <div class="example-container">
+        <mat-form-field *ngIf="!validAccountFound" appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="name@example.com" [(ngModel)]="userEmail" [formControl]="email" required/>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="validAccountFound" appearance="fill">
+            <mat-label>{{security_question}}</mat-label>
+            <input matInput type="text" [(ngModel)]="security_answer" required>
+        </mat-form-field>
+        <button (click)="userRecover()" mat-stroked-button color="primary">Start recovery</button>
+        <a routerLink="/login" class="recovery_link">Go back to login page <span class="signup">here</span></a>
+    </div>
+    <mat-error *ngIf="failedLogin">Incorrect email or security answer</mat-error>
+</div>
