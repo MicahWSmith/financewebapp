@@ -51,14 +51,19 @@ export class CashAccountComponent implements OnInit {
       this.account.transactions.sort(function(a : any, b : any){
         return Date.parse(b.date) - Date.parse(a.date);
       })
+      this.account.transactions.map(function (trans : any) {
+        let epoch = Date.parse(trans.date);
+        trans.date = new Date(epoch).toLocaleDateString('en-US');
+        //trans.date = date.toLocaleString('en-US');
+      })
       this.transactions = this.account.transactions;
     })
   }
   
   transfer() {
     let token = sessionStorage.getItem('user');
-    let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'});
-    this.cashService.addTransaction(this.account.id, this.selected, this.amount, date).subscribe(response => {
+
+    this.cashService.addTransaction(this.account.id, this.selected, this.amount).subscribe(response => {
       console.log("response: ", response);
       if (this.selected == "Withdrawal"){
         let balance = this.account.balance - this.amount;
