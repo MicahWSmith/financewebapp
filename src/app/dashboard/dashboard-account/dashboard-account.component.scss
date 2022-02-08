@@ -31,6 +31,10 @@
     color: #D8000C;
     background-color: #FFD2D2;
 }
+.passwordChange{
+    display: flex;
+    align-items: center;
+}
 .container{
     width: 45vw;
     padding-top: 30px;
@@ -119,6 +123,13 @@
         button{
             background-color: rgb(255, 89, 89);
         }
+    }
+
+    #password-button{
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
     }
 }
 

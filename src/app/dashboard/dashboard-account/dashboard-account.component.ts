@@ -15,13 +15,20 @@ export class DashboardAccountComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   phone = new FormControl('', [Validators.required, Validators.pattern("[0-9]{10}")])
   contactForm = new FormGroup({email: this.email, phone: this.phone});
+
   nameFirst = new FormControl('', [Validators.required]);
   nameLast = new FormControl('', [Validators.required]);
   nameForm = new FormGroup({first: this.nameFirst, last: this.nameLast});
+
   street = new FormControl('', [Validators.required]);
   city = new FormControl('', [Validators.required]);
   state = new FormControl('',[Validators.required]);
   addressForm = new FormGroup({street: this.street, city: this.city, state: this.state});
+
+  password = new FormControl('', [Validators.required]);
+  passwordConfirm = new FormControl ('', [Validators.required]);
+  passwordForm = new FormGroup({password: this.password, passwordConfirm: this.passwordConfirm});
+
   states = ["AL","AK","AS","AZ","AR","CA","CO","CT","DE","DC","FM","FL","GA","GU","HI","ID","IL","IN","IA",
   "KS","KY","LA","ME","MH", "MD","MA","MI","MN", "MS","MO","MT","NE", "NV","NH","NJ","NM","NY","NC","ND",
   "MP","OH","OK","OR","PW","PA","PR","RI","SC","SD","TN","TX","UT","VT","VI","VA","WA","WV","WI","WY"]
@@ -29,6 +36,7 @@ export class DashboardAccountComponent implements OnInit {
   showNameEdit : boolean = false;
   showAddressEdit : boolean = false;
   showContactEdit : boolean = false;
+  showPasswordChange : boolean = false;
   hasAddress: boolean = true;
   selected : string = "";
   user!:User;
@@ -98,6 +106,9 @@ export class DashboardAccountComponent implements OnInit {
       this.ngOnInit();
     });
   }
+  submitPassword(){
+    console.log("submitted password change");
+  }
 
   closeName() {
     this.showNameEdit = false;
@@ -107,6 +118,9 @@ export class DashboardAccountComponent implements OnInit {
   }
   closeContact(){
     this.showContactEdit = false;
+  }
+  closePassword(){
+    this.showPasswordChange = false;
   }
 
   openConfirm(){
@@ -159,4 +173,10 @@ export class DashboardAccountComponent implements OnInit {
       this.dbComm.logout();
     })
   }
+
+  showPassword(){
+    this.showPasswordChange = true;
+    console.log(this.password.value);
+  }
+   
 }

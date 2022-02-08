@@ -13,7 +13,7 @@
             <button mat-raised-button (click)="showDetails()">{{detailButton}}</button>
             <button mat-raised-button (click)="showForm()">Transfer</button>
             <div *ngIf="displayDetails">
-                <p>Account Number:  {{account.accountNumber}}</p>
+                <p>Account Number: {{account.accountNumber}}</p>
                 <p>Routing Number: {{account.routingNumber}}</p>
             </div>
             <div *ngIf="displayForm">
