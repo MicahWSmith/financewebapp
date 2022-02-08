@@ -16,6 +16,8 @@ export class CashAccountComponent implements OnInit {
   amount : number = 0;
   balance : number = 0;
 
+  loading: boolean = false;
+
   displayedColumnst: string[] = ["date", "type", "amount"];
 
   constructor(private cashService: CashAccountService) { }
@@ -45,6 +47,7 @@ export class CashAccountComponent implements OnInit {
   }
 
   updateAll(token: any){
+    this.loading = true;
     //error handling if account doesn't exist w/ id
     this.cashService.getAccountFull(token).subscribe(response => {
       this.account = response;
@@ -57,6 +60,7 @@ export class CashAccountComponent implements OnInit {
         //trans.date = date.toLocaleString('en-US');
       })
       this.transactions = this.account.transactions;
+      this.loading = false;
     })
   }
   
