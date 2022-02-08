@@ -29,14 +29,6 @@
             </mat-form-field>
         </div>
         
-        <mat-form-field appearance="fill">
-            <mat-label>Security Question</mat-label>
-            <input matInput type="text" placeholder="Ex: Name of My First Pet" [(ngModel)]="security_question" (keydown)="checkVals()" required>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Security Question Answer</mat-label>
-            <input matInput type="text" placeholder="" [(ngModel)]="security_answer" (keydown)="checkVals()" required>
-        </mat-form-field>
         <mat-error *ngIf="failedLogin">All Fields are Required</mat-error>
         <button (click)="userSignUp()" mat-stroked-button color="primary" [disabled]="isDisabled">Sign up</button>
         <div class='format2'>

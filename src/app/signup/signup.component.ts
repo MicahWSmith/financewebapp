@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit {
   }
 
   userSignUp(){
-    if(!this.email.hasError('email') && this.password && this.first && this.last && this.phone && this.security_answer && this.security_question){
+    if(!this.email.hasError('email') && this.password && this.first && this.last && this.phone){
       this.failedLogin = false;
       // make request to api to get token with credentials
       let body: {} = {
@@ -46,6 +46,8 @@ export class SignupComponent implements OnInit {
         security_answer: this.security_answer,
       }
       // create user
+      // disable button to prevent spam
+      this.isDisabled = true;
       this.userService.addUser(body).subscribe(createRes => {
         if(!createRes.error){
           const message = createRes.message;
@@ -69,7 +71,7 @@ export class SignupComponent implements OnInit {
   }
 
   checkVals(){
-    if(this.email && this.password && this.first && this.last && this.phone && this.security_answer && this.security_question){ 
+    if(this.email && this.password && this.first && this.last && this.phone){ 
       this.isDisabled = false; 
       return;
     }
