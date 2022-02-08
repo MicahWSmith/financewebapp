@@ -18,6 +18,10 @@ export class UserService {
     return this.http.post("https://vg-db-users.herokuapp.com/users/get", body);
   }
 
+  updatePassword(body: {}): Observable<any>{
+    return this.http.post("https://vg-db-users.herokuapp.com/users/updatePassword", body);
+  }
+
   updateUser(body: {}): Observable<any>{
     return this.http.post("https://vg-db-users.herokuapp.com/users/update", body);
   }
