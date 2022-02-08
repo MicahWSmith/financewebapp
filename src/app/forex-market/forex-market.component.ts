@@ -62,7 +62,8 @@ export class ForexMarketComponent implements OnInit {
           this.alertMessage = "Insufficient Balance"
           this.canBuy = true;
         } else {
-          this.cashService.updateAccount(accountPayload.id, accountPayload.balance - price)
+
+          this.cashService.updateAccount(token, accountPayload.balance - price)
           .subscribe((paidPayload) => {
             this.cashService.addTransaction(accountPayload.id, "Bought Currency", price)
             .subscribe((transactionPayload) => {

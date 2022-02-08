@@ -109,7 +109,8 @@ export class CdsComponent implements OnInit {
           this.alertMessage = "Insufficient Balance"
           this.canBuy = true;
         } else {
-          this.cashService.updateAccount(accountPayload.id, accountPayload.balance - this.userDepositInput)
+
+          this.cashService.updateAccount(token, accountPayload.balance - this.userDepositInput)
           .subscribe((paidPayload) => {
             this.cashService.addTransaction(accountPayload.id, "Bought CD", this.userDepositInput)
             .subscribe((transactionPayload) => {

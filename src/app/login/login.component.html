@@ -3,14 +3,14 @@
     <div class="example-container">
         <mat-form-field appearance="fill">
           <mat-label>Enter your email</mat-label>
-          <input matInput placeholder="name@example.com" [(ngModel)]="userEmail" [formControl]="email" required/>
+          <input matInput (keydown)="checkVals()" placeholder="name@example.com" [(ngModel)]="userEmail" [formControl]="email" required/>
           <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Enter your password</mat-label>
-            <input matInput type="password" [(ngModel)]="password" required>
+            <input matInput type="password" (keydown)="checkVals()" [(ngModel)]="password" required>
         </mat-form-field>
-        <button (click)="userLogin()" mat-stroked-button color="primary">Sign in</button>
+        <button (click)="userLogin()" mat-stroked-button color="primary" [disabled]="isDisabled">Sign in</button>
         <a routerLink="/recovery" class="recovery_link">Forgot your password?</a>
         <a routerLink="/signup" class="signup_link">Don't have an account? <span class="signup">Sign up here</span></a>
     </div>

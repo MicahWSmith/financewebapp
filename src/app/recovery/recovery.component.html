@@ -14,5 +14,6 @@
         <button *ngIf="validAccountFound" (click)="userRecoveryLogin()" mat-stroked-button color="primary">Submit Code</button>
         <a routerLink="/login" class="recovery_link">Go back to login page <span class="signup">here</span></a>
     </div>
-    <mat-error *ngIf="failedLogin">Incorrect email or security answer</mat-error>
+    <mat-error *ngIf="validCodeError">Security code does not match</mat-error>
+    <mat-error *ngIf="validAccountError">Existing user with this email not found</mat-error>
 </div>
