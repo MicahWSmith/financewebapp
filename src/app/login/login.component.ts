@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   token: string = "";
 
   failedLogin: boolean = false;
+  isDisabled: boolean = true;
 
   constructor(private authService: AuthService, private router: Router, private dashboardCommunicationService:DashboardCommunicationService) { }
 
@@ -27,7 +28,6 @@ export class LoginComponent implements OnInit {
 
   userLogin(){
     if(!this.email.hasError('email') && this.password){
-      this.failedLogin = false;
       // make request to api to get token with credentials
       let body: {} = {
         email: this.userEmail,
@@ -41,12 +41,20 @@ export class LoginComponent implements OnInit {
           //console.log(sessionStorage.getItem('user'));
           this.dashboardCommunicationService.logoutTimer();
           this.router.navigate(['/dashboard']);
-        }
-        else{
-          this.failedLogin = true;
+          return;
         }
       });
     }
+    return;
+  }
+
+  checkVals(){
+    if(!this.email.hasError('email') && this.password){ 
+      this.isDisabled = false; 
+      return;
+    }
+    this.isDisabled = true;
+    return;
   }
 
   getErrorMessage() {

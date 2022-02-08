@@ -26,11 +26,12 @@ export class RecoveryComponent implements OnInit {
   code: string = "";
 
   validAccountFound: boolean = false;
-  failedLogin: boolean = false;
+  validAccountError: boolean = false;
+  validCodeError: boolean = false;
 
   userRecoveryData(){
+    this.validAccountError = false;
     if(!this.email.hasError('email')){
-      this.failedLogin = false;
       const body: {} = {
         email: this.userEmail,
       }
@@ -38,17 +39,12 @@ export class RecoveryComponent implements OnInit {
         if(!res.error){
           this.validAccountFound = true;
         }
-        else{
-          this.failedLogin = true;
-          this.validAccountFound = false;
-        }
       });
     }
   }
 
   userRecoveryLogin(){
     if(this.email){
-      this.failedLogin = false;
       // make request to api to get token with credentials
       const body: {} = {
         email: this.userEmail,
@@ -60,10 +56,6 @@ export class RecoveryComponent implements OnInit {
           sessionStorage.setItem('user', res.token);
           this.dashboardCommunicationService.logoutTimer();
           this.router.navigate(['/dashboard']);
-        }
-        else{
-          this.failedLogin = true;
-          this.validAccountFound = false;
         }
       });
     }
