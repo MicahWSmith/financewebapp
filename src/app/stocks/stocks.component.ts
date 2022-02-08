@@ -218,11 +218,9 @@ export class StocksComponent implements OnInit {
           this.purchaseMessage = "Insufficient Balance"
           this.canBuy = true;
         } else {
-          let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
-          
           this.cashService.updateAccount(accountPayload.id, accountPayload.balance - price)
           .subscribe((paidPayload) => {
-            this.cashService.addTransaction(accountPayload.id, "Bought Stock", price, date)
+            this.cashService.addTransaction(accountPayload.id, "Bought Stock", price)
             .subscribe((transactionPayload) => {
               this.portfolioService.buyInvestment(this.currentUser, {
                 type: "stock",

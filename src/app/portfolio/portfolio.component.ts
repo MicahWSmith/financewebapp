@@ -61,11 +61,9 @@ export class PortfolioComponent implements OnInit {
     this.cashService.getAccount(this.currentUser)
     .subscribe((accountPayload) => {
       let price = this.currencies[index].quantity * this.currencies[index].currentPrice
-      let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
-
       this.cashService.updateAccount(accountPayload.id, accountPayload.balance + price)
       .subscribe((soldPayload) => {
-        this.cashService.addTransaction(accountPayload.id, "Sold Currency", price, date)
+        this.cashService.addTransaction(accountPayload.id, "Sold Currency", price)
         .subscribe((transactionPayload) => {
           this.portfolioService.sellInvestment(this.currentUser,this.currencies[index].investmentID, "currency")
           .subscribe(() => {
@@ -87,11 +85,9 @@ export class PortfolioComponent implements OnInit {
     this.cashService.getAccount(this.currentUser)
     .subscribe((accountPayload) => {
       let price = this.currencies[index].quantity * this.currencies[index].currentPrice
-      let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
-
       this.cashService.updateAccount(this.currentUser, accountPayload.balance + price)
       .subscribe((soldPayload) => {
-        this.cashService.addTransaction(this.currentUser, "Sold Stock", price, date)
+        this.cashService.addTransaction(this.currentUser, "Sold Stock", price)
         .subscribe((transactionPayload) => {
           this.portfolioService.sellInvestment(this.currentUser,this.stocks[index].investmentID, "stock")
           .subscribe(() => {
@@ -116,11 +112,9 @@ export class PortfolioComponent implements OnInit {
 
     this.cashService.getAccount(this.currentUser)
     .subscribe((accountPayload) => {
-      let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
-
       this.cashService.updateAccount(this.currentUser, accountPayload.balance + this.cds[index].currentValue)
       .subscribe((soldPayload) => {
-        this.cashService.addTransaction(this.currentUser, "Sold CD", this.cds[index].currentValue, date)
+        this.cashService.addTransaction(this.currentUser, "Sold CD", this.cds[index].currentValue)
         .subscribe((transactionPayload) => {
           this.portfolioService.sellInvestment(this.currentUser,this.cds[index].investmentId, "cd")
           .subscribe(() => {

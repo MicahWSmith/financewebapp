@@ -26,14 +26,14 @@ export class CashAccountService {
     return this.http.put("https://bankaccountmicroservice.herokuapp.com/accounts/" + token, body, {responseType: 'text'});
   }
 
-  addTransaction(id : number, type : string, amount : number, date : string){
+  addTransaction(id : number, type : string, amount : number){
+    let curDate = new Date();
     let body = {
       type: type,
       amount: amount,
-      date: date,
+      date: curDate,
       accountId: id
     }
     return this.http.post("https://bankaccountmicroservice.herokuapp.com/transactions/", body);
   }
-
 }
