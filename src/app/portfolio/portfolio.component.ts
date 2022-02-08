@@ -62,7 +62,6 @@ export class PortfolioComponent implements OnInit {
     this.cashService.getAccount(token)
     .subscribe((accountPayload) => {
       let price = this.currencies[index].quantity * this.currencies[index].currentPrice
-      let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
 
       this.cashService.updateAccount(token, accountPayload.balance + price)
       .subscribe((soldPayload) => {
@@ -89,7 +88,6 @@ export class PortfolioComponent implements OnInit {
     this.cashService.getAccount(token)
     .subscribe((accountPayload) => {
       let price = this.stocks[index].quantity * this.stocks[index].currentPrice
-      let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
 
       this.cashService.updateAccount(token, accountPayload.balance + price)
       .subscribe((soldPayload) => {
@@ -119,7 +117,6 @@ export class PortfolioComponent implements OnInit {
 
     this.cashService.getAccount(token)
     .subscribe((accountPayload) => {
-      let date = new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
 
       this.cashService.updateAccount(token, accountPayload.balance + this.cds[index].currentValue)
       .subscribe((soldPayload) => {
