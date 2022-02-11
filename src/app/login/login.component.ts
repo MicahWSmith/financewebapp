@@ -48,15 +48,6 @@ export class LoginComponent implements OnInit {
     return;
   }
 
-  checkVals(){
-    if(!this.email.hasError('email') && this.password){ 
-      this.isDisabled = false; 
-      return;
-    }
-    this.isDisabled = true;
-    return;
-  }
-
   getErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
