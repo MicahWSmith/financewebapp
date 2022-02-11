@@ -27,8 +27,6 @@ export class DashboardMessagesComponent implements AfterViewInit {
   ELEMENT_DATA = [
     {Date: "February 10th, 2022", Sender: 'Condor Financial', Subject: 'We need to update your current address.', Category: 'Important',
        Message: `\n Hello, \n\n We do not have a current address for you on file. Please update this in your account. \n To get to your account, select "My Account" in the top right corner of the screen!\n\n Sincerely,\n The Condor Financial Team`},
-    {Date: "February 10th, 2022", Sender: 'Condor Financial', Subject: 'Let us help you.', Category: 'Important',
-       Message: `\n Hello, \n\n Have you set up your two-factor authentication yet? If not, go to the following link to set it up:\n    https://fakesetuplink.com\n\n Sincerely,\n The Condor Financial Team`},
     {Date: "February 10th, 2022", Sender: 'William Myers (CEO of Condor Financial)', Subject: 'Welcome!', Category: 'Regular',
        Message: '\n Hello,\n\n Welcome to the Condor Financial community. We look forward to assisting you in reaching your financial goals!\n\n\n\n Wish you the best,\n\n Willam Myers'}
   ];
