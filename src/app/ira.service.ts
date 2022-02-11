@@ -21,7 +21,7 @@ export class IraService {
     return this.http.get("https://iramicroservice.herokuapp.com/iras/" + id);
   }
 
-  getIRAFull(id : number) : Observable<any> {
-    return this.http.get("https://iramicroservice.herokuapp.com/iras/full/" + id);
+  getIRAFull(token : any) : Observable<any> {
+    return this.http.get("https://iramicroservice.herokuapp.com/iras/full/" + token);
   }
 }
