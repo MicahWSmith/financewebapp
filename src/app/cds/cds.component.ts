@@ -63,6 +63,10 @@ export class CdsComponent implements OnInit {
     console.log('opening cd modal');
   }
 
+  hideSidebar(){
+    this.dashboardCommunicationService.layoutComponent.hideSidebar();
+  }
+
   updateDeposit(event: any) {
     this.userDepositInput = (<HTMLInputElement>event.target).value;
   }
@@ -183,6 +187,7 @@ export class CdsComponent implements OnInit {
   }
   moveClass: boolean = false;
   toggleCalc(): void{
+    this.dashboardCommunicationService.layoutComponent.showSidebarToggleButton();
     if (this.moveClass == false){
       this.moveClass = true;
      
