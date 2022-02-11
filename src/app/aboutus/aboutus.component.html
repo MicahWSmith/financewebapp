@@ -52,18 +52,18 @@
     <mat-card class="member-card">
         
         <mat-card-content class="member-card-content">
-            <img mat-card-xl-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+            <img mat-card-xl-image src="../../assets/Rae-Headshot.jpeg" >
             <div class="member-card-text">
                 <h1><b>Rae Painter</b></h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <p>Rae graduated from University of Massachusetts Amherst with a B.S. in Computer Science and a minor in English. They focused their education on software development and have experience in full-stack engineering, comprehensive software testing, mobile and ubiquitous computing, human computer interactions, and various tech stacks and frameworks. They have a fondness for back-end and making scalable and easy to maintain programs.</p>
                 <h2>On this project:</h2>
-                <p>Rae did IRAs or something, idk</p>
+                <p>Rae created the checking account and IRA APIs that store and serve all account data, along with the corresponding front-end pages that display the data and enable user interaction with their accounts. Additionally, Rae designed and created the user account page allowing users to update their information employing reactive forms.</p>
             </div>
         </mat-card-content>
 
         <mat-card-actions>
-            <button mat-button>GITHUB</button>
-            <button mat-button>LINKEDIN</button>
+            <button mat-button (click)="goTo('https://github.com/RaeStone')">GITHUB</button>
+            <button mat-button (click)="goTo('https://www.linkedin.com/in/raestone/')">LINKEDIN</button>
           </mat-card-actions>
          
     </mat-card>
