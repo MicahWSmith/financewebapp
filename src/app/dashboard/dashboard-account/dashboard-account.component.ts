@@ -112,10 +112,9 @@ export class DashboardAccountComponent implements OnInit {
       token: sessionStorage.getItem('user'),
       password: this.password.value
     }
-    console.log("body: ", body);
     this.userService.updatePassword(body).subscribe(response => {
       this.passwordForm.reset();
-      console.log(response);
+      this.showPasswordChange = false;
     });
   }
 
