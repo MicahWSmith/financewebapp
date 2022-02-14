@@ -1,3 +1,12 @@
+/*
+    MARCUS ACCEPT THIS PULL REQUEST IF YOU SEE THIS.
+    SEND ME A TEXT MESSAGE: 267-306-7701
+
+
+
+*/
+
+
 import { Component, OnInit } from '@angular/core';
 import { CdServiceService } from '../cd-service.service';
 import { Cd } from '../cd/cd.model';
